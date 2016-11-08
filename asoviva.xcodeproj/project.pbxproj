@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63FBD01DD1EE1200150F34 /* MainViewController.swift */; };
+		9F63FBD31DD1EEE100150F34 /* searchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63FBD21DD1EEE100150F34 /* searchViewController.swift */; };
+		9F63FBD61DD1F14100150F34 /* FontAwesome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F63FBD51DD1F14100150F34 /* FontAwesome.framework */; };
 		9F8CBB0D1DD1E574002B3DBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */; };
-		9F8CBB0F1DD1E574002B3DBA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8CBB0E1DD1E574002B3DBA /* ViewController.swift */; };
+		9F8CBB0F1DD1E574002B3DBA /* nowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8CBB0E1DD1E574002B3DBA /* nowViewController.swift */; };
 		9F8CBB121DD1E574002B3DBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8CBB101DD1E574002B3DBA /* Main.storyboard */; };
 		9F8CBB141DD1E574002B3DBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F8CBB131DD1E574002B3DBA /* Assets.xcassets */; };
 		9F8CBB171DD1E574002B3DBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */; };
@@ -34,9 +37,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F63FBD01DD1EE1200150F34 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9F63FBD21DD1EEE100150F34 /* searchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchViewController.swift; sourceTree = "<group>"; };
+		9F63FBD51DD1F14100150F34 /* FontAwesome.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome.framework; path = Carthage/Build/iOS/FontAwesome.framework; sourceTree = "<group>"; };
 		9F8CBB091DD1E574002B3DBA /* asoviva.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = asoviva.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9F8CBB0E1DD1E574002B3DBA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9F8CBB0E1DD1E574002B3DBA /* nowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nowViewController.swift; sourceTree = "<group>"; };
 		9F8CBB111DD1E574002B3DBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F8CBB131DD1E574002B3DBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F8CBB161DD1E574002B3DBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F63FBD61DD1F14100150F34 /* FontAwesome.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F63FBD41DD1F14100150F34 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9F63FBD51DD1F14100150F34 /* FontAwesome.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9F8CBB001DD1E574002B3DBA = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +96,7 @@
 				9F8CBB201DD1E574002B3DBA /* asovivaTests */,
 				9F8CBB2B1DD1E574002B3DBA /* asovivaUITests */,
 				9F8CBB0A1DD1E574002B3DBA /* Products */,
+				9F63FBD41DD1F14100150F34 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,7 +114,9 @@
 			isa = PBXGroup;
 			children = (
 				9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */,
-				9F8CBB0E1DD1E574002B3DBA /* ViewController.swift */,
+				9F63FBD01DD1EE1200150F34 /* MainViewController.swift */,
+				9F8CBB0E1DD1E574002B3DBA /* nowViewController.swift */,
+				9F63FBD21DD1EEE100150F34 /* searchViewController.swift */,
 				9F8CBB101DD1E574002B3DBA /* Main.storyboard */,
 				9F8CBB131DD1E574002B3DBA /* Assets.xcassets */,
 				9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */,
@@ -135,6 +153,7 @@
 				9F8CBB051DD1E574002B3DBA /* Sources */,
 				9F8CBB061DD1E574002B3DBA /* Frameworks */,
 				9F8CBB071DD1E574002B3DBA /* Resources */,
+				9F63FBD71DD1F15F00150F34 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -257,12 +276,32 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9F63FBD71DD1F15F00150F34 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/FontAwesome.framework",
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9F8CBB051DD1E574002B3DBA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F8CBB0F1DD1E574002B3DBA /* ViewController.swift in Sources */,
+				9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */,
+				9F8CBB0F1DD1E574002B3DBA /* nowViewController.swift in Sources */,
+				9F63FBD31DD1EEE100150F34 /* searchViewController.swift in Sources */,
 				9F8CBB0D1DD1E574002B3DBA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,6 +453,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = J476SJFME4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = asoviva/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lit.asoviva;
@@ -427,6 +470,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = J476SJFME4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = asoviva/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lit.asoviva;
@@ -512,6 +559,7 @@
 				9F8CBB331DD1E574002B3DBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9F8CBB341DD1E574002B3DBA /* Build configuration list for PBXNativeTarget "asovivaTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +568,7 @@
 				9F8CBB361DD1E574002B3DBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9F8CBB371DD1E574002B3DBA /* Build configuration list for PBXNativeTarget "asovivaUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +577,7 @@
 				9F8CBB391DD1E574002B3DBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
