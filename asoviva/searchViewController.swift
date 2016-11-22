@@ -8,10 +8,25 @@
 
 import UIKit
 
-class searchViewController: UITabBarController {
 
+class searchViewController: UITabBarController {
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let posX: CGFloat = self.view.bounds.width/2 - 100
+        let posY: CGFloat = self.view.bounds.height/2 - 25
+        
+        let label: UILabel = UILabel(frame: CGRect(x:posX, y: posY, width: 200, height: 50))
+        
+        label.backgroundColor = UIColor.orange
+        label.text = "只今別のところを工事中"
+        label.textAlignment = NSTextAlignment.center
+        self.view.addSubview(label)
+        
+        self.view.backgroundColor = UIColor.white
 
         // Do any additional setup after loading the view.
     }

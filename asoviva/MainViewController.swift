@@ -13,18 +13,24 @@ class MainViewController: UITabBarController {
 
     var nowView: nowViewController!
     var searchView: searchViewController!
+    var firstView: firstViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         nowView = nowViewController()
         searchView = searchViewController()
+        firstView = firstViewController()
         
         let nowimage = UIImage.fontAwesomeIcon(name: .mapPin, textColor: UIColor.black, size: CGSize(width:50,height:50))
         let searchimage = UIImage.fontAwesomeIcon(name: .search, textColor: UIColor.black, size: CGSize(width:50,height:50))
-        nowView.tabBarItem = UITabBarItem(title: "現在地", image: nowimage, selectedImage:nowimage)
-        searchView.tabBarItem = UITabBarItem(title: "探す", image: nowimage, selectedImage:nowimage)
+        
+        nowView.tabBarItem = UITabBarItem(title: "現在地", image: nowimage, selectedImage: nowimage)
+        firstView.tabBarItem = UITabBarItem(title: "現在地", image: nowimage, selectedImage: nowimage)
+        
+        searchView.tabBarItem = UITabBarItem(title: "探す", image: searchimage, selectedImage: searchimage)
+        
 
-        let nowNavigationController = UINavigationController(rootViewController: nowView)
+        let nowNavigationController = UINavigationController(rootViewController: firstView)
         let searchNavigationController = UINavigationController(rootViewController: searchView)
         self.setViewControllers([nowNavigationController,searchNavigationController], animated: false)
         // Do any additional setup after loading the view.

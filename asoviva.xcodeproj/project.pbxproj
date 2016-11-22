@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68D3210B506AF2820E8CCA5F /* Pods_asovivaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88EE371BCA1A995AF80A399E /* Pods_asovivaUITests.framework */; };
+		6EC762A8EDBBD4A49597F584 /* Pods_asovivaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0C2308D4C80FE916A3DE8E /* Pods_asovivaTests.framework */; };
+		86715922B7FC1FED7B1D18B3 /* Pods_asoviva.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61CF553ECAE0B2C5AF5DB596 /* Pods_asoviva.framework */; };
+		9F63EE9C1DDB142100D332D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */; };
 		9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63FBD01DD1EE1200150F34 /* MainViewController.swift */; };
 		9F63FBD31DD1EEE100150F34 /* searchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63FBD21DD1EEE100150F34 /* searchViewController.swift */; };
 		9F63FBD61DD1F14100150F34 /* FontAwesome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F63FBD51DD1F14100150F34 /* FontAwesome.framework */; };
@@ -17,6 +21,7 @@
 		9F8CBB171DD1E574002B3DBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */; };
 		9F8CBB221DD1E574002B3DBA /* asovivaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8CBB211DD1E574002B3DBA /* asovivaTests.swift */; };
 		9F8CBB2D1DD1E574002B3DBA /* asovivaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8CBB2C1DD1E574002B3DBA /* asovivaUITests.swift */; };
+		9F8F8AFF1DDB2612004A9810 /* firstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8F8AFE1DDB2612004A9810 /* firstViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F3AF750FA1B45E6F99EE965 /* Pods-asoviva.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asoviva.release.xcconfig"; path = "Pods/Target Support Files/Pods-asoviva/Pods-asoviva.release.xcconfig"; sourceTree = "<group>"; };
+		61CF553ECAE0B2C5AF5DB596 /* Pods_asoviva.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_asoviva.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6271883DF96652BC2BC08E7E /* Pods-asovivaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaUITests/Pods-asovivaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		71902EDE5C8A45CDA48067E8 /* Pods-asovivaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaUITests/Pods-asovivaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		78CF1CE33110201566327E23 /* Pods-asoviva.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asoviva.debug.xcconfig"; path = "Pods/Target Support Files/Pods-asoviva/Pods-asoviva.debug.xcconfig"; sourceTree = "<group>"; };
+		88EE371BCA1A995AF80A399E /* Pods_asovivaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_asovivaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9F63FBD01DD1EE1200150F34 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9F63FBD21DD1EEE100150F34 /* searchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchViewController.swift; sourceTree = "<group>"; };
 		9F63FBD51DD1F14100150F34 /* FontAwesome.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome.framework; path = Carthage/Build/iOS/FontAwesome.framework; sourceTree = "<group>"; };
@@ -53,6 +65,10 @@
 		9F8CBB281DD1E574002B3DBA /* asovivaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = asovivaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8CBB2C1DD1E574002B3DBA /* asovivaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = asovivaUITests.swift; sourceTree = "<group>"; };
 		9F8CBB2E1DD1E574002B3DBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F8F8AFE1DDB2612004A9810 /* firstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = firstViewController.swift; sourceTree = "<group>"; };
+		CA0C2308D4C80FE916A3DE8E /* Pods_asovivaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_asovivaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB105D80A53C4A293E4B534F /* Pods-asovivaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FE41C5F1DCA636049125BE31 /* Pods-asovivaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +76,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F63EE9C1DDB142100D332D6 /* CoreLocation.framework in Frameworks */,
 				9F63FBD61DD1F14100150F34 /* FontAwesome.framework in Frameworks */,
+				86715922B7FC1FED7B1D18B3 /* Pods_asoviva.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EC762A8EDBBD4A49597F584 /* Pods_asovivaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,16 +94,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68D3210B506AF2820E8CCA5F /* Pods_asovivaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26C72D310407639AC2017C31 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				78CF1CE33110201566327E23 /* Pods-asoviva.debug.xcconfig */,
+				2F3AF750FA1B45E6F99EE965 /* Pods-asoviva.release.xcconfig */,
+				FB105D80A53C4A293E4B534F /* Pods-asovivaTests.debug.xcconfig */,
+				FE41C5F1DCA636049125BE31 /* Pods-asovivaTests.release.xcconfig */,
+				6271883DF96652BC2BC08E7E /* Pods-asovivaUITests.debug.xcconfig */,
+				71902EDE5C8A45CDA48067E8 /* Pods-asovivaUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9F63FBD41DD1F14100150F34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */,
 				9F63FBD51DD1F14100150F34 /* FontAwesome.framework */,
+				61CF553ECAE0B2C5AF5DB596 /* Pods_asoviva.framework */,
+				CA0C2308D4C80FE916A3DE8E /* Pods_asovivaTests.framework */,
+				88EE371BCA1A995AF80A399E /* Pods_asovivaUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -97,6 +134,7 @@
 				9F8CBB2B1DD1E574002B3DBA /* asovivaUITests */,
 				9F8CBB0A1DD1E574002B3DBA /* Products */,
 				9F63FBD41DD1F14100150F34 /* Frameworks */,
+				26C72D310407639AC2017C31 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,8 +153,9 @@
 			children = (
 				9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */,
 				9F63FBD01DD1EE1200150F34 /* MainViewController.swift */,
-				9F8CBB0E1DD1E574002B3DBA /* nowViewController.swift */,
+				9F8F8AFE1DDB2612004A9810 /* firstViewController.swift */,
 				9F63FBD21DD1EEE100150F34 /* searchViewController.swift */,
+				9F8CBB0E1DD1E574002B3DBA /* nowViewController.swift */,
 				9F8CBB101DD1E574002B3DBA /* Main.storyboard */,
 				9F8CBB131DD1E574002B3DBA /* Assets.xcassets */,
 				9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */,
@@ -150,10 +189,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F8CBB311DD1E574002B3DBA /* Build configuration list for PBXNativeTarget "asoviva" */;
 			buildPhases = (
+				19ECA29885FD3AB778BE6EE3 /* [CP] Check Pods Manifest.lock */,
 				9F8CBB051DD1E574002B3DBA /* Sources */,
 				9F8CBB061DD1E574002B3DBA /* Frameworks */,
 				9F8CBB071DD1E574002B3DBA /* Resources */,
 				9F63FBD71DD1F15F00150F34 /* Run Script */,
+				A6F5195E533F76361ED4405B /* [CP] Embed Pods Frameworks */,
+				0D89961872A7C9E7415F3243 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -168,9 +210,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F8CBB341DD1E574002B3DBA /* Build configuration list for PBXNativeTarget "asovivaTests" */;
 			buildPhases = (
+				FA27592700E6F93E61C5D03E /* [CP] Check Pods Manifest.lock */,
 				9F8CBB191DD1E574002B3DBA /* Sources */,
 				9F8CBB1A1DD1E574002B3DBA /* Frameworks */,
 				9F8CBB1B1DD1E574002B3DBA /* Resources */,
+				9DDAE328B086CCF8D67D849E /* [CP] Embed Pods Frameworks */,
+				E6C4954DCA26300EF42AC2E4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -186,9 +231,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F8CBB371DD1E574002B3DBA /* Build configuration list for PBXNativeTarget "asovivaUITests" */;
 			buildPhases = (
+				BA484337C2BA9AB8D60B5703 /* [CP] Check Pods Manifest.lock */,
 				9F8CBB241DD1E574002B3DBA /* Sources */,
 				9F8CBB251DD1E574002B3DBA /* Frameworks */,
 				9F8CBB261DD1E574002B3DBA /* Resources */,
+				14EEFD668535EB555E17B39B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -277,6 +324,66 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0D89961872A7C9E7415F3243 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-asoviva/Pods-asoviva-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		14EEFD668535EB555E17B39B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-asovivaUITests/Pods-asovivaUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		19ECA29885FD3AB778BE6EE3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9DDAE328B086CCF8D67D849E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9F63FBD71DD1F15F00150F34 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -292,6 +399,66 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		A6F5195E533F76361ED4405B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-asoviva/Pods-asoviva-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA484337C2BA9AB8D60B5703 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E6C4954DCA26300EF42AC2E4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA27592700E6F93E61C5D03E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -300,6 +467,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */,
+				9F8F8AFF1DDB2612004A9810 /* firstViewController.swift in Sources */,
 				9F8CBB0F1DD1E574002B3DBA /* nowViewController.swift in Sources */,
 				9F63FBD31DD1EEE100150F34 /* searchViewController.swift in Sources */,
 				9F8CBB0D1DD1E574002B3DBA /* AppDelegate.swift in Sources */,
@@ -450,6 +618,7 @@
 		};
 		9F8CBB321DD1E574002B3DBA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78CF1CE33110201566327E23 /* Pods-asoviva.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = J476SJFME4;
@@ -467,6 +636,7 @@
 		};
 		9F8CBB331DD1E574002B3DBA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F3AF750FA1B45E6F99EE965 /* Pods-asoviva.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = J476SJFME4;
@@ -484,6 +654,7 @@
 		};
 		9F8CBB351DD1E574002B3DBA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB105D80A53C4A293E4B534F /* Pods-asovivaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -499,6 +670,7 @@
 		};
 		9F8CBB361DD1E574002B3DBA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE41C5F1DCA636049125BE31 /* Pods-asovivaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -514,6 +686,7 @@
 		};
 		9F8CBB381DD1E574002B3DBA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6271883DF96652BC2BC08E7E /* Pods-asovivaUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = J476SJFME4;
@@ -528,6 +701,7 @@
 		};
 		9F8CBB391DD1E574002B3DBA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71902EDE5C8A45CDA48067E8 /* Pods-asovivaUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = J476SJFME4;
