@@ -24,6 +24,8 @@ class firstViewController: UIViewController, MKMapViewDelegate, UISearchBarDeleg
     
     var searchController = UISearchController(searchResultsController: nil)
     
+    var searchBar:UISearchBar!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +44,8 @@ class firstViewController: UIViewController, MKMapViewDelegate, UISearchBarDeleg
         lat = locationManager.location!.coordinate.latitude
         lng = locationManager.location!.coordinate.longitude
         
-        let MapView: MKMapView = MKMapView()
-        var mapframe: CGRect = CGRect(x: 0, y: 60, width: self.view.frame.width, height: self.view.frame.height*4/7)
+       
+        var mapframe: CGRect = CGRect(x: 0, y: 60 + searchController.searchBar.frame.height, width: self.view.frame.width, height: self.view.frame.height*4/7)
         mapView.frame = mapframe
         let myLatitude: CLLocationDegrees = lat
         let myLongitude: CLLocationDegrees = lng
@@ -61,19 +63,45 @@ class firstViewController: UIViewController, MKMapViewDelegate, UISearchBarDeleg
         self.view.addSubview(storeTableView)
         
         
-        
+        /*
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
-        searchController.searchBar.sizeToFit()
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.delegate = self
-        searchController.dimsBackgroundDuringPresentation = false //
+        searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
-        var searchframe: CGRect = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)!, width: (self.navigationController?.navigationBar.frame.width)!, height: searchController.searchBar.frame.height)
+        let searchframe: CGRect = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)!, width: (self.navigationController?.navigationBar.frame.width)!, height: searchController.searchBar.frame.height)
         searchController.searchBar.frame = searchframe
         self.navigationController?.navigationBar.addSubview(searchController.searchBar)
-    
+        searchController.searchBar.showsCancelButton = true
+        searchController.searchBar.delegate = self
+        */
+        
+        
+        searchBar = UISearchBar()
+        searchBar.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)!, width: (self.navigationController?.navigationBar.frame.width)!, height: searchController.searchBar.frame.height)
+        searchBar.placeholder = "検索キーワードを入力してください"
+        searchBar.delegate = self
+        searchBar.showsBookmarkButton = false
+        self.view.addSubview(searchBar)
+        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: Selector("handleKeyboardWillShowNotification:"), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    }
+
+    func handleKeyboardWillShowNotification(notification: NSNotification) {
+        searchBar.showsCancelButton = true
+    }
+    
+    // キャンセルボタンが押されたらキャンセルボタンを無効にしてフォーカスをはずす
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -81,11 +109,10 @@ class firstViewController: UIViewController, MKMapViewDelegate, UISearchBarDeleg
         navbarFrame.size = CGSize(width: navbarFrame.width, height: navbarFrame.height + searchController.searchBar.frame.height)
         self.navigationController?.navigationBar.frame = navbarFrame
     }
+    
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         
         print("didChangeAuthorizationStatus");
-        
-        // 認証のステータスをログで表示.
         var statusStr: String = "";
         switch (status) {
         case .notDetermined:
@@ -104,30 +131,33 @@ class firstViewController: UIViewController, MKMapViewDelegate, UISearchBarDeleg
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //選択時に呼び出される
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myItems.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // 再利用するCellを取得する.
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
-        
-        // Cellに値を設定する.
-        // cell.textLabel!.text = "\(myItems[indexPath.row])"
-        
         return cell
     }
     
     
     func updateSearchResults(for searchController: UISearchController) {
-        //検索文字列を含むデータを検索結果配列に格納する。
-        //searchResults = dataList.filter { data in
-        //    return data.containsString(searchController.searchBar.text!)
-        //}
-        
-        //テーブルビューを再読み込みする。
         storeTableView.reloadData()
+        
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchController.searchBar.text = ""
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        searchController.searchBar.showsCancelButton = false
+        searchController.searchBar.endEditing(true)
+        
     }
     
     
