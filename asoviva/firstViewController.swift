@@ -9,8 +9,9 @@
 import UIKit
 import MapKit
 import CoreLocation
+import GoogleMaps
 
-class firstViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource,UISearchControllerDelegate,UISearchResultsUpdating{
+class firstViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource,UISearchControllerDelegate{
     
     
     var mapView: MKMapView = MKMapView()
@@ -26,11 +27,15 @@ class firstViewController: UIViewController, MKMapViewDelegate, UISearchBarDeleg
     
     var searchBar:UISearchBar!
     
+    let key = "AIzaSyCwcR3jfPvo1SNdLFTTOe0dZ1_PX_AZ2xU"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.white
+        
+        self.title = "Asoviva"
         
         locationManager = CLLocationManager()
         let status = CLLocationManager.authorizationStatus()
@@ -44,8 +49,10 @@ class firstViewController: UIViewController, MKMapViewDelegate, UISearchBarDeleg
         lat = locationManager.location!.coordinate.latitude
         lng = locationManager.location!.coordinate.longitude
         
+        
+        
        
-        var mapframe: CGRect = CGRect(x: 0, y: 60 + searchController.searchBar.frame.height, width: self.view.frame.width, height: self.view.frame.height*4/7)
+        var mapframe: CGRect = CGRect(x: 0, y: 60 + 30, width: self.view.frame.width, height: self.view.frame.height*4/7)
         mapView.frame = mapframe
         let myLatitude: CLLocationDegrees = lat
         let myLongitude: CLLocationDegrees = lng
@@ -63,52 +70,28 @@ class firstViewController: UIViewController, MKMapViewDelegate, UISearchBarDeleg
         self.view.addSubview(storeTableView)
         
         
-        /*
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.delegate = self
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.delegate = self
-        let searchframe: CGRect = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)!, width: (self.navigationController?.navigationBar.frame.width)!, height: searchController.searchBar.frame.height)
-        searchController.searchBar.frame = searchframe
-        self.navigationController?.navigationBar.addSubview(searchController.searchBar)
-        searchController.searchBar.showsCancelButton = true
-        searchController.searchBar.delegate = self
-        */
-        
         
         searchBar = UISearchBar()
-        searchBar.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)!, width: (self.navigationController?.navigationBar.frame.width)!, height: searchController.searchBar.frame.height)
+        searchBar.frame = CGRect(x: 0, y: 60, width: (self.navigationController?.navigationBar.frame.width)!, height: searchController.searchBar.frame.height)
         searchBar.placeholder = "検索キーワードを入力してください"
+        // searchBar.layer.position = CGPoint(x: self.view.bounds.width/2, y: 50)
         searchBar.delegate = self
         searchBar.showsBookmarkButton = false
+        searchBar.showsCancelButton = true
         self.view.addSubview(searchBar)
+        
+       // let item = UIBarButtonItem(customView: searchBar)
+        //self.navigationItem.titleView = searchBar
+        //self.navigationItem.leftBarButtonItem = item
+        
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: Selector("handleKeyboardWillShowNotification:"), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-    }
-
-    func handleKeyboardWillShowNotification(notification: NSNotification) {
-        searchBar.showsCancelButton = true
-    }
-    
-    // キャンセルボタンが押されたらキャンセルボタンを無効にしてフォーカスをはずす
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
     }
     
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        var navbarFrame = self.navigationController!.navigationBar.frame
-        navbarFrame.size = CGSize(width: navbarFrame.width, height: navbarFrame.height + searchController.searchBar.frame.height)
-        self.navigationController?.navigationBar.frame = navbarFrame
-    }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         
@@ -128,6 +111,106 @@ class firstViewController: UIViewController, MKMapViewDelegate, UISearchBarDeleg
         }
         print(" CLAuthorizationStatus: \(statusStr)")
     }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //サーチバー更新時
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        //キャンセルボタン
+        searchBar.text = ""
+        self.view.endEditing(true)
+    }
+    
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+       //検索
+        var annotationList = [MKPointAnnotation]()
+        var page_token:String = ""
+        
+        repeat {
+            
+            //セマフォを使って、検索とメインスレッドを同期で処理する。
+            let semaphore = DispatchSemaphore(value: 0)
+            
+            //検索URLを作成する。
+            //let encodedStr = searchBar.text!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+            let encodedStr = searchBar.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+            
+            let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(lat),\(lng)&radius=2000&sensor=true&key=\(key)&name=\(encodedStr!)&pagetoken=\(page_token)"
+            let testURL:URL = URL(string: url)!
+            
+            //検索を実行する。
+            let session = URLSession(configuration: URLSessionConfiguration.default)
+            session.dataTask(with: testURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
+                
+                if error != nil {
+                    print("エラーが発生しました。\(error)")
+                } else {
+                    if let statusCode = response as? HTTPURLResponse {
+                        if statusCode.statusCode != 200 {
+                            print("サーバーから期待するレスポインスが来ませんでした。\(response)")
+                        }
+                    }
+                    
+                    do {
+                        //レスポンスデータ（JSON）から辞書を作成する。
+                        // let json = try JSONSerialization.JSONObjectWithData(data!, options: JSONReadingOptions.MutableContainers) as! NSDictionary
+                        let json = try JSONSerialization.jsonObject(with: data!, options:  JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+                        let results = json["results"] as? Array<NSDictionary>
+                        
+                        //次のページがあるか確認する。
+                        if json["next_page_token"] != nil {
+                            page_token = json["next_page_token"] as! String
+                        } else {
+                            page_token = ""
+                        }
+                        
+                        //検索結果の件数ぶんループ
+                        for result in results! {
+                            
+                            let annotation = MKPointAnnotation()
+                            
+                            //ピンのタイトルに店名、住所を設定する。
+                            annotation.title = result["name"] as? String
+                            annotation.subtitle = result["vicinity"] as? String
+                            
+                            if let geometry = result["geometry"] as? NSDictionary {
+                                if let location = geometry["location"] as? NSDictionary {
+                                    
+                                    //ビンの座標を設定する。
+                                    annotation.coordinate = CLLocationCoordinate2DMake(location["lat"] as! CLLocationDegrees, location["lng"] as! CLLocationDegrees)
+                                    annotationList.append(annotation)
+                                    
+                                }
+                            }
+                        }
+                    } catch {
+                        print("エラー")
+                    }
+                }
+                //連続で要求をすると結果が返ってこないので一瞬スリープする。
+                sleep(1)
+                
+                //処理終了をセマフォに知らせる。
+                semaphore.signal()
+                
+            }).resume()
+            
+            //検索が終わるのを待つ。
+            
+            _ = semaphore.wait(timeout: DispatchTime.distantFuture)
+
+           // dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+            
+        } while (page_token != "")
+        
+        //キーボードを閉じる。
+        
+        
+        //ピンをマップに追加する。
+        mapView.addAnnotations(annotationList)
+        
+        
+        self.view.endEditing(true)
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -138,26 +221,6 @@ class firstViewController: UIViewController, MKMapViewDelegate, UISearchBarDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
         return cell
-    }
-    
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        storeTableView.reloadData()
-        
-    }
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchController.searchBar.text = ""
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = nil
-        searchController.searchBar.showsCancelButton = false
-        searchController.searchBar.endEditing(true)
-        
     }
     
     
