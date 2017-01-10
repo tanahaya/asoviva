@@ -12,7 +12,7 @@
 		86715922B7FC1FED7B1D18B3 /* Pods_asoviva.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61CF553ECAE0B2C5AF5DB596 /* Pods_asoviva.framework */; };
 		9F63EE9C1DDB142100D332D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */; };
 		9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63FBD01DD1EE1200150F34 /* MainViewController.swift */; };
-		9F63FBD31DD1EEE100150F34 /* searchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63FBD21DD1EEE100150F34 /* searchViewController.swift */; };
+		9F63FBD31DD1EEE100150F34 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63FBD21DD1EEE100150F34 /* SearchViewController.swift */; };
 		9F63FBD61DD1F14100150F34 /* FontAwesome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F63FBD51DD1F14100150F34 /* FontAwesome.framework */; };
 		9F736F531E24D7FD00EC8D00 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F736F521E24D7FD00EC8D00 /* HomeViewController.swift */; };
 		9F8CBB0D1DD1E574002B3DBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */; };
@@ -49,7 +49,7 @@
 		88EE371BCA1A995AF80A399E /* Pods_asovivaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_asovivaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9F63FBD01DD1EE1200150F34 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		9F63FBD21DD1EEE100150F34 /* searchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchViewController.swift; sourceTree = "<group>"; };
+		9F63FBD21DD1EEE100150F34 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9F63FBD51DD1F14100150F34 /* FontAwesome.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome.framework; path = Carthage/Build/iOS/FontAwesome.framework; sourceTree = "<group>"; };
 		9F736F521E24D7FD00EC8D00 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9F8CBB091DD1E574002B3DBA /* asoviva.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = asoviva.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,7 +152,7 @@
 				9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */,
 				9F63FBD01DD1EE1200150F34 /* MainViewController.swift */,
 				9F736F521E24D7FD00EC8D00 /* HomeViewController.swift */,
-				9F63FBD21DD1EEE100150F34 /* searchViewController.swift */,
+				9F63FBD21DD1EEE100150F34 /* SearchViewController.swift */,
 				9F8CBB101DD1E574002B3DBA /* Main.storyboard */,
 				9F8CBB131DD1E574002B3DBA /* Assets.xcassets */,
 				9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */,
@@ -464,7 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */,
-				9F63FBD31DD1EEE100150F34 /* searchViewController.swift in Sources */,
+				9F63FBD31DD1EEE100150F34 /* SearchViewController.swift in Sources */,
 				9F8CBB0D1DD1E574002B3DBA /* AppDelegate.swift in Sources */,
 				9F736F531E24D7FD00EC8D00 /* HomeViewController.swift in Sources */,
 			);

@@ -39,7 +39,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         
         locationManager = CLLocationManager()
         let status = CLLocationManager.authorizationStatus()
-        print("authorizationStatus:\(status.rawValue)")
         if(status == .notDetermined) {
             self.locationManager.requestWhenInUseAuthorization()
         }
@@ -57,7 +56,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         
         
         
-        var mapframe: CGRect = CGRect(x: 0, y: 60 + 30, width: self.view.frame.width, height: self.view.frame.height*4/7)
+        let mapframe: CGRect = CGRect(x: 0, y: 60 + 30, width: self.view.frame.width, height: self.view.frame.height*4/7)
         mapView.frame = mapframe
         let myLatitude: CLLocationDegrees = lat
         let myLongitude: CLLocationDegrees = lng
@@ -98,21 +97,17 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         case .authorizedAlways, .authorizedWhenInUse:
             break
         }
-        
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //サーチバー更新時
+        //　サーチバー更新時
     }
     
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         //検索
-        print("Button")
         var annotationList = [MKPointAnnotation]()
         var page_token:String = ""
-        
         repeat {
-            
             //セマフォを使って、検索とメインスレッドを同期で処理する。
             let semaphore = DispatchSemaphore(value: 0)
             //検索URLを作成する。
@@ -125,11 +120,11 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
             let session = URLSession(configuration: URLSessionConfiguration.default)
             session.dataTask(with: testURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
                 if error != nil {
-                    print("エラーが発生しました。\(error)")
+                    print("\(error)")
                 } else {
                     if let statusCode = response as? HTTPURLResponse {
                         if statusCode.statusCode != 200 {
-                            print("サーバーから期待するレスポインスが来ませんでした。\(response)")
+                            print("\(response)")
                         }
                     }
                     
@@ -160,7 +155,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
                                     //ビンの座標を設定する。
                                     annotation.coordinate = CLLocationCoordinate2DMake(location["lat"] as! CLLocationDegrees, location["lng"] as! CLLocationDegrees)
                                     annotationList.append(annotation)
-                                    
                                 }
                             }
                         }
@@ -170,10 +164,8 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
                 }
                 //連続で要求をすると結果が返ってこないので一瞬スリープする。
                 sleep(1)
-                
                 //処理終了をセマフォに知らせる。
                 semaphore.signal()
-                
             }).resume()
             
             //検索が終わるのを待つ。

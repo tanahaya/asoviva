@@ -9,10 +9,7 @@
 import UIKit
 
 
-class searchViewController: UITabBarController {
-    
-    
-    
+class SearchViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
