@@ -34,7 +34,8 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         
         self.view.backgroundColor = UIColor.white
         
-        self.title = "Asoviva"
+        self.navigationController?.title = "Asoviva"
+       
         
         locationManager = CLLocationManager()
         let status = CLLocationManager.authorizationStatus()
@@ -44,7 +45,11 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         }
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 100
-        locationManager.startUpdatingLocation()
+        // locationManager.startUpdatingLocation()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager = CLLocationManager()
+            locationManager.startUpdatingLocation()
+        }
         //lat = locationManager.location!.coordinate.latitude
         lat  = 35.681298
         // lng = locationManager.location!.coordinate.longitude
@@ -77,47 +82,27 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         // searchBar.layer.position = CGPoint(x: self.view.bounds.width/2, y: 50)
         searchBar.delegate = self
         searchBar.showsBookmarkButton = false
-        searchBar.showsCancelButton = true
+        searchBar.showsCancelButton = false
         self.view.addSubview(searchBar)
         
-        // let item = UIBarButtonItem(customView: searchBar)
-        //self.navigationItem.titleView = searchBar
-        //self.navigationItem.leftBarButtonItem = item
-        
         
     }
     
-    //    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    //        searchBar.showsCancelButton = false
-    //        searchBar.resignFirstResponder()
-    //    }
     
-    
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        
-        print("didChangeAuthorizationStatus");
-        var statusStr: String = "";
-        switch (status) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
         case .notDetermined:
-            statusStr = "未認証の状態"
-        case .restricted:
-            statusStr = "制限された状態"
-        case .denied:
-            statusStr = "許可しない"
-        case .authorizedAlways:
-            statusStr = "常に使用を許可"
-        case .authorizedWhenInUse:
-            statusStr = "このAppの使用中のみ許可"
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            break
+        case .authorizedAlways, .authorizedWhenInUse:
+            break
         }
-        print(" CLAuthorizationStatus: \(statusStr)")
+        
     }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         //サーチバー更新時
-    }
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        //キャンセルボタン
-        searchBar.text = ""
-        self.view.endEditing(true)
     }
     
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
@@ -130,7 +115,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
             
             //セマフォを使って、検索とメインスレッドを同期で処理する。
             let semaphore = DispatchSemaphore(value: 0)
-            
             //検索URLを作成する。
             searchBar.text = "レストラン"
             let encodeStr = searchBar.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
@@ -161,7 +145,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
                         } else {
                             page_token = ""
                         }
-                        
                         //検索結果の件数ぶんループ
                         for result in results! {
                             
@@ -217,8 +200,9 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
         return cell
     }
-    
-    
-    
 }
+
+
+
+
 

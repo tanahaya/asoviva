@@ -11,22 +11,20 @@ import Foundation
 import FontAwesome
 class MainViewController: UITabBarController {
 
-    var nowView: nowViewController!
+   
     var searchView: searchViewController!
     var homeView: HomeViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        nowView = nowViewController()
-        searchView = searchViewController()
+                searchView = searchViewController()
         homeView = HomeViewController()
         
         let nowimage = UIImage.fontAwesomeIcon(name: .mapPin, textColor: UIColor.black, size: CGSize(width:50,height:50))
         let searchimage = UIImage.fontAwesomeIcon(name: .search, textColor: UIColor.black, size: CGSize(width:50,height:50))
         
-        nowView.tabBarItem = UITabBarItem(title: "現在地", image: nowimage, selectedImage: nowimage)
-        homeView.tabBarItem = UITabBarItem(title: "現在地", image: nowimage, selectedImage: nowimage)
         
+        homeView.tabBarItem = UITabBarItem(title: "現在地", image: nowimage, selectedImage: nowimage)
         searchView.tabBarItem = UITabBarItem(title: "探す", image: searchimage, selectedImage: searchimage)
         
 

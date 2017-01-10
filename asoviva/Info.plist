@@ -34,7 +34,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Show your location on the map</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>位置情報を用いて近くの遊び場を探します。</string>
 </dict>
 </plist>
