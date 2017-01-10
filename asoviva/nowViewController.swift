@@ -34,7 +34,7 @@ class nowViewController: UIViewController, CLLocationManagerDelegate  {
         }
         myLocationManager.desiredAccuracy = kCLLocationAccuracyBest
         myLocationManager.distanceFilter = 100
-
+        
         
         
         self.view.backgroundColor = UIColor.white
@@ -49,12 +49,7 @@ class nowViewController: UIViewController, CLLocationManagerDelegate  {
         
         
         
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
     func pickPlace(sender: UIButton) {
@@ -85,16 +80,16 @@ class nowViewController: UIViewController, CLLocationManagerDelegate  {
             }
             
             /*
-            if let place = place {
-                self.nameLabel.text = place.name
-                self.adressLabel.text = place.formattedAddress?.components(separatedBy: (", ")).joined(separator: "\n")
-                print(place.name)
-            } else {
-                self.nameLabel.text = "No place selected"
-                self.adressLabel.text = ""
-                print("習得失敗")
-            }
-            */
+             if let place = place {
+             self.nameLabel.text = place.name
+             self.adressLabel.text = place.formattedAddress?.components(separatedBy: (", ")).joined(separator: "\n")
+             print(place.name)
+             } else {
+             self.nameLabel.text = "No place selected"
+             self.adressLabel.text = ""
+             print("習得失敗")
+             }
+             */
             
         })
         

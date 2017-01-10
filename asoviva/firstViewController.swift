@@ -29,7 +29,6 @@ class firstViewController: UIViewController, MKMapViewDelegate, UISearchBarDeleg
     
     let key = "AIzaSyCwcR3jfPvo1SNdLFTTOe0dZ1_PX_AZ2xU"
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,9 +45,10 @@ class firstViewController: UIViewController, MKMapViewDelegate, UISearchBarDeleg
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 100
         locationManager.startUpdatingLocation()
-        lat = locationManager.location!.coordinate.latitude
-        lng = locationManager.location!.coordinate.longitude
-        
+        //lat = locationManager.location!.coordinate.latitude
+        lat  = 35.681298
+        // lng = locationManager.location!.coordinate.longitude
+        lng = 139.766247
         
         
        
@@ -87,10 +87,10 @@ class firstViewController: UIViewController, MKMapViewDelegate, UISearchBarDeleg
         
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        searchBar.resignFirstResponder()
-    }
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        searchBar.showsCancelButton = false
+//        searchBar.resignFirstResponder()
+//    }
     
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -122,6 +122,7 @@ class firstViewController: UIViewController, MKMapViewDelegate, UISearchBarDeleg
     
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
        //検索
+        print("Button")
         var annotationList = [MKPointAnnotation]()
         var page_token:String = ""
         
@@ -131,16 +132,14 @@ class firstViewController: UIViewController, MKMapViewDelegate, UISearchBarDeleg
             let semaphore = DispatchSemaphore(value: 0)
             
             //検索URLを作成する。
-            //let encodedStr = searchBar.text!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
-            let encodedStr = searchBar.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+            searchBar.text = "レストラン"
+            let encodeStr = searchBar.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
             
-            let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(lat),\(lng)&radius=2000&sensor=true&key=\(key)&name=\(encodedStr!)&pagetoken=\(page_token)"
+            let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(lat),\(lng)&radius=2000&sensor=true&key=\(key)&name=\(encodeStr!)&pagetoken=\(page_token)"
             let testURL:URL = URL(string: url)!
             
-            //検索を実行する。
             let session = URLSession(configuration: URLSessionConfiguration.default)
             session.dataTask(with: testURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
-                
                 if error != nil {
                     print("エラーが発生しました。\(error)")
                 } else {
@@ -195,19 +194,15 @@ class firstViewController: UIViewController, MKMapViewDelegate, UISearchBarDeleg
             }).resume()
             
             //検索が終わるのを待つ。
-            
             _ = semaphore.wait(timeout: DispatchTime.distantFuture)
-
            // dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
             
         } while (page_token != "")
         
         //キーボードを閉じる。
         
-        
         //ピンをマップに追加する。
         mapView.addAnnotations(annotationList)
-        
         
         self.view.endEditing(true)
     }
