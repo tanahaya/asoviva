@@ -27,7 +27,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     
     var searchBar:UISearchBar!
     
-    var key = "AIzaSyCwcR3jfPvo1SNdLFTTOe0dZ1_PX_AZ2xU"
+    var key = "AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +62,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         let myLongitude: CLLocationDegrees = lng
         let center: CLLocationCoordinate2D = CLLocationCoordinate2DMake(myLatitude, myLongitude)
         mapView.setCenter(center, animated: true)
-        let mySpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let mySpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
         Region = MKCoordinateRegionMake(center, mySpan)
         mapView.region = Region
         self.view.addSubview(mapView)
