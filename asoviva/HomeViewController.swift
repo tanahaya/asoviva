@@ -15,7 +15,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     
     
     var mapView: MKMapView = MKMapView()
-    var myRegion: MKCoordinateRegion!
+    var Region: MKCoordinateRegion!
     var lat: CLLocationDegrees!
     var lng: CLLocationDegrees!
     var locationManager:CLLocationManager!
@@ -27,7 +27,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     
     var searchBar:UISearchBar!
     
-    let key = "AIzaSyCwcR3jfPvo1SNdLFTTOe0dZ1_PX_AZ2xU"
+    var key = "AIzaSyCwcR3jfPvo1SNdLFTTOe0dZ1_PX_AZ2xU"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         self.view.backgroundColor = UIColor.white
         
         self.navigationController?.title = "Asoviva"
-       
+        
         
         locationManager = CLLocationManager()
         let status = CLLocationManager.authorizationStatus()
@@ -62,9 +62,9 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         let myLongitude: CLLocationDegrees = lng
         let center: CLLocationCoordinate2D = CLLocationCoordinate2DMake(myLatitude, myLongitude)
         mapView.setCenter(center, animated: true)
-        let mySpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.003, longitudeDelta: 0.003)
-        myRegion = MKCoordinateRegionMake(center, mySpan)
-        mapView.region = myRegion
+        let mySpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        Region = MKCoordinateRegionMake(center, mySpan)
+        mapView.region = Region
         self.view.addSubview(mapView)
         
         storeTableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height*4/7,  width: self.view.frame.width, height: 260))
@@ -82,6 +82,8 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         searchBar.delegate = self
         searchBar.showsBookmarkButton = false
         searchBar.showsCancelButton = false
+        searchBar.placeholder = "調べたい遊び場を入れてね"
+        searchBar.tintColor = UIColor.orange
         self.view.addSubview(searchBar)
         
         
@@ -98,25 +100,28 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
             break
         }
     }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //　サーチバー更新時
-    }
-    
-    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-        //検索
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.endEditing(true)
+        // 検索開始
         var annotationList = [MKPointAnnotation]()
         var page_token:String = ""
         repeat {
             //セマフォを使って、検索とメインスレッドを同期で処理する。
             let semaphore = DispatchSemaphore(value: 0)
-            //検索URLを作成する。
-            searchBar.text = "レストラン"
-            let encodeStr = searchBar.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
             
-            let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(lat),\(lng)&radius=2000&sensor=true&key=\(key)&name=\(encodeStr!)&pagetoken=\(page_token)"
+            
+            var a_key = key.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+            
+            
+            let encodeStr = searchBar.text!
+            let a_encodeStr = encodeStr.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+            let a_page_token = page_token.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+            
+            let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(lat!),\(lng!)&radius=2000&sensor=true&key=\(key)&name=\(a_encodeStr!)"
+            //&pagetoken=\(page_token)なし
+            print(url)
             let testURL:URL = URL(string: url)!
-            
             let session = URLSession(configuration: URLSessionConfiguration.default)
             session.dataTask(with: testURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
                 if error != nil {
@@ -127,7 +132,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
                             print("\(response)")
                         }
                     }
-                    
                     do {
                         //レスポンスデータ（JSON）から辞書を作成する。
                         // let json = try JSONSerialization.JSONObjectWithData(data!, options: JSONReadingOptions.MutableContainers) as! NSDictionary
@@ -135,14 +139,15 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
                         let results = json["results"] as? Array<NSDictionary>
                         
                         //次のページがあるか確認する。
-                        if json["next_page_token"] != nil {
-                            page_token = json["next_page_token"] as! String
-                        } else {
-                            page_token = ""
-                        }
+                        /*
+                         if json["next_page_token"] != nil {
+                         page_token = json["next_page_token"] as! String
+                         } else {
+                         page_token = ""
+                         }
+                         */
                         //検索結果の件数ぶんループ
                         for result in results! {
-                            
                             let annotation = MKPointAnnotation()
                             
                             //ピンのタイトルに店名、住所を設定する。
@@ -155,9 +160,12 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
                                     //ビンの座標を設定する。
                                     annotation.coordinate = CLLocationCoordinate2DMake(location["lat"] as! CLLocationDegrees, location["lng"] as! CLLocationDegrees)
                                     annotationList.append(annotation)
+                                    
                                 }
+                                
                             }
                         }
+                        
                     } catch {
                         print("エラー")
                     }
@@ -180,6 +188,11 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         mapView.addAnnotations(annotationList)
         
         self.view.endEditing(true)
+        
+        
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //　サーチバー更新時
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -193,6 +206,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         return cell
     }
 }
+
 
 
 
