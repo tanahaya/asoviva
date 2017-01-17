@@ -19,9 +19,12 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     var lat: CLLocationDegrees!
     var lng: CLLocationDegrees!
     var locationManager:CLLocationManager!
+  
     
     var storeTableView:UITableView!
-    let myItems: NSArray = ["TEST1", "TEST2", "TEST3"]
+    var storenames: [String] = []
+    var annotationList = [MKPointAnnotation]()
+    
     
     var searchController = UISearchController(searchResultsController: nil)
     
@@ -67,7 +70,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         mapView.region = Region
         self.view.addSubview(mapView)
         
-        storeTableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height*4/7,  width: self.view.frame.width, height: 260))
+        storeTableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height*4/7,  width: self.view.frame.width, height: 230))
         storeTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         storeTableView.dataSource = self
         storeTableView.delegate = self
@@ -102,21 +105,22 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
+        storenames = []
         searchBar.endEditing(true)
         // 検索開始
-        var annotationList = [MKPointAnnotation]()
-        var page_token:String = ""
+        
+        let page_token:String = ""
         repeat {
             //セマフォを使って、検索とメインスレッドを同期で処理する。
             let semaphore = DispatchSemaphore(value: 0)
             
             
-            var a_key = key.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+            _ = key.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
             
             
             let encodeStr = searchBar.text!
             let a_encodeStr = encodeStr.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
-            let a_page_token = page_token.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+             _ = page_token.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
             
             let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(lat!),\(lng!)&radius=2000&sensor=true&key=\(key)&name=\(a_encodeStr!)"
             //&pagetoken=\(page_token)なし
@@ -153,13 +157,15 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
                             //ピンのタイトルに店名、住所を設定する。
                             annotation.title = result["name"] as? String
                             annotation.subtitle = result["vicinity"] as? String
+                            self.storenames.append((result["name"] as? String)!)
                             
                             if let geometry = result["geometry"] as? NSDictionary {
                                 if let location = geometry["location"] as? NSDictionary {
                                     
                                     //ビンの座標を設定する。
                                     annotation.coordinate = CLLocationCoordinate2DMake(location["lat"] as! CLLocationDegrees, location["lng"] as! CLLocationDegrees)
-                                    annotationList.append(annotation)
+                                    self.annotationList.append(annotation)
+                                    
                                 }
                             }
                         }
@@ -178,23 +184,33 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         //ピンをマップに追加する。
         mapView.addAnnotations(annotationList)
         // self.view.endEditing(true)
+        storeTableView.reloadData()
+        
         
         
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //　サーチバー更新時
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        mapView.setCenter(self.annotationList[indexPath.row].coordinate, animated: false)
+        mapView.selectAnnotation(self.annotationList[indexPath.row], animated: true)
+        
+        locationManager.startUpdatingLocation()
+        
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myItems.count
+        return storenames.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
+        cell.textLabel?.text = storenames[indexPath.row]
         return cell
+        
     }
+    
+    
 }
 
 
