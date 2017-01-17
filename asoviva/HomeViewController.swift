@@ -160,9 +160,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
                                     //ビンの座標を設定する。
                                     annotation.coordinate = CLLocationCoordinate2DMake(location["lat"] as! CLLocationDegrees, location["lng"] as! CLLocationDegrees)
                                     annotationList.append(annotation)
-                                    
                                 }
-                                
                             }
                         }
                         
@@ -170,24 +168,16 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
                         print("エラー")
                     }
                 }
-                //連続で要求をすると結果が返ってこないので一瞬スリープする。
                 sleep(1)
                 //処理終了をセマフォに知らせる。
                 semaphore.signal()
             }).resume()
-            
             //検索が終わるのを待つ。
             _ = semaphore.wait(timeout: DispatchTime.distantFuture)
-            // dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-            
         } while (page_token != "")
-        
-        //キーボードを閉じる。
-        
         //ピンをマップに追加する。
         mapView.addAnnotations(annotationList)
-        
-        self.view.endEditing(true)
+        // self.view.endEditing(true)
         
         
     }

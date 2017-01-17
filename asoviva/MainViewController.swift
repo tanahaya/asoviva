@@ -12,13 +12,11 @@ import FontAwesome
 class MainViewController: UITabBarController {
 
    
-    var searchView: SearchViewController!
-    var homeView: HomeViewController!
-
-    override func viewDidLoad() {
+       override func viewDidLoad() {
         super.viewDidLoad()
-        searchView = SearchViewController()
-        homeView = HomeViewController()
+        
+        let searchView:SearchViewController = SearchViewController()
+        let homeView:HomeViewController = HomeViewController()
         
         let nowimage = UIImage.fontAwesomeIcon(name: .mapPin, textColor: UIColor.black, size: CGSize(width:50,height:50))
         let searchimage = UIImage.fontAwesomeIcon(name: .search, textColor: UIColor.black, size: CGSize(width:50,height:50))
