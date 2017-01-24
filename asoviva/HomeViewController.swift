@@ -26,6 +26,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     var searchController = UISearchController(searchResultsController: nil)
     var searchBar:UISearchBar!
     var key = "AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY"
+    
         override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,7 +70,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         searchBar = UISearchBar()
         searchBar.frame = CGRect(x: 0, y: 60, width: (self.navigationController?.navigationBar.frame.width)!, height: searchController.searchBar.frame.height)
         searchBar.placeholder = "検索キーワードを入力してください"
-        // searchBar.layer.position = CGPoint(x: self.view.bounds.width/2, y: 50)
         searchBar.delegate = self
         searchBar.showsBookmarkButton = false
         searchBar.showsCancelButton = false
@@ -113,12 +113,12 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options:  JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
                     let results = json["results"] as? Array<NSDictionary>
+                    print(results)
                     for result in results! {
                         let annotation = MKPointAnnotation()
                         let location: Location = Mapper<Location>().map(JSONObject: result)!
-                        // self.locations.append(location)
-                        self.storenames.append((result["name"] as? String)!)
-                        // self.annotationList.append((result["locaiton"] as? MKPointAnnotation)! )
+                        print(location)
+                        self.locations.append(location)
                         if let geometry = result["geometry"] as? NSDictionary {
                             if let location = geometry["location"] as? NSDictionary {
                                 //ビンの座標を設定する。
@@ -131,11 +131,9 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
                     print("エラー")
                 }
             }
-            sleep(1)
-            //処理終了をセマフォに知らせる。
+            sleep(1)    //処理終了をセマフォに知らせる。
             semaphore.signal()
-        }).resume()
-        //検索が終わるのを待つ。
+        }).resume() //検索が終わるのを待つ。
         _ = semaphore.wait(timeout: DispatchTime.distantFuture)
         storeTableView.reloadData()
         //mapView.addAnnotation(annotationList as! MKAnnotation)
@@ -157,8 +155,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
-        //cell.textLabel?.text = locations[indexPath.row].storename
-        cell.textLabel?.text = storenames[indexPath.row]
+        cell.textLabel?.text = locations[indexPath.row].storename
         return cell
     }
     
