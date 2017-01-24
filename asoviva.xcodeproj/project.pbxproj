@@ -10,6 +10,7 @@
 		68D3210B506AF2820E8CCA5F /* Pods_asovivaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88EE371BCA1A995AF80A399E /* Pods_asovivaUITests.framework */; };
 		6EC762A8EDBBD4A49597F584 /* Pods_asovivaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0C2308D4C80FE916A3DE8E /* Pods_asovivaTests.framework */; };
 		86715922B7FC1FED7B1D18B3 /* Pods_asoviva.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61CF553ECAE0B2C5AF5DB596 /* Pods_asoviva.framework */; };
+		9F4514F71E375210002CFE04 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */; };
 		9F63EE9C1DDB142100D332D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */; };
 		9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63FBD01DD1EE1200150F34 /* MainViewController.swift */; };
 		9F63FBD31DD1EEE100150F34 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63FBD21DD1EEE100150F34 /* SearchViewController.swift */; };
@@ -21,6 +22,7 @@
 		9F8CBB171DD1E574002B3DBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */; };
 		9F8CBB221DD1E574002B3DBA /* asovivaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8CBB211DD1E574002B3DBA /* asovivaTests.swift */; };
 		9F8CBB2D1DD1E574002B3DBA /* asovivaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8CBB2C1DD1E574002B3DBA /* asovivaUITests.swift */; };
+		9FB64B041E3762DF00C3C430 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB64B031E3762DF00C3C430 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,7 @@
 		71902EDE5C8A45CDA48067E8 /* Pods-asovivaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaUITests/Pods-asovivaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		78CF1CE33110201566327E23 /* Pods-asoviva.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asoviva.debug.xcconfig"; path = "Pods/Target Support Files/Pods-asoviva/Pods-asoviva.debug.xcconfig"; sourceTree = "<group>"; };
 		88EE371BCA1A995AF80A399E /* Pods_asovivaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_asovivaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
 		9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9F63FBD01DD1EE1200150F34 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9F63FBD21DD1EEE100150F34 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +67,7 @@
 		9F8CBB281DD1E574002B3DBA /* asovivaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = asovivaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8CBB2C1DD1E574002B3DBA /* asovivaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = asovivaUITests.swift; sourceTree = "<group>"; };
 		9F8CBB2E1DD1E574002B3DBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FB64B031E3762DF00C3C430 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		CA0C2308D4C80FE916A3DE8E /* Pods_asovivaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_asovivaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB105D80A53C4A293E4B534F /* Pods-asovivaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FE41C5F1DCA636049125BE31 /* Pods-asovivaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -74,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F4514F71E375210002CFE04 /* ObjectMapper.framework in Frameworks */,
 				9F63EE9C1DDB142100D332D6 /* CoreLocation.framework in Frameworks */,
 				9F63FBD61DD1F14100150F34 /* FontAwesome.framework in Frameworks */,
 				86715922B7FC1FED7B1D18B3 /* Pods_asoviva.framework in Frameworks */,
@@ -115,6 +120,7 @@
 		9F63FBD41DD1F14100150F34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */,
 				9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */,
 				9F63FBD51DD1F14100150F34 /* FontAwesome.framework */,
 				61CF553ECAE0B2C5AF5DB596 /* Pods_asoviva.framework */,
@@ -153,6 +159,7 @@
 				9F63FBD01DD1EE1200150F34 /* MainViewController.swift */,
 				9F736F521E24D7FD00EC8D00 /* HomeViewController.swift */,
 				9F63FBD21DD1EEE100150F34 /* SearchViewController.swift */,
+				9FB64B031E3762DF00C3C430 /* Location.swift */,
 				9F8CBB101DD1E574002B3DBA /* Main.storyboard */,
 				9F8CBB131DD1E574002B3DBA /* Assets.xcassets */,
 				9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */,
@@ -388,6 +395,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/FontAwesome.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
 			);
 			name = "Run Script";
 			outputPaths = (
@@ -465,6 +473,7 @@
 			files = (
 				9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */,
 				9F63FBD31DD1EEE100150F34 /* SearchViewController.swift in Sources */,
+				9FB64B041E3762DF00C3C430 /* Location.swift in Sources */,
 				9F8CBB0D1DD1E574002B3DBA /* AppDelegate.swift in Sources */,
 				9F736F531E24D7FD00EC8D00 /* HomeViewController.swift in Sources */,
 			);

@@ -1,1 +1,2 @@
 github "thii/FontAwesome.swift"
+github "Hearst-DD/ObjectMapper" ~> 2.2
