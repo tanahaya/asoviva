@@ -29,8 +29,13 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         let mySpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
         let region = MKCoordinateRegionMake(center, mySpan)
         mapView.region = region
+        
+        
         return mapView
     }()
+    
+    
+    // mapViewにアノテーションを追加.
     var Region: MKCoordinateRegion!
     var lat: CLLocationDegrees!
     var lng: CLLocationDegrees!
@@ -53,9 +58,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         return tableView
     }()
     var storenames: [String] = []
-    // var annotationList = [MKPointAnnotation]()
     lazy var searchBar:UISearchBar = {
-        
         let searchBar = UISearchBar()
         let searchController = UISearchController(searchResultsController: nil)
         searchBar.frame = CGRect(x: 0, y: 60, width: (self.navigationController?.navigationBar.frame.width)!, height: searchController.searchBar.frame.height)
@@ -68,14 +71,11 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         return searchBar
     }()
     var key = "AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.white
         self.navigationController?.title = "Asoviva"
-        
-        
         let status = CLLocationManager.authorizationStatus()
         if status == .notDetermined {
             self.locationManager.requestWhenInUseAuthorization()
@@ -114,7 +114,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         let a_encodeStr = encodeStr.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(lat!),\(lng!)&radius=2000&sensor=true&key=\(key)&name=\(a_encodeStr!)"
         let testURL:URL = URL(string: url)!
-        
         let session = URLSession(configuration: URLSessionConfiguration.default)
         session.dataTask(with: testURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
             if error != nil {
@@ -139,14 +138,13 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         }).resume()
         _ = semaphore.wait(timeout: DispatchTime.distantFuture)
         storeTableView.reloadData()
-        print(locations)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let latandlng = MKPointAnnotation()
-        latandlng.coordinate = CLLocationCoordinate2DMake(locations[indexPath.row].lat as! CLLocationDegrees, locations[indexPath.row].lng as! CLLocationDegrees)
+        latandlng.coordinate = CLLocationCoordinate2DMake(locations[indexPath.row].lat as CLLocationDegrees, locations[indexPath.row].lng as CLLocationDegrees)
         mapView.setCenter(latandlng.coordinate, animated: false)
-        // mapView.selectAnnotation(latandlng.coordinate as! MKAnnotation, animated: true)
+        //mapView.selectAnnotation(latandlng , animated: true)
         locationManager.startUpdatingLocation()
     }
     
