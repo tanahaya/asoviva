@@ -14,32 +14,72 @@ import ObjectMapper
 
 class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource,UISearchControllerDelegate{
     
-    var mapView: MKMapView = MKMapView()
+    lazy var mapView: MKMapView = {
+        let mapView: MKMapView = MKMapView()
+        let mapframe: CGRect = CGRect(x: 0, y: 60 + 30, width: self.view.frame.width, height: self.view.frame.height*4/7)
+        mapView.frame = mapframe
+        let lat: Double = 35.680298
+        let lng: Double = 139.766247
+        let myLatitude: CLLocationDegrees = lat
+        let myLongitude: CLLocationDegrees = lng
+        let center: CLLocationCoordinate2D = CLLocationCoordinate2DMake(myLatitude, myLongitude)
+        mapView.setCenter(center, animated: true)
+        let mySpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+        let region = MKCoordinateRegionMake(center, mySpan)
+        mapView.region = region
+        return mapView
+    }()
     var Region: MKCoordinateRegion!
     var lat: CLLocationDegrees!
     var lng: CLLocationDegrees!
-    var locationManager:CLLocationManager!
-    var locations:[Location]!
-    var storeTableView:UITableView!
+    lazy var locationManager:CLLocationManager = {
+        
+        let locationManager = CLLocationManager()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 100
+        return locationManager
+    }()
+    var locations:[Location] = []
+    
+    lazy var storeTableView: UITableView = {
+        
+        let tableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height*4/7,  width: self.view.frame.width, height: 230))
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.tableFooterView = UIView()
+        return tableView
+    }()
     var storenames: [String] = []
     var annotationList = [MKPointAnnotation]()
-    var searchController = UISearchController(searchResultsController: nil)
-    var searchBar:UISearchBar!
+    lazy var searchBar:UISearchBar = {
+        
+        let searchBar = UISearchBar()
+        let searchController = UISearchController(searchResultsController: nil)
+        searchBar.frame = CGRect(x: 0, y: 60, width: (self.navigationController?.navigationBar.frame.width)!, height: searchController.searchBar.frame.height)
+        searchBar.placeholder = "検索キーワードを入力してください"
+        searchBar.delegate = self
+        searchBar.showsBookmarkButton = false
+        searchBar.showsCancelButton = false
+        searchBar.placeholder = "調べたい遊び場を入れてね"
+        searchBar.tintColor = UIColor.orange
+        return searchBar
+    }()
     var key = "AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY"
     
-        override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.white
         self.navigationController?.title = "Asoviva"
         
-        locationManager = CLLocationManager()
+        
         let status = CLLocationManager.authorizationStatus()
-        if(status == .notDetermined) {
+        if status == .notDetermined {
             self.locationManager.requestWhenInUseAuthorization()
         }
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 100
+        
+        
         // locationManager.startUpdatingLocation()
         if CLLocationManager.locationServicesEnabled() {
             locationManager = CLLocationManager()
@@ -49,32 +89,11 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         lat  = 35.680298// 35.681298
         // lng = locationManager.location!.coordinate.longitude
         lng = 139.766247
-            
-        let mapframe: CGRect = CGRect(x: 0, y: 60 + 30, width: self.view.frame.width, height: self.view.frame.height*4/7)
-        mapView.frame = mapframe
-        let myLatitude: CLLocationDegrees = lat
-        let myLongitude: CLLocationDegrees = lng
-        let center: CLLocationCoordinate2D = CLLocationCoordinate2DMake(myLatitude, myLongitude)
-        mapView.setCenter(center, animated: true)
-        let mySpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
-        Region = MKCoordinateRegionMake(center, mySpan)
-        mapView.region = Region
-        self.view.addSubview(mapView)
         
-        storeTableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height*4/7,  width: self.view.frame.width, height: 230))
-        storeTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
-        storeTableView.dataSource = self
-        storeTableView.delegate = self
+        
         self.view.addSubview(storeTableView)
         
-        searchBar = UISearchBar()
-        searchBar.frame = CGRect(x: 0, y: 60, width: (self.navigationController?.navigationBar.frame.width)!, height: searchController.searchBar.frame.height)
-        searchBar.placeholder = "検索キーワードを入力してください"
-        searchBar.delegate = self
-        searchBar.showsBookmarkButton = false
-        searchBar.showsCancelButton = false
-        searchBar.placeholder = "調べたい遊び場を入れてね"
-        searchBar.tintColor = UIColor.orange
+        
         self.view.addSubview(searchBar)
     }
     
@@ -111,12 +130,12 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
                     }
                 }
                 do {
-                    let json = try JSONSerialization.jsonObject(with: data!, options:  JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
-                    let results = json["results"] as? Array<NSDictionary>
+                    let json = try JSONSerialization.jsonObject(with: data!, options:  JSONSerialization.ReadingOptions.mutableContainers) as! [String: Any]
+                    let results = json["results"] as?  [[String: Any]]
                     print(results)
                     for result in results! {
                         let annotation = MKPointAnnotation()
-                        let location: Location = Mapper<Location>().map(JSONObject: result)!
+                        let location: Location = Mapper<Location>().map(JSON: result)!
                         print(location)
                         self.locations.append(location)
                         if let geometry = result["geometry"] as? NSDictionary {

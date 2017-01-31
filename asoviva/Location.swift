@@ -21,8 +21,8 @@ struct Location: Mappable{
     }
     
     mutating func mapping(map: Map) {
-        storename <- map["storename"]
-        location <- map["location"]
+        storename <- map["name"]
+        location <- map["vicinity"]
     }
 
 }
