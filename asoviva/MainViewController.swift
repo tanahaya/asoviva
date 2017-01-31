@@ -25,7 +25,6 @@ class MainViewController: UITabBarController {
         homeView.tabBarItem = UITabBarItem(title: "現在地", image: nowimage, selectedImage: nowimage)
         searchView.tabBarItem = UITabBarItem(title: "探す", image: searchimage, selectedImage: searchimage)
         
-
         let homeNavigationController = UINavigationController(rootViewController: homeView)
         let searchNavigationController = UINavigationController(rootViewController: searchView)
         self.setViewControllers([homeNavigationController,searchNavigationController], animated: false)

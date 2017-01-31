@@ -9,20 +9,25 @@
 import UIKit
 import ObjectMapper
 import MapKit
+import SwiftyJSON
 
 struct Location: Mappable{
     
     var storename:String!
-    var location:MKAnnotation!
+    var lat:Double!
+    var lng:Double!
+    var vicinity:String!
+    
     
     init?(map: Map) {
-       
         
     }
     
     mutating func mapping(map: Map) {
         storename <- map["name"]
-        location <- map["vicinity"]
+        lat <- map["geometry"]["location"]["lat"]
+        lng <- map["geometry"]["location"]["lng"]
+        vicinity <- map["vicinity"]
     }
 
 }
