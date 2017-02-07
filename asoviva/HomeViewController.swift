@@ -130,14 +130,21 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
                     var location:Location = Mapper<Location>().map(JSON: $0.dictionaryObject!)!
                     location.lat = $0["geometry"]["location"]["lat"].doubleValue
                     location.lng = $0["geometry"]["location"]["lng"].doubleValue
-                    location.latandlng.coordinate = CLLocationCoordinate2DMake($0["geometry"]["location"]["lat"].doubleValue,  $0["geometry"]["location"]["lng"].doubleValue)
                     self.locations.append(location)
+                    
                 })
             }
             sleep(1)
             semaphore.signal()
         }).resume()
         _ = semaphore.wait(timeout: DispatchTime.distantFuture)
+        for i in 0 ..< 20 {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2DMake(locations[i].lat,locations[i].lng)
+            annotation.title = locations[i].storename
+            locations[i].latandlng = annotation
+            self.mapView.addAnnotation(annotation)
+        }
         storeTableView.reloadData()
     }
     
@@ -148,20 +155,12 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
         cell.textLabel?.text = locations[indexPath.row].storename
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2DMake(locations[indexPath.row].lat,locations[indexPath.row].lng)
-        annotation.title = locations[indexPath.row].storename
-        self.mapView.addAnnotation(annotation)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         mapView.setCenter(locations[indexPath.row].latandlng.coordinate, animated: false)
-        let annotation2 = MKPointAnnotation()
-        annotation2.coordinate = CLLocationCoordinate2DMake(locations[indexPath.row].lat,locations[indexPath.row].lng)
-        annotation2.title = locations[indexPath.row].storename
-        self.mapView.addAnnotation(annotation2)
-        mapView.selectAnnotation(annotation2 as MKAnnotation, animated: false)
+        mapView.selectAnnotation(locations[indexPath.row].latandlng as MKAnnotation, animated: false)
         locationManager.startUpdatingLocation()
     }
     
@@ -183,7 +182,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
             let toPlace: MKPlacemark = MKPlacemark(coordinate: self.locations[indexPath.row].latandlng.coordinate, addressDictionary: nil)
             let fromItem: MKMapItem = MKMapItem(placemark: fromPlace)
             let toItem: MKMapItem = MKMapItem(placemark: toPlace)
-            
             let request: MKDirectionsRequest = MKDirectionsRequest()
             request.source = fromItem
             request.destination = toItem
