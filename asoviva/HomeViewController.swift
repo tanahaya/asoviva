@@ -139,7 +139,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         }).resume()
         _ = semaphore.wait(timeout: DispatchTime.distantFuture)
         storeTableView.reloadData()
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -158,25 +157,27 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         mapView.setCenter(locations[indexPath.row].latandlng.coordinate, animated: false)
-        mapView.selectAnnotation(locations[indexPath.row].latandlng as MKAnnotation, animated: true)
+        let annotation2 = MKPointAnnotation()
+        annotation2.coordinate = CLLocationCoordinate2DMake(locations[indexPath.row].lat,locations[indexPath.row].lng)
+        annotation2.title = locations[indexPath.row].storename
+        self.mapView.addAnnotation(annotation2)
+        mapView.selectAnnotation(annotation2 as MKAnnotation, animated: false)
         locationManager.startUpdatingLocation()
     }
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
         
         let detailButton: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "詳しく") { (action, index) -> Void in
             
             tableView.isEditing = false
             let nextViewController: UIViewController = DetailViewController()
             self.navigationController?.pushViewController(nextViewController, animated: true)
-            
         }
         detailButton.backgroundColor = UIColor.blue
         
         let guideButton: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "道案内") { (action, index) -> Void in
             
             tableView.isEditing = false
-            
             let fromCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(self.nowlat,self.nowlng)
             let fromPlace: MKPlacemark = MKPlacemark(coordinate: fromCoordinate, addressDictionary: nil)
             let toPlace: MKPlacemark = MKPlacemark(coordinate: self.locations[indexPath.row].latandlng.coordinate, addressDictionary: nil)
@@ -199,12 +200,11 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
                 print("所要時間 \(Int(route.expectedTravelTime/60))分")
                 self.mapView.add(route.polyline)
             }
-            
         }
         guideButton.backgroundColor = UIColor.green
-        
         return [detailButton,guideButton]
     }
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let route: MKPolyline = overlay as! MKPolyline
         let routeRenderer = MKPolylineRenderer(polyline:route)
