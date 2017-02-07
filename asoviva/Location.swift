@@ -17,7 +17,7 @@ struct Location: Mappable{
     var lat:Double!
     var lng:Double!
     var vicinity:String!
-    
+    var latandlng = MKPointAnnotation()
     
     init?(map: Map) {
         
@@ -25,8 +25,6 @@ struct Location: Mappable{
     
     mutating func mapping(map: Map) {
         storename <- map["name"]
-        lat <- map["geometry"]["location"]["lat"]
-        lng <- map["geometry"]["location"]["lng"]
         vicinity <- map["vicinity"]
     }
 

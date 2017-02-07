@@ -130,6 +130,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
                     var location:Location = Mapper<Location>().map(JSON: $0.dictionaryObject!)!
                     location.lat = $0["geometry"]["location"]["lat"].doubleValue
                     location.lng = $0["geometry"]["location"]["lng"].doubleValue
+                    location.latandlng.coordinate = CLLocationCoordinate2DMake($0["geometry"]["location"]["lat"].doubleValue,  $0["geometry"]["location"]["lng"].doubleValue)
                     self.locations.append(location)
                 })
             }
@@ -138,14 +139,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         }).resume()
         _ = semaphore.wait(timeout: DispatchTime.distantFuture)
         storeTableView.reloadData()
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let latandlng = MKPointAnnotation()
-        latandlng.coordinate = CLLocationCoordinate2DMake(locations[indexPath.row].lat as CLLocationDegrees, locations[indexPath.row].lng as CLLocationDegrees)
-        mapView.setCenter(latandlng.coordinate, animated: false)
-        //mapView.selectAnnotation(latandlng , animated: true)
-        locationManager.startUpdatingLocation()
+        print(locations)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -155,10 +149,14 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
         cell.textLabel?.text = locations[indexPath.row].storename
-        var annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2DMake(locations[indexPath.row].lat as! CLLocationDegrees, locations[indexPath.row].lng as! CLLocationDegrees)
-        mapView.addAnnotation(annotation as MKAnnotation)
+        mapView.addAnnotation(locations[indexPath.row].latandlng)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        mapView.setCenter(locations[indexPath.row].latandlng.coordinate, animated: false)
+        mapView.selectAnnotation(locations[indexPath.row].latandlng, animated: true)
+        locationManager.startUpdatingLocation()
     }
     
 }
