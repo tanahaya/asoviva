@@ -149,13 +149,16 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
         cell.textLabel?.text = locations[indexPath.row].storename
-        mapView.addAnnotation(locations[indexPath.row].latandlng)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2DMake(locations[indexPath.row].lat,locations[indexPath.row].lng)
+        annotation.title = locations[indexPath.row].storename
+        self.mapView.addAnnotation(annotation)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         mapView.setCenter(locations[indexPath.row].latandlng.coordinate, animated: false)
-        mapView.selectAnnotation(locations[indexPath.row].latandlng, animated: true)
+        mapView.selectAnnotation(locations[indexPath.row].latandlng as MKAnnotation, animated: true)
         locationManager.startUpdatingLocation()
     }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
