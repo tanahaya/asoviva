@@ -20,10 +20,10 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         let mapView: MKMapView = MKMapView()
         let mapframe: CGRect = CGRect(x: 0, y: 60 + 30, width: self.view.frame.width, height: self.view.frame.height*4/7)
         mapView.frame = mapframe
-        let lat: Double = 35.680298
-        let lng: Double = 139.766247
-        let myLatitude: CLLocationDegrees = lat
-        let myLongitude: CLLocationDegrees = lng
+        let nowlat: Double = 35.680298
+        let nowlng: Double = 139.766247
+        let myLatitude: CLLocationDegrees = nowlat
+        let myLongitude: CLLocationDegrees = nowlng
         let center: CLLocationCoordinate2D = CLLocationCoordinate2DMake(myLatitude, myLongitude)
         mapView.setCenter(center, animated: true)
         let mySpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
@@ -37,8 +37,8 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     
     // mapViewにアノテーションを追加.
     var Region: MKCoordinateRegion!
-    var lat: CLLocationDegrees!
-    var lng: CLLocationDegrees!
+    var nowlat: CLLocationDegrees!
+    var nowlng: CLLocationDegrees!
     lazy var locationManager:CLLocationManager = {
         
         let locationManager = CLLocationManager()
@@ -84,10 +84,10 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
             locationManager = CLLocationManager()
             locationManager.startUpdatingLocation()
         }
-        //lat = locationManager.location!.coordinate.latitude
-        lat  = 35.680298// 35.681298
-        // lng = locationManager.location!.coordinate.longitude
-        lng = 139.766247
+        //nowlat = locationManager.location!.coordinate.latitude
+        nowlat  = 35.680298// 35.681298
+        // nowlng = locationManager.location!.coordinate.longitude
+        nowlng = 139.766247
         self.view.addSubview(mapView)
         self.view.addSubview(storeTableView)
         self.view.addSubview(searchBar)
@@ -112,7 +112,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         let semaphore = DispatchSemaphore(value: 0)
         let encodeStr = searchBar.text!
         let a_encodeStr = encodeStr.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
-        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(lat!),\(lng!)&radius=2000&sensor=true&key=\(key)&name=\(a_encodeStr!)"
+        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(nowlat!),\(nowlng!)&radius=2000&sensor=true&key=\(key)&name=\(a_encodeStr!)"
         let testURL:URL = URL(string: url)!
         let session = URLSession(configuration: URLSessionConfiguration.default)
         session.dataTask(with: testURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
@@ -139,7 +139,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         }).resume()
         _ = semaphore.wait(timeout: DispatchTime.distantFuture)
         storeTableView.reloadData()
-        print(locations)
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -157,6 +157,58 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         mapView.setCenter(locations[indexPath.row].latandlng.coordinate, animated: false)
         mapView.selectAnnotation(locations[indexPath.row].latandlng, animated: true)
         locationManager.startUpdatingLocation()
+    }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        
+        let detailButton: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "詳しく") { (action, index) -> Void in
+            
+            tableView.isEditing = false
+            let nextViewController: UIViewController = DetailViewController()
+            self.navigationController?.pushViewController(nextViewController, animated: true)
+            
+        }
+        detailButton.backgroundColor = UIColor.blue
+        
+        let guideButton: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "道案内") { (action, index) -> Void in
+            
+            tableView.isEditing = false
+            
+            let fromCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(self.nowlat,self.nowlng)
+            let fromPlace: MKPlacemark = MKPlacemark(coordinate: fromCoordinate, addressDictionary: nil)
+            let toPlace: MKPlacemark = MKPlacemark(coordinate: self.locations[indexPath.row].latandlng.coordinate, addressDictionary: nil)
+            let fromItem: MKMapItem = MKMapItem(placemark: fromPlace)
+            let toItem: MKMapItem = MKMapItem(placemark: toPlace)
+            
+            let request: MKDirectionsRequest = MKDirectionsRequest()
+            request.source = fromItem
+            request.destination = toItem
+            request.requestsAlternateRoutes = true
+            request.transportType = MKDirectionsTransportType.walking
+            
+            let directions: MKDirections = MKDirections(request: request)
+            directions.calculate { (response, error) in
+                
+                if error != nil || response!.routes.isEmpty {
+                    return
+                }
+                let route: MKRoute = response!.routes[0] as MKRoute
+                print("目的地まで \(route.distance)km")
+                print("所要時間 \(Int(route.expectedTravelTime/60))分")
+                self.mapView.add(route.polyline)
+            }
+            
+        }
+        guideButton.backgroundColor = UIColor.green
+        
+        return [detailButton,guideButton]
+    }
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let route: MKPolyline = overlay as! MKPolyline
+        let routeRenderer = MKPolylineRenderer(polyline:route)
+        routeRenderer.lineWidth = 5.0
+        routeRenderer.strokeColor = UIColor.red
+        return routeRenderer
     }
     
 }
