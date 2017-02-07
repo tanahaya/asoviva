@@ -191,12 +191,11 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
             
             let directions: MKDirections = MKDirections(request: request)
             directions.calculate { (response, error) in
-                
                 if error != nil || response!.routes.isEmpty {
                     return
                 }
                 let route: MKRoute = response!.routes[0] as MKRoute
-                print("目的地まで \(route.distance)km")
+                print("目的地まで \(route.distance)m")
                 print("所要時間 \(Int(route.expectedTravelTime/60))分")
                 self.mapView.add(route.polyline)
             }
