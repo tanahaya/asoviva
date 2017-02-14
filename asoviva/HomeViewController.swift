@@ -32,7 +32,9 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         return mapView
     }()
     
-    
+    var userLocation: CLLocationCoordinate2D!
+    var destLocation : CLLocationCoordinate2D!
+
     // mapViewにアノテーションを追加.
     var Region: MKCoordinateRegion!
     var nowlat: CLLocationDegrees!
@@ -73,11 +75,11 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.white
-        self.navigationController?.title = "Asoviva"
         let status = CLLocationManager.authorizationStatus()
         if status == .notDetermined {
             self.locationManager.requestWhenInUseAuthorization()
         }
+        
         if CLLocationManager.locationServicesEnabled() {
             locationManager = CLLocationManager()
             locationManager.startUpdatingLocation()
@@ -157,56 +159,94 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         locationManager.startUpdatingLocation()
     }
     
-    
     //以下経路
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let detailButton: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "詳しく") { (action, index) -> Void in
-            
             tableView.isEditing = false
             let nextViewController: UIViewController = DetailViewController()
             self.navigationController?.pushViewController(nextViewController, animated: true)
         }
-        detailButton.backgroundColor = UIColor.blue
         
+        detailButton.backgroundColor = UIColor.blue
         let guideButton: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "道案内") { (action, index) -> Void in
             
-            tableView.isEditing = false
-            let fromCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(self.nowlat,self.nowlng)
-            let fromPlace: MKPlacemark = MKPlacemark(coordinate: fromCoordinate, addressDictionary: nil)
-            let toPlace: MKPlacemark = MKPlacemark(coordinate: self.locations[indexPath.row].annotation.coordinate, addressDictionary: nil)
-            let fromItem: MKMapItem = MKMapItem(placemark: fromPlace)
-            let toItem: MKMapItem = MKMapItem(placemark: toPlace)
-            let request: MKDirectionsRequest = MKDirectionsRequest()
+            self.userLocation = CLLocationCoordinate2DMake(self.nowlat,self.nowlng)
+            self.destLocation = CLLocationCoordinate2DMake(self.locations[indexPath.row].lat, self.locations[indexPath.row].lng)
+            let fromPlacemark = MKPlacemark(coordinate:self.userLocation, addressDictionary:nil)
+            let toPlacemark   = MKPlacemark(coordinate:self.destLocation, addressDictionary:nil)
+            
+            // MKPlacemark から MKMapItem を生成
+            let fromItem = MKMapItem(placemark:fromPlacemark)
+            let toItem   = MKMapItem(placemark:toPlacemark)
+            
+            // MKMapItem をセットして MKDirectionsRequest を生成
+            let request = MKDirectionsRequest()
+            
             request.source = fromItem
             request.destination = toItem
-            request.requestsAlternateRoutes = true
+            
+            request.requestsAlternateRoutes = true // 単独の経路を検索
             request.transportType = MKDirectionsTransportType.walking
             
-            let directions: MKDirections = MKDirections(request: request)
+            let directions: MKDirections = MKDirections(request:request)
             directions.calculate { (response, error) in
+                // NSErrorを受け取ったか、ルートがない場合.
                 if error != nil || response!.routes.isEmpty {
+                    print("noroute")
                     return
                 }
                 let route: MKRoute = response!.routes[0] as MKRoute
-                print("目的地まで \(route.distance)m")
-                print("所要時間 \(Int(route.expectedTravelTime/60))分")
+                // print("目的地まで \(route.distance)m" + "所要時間 \(Int(route.expectedTravelTime/60))分")
+                // mapViewにルートを描画.
                 self.mapView.add(route.polyline)
+                
             }
+            
+            
         }
         guideButton.backgroundColor = UIColor.green
         return [detailButton,guideButton]
     }
+    func showUserAndDestinationOnMap() {
+        // 現在地と目的地を含む矩形を計算
+        let maxLat:Double = fmax(userLocation.latitude,  destLocation.latitude)
+        let maxLon:Double = fmax(userLocation.longitude, destLocation.longitude)
+        let minLat:Double = fmin(userLocation.latitude,  destLocation.latitude)
+        let minLon:Double = fmin(userLocation.longitude, destLocation.longitude)
+        
+        // 地図表示するときの緯度、経度の幅を計算
+        let mapMargin:Double = 1.5;  // 経路が入る幅(1.0)＋余白(0.5)
+        let leastCoordSpan:Double = 0.005;    // 拡大表示したときの最大値
+        let span_x:Double = fmax(leastCoordSpan, fabs(maxLat - minLat) * mapMargin);
+        let span_y:Double = fmax(leastCoordSpan, fabs(maxLon - minLon) * mapMargin);
+        
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(span_x, span_y);
+        
+        // 現在地を目的地の中心を計算
+        let center:CLLocationCoordinate2D = CLLocationCoordinate2DMake((maxLat + minLat) / 2, (maxLon + minLon) / 2);
+        let region:MKCoordinateRegion = MKCoordinateRegionMake(center, span);
+        
+        mapView.setRegion(mapView.regionThatFits(region), animated:true);
+    }
     
+    // 経路を描画するときの色や線の太さを指定
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
         let route: MKPolyline = overlay as! MKPolyline
-        let routeRenderer = MKPolylineRenderer(polyline:route)
-        routeRenderer.lineWidth = 5.0
+        let routeRenderer: MKPolylineRenderer = MKPolylineRenderer(polyline: route)
+        routeRenderer.lineWidth = 3.0
         routeRenderer.strokeColor = UIColor.red
         return routeRenderer
     }
     
+    
+    
 }
+
+
+
+
 
 
 
