@@ -9,6 +9,12 @@
 import UIKit
 import Foundation
 import FontAwesome
+import MapKit
+import CoreLocation
+import GoogleMaps
+import ObjectMapper
+import SwiftyJSON
+
 class MainViewController: UITabBarController {
 
    

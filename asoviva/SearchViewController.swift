@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
+import GoogleMaps
+import ObjectMapper
+import SwiftyJSON
 
 
 class SearchViewController: UITabBarController {
