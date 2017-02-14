@@ -29,8 +29,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         let mySpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
         let region = MKCoordinateRegionMake(center, mySpan)
         mapView.region = region
-        
-        
         return mapView
     }()
     
@@ -106,13 +104,11 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        storenames = []
+        locations = []
         searchBar.endEditing(true)
-        let page_token:String = ""
         let semaphore = DispatchSemaphore(value: 0)
-        let encodeStr = searchBar.text!
-        let a_encodeStr = encodeStr.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
-        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(nowlat!),\(nowlng!)&radius=2000&sensor=true&key=\(key)&name=\(a_encodeStr!)"
+        let encodeStr = searchBar.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(nowlat!),\(nowlng!)&radius=2000&sensor=true&key=\(key)&name=\(encodeStr!)"
         let testURL:URL = URL(string: url)!
         let session = URLSession(configuration: URLSessionConfiguration.default)
         session.dataTask(with: testURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
@@ -130,21 +126,18 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
                     var location:Location = Mapper<Location>().map(JSON: $0.dictionaryObject!)!
                     location.lat = $0["geometry"]["location"]["lat"].doubleValue
                     location.lng = $0["geometry"]["location"]["lng"].doubleValue
+                    let Pin: MKPointAnnotation = MKPointAnnotation()
+                    Pin.coordinate = CLLocationCoordinate2DMake(location.lat,location.lng)
+                    Pin.title = location.storename
+                    self.mapView.addAnnotation(Pin)
+                    location.annotation = Pin
                     self.locations.append(location)
-                    
                 })
             }
             sleep(1)
             semaphore.signal()
         }).resume()
         _ = semaphore.wait(timeout: DispatchTime.distantFuture)
-        for i in 0 ..< 20 {
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2DMake(locations[i].lat,locations[i].lng)
-            annotation.title = locations[i].storename
-            locations[i].latandlng = annotation
-            self.mapView.addAnnotation(annotation)
-        }
         storeTableView.reloadData()
     }
     
@@ -159,11 +152,13 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        mapView.setCenter(locations[indexPath.row].latandlng.coordinate, animated: false)
-        mapView.selectAnnotation(locations[indexPath.row].latandlng as MKAnnotation, animated: false)
+        mapView.setCenter(locations[indexPath.row].annotation.coordinate, animated: false)
+        mapView.selectAnnotation(locations[indexPath.row].annotation as MKAnnotation, animated: false)
         locationManager.startUpdatingLocation()
     }
     
+    
+    //以下経路
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let detailButton: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "詳しく") { (action, index) -> Void in
@@ -179,7 +174,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
             tableView.isEditing = false
             let fromCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(self.nowlat,self.nowlng)
             let fromPlace: MKPlacemark = MKPlacemark(coordinate: fromCoordinate, addressDictionary: nil)
-            let toPlace: MKPlacemark = MKPlacemark(coordinate: self.locations[indexPath.row].latandlng.coordinate, addressDictionary: nil)
+            let toPlace: MKPlacemark = MKPlacemark(coordinate: self.locations[indexPath.row].annotation.coordinate, addressDictionary: nil)
             let fromItem: MKMapItem = MKMapItem(placemark: fromPlace)
             let toItem: MKMapItem = MKMapItem(placemark: toPlace)
             let request: MKDirectionsRequest = MKDirectionsRequest()

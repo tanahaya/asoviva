@@ -17,7 +17,7 @@ struct Location: Mappable{
     var lat:Double!
     var lng:Double!
     var vicinity:String!
-    var latandlng = MKPointAnnotation()
+    var annotation = MKPointAnnotation()
     
     init?(map: Map) {
         
