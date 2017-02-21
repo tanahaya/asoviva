@@ -11,8 +11,9 @@ import ObjectMapper
 import MapKit
 import SwiftyJSON
 
-struct Detail: Mappable{
+struct PlaygroundDetail: Mappable{
     
+    var placeId: String!
     var name:String!
     var address:String!
     var phonenumber:String!

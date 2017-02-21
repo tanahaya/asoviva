@@ -35,7 +35,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     
     var userLocation: CLLocationCoordinate2D!
     var destLocation : CLLocationCoordinate2D!
-    let userDefaults = UserDefaults.standard
     var Region: MKCoordinateRegion!
     var nowlat: CLLocationDegrees!
     var nowlng: CLLocationDegrees!
@@ -65,7 +64,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         let searchBar = UISearchBar()
         let searchController = UISearchController(searchResultsController: nil)
         searchBar.frame = CGRect(x: 0, y: 60, width: (self.navigationController?.navigationBar.frame.width)!, height: searchController.searchBar.frame.height)
-        searchBar.placeholder = "検索キーワードを入力してください"
         searchBar.delegate = self
         searchBar.showsBookmarkButton = false
         searchBar.showsCancelButton = false
@@ -88,7 +86,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
             locationManager.startUpdatingLocation()
         }
         //nowlat = locationManager.location!.coordinate.latitude
-        nowlat  = 35.680298// 35.681298
+        nowlat  = 35.680298
         // nowlng = locationManager.location!.coordinate.longitude
         nowlng = 139.766247
         self.view.addSubview(mapView)
@@ -163,6 +161,8 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         mapView.setCenter(locations[indexPath.row].annotation.coordinate, animated: false)
         mapView.selectAnnotation(locations[indexPath.row].annotation as MKAnnotation, animated: false)
         locationManager.startUpdatingLocation()
+        
+        
     }
     
     //以下経路
@@ -170,9 +170,10 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         
         let detailButton: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "詳しく") { (action, index) -> Void in
             tableView.isEditing = false
-            let nextViewController: UIViewController = DetailViewController()
-            self.navigationController?.pushViewController(nextViewController, animated: true)
-            self.userDefaults.set(self.locations[indexPath.row].placeid, forKey: "detail")
+            let viewController = DetailViewController()
+            viewController.detailData.placeId = self.locations[indexPath.row].placeid
+            self.navigationController?.pushViewController(viewController, animated: true)
+            
         }
         detailButton.backgroundColor = UIColor.blue
         
@@ -180,7 +181,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
             
             self.userLocation = CLLocationCoordinate2DMake(self.nowlat, self.nowlng)
             // self.destLocation = CLLocationCoordinate2DMake(self.locations[indexPath.row].lat, self.locations[indexPath.row].lng)
-            
             /*
              let fromPin: MKPointAnnotation = MKPointAnnotation()
              fromPin.coordinate = self.userLocation
@@ -203,21 +203,15 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
             request.requestsAlternateRoutes = true
             request.transportType = MKDirectionsTransportType.walking
             
-            
             let directions: MKDirections = MKDirections(request: request)
             directions.calculate { (response, error) in
                 if error != nil || response!.routes.isEmpty {
                     print("noroute")
                     return
                 }
-                print(response!)
                 let route: MKRoute = response!.routes[0] as MKRoute
-                
-                // print("目的地まで \(route.distance)m" + "所要時間 \(Int(route.expectedTravelTime/60))分")
-                
+                //print("目的地まで \(route.distance)m" + "所要時間 \(Int(route.expectedTravelTime/60))分")
                 self.mapView.add(route.polyline)
-                
-                
                 
             }
         }

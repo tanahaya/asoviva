@@ -15,6 +15,8 @@ import SwiftyJSON
 
 class DetailViewController: UIViewController {
     
+    var detailData: PlaygroundDetail!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let posX: CGFloat = self.view.bounds.width/2 - 100
@@ -24,13 +26,10 @@ class DetailViewController: UIViewController {
         label.textAlignment = NSTextAlignment.center
         self.view.addSubview(label)
         self.view.backgroundColor = UIColor.white
-        let userDefaults = UserDefaults.standard
         
-        let detaildata:[Detail] = []
         
-        let placeid:String = userDefaults.string(forKey: "detail")!
         
-        let url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=\(placeid)&key=AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY"
+        let url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=\(detailData.placeId)&key=AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY"
         let testURL:URL = URL(string: url)!
         let session = URLSession(configuration: URLSessionConfiguration.default)
         session.dataTask(with: testURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
@@ -42,9 +41,10 @@ class DetailViewController: UIViewController {
                         print("\(response)")
                     }
                 }
+                guard let data:Data = data else {return}
                 let json = JSON(data)
                 json["results"].array?.forEach({
-                    var detail:Detail = Mapper<Detail>().map(JSON: $0.dictionaryObject!)!
+                    var detail:PlaygroundDetail = Mapper<PlaygroundDetail>().map(JSON: $0.dictionaryObject!)!
                     //location.lat = $0["geometry"]["location"]["lat"].doubleValue
                     //location.lng = $0["geometry"]["location"]["lng"].doubleValue
                     
@@ -52,9 +52,6 @@ class DetailViewController: UIViewController {
                 
             }
         }).resume()
-        label.text = detaildata[0].name
-        
-        
     }
     
     
