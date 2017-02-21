@@ -15,8 +15,6 @@ import SwiftyJSON
 
 class DetailViewController: UIViewController {
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let posX: CGFloat = self.view.bounds.width/2 - 100

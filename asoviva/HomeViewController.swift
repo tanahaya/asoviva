@@ -14,10 +14,11 @@ import ObjectMapper
 import SwiftyJSON
 
 
-class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource,UISearchControllerDelegate{
+class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource,UISearchControllerDelegate,CLLocationManagerDelegate{
     
     lazy var mapView: MKMapView = {
         let mapView: MKMapView = MKMapView()
+        mapView.delegate = self
         let mapframe: CGRect = CGRect(x: 0, y: 60 + 30, width: self.view.frame.width, height: self.view.frame.height*4/7)
         mapView.frame = mapframe
         let nowlat: Double = 35.680298
@@ -38,11 +39,15 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     var Region: MKCoordinateRegion!
     var nowlat: CLLocationDegrees!
     var nowlng: CLLocationDegrees!
+    var storenames: [String] = []
+    
+    
     lazy var locationManager:CLLocationManager = {
         
         let locationManager = CLLocationManager()
+        locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 100
+        locationManager.distanceFilter = 300
         return locationManager
     }()
     var locations:[Location] = []
@@ -56,8 +61,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         tableView.tableFooterView = UIView()
         return tableView
     }()
-    
-    var storenames: [String] = []
     lazy var searchBar:UISearchBar = {
         let searchBar = UISearchBar()
         let searchController = UISearchController(searchResultsController: nil)
@@ -134,7 +137,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
                     self.mapView.addAnnotation(Pin)
                     location.annotation = Pin
                     self.locations.append(location)
-
+                    
                 })
             }
             sleep(1)
@@ -171,33 +174,35 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
             self.navigationController?.pushViewController(nextViewController, animated: true)
             self.userDefaults.set(self.locations[indexPath.row].placeid, forKey: "detail")
         }
-        
         detailButton.backgroundColor = UIColor.blue
+        
         let guideButton: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "道案内") { (action, index) -> Void in
             
             self.userLocation = CLLocationCoordinate2DMake(self.nowlat, self.nowlng)
-            self.destLocation = CLLocationCoordinate2DMake(self.locations[indexPath.row].lat, self.locations[indexPath.row].lng)
+            // self.destLocation = CLLocationCoordinate2DMake(self.locations[indexPath.row].lat, self.locations[indexPath.row].lng)
             
-            let fromPin: MKPointAnnotation = MKPointAnnotation()
-            fromPin.coordinate = self.userLocation
-            fromPin.title = "現在地"
-            self.mapView.addAnnotation(fromPin)
+            /*
+             let fromPin: MKPointAnnotation = MKPointAnnotation()
+             fromPin.coordinate = self.userLocation
+             fromPin.title = "現在地"
+             self.mapView.addAnnotation(fromPin)
+             */
             
             let fromPlacemark = MKPlacemark(coordinate:self.userLocation, addressDictionary:nil)
-            let toPlacemark   = MKPlacemark(coordinate:self.destLocation, addressDictionary:nil)
+            // let toPlacemark   = MKPlacemark(coordinate:self.destLocation, addressDictionary:nil)
+            let toPlacemark = MKPlacemark(coordinate: self.locations[indexPath.row].annotation.coordinate)
             
-            // MKPlacemark から MKMapItem を生成
             let fromItem = MKMapItem(placemark: fromPlacemark)
             let toItem   = MKMapItem(placemark: toPlacemark)
             
-            // MKMapItem をセットして MKDirectionsRequest を生成
-            let request = MKDirectionsRequest()
+            let request:  MKDirectionsRequest = MKDirectionsRequest()
             
             request.source = fromItem
             request.destination = toItem
             
-            request.requestsAlternateRoutes = true // 単独の経路を検索
+            request.requestsAlternateRoutes = true
             request.transportType = MKDirectionsTransportType.walking
+            
             
             let directions: MKDirections = MKDirections(request: request)
             directions.calculate { (response, error) in
@@ -205,50 +210,51 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
                     print("noroute")
                     return
                 }
+                print(response!)
                 let route: MKRoute = response!.routes[0] as MKRoute
+                
                 // print("目的地まで \(route.distance)m" + "所要時間 \(Int(route.expectedTravelTime/60))分")
-                // mapViewにルートを描画.
+                
                 self.mapView.add(route.polyline)
                 
+                
+                
             }
-            
         }
         guideButton.backgroundColor = UIColor.green
         return [detailButton, guideButton]
     }
-    func showUserAndDestinationOnMap() {
-        // 現在地と目的地を含む矩形を計算
-        let maxLat:Double = fmax(userLocation.latitude,  destLocation.latitude)
-        let maxLon:Double = fmax(userLocation.longitude, destLocation.longitude)
-        let minLat:Double = fmin(userLocation.latitude,  destLocation.latitude)
-        let minLon:Double = fmin(userLocation.longitude, destLocation.longitude)
-        
-        // 地図表示するときの緯度、経度の幅を計算
-        let mapMargin:Double = 1.5;  // 経路が入る幅(1.0)＋余白(0.5)
-        let leastCoordSpan:Double = 0.005;    // 拡大表示したときの最大値
-        let span_x:Double = fmax(leastCoordSpan, fabs(maxLat - minLat) * mapMargin)
-        let span_y:Double = fmax(leastCoordSpan, fabs(maxLon - minLon) * mapMargin)
-        
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(span_x, span_y)
-        
-        // 現在地を目的地の中心を計算
-        let center:CLLocationCoordinate2D = CLLocationCoordinate2DMake((maxLat + minLat) / 2, (maxLon + minLon) / 2)
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(center, span)
-        
-        mapView.setRegion(mapView.regionThatFits(region), animated:true)
-    }
+    /*
+     func showUserAndDestinationOnMap() {
+     let maxLat:Double = fmax(userLocation.latitude,  destLocation.latitude)
+     let maxLon:Double = fmax(userLocation.longitude, destLocation.longitude)
+     let minLat:Double = fmin(userLocation.latitude,  destLocation.latitude)
+     let minLon:Double = fmin(userLocation.longitude, destLocation.longitude)
+     
+     let mapMargin:Double = 1.5;  // 経路が入る幅(1.0)＋余白(0.5)
+     let leastCoordSpan:Double = 0.005;    // 拡大表示したときの最大値
+     let span_x:Double = fmax(leastCoordSpan, fabs(maxLat - minLat) * mapMargin)
+     let span_y:Double = fmax(leastCoordSpan, fabs(maxLon - minLon) * mapMargin)
+     
+     let span:MKCoordinateSpan = MKCoordinateSpanMake(span_x, span_y)
+     
+     let center:CLLocationCoordinate2D = CLLocationCoordinate2DMake((maxLat + minLat) / 2, (maxLon + minLon) / 2)
+     let region:MKCoordinateRegion = MKCoordinateRegionMake(center, span)
+     
+     mapView.setRegion(mapView.regionThatFits(region), animated:true)
+     }
+    */
     
     // 経路を描画するときの色や線の太さを指定
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         let route: MKPolyline = overlay as! MKPolyline
         let routeRenderer: MKPolylineRenderer = MKPolylineRenderer(polyline: route)
-        routeRenderer.lineWidth = 3.0
+        routeRenderer.lineWidth = 5.0
         routeRenderer.strokeColor = UIColor.red
         return routeRenderer
     }
  
-    
     
     
 }
