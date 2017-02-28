@@ -38,8 +38,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     var Region: MKCoordinateRegion!
     var nowlat: CLLocationDegrees!
     var nowlng: CLLocationDegrees!
-    var storenames: [String] = []
-    
     
     lazy var locationManager:CLLocationManager = {
         
@@ -218,7 +216,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         guideButton.backgroundColor = UIColor.green
         return [detailButton, guideButton]
     }
-    /*
+    
      func showUserAndDestinationOnMap() {
      let maxLat:Double = fmax(userLocation.latitude,  destLocation.latitude)
      let maxLon:Double = fmax(userLocation.longitude, destLocation.longitude)
@@ -237,7 +235,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
      
      mapView.setRegion(mapView.regionThatFits(region), animated:true)
      }
-    */
+ 
     
     // 経路を描画するときの色や線の太さを指定
      func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {

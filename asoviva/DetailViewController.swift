@@ -15,45 +15,51 @@ import SwiftyJSON
 
 class DetailViewController: UIViewController {
     
-    var detailData: PlaygroundDetail!
+    var detailData = PlaygroundDetail()
+    
+    var label: UILabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let posX: CGFloat = self.view.bounds.width/2 - 100
         let posY: CGFloat = self.view.bounds.height/2 - 25
-        let label: UILabel = UILabel(frame: CGRect(x:posX, y: posY, width: 200, height: 50))
+        label = UILabel(frame: CGRect(x:posX, y: posY, width: 200, height: 50))
         label.backgroundColor = UIColor.orange
         label.textAlignment = NSTextAlignment.center
         self.view.addSubview(label)
         self.view.backgroundColor = UIColor.white
-        
-        
-        
-        let url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=\(detailData.placeId)&key=AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY"
-        let testURL:URL = URL(string: url)!
+        let encodeplaceid = detailData.placeId.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+        let url:String! = "https://maps.googleapis.com/maps/api/place/details/json?placeid=\(encodeplaceid!)&key=AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY"
+        let TestURL:URL = URL(string: url)!
         let session = URLSession(configuration: URLSessionConfiguration.default)
-        session.dataTask(with: testURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
+        session.dataTask(with: TestURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
             if error != nil {
-                print("\(error)")
+                print("Error: " + "\(error)")
             } else {
                 if let statusCode = response as? HTTPURLResponse {
                     if statusCode.statusCode != 200 {
-                        print("\(response)")
+                        print("Response: " + "\(response)")
                     }
                 }
                 guard let data:Data = data else {return}
-                let json = JSON(data)
-                json["results"].array?.forEach({
-                    var detail:PlaygroundDetail = Mapper<PlaygroundDetail>().map(JSON: $0.dictionaryObject!)!
-                    //location.lat = $0["geometry"]["location"]["lat"].doubleValue
-                    //location.lng = $0["geometry"]["location"]["lng"].doubleValue
-                    
-                })
+                let json:JSON = JSON(data)
+                self.detailData = Mapper<PlaygroundDetail>().map(JSON: json["result"].dictionaryObject!)!
+                /*
+                 json["results"].array?.forEach({
+                 self.detailData = Mapper<PlaygroundDetail>().map(JSON: $0.dictionaryObject!)!
+                 //location.lat = $0["geometry"]["location"]["lat"].doubleValue
+                 })
+                 */
                 
             }
         }).resume()
+        print(self.detailData)
+        self.yomikomi()
     }
     
+    func yomikomi(){
+        self.label.text = self.detailData.name
+    }
     
     
 }

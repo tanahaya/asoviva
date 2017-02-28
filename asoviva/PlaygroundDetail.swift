@@ -27,8 +27,12 @@ struct PlaygroundDetail: Mappable{
     init?(map: Map) {
         
     }
+    init(){
+        
+    }
     
     mutating func mapping(map: Map) {
+        placeId <- map["place_id"]
         address <- map["formatted_address"]
         phonenumber <- map["formatted_phone_number"]
         icon <- map["icon"]
