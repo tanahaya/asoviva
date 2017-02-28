@@ -16,7 +16,6 @@ import SwiftyJSON
 class DetailViewController: UIViewController {
     
     var detailData = PlaygroundDetail()
-    
     var label: UILabel = UILabel()
     
     override func viewDidLoad() {
@@ -52,9 +51,10 @@ class DetailViewController: UIViewController {
                  */
                 
             }
+            self.yomikomi()
+            print(self.detailData)
         }).resume()
-        print(self.detailData)
-        self.yomikomi()
+        
     }
     
     func yomikomi(){
