@@ -23,6 +23,7 @@ struct PlaygroundDetail: Mappable{
     var url:String!
     var vicinity:String!
     var website:String!
+    var image:UIImage!
     
     init?(map: Map) {
         

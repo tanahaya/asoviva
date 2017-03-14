@@ -13,19 +13,28 @@ import GoogleMaps
 import ObjectMapper
 import SwiftyJSON
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     var detailData = PlaygroundDetail()
     var label: UILabel = UILabel()
+    var image: UIImageView = UIImageView()
+    var tableview : UITableView = UITableView()
+    var detailArray:[String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let posX: CGFloat = self.view.bounds.width/2 - 100
-        let posY: CGFloat = self.view.bounds.height/2 - 25
-        label = UILabel(frame: CGRect(x:posX, y: posY, width: 200, height: 50))
+        let posX: CGFloat = self.view.bounds.width
+        let posY: CGFloat = self.view.bounds.height
+        label = UILabel(frame: CGRect(x: 0, y: 50, width: posX, height: 50))
         label.backgroundColor = UIColor.orange
-        label.textAlignment = NSTextAlignment.center
+        label.textAlignment = NSTextAlignment.right
         self.view.addSubview(label)
+        
+        image = UIImageView(frame: CGRect(x:0,y:100,width: posX,height:300))
+        self.view.addSubview(image)
+        
+        tableview = UITableView(frame: CGRect(x:0,y:400,width: posX,height: 100))
+        
         self.view.backgroundColor = UIColor.white
         let encodeplaceid = detailData.placeId.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         let url:String! = "https://maps.googleapis.com/maps/api/place/details/json?placeid=\(encodeplaceid!)&key=AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY"
@@ -43,12 +52,10 @@ class DetailViewController: UIViewController {
                 guard let data:Data = data else {return}
                 let json:JSON = JSON(data)
                 self.detailData = Mapper<PlaygroundDetail>().map(JSON: json["result"].dictionaryObject!)!
-                /*
-                 json["results"].array?.forEach({
-                 self.detailData = Mapper<PlaygroundDetail>().map(JSON: $0.dictionaryObject!)!
-                 //location.lat = $0["geometry"]["location"]["lat"].doubleValue
-                 })
-                 */
+                // json["result"].array?.forEach({
+                //   self.detailData = Mapper<PlaygroundDetail>().map(JSON: $0.dictionaryObject!)!
+                //self.detailData.image = $0["photos"]["photo_reference"]
+                //})
                 
             }
             self.yomikomi()
@@ -56,11 +63,31 @@ class DetailViewController: UIViewController {
         }).resume()
         
     }
-    
     func yomikomi(){
         self.label.text = self.detailData.name
+        // self.image.image = self.detailData.image  }
+        detailArray.append("名前:" + detailData.name )
+        detailArray.append("住所:" + detailData.address )
+        detailArray.append("電話番号:" + detailData.phonenumber )
+        detailArray.append("評価:" + String(detailData.rating) )
+        detailArray.append("カテゴリー:" + detailData.types[0] )
+        detailArray.append("ウェブサイト:" + detailData.website )
+        detailArray.append("googlemapへ" + detailData.url )
+        tableview.reloadData()
+        
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return detailArray.count
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
+        cell.textLabel?.text = detailArray[indexPath.row]
+        return cell
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }
 
