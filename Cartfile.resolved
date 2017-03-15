@@ -1,3 +1,4 @@
+github "xmartlabs/Eureka" "2.0.1"
 github "thii/FontAwesome.swift" "1.1.0"
-github "Hearst-DD/ObjectMapper" "2.2.2"
+github "Hearst-DD/ObjectMapper" "2.2.5"
 github "SwiftyJSON/SwiftyJSON" "3.1.4"

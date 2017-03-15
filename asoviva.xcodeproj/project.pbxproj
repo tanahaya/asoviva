@@ -26,6 +26,8 @@
 		9F8CBB221DD1E574002B3DBA /* asovivaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8CBB211DD1E574002B3DBA /* asovivaTests.swift */; };
 		9F8CBB2D1DD1E574002B3DBA /* asovivaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8CBB2C1DD1E574002B3DBA /* asovivaUITests.swift */; };
 		9FB64B041E3762DF00C3C430 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB64B031E3762DF00C3C430 /* Location.swift */; };
+		9FFC054F1E77E6670032589C /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFC054E1E77E6670032589C /* Eureka.framework */; };
+		9FFC05531E77F19A0032589C /* CustomImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC05521E77F19A0032589C /* CustomImageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		9F8CBB2C1DD1E574002B3DBA /* asovivaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = asovivaUITests.swift; sourceTree = "<group>"; };
 		9F8CBB2E1DD1E574002B3DBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FB64B031E3762DF00C3C430 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		9FFC054E1E77E6670032589C /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
+		9FFC05521E77F19A0032589C /* CustomImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageCell.swift; sourceTree = "<group>"; };
 		CA0C2308D4C80FE916A3DE8E /* Pods_asovivaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_asovivaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB105D80A53C4A293E4B534F /* Pods-asovivaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FE41C5F1DCA636049125BE31 /* Pods-asovivaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FFC054F1E77E6670032589C /* Eureka.framework in Frameworks */,
 				9F04782D1E40982800656393 /* SwiftyJSON.framework in Frameworks */,
 				9F4514F71E375210002CFE04 /* ObjectMapper.framework in Frameworks */,
 				9F63EE9C1DDB142100D332D6 /* CoreLocation.framework in Frameworks */,
@@ -127,6 +132,7 @@
 		9F63FBD41DD1F14100150F34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9FFC054E1E77E6670032589C /* Eureka.framework */,
 				9F04782C1E40982800656393 /* SwiftyJSON.framework */,
 				9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */,
 				9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */,
@@ -171,6 +177,7 @@
 				9FB64B031E3762DF00C3C430 /* Location.swift */,
 				9F49E3411E5324C800D190AD /* PlaygroundDetail.swift */,
 				9F8CBB101DD1E574002B3DBA /* Main.storyboard */,
+				9FFC05521E77F19A0032589C /* CustomImageCell.swift */,
 				9F8CBB131DD1E574002B3DBA /* Assets.xcassets */,
 				9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */,
 				9F8CBB181DD1E574002B3DBA /* Info.plist */,
@@ -407,6 +414,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/FontAwesome.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
 			);
 			name = "Run Script";
 			outputPaths = (
@@ -488,6 +496,7 @@
 				9FB64B041E3762DF00C3C430 /* Location.swift in Sources */,
 				9F4A4BD91E49D2C500065862 /* DetailViewController.swift in Sources */,
 				9F8CBB0D1DD1E574002B3DBA /* AppDelegate.swift in Sources */,
+				9FFC05531E77F19A0032589C /* CustomImageCell.swift in Sources */,
 				9F736F531E24D7FD00EC8D00 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

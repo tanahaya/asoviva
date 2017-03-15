@@ -12,28 +12,16 @@ import CoreLocation
 import GoogleMaps
 import ObjectMapper
 import SwiftyJSON
+import Eureka
 
-class DetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class DetailViewController: FormViewController {
     
     var detailData = PlaygroundDetail()
-    var label: UILabel = UILabel()
-    var image: UIImageView = UIImageView()
-    var tableview : UITableView = UITableView()
-    var detailArray:[String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let posX: CGFloat = self.view.bounds.width
         let posY: CGFloat = self.view.bounds.height
-        label = UILabel(frame: CGRect(x: 0, y: 50, width: posX, height: 50))
-        label.backgroundColor = UIColor.orange
-        label.textAlignment = NSTextAlignment.right
-        self.view.addSubview(label)
-        
-        image = UIImageView(frame: CGRect(x:0,y:100,width: posX,height:300))
-        self.view.addSubview(image)
-        
-        tableview = UITableView(frame: CGRect(x:0,y:400,width: posX,height: 100))
         
         self.view.backgroundColor = UIColor.white
         let encodeplaceid = detailData.placeId.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
@@ -52,42 +40,70 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
                 guard let data:Data = data else {return}
                 let json:JSON = JSON(data)
                 self.detailData = Mapper<PlaygroundDetail>().map(JSON: json["result"].dictionaryObject!)!
-                // json["result"].array?.forEach({
-                //   self.detailData = Mapper<PlaygroundDetail>().map(JSON: $0.dictionaryObject!)!
-                //self.detailData.image = $0["photos"]["photo_reference"]
-                //})
+                json["result"].array?.forEach({_ in
+                    //   self.detailData = Mapper<PlaygroundDetail>().map(JSON: $0.dictionaryObject!)!
+                    //self.detailData.image = $0["photos"]["photo_reference"]
+                    
+                })
                 
             }
-            self.yomikomi()
+            self.setup()
             print(self.detailData)
         }).resume()
         
     }
     func yomikomi(){
-        self.label.text = self.detailData.name
         // self.image.image = self.detailData.image  }
-        detailArray.append("名前:" + detailData.name )
-        detailArray.append("住所:" + detailData.address )
-        detailArray.append("電話番号:" + detailData.phonenumber )
-        detailArray.append("評価:" + String(detailData.rating) )
-        detailArray.append("カテゴリー:" + detailData.types[0] )
-        detailArray.append("ウェブサイト:" + detailData.website )
-        detailArray.append("googlemapへ" + detailData.url )
-        tableview.reloadData()
+        /*
+         detailArray.append("名前:" + detailData.name )
+         detailArray.append("住所:" + detailData.address )
+         detailArray.append("電話番号:" + detailData.phonenumber )
+         detailArray.append("評価:" + String(detailData.rating) )
+         detailArray.append("カテゴリー:" + detailData.types[0] )
+         //定休日
+         //予算
+         //交通手段
+         //今開いているか
+         //
+         detailArray.append("ウェブサイト:" + detailData.website )
+         detailArray.append("googlemapへ" + detailData.url )
+         */
         
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return detailArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
-        cell.textLabel?.text = detailArray[indexPath.row]
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func setup() {
+        self.form +++ Section("お店の名前")
+            <<< LabelRow() {
+                $0.title = "名前:" + detailData.name
+            }
+            +++ Section("お店の画像")
+            <<< LabelRow(){
+                $0.title = "Date Row"
+            }
+            +++ Section("お店の情報")
+            <<< LabelRow() {
+                $0.title = "住所:" + detailData.address
+            }
+            <<< LabelRow() {
+                $0.title = "電話番号:" + detailData.phonenumber
+            }
+            <<< LabelRow() {
+                $0.title = "評価:" + String(detailData.rating)
+            }
+            <<< LabelRow() {
+                $0.title = "電話番号:" + detailData.phonenumber
+            }
+            <<< LabelRow() {
+                $0.title = "ウェブサイト:" + detailData.website
+            }
+            <<< LabelRow() {
+                $0.title = "カテゴリー:" + detailData.types[0]
+            }
+            // <<< CustomImageCell() { row in
+               //row.value = detailData.image
+        //}
         
     }
+    
 }
+
 
