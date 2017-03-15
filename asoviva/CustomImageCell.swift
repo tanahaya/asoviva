@@ -6,6 +6,7 @@
 //  Copyright © 2017年 田中 颯. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import Eureka
 
@@ -30,29 +31,33 @@ public class CustomImageCell:  Cell<Bool>, CellType {
             cellProvider = CellProvider<CustomImageCell>(nibName: "CustomImageCell")
         }
     }
-    /*
-    override  public func setup() {
+    
+    open override func setup() {
+        height = { 100 }
+        row.title = nil
         super.setup()
-        
-        // configure our profile picture imageView
-        ImageView.contentMode = .scaleAspectFill
-        ImageView.clipsToBounds = true
-        height = { return 100 }
+        selectionStyle = .none
+        for subview in contentView.subviews {
+            if let button = subview as? UIButton {
+                button.setImage(UIImage(named: "checkedDay"), for: .selected)
+                button.setImage(UIImage(named: "uncheckedDay"), for: .normal)
+                button.adjustsImageWhenHighlighted = false
+            }
+        }
     }
-    override  public func update() {
+    open override func update() {
         super.update()
         // we do not want to show the default UITableViewCell's textLabel
         
-        // get the value from our row
         guard let pictureUrl = row.value else { return }
         
-         if let url = pictureUrl, let data = NSData(contentsOf: url as URL) {
-         ImageView.image = UIImage(data: data as Data)
-         } else {
-         ImageView.image = UIImage(named: "placeholder")
-         }
+        if let url = pictureUrl, let data = NSData(contentsOf: url as URL) {
+            ImageView.image = UIImage(data: data as Data)
+        } else {
+            ImageView.image = UIImage(named: "placeholder")
+        }
         
     }
- */
+    
     
 }
