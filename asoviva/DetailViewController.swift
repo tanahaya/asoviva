@@ -98,9 +98,12 @@ class DetailViewController: FormViewController {
             <<< LabelRow() {
                 $0.title = "カテゴリー:" + detailData.types[0]
             }
-            // <<< CustomImageCell() { row in
-               //row.value = detailData.image
-        //}
+        /*
+        form +++ Section()
+            <<< CustomImageCell() { row in
+                row.value = pictureUrl: NSURL(string: "http://lh4.ggpht.com/VpeucXbRtK2pmVY6At76vU45Q7YWXB6kz25Sm_JKW1tgfmJDP3gSAlDwowjGEORSM-EW=w300")
+        }
+ */
         
     }
     
