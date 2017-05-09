@@ -17,6 +17,7 @@ import Eureka
 class DetailViewController: FormViewController {
     
     var detailData = PlaygroundDetail()
+    var detailArray:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +76,15 @@ class DetailViewController: FormViewController {
             <<< LabelRow() {
                 $0.title = "名前:" + detailData.name
             }
+            +++ Section()
+            <<< CustomRow() {
+                $0.cellProvider = CellProvider<EurekaImageCellTableViewCell>(nibName: "EurekaImageCellTableViewCell")
+                
+                let nowimage = UIImage.fontAwesomeIcon(name: .mapPin, textColor: UIColor.black, size: CGSize(width:50,height:50))
+                $0.customImage.Image =  nowimage
+                
+            }
+            
             +++ Section("お店の画像")
             <<< LabelRow(){
                 $0.title = "Date Row"
@@ -97,13 +107,14 @@ class DetailViewController: FormViewController {
             }
             <<< LabelRow() {
                 $0.title = "カテゴリー:" + detailData.types[0]
-            }
-        /*
-        form +++ Section()
-            <<< CustomImageCell() { row in
-                row.value = pictureUrl: NSURL(string: "http://lh4.ggpht.com/VpeucXbRtK2pmVY6At76vU45Q7YWXB6kz25Sm_JKW1tgfmJDP3gSAlDwowjGEORSM-EW=w300")
         }
- */
+        
+        /*
+         form +++ Section()
+         <<< CustomImageCell() { row in
+         row.value = pictureUrl: NSURL(string: "http://lh4.ggpht.com/VpeucXbRtK2pmVY6At76vU45Q7YWXB6kz25Sm_JKW1tgfmJDP3gSAlDwowjGEORSM-EW=w300")
+         }
+         */
         
     }
     

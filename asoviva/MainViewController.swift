@@ -9,14 +9,9 @@
 import UIKit
 import Foundation
 import FontAwesome
-import MapKit
 import CoreLocation
-import GoogleMaps
-import ObjectMapper
-import SwiftyJSON
 
 class MainViewController: UITabBarController {
-
    
        override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +21,7 @@ class MainViewController: UITabBarController {
         
         let nowimage = UIImage.fontAwesomeIcon(name: .mapPin, textColor: UIColor.black, size: CGSize(width:50,height:50))
         let searchimage = UIImage.fontAwesomeIcon(name: .search, textColor: UIColor.black, size: CGSize(width:50,height:50))
+        
         
         
         homeView.tabBarItem = UITabBarItem(title: "現在地", image: nowimage, selectedImage: nowimage)

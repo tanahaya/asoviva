@@ -109,7 +109,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         searchBar.endEditing(true)
         let semaphore = DispatchSemaphore(value: 0)
         let encodeStr = searchBar.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
-        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(nowlat!),\(nowlng!)&radius=2000&sensor=true&key=\(key)&name=\(encodeStr!)"
+        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(nowlat!),\(nowlng!)&radius=2000&sensor=true&key=\(key)&name=\(encodeStr!)&lang=ja"
         let testURL:URL = URL(string: url)!
         let session = URLSession(configuration: URLSessionConfiguration.default)
         session.dataTask(with: testURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
@@ -141,7 +141,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         }).resume()
         _ = semaphore.wait(timeout: DispatchTime.distantFuture)
         storeTableView.reloadData()
-        
         
     }
     
@@ -246,7 +245,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         routeRenderer.strokeColor = UIColor.red
         return routeRenderer
     }
- 
     
     
 }

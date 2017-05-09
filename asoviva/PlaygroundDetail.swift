@@ -28,6 +28,7 @@ struct PlaygroundDetail: Mappable{
     init?(map: Map) {
         
     }
+    
     init(){
         
     }

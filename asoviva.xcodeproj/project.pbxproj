@@ -26,10 +26,10 @@
 		9F8CBB221DD1E574002B3DBA /* asovivaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8CBB211DD1E574002B3DBA /* asovivaTests.swift */; };
 		9F8CBB2D1DD1E574002B3DBA /* asovivaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8CBB2C1DD1E574002B3DBA /* asovivaUITests.swift */; };
 		9FB64B041E3762DF00C3C430 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB64B031E3762DF00C3C430 /* Location.swift */; };
+		9FECD2B51EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */; };
+		9FECD2B61EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FECD2B41EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib */; };
+		9FECD2B81EC1D89B007E3C87 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */; };
 		9FFC054F1E77E6670032589C /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFC054E1E77E6670032589C /* Eureka.framework */; };
-		9FFC05531E77F19A0032589C /* CustomImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC05521E77F19A0032589C /* CustomImageCell.swift */; };
-		9FFC05571E798AC40032589C /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC05551E798AC40032589C /* ImagePickerController.swift */; };
-		9FFC05581E798AC40032589C /* ImageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFC05561E798AC40032589C /* ImageRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,10 +78,10 @@
 		9F8CBB2C1DD1E574002B3DBA /* asovivaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = asovivaUITests.swift; sourceTree = "<group>"; };
 		9F8CBB2E1DD1E574002B3DBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FB64B031E3762DF00C3C430 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurekaImageCellTableViewCell.swift; sourceTree = "<group>"; };
+		9FECD2B41EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EurekaImageCellTableViewCell.xib; sourceTree = "<group>"; };
+		9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		9FFC054E1E77E6670032589C /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
-		9FFC05521E77F19A0032589C /* CustomImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageCell.swift; sourceTree = "<group>"; };
-		9FFC05551E798AC40032589C /* ImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = "<group>"; };
-		9FFC05561E798AC40032589C /* ImageRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRow.swift; sourceTree = "<group>"; };
 		CA0C2308D4C80FE916A3DE8E /* Pods_asovivaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_asovivaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB105D80A53C4A293E4B534F /* Pods-asovivaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FE41C5F1DCA636049125BE31 /* Pods-asovivaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -181,9 +181,9 @@
 				9FB64B031E3762DF00C3C430 /* Location.swift */,
 				9F49E3411E5324C800D190AD /* PlaygroundDetail.swift */,
 				9F8CBB101DD1E574002B3DBA /* Main.storyboard */,
-				9FFC05521E77F19A0032589C /* CustomImageCell.swift */,
-				9FFC05551E798AC40032589C /* ImagePickerController.swift */,
-				9FFC05561E798AC40032589C /* ImageRow.swift */,
+				9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */,
+				9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */,
+				9FECD2B41EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib */,
 				9F8CBB131DD1E574002B3DBA /* Assets.xcassets */,
 				9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */,
 				9F8CBB181DD1E574002B3DBA /* Info.plist */,
@@ -328,6 +328,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FECD2B61EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib in Resources */,
 				9F8CBB171DD1E574002B3DBA /* LaunchScreen.storyboard in Resources */,
 				9F8CBB141DD1E574002B3DBA /* Assets.xcassets in Resources */,
 				9F8CBB121DD1E574002B3DBA /* Main.storyboard in Resources */,
@@ -496,15 +497,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FFC05581E798AC40032589C /* ImageRow.swift in Sources */,
 				9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */,
-				9FFC05571E798AC40032589C /* ImagePickerController.swift in Sources */,
 				9F63FBD31DD1EEE100150F34 /* SearchViewController.swift in Sources */,
 				9F49E3421E5324C800D190AD /* PlaygroundDetail.swift in Sources */,
 				9FB64B041E3762DF00C3C430 /* Location.swift in Sources */,
+				9FECD2B81EC1D89B007E3C87 /* FavoriteViewController.swift in Sources */,
 				9F4A4BD91E49D2C500065862 /* DetailViewController.swift in Sources */,
 				9F8CBB0D1DD1E574002B3DBA /* AppDelegate.swift in Sources */,
-				9FFC05531E77F19A0032589C /* CustomImageCell.swift in Sources */,
+				9FECD2B51EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift in Sources */,
 				9F736F531E24D7FD00EC8D00 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
