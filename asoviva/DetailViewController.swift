@@ -78,10 +78,13 @@ class DetailViewController: FormViewController {
             }
             +++ Section()
             <<< CustomRow() {
-                $0.cellProvider = CellProvider<EurekaImageCellTableViewCell>(nibName: "EurekaImageCellTableViewCell")
                 
-                let nowimage = UIImage.fontAwesomeIcon(name: .mapPin, textColor: UIColor.black, size: CGSize(width:50,height:50))
-                $0.customImage.Image =  nowimage
+                $0.cellSetup({ (cell, row) in
+                    let nowimage = UIImage.fontAwesomeIcon(name: .mapPin, textColor: UIColor.black, size: CGSize(width:50,height:50))
+                    cell.customImage.image = nowimage
+                    
+                })
+                
                 
             }
             

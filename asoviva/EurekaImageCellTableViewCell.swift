@@ -27,7 +27,7 @@ public class EurekaImageCellTableViewCell: Cell<Bool>, CellType{
 public final class CustomRow: Row<EurekaImageCellTableViewCell>, RowType {
     required public init(tag: String?) {
         super.init(tag: tag)
-        // We set the cellProvider to load the .xib corresponding to our cell
+        
         cellProvider = CellProvider<EurekaImageCellTableViewCell>(nibName: "EurekaImageCellTableViewCell")
     }
 }
