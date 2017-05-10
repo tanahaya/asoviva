@@ -14,12 +14,12 @@ import ObjectMapper
 import SwiftyJSON
 
 
-class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource,UISearchControllerDelegate,CLLocationManagerDelegate{
+class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
     lazy var mapView: MKMapView = {
         let mapView: MKMapView = MKMapView()
         mapView.delegate = self
-        let mapframe: CGRect = CGRect(x: 0, y: 60 + 30, width: self.view.frame.width, height: self.view.frame.height*4/7)
+        let mapframe: CGRect = CGRect(x: 0, y: 60 , width: self.view.frame.width, height: self.view.frame.height*4/7)
         mapView.frame = mapframe
         let nowlat: Double = 35.680298
         let nowlng: Double = 139.766247
@@ -39,6 +39,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     var nowlat: CLLocationDegrees!
     var nowlng: CLLocationDegrees!
     
+    
     lazy var locationManager:CLLocationManager = {
         
         let locationManager = CLLocationManager()
@@ -51,25 +52,16 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     
     lazy var storeTableView: UITableView = {
         
-        let tableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height*4/7,  width: self.view.frame.width, height: 230))
+        let tableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height*4/7 - 30 ,  width: self.view.frame.width, height: 260))
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
         return tableView
     }()
-    lazy var searchBar:UISearchBar = {
-        let searchBar = UISearchBar()
-        let searchController = UISearchController(searchResultsController: nil)
-        searchBar.frame = CGRect(x: 0, y: 60, width: (self.navigationController?.navigationBar.frame.width)!, height: searchController.searchBar.frame.height)
-        searchBar.delegate = self
-        searchBar.showsBookmarkButton = false
-        searchBar.showsCancelButton = false
-        searchBar.placeholder = "調べたい遊び場を入れてね"
-        searchBar.tintColor = UIColor.orange
-        return searchBar
-    }()
+    
     var key = "AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -89,7 +81,8 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         nowlng = 139.766247
         self.view.addSubview(mapView)
         self.view.addSubview(storeTableView)
-        self.view.addSubview(searchBar)
+        
+        self.searchrecommendPlace()
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -102,14 +95,53 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
             break
         }
     }
+    func searchrecommendPlace(){
+        let searchword : String = "カラオケ"
+        locations = []
+        let semaphore = DispatchSemaphore(value: 0)
+        let encodeStr = searchword.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(nowlat!),\(nowlng!)&radius=2000&sensor=true&key=\(key)&name=\(encodeStr!)&lang=ja&types=cafe"
+        let testURL:URL = URL(string: url)!
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+        session.dataTask(with: testURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
+            if error != nil {
+                print("\(String(describing: error))")
+            } else {
+                if let statusCode = response as? HTTPURLResponse {
+                    if statusCode.statusCode != 200 {
+                        print("\(String(describing: response))")
+                    }
+                }
+                guard let data:Data = data else {return}
+                let json = JSON(data)
+                json["results"].array?.forEach({
+                    var location:Location = Mapper<Location>().map(JSON: $0.dictionaryObject!)!
+                    location.lat = $0["geometry"]["location"]["lat"].doubleValue
+                    location.lng = $0["geometry"]["location"]["lng"].doubleValue
+                    let Pin: MKPointAnnotation = MKPointAnnotation()
+                    Pin.coordinate = CLLocationCoordinate2DMake(location.lat,location.lng)
+                    Pin.title = location.storename
+                    self.mapView.addAnnotation(Pin)
+                    location.annotation = Pin
+                    self.locations.append(location)
+                    
+                })
+            }
+            sleep(1)
+            semaphore.signal()
+        }).resume()
+        _ = semaphore.wait(timeout: DispatchTime.distantFuture)
+        storeTableView.reloadData()
+
+    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
+        let searchword : String = "カラオケ"
         locations = []
         searchBar.endEditing(true)
         let semaphore = DispatchSemaphore(value: 0)
-        let encodeStr = searchBar.text!.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
-        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(nowlat!),\(nowlng!)&radius=2000&sensor=true&key=\(key)&name=\(encodeStr!)&lang=ja"
+        let encodeStr = searchword.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(nowlat!),\(nowlng!)&radius=2000&sensor=true&key=\(key)&name=\(encodeStr!)&lang=ja&types=cafe"
         let testURL:URL = URL(string: url)!
         let session = URLSession(configuration: URLSessionConfiguration.default)
         session.dataTask(with: testURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
@@ -214,27 +246,27 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         return [detailButton, guideButton]
     }
     
-     func showUserAndDestinationOnMap() {
-     let maxLat:Double = fmax(userLocation.latitude,  destLocation.latitude)
-     let maxLon:Double = fmax(userLocation.longitude, destLocation.longitude)
-     let minLat:Double = fmin(userLocation.latitude,  destLocation.latitude)
-     let minLon:Double = fmin(userLocation.longitude, destLocation.longitude)
-     
-     let mapMargin:Double = 1.5;  // 経路が入る幅(1.0)＋余白(0.5)
-     let leastCoordSpan:Double = 0.005;    // 拡大表示したときの最大値
-     let span_x:Double = fmax(leastCoordSpan, fabs(maxLat - minLat) * mapMargin)
-     let span_y:Double = fmax(leastCoordSpan, fabs(maxLon - minLon) * mapMargin)
-     
-     let span:MKCoordinateSpan = MKCoordinateSpanMake(span_x, span_y)
-     
-     let center:CLLocationCoordinate2D = CLLocationCoordinate2DMake((maxLat + minLat) / 2, (maxLon + minLon) / 2)
-     let region:MKCoordinateRegion = MKCoordinateRegionMake(center, span)
-     
-     mapView.setRegion(mapView.regionThatFits(region), animated:true)
-     }
- 
+    func showUserAndDestinationOnMap() {
+        let maxLat:Double = fmax(userLocation.latitude,  destLocation.latitude)
+        let maxLon:Double = fmax(userLocation.longitude, destLocation.longitude)
+        let minLat:Double = fmin(userLocation.latitude,  destLocation.latitude)
+        let minLon:Double = fmin(userLocation.longitude, destLocation.longitude)
+        
+        let mapMargin:Double = 1.5;  // 経路が入る幅(1.0)＋余白(0.5)
+        let leastCoordSpan:Double = 0.005;    // 拡大表示したときの最大値
+        let span_x:Double = fmax(leastCoordSpan, fabs(maxLat - minLat) * mapMargin)
+        let span_y:Double = fmax(leastCoordSpan, fabs(maxLon - minLon) * mapMargin)
+        
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(span_x, span_y)
+        
+        let center:CLLocationCoordinate2D = CLLocationCoordinate2DMake((maxLat + minLat) / 2, (maxLon + minLon) / 2)
+        let region:MKCoordinateRegion = MKCoordinateRegionMake(center, span)
+        
+        mapView.setRegion(mapView.regionThatFits(region), animated:true)
+    }
     
-     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         let route: MKPolyline = overlay as! MKPolyline
         let routeRenderer: MKPolylineRenderer = MKPolylineRenderer(polyline: route)

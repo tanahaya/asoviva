@@ -19,10 +19,9 @@ class DetailViewController: FormViewController {
     var detailData = PlaygroundDetail()
     var detailArray:[String] = []
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let posX: CGFloat = self.view.bounds.width
-        let posY: CGFloat = self.view.bounds.height
         
         self.view.backgroundColor = UIColor.white
         let encodeplaceid = detailData.placeId.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
@@ -31,11 +30,11 @@ class DetailViewController: FormViewController {
         let session = URLSession(configuration: URLSessionConfiguration.default)
         session.dataTask(with: TestURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
             if error != nil {
-                print("Error: " + "\(error)")
+                print("Error: " + "\(String(describing: error))")
             } else {
                 if let statusCode = response as? HTTPURLResponse {
                     if statusCode.statusCode != 200 {
-                        print("Response: " + "\(response)")
+                        print("Response: " + "\(String(describing: response))")
                     }
                 }
                 guard let data:Data = data else {return}
@@ -53,24 +52,7 @@ class DetailViewController: FormViewController {
         }).resume()
         
     }
-    func yomikomi(){
-        // self.image.image = self.detailData.image  }
-        /*
-         detailArray.append("名前:" + detailData.name )
-         detailArray.append("住所:" + detailData.address )
-         detailArray.append("電話番号:" + detailData.phonenumber )
-         detailArray.append("評価:" + String(detailData.rating) )
-         detailArray.append("カテゴリー:" + detailData.types[0] )
-         //定休日
-         //予算
-         //交通手段
-         //今開いているか
-         //
-         detailArray.append("ウェブサイト:" + detailData.website )
-         detailArray.append("googlemapへ" + detailData.url )
-         */
-        
-    }
+    
     func setup() {
         self.form +++ Section("お店の名前")
             <<< LabelRow() {
@@ -111,13 +93,6 @@ class DetailViewController: FormViewController {
             <<< LabelRow() {
                 $0.title = "カテゴリー:" + detailData.types[0]
         }
-        
-        /*
-         form +++ Section()
-         <<< CustomImageCell() { row in
-         row.value = pictureUrl: NSURL(string: "http://lh4.ggpht.com/VpeucXbRtK2pmVY6At76vU45Q7YWXB6kz25Sm_JKW1tgfmJDP3gSAlDwowjGEORSM-EW=w300")
-         }
-         */
         
     }
     
