@@ -165,12 +165,13 @@ class HomeViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         
         let detailButton: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "詳しく") { (action, index) -> Void in
             tableView.isEditing = false
-            let viewController = DetailViewController()
-            viewController.detailData.placeId = self.locations[indexPath.row].placeid
-            self.navigationController?.pushViewController(viewController, animated: true)
-            
+            let detailviewController = DetailViewController()
+            detailviewController.detailData.placeId = self.locations[indexPath.row].placeid
+            self.navigationController?.pushViewController(detailviewController, animated: true)
         }
+        
         detailButton.backgroundColor = UIColor.blue
+        
         
         let guideButton: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "道案内") { (action, index) -> Void in
             

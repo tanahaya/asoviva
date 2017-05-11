@@ -12,12 +12,11 @@ import Eureka
 public class EurekaImageCellTableViewCell: Cell<Bool>, CellType{
     
     
-    var customImage: UIImageView!
+    @IBOutlet var customImage: UIImageView!
     
     public override func setup() {
         super.setup()
-        height = { return 100 }
-        customImage.frame = CGRect(x: 20, y: 20, width:self.bounds.width , height: self.bounds.height)
+        height = { return 200 }
         self.addSubview(customImage)
     }
     

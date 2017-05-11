@@ -96,85 +96,47 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         }
     }
     func searchrecommendPlace(){
-        let searchword : String = "カラオケ"
+        let searchword : [String] = ["カラオケ"]
         locations = []
         let semaphore = DispatchSemaphore(value: 0)
-        let encodeStr = searchword.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
-        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(nowlat!),\(nowlng!)&radius=2000&sensor=true&key=\(key)&name=\(encodeStr!)&lang=ja&types=cafe"
-        let testURL:URL = URL(string: url)!
-        let session = URLSession(configuration: URLSessionConfiguration.default)
-        session.dataTask(with: testURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
-            if error != nil {
-                print("\(String(describing: error))")
-            } else {
-                if let statusCode = response as? HTTPURLResponse {
-                    if statusCode.statusCode != 200 {
-                        print("\(String(describing: response))")
+        for i in 0 ..< searchword.count {
+            let encodeStr = searchword[i].addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+            let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(nowlat!),\(nowlng!)&radius=2000&sensor=true&key=\(key)&name=\(encodeStr!)&lang=ja"
+            let testURL:URL = URL(string: url)!
+            let session = URLSession(configuration: URLSessionConfiguration.default)
+            session.dataTask(with: testURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
+                if error != nil {
+                    print("\(String(describing: error))")
+                } else {
+                    if let statusCode = response as? HTTPURLResponse {
+                        if statusCode.statusCode != 200 {
+                            print("\(String(describing: response))")
+                        }
                     }
+                    guard let data:Data = data else {return}
+                    let json = JSON(data)
+                    json["results"].array?.forEach({
+                        var location:Location = Mapper<Location>().map(JSON: $0.dictionaryObject!)!
+                        location.lat = $0["geometry"]["location"]["lat"].doubleValue
+                        location.lng = $0["geometry"]["location"]["lng"].doubleValue
+                        let Pin: MKPointAnnotation = MKPointAnnotation()
+                        Pin.coordinate = CLLocationCoordinate2DMake(location.lat,location.lng)
+                        Pin.title = location.storename
+                        self.mapView.addAnnotation(Pin)
+                        location.annotation = Pin
+                        self.locations.append(location)
+                        
+                    })
                 }
-                guard let data:Data = data else {return}
-                let json = JSON(data)
-                json["results"].array?.forEach({
-                    var location:Location = Mapper<Location>().map(JSON: $0.dictionaryObject!)!
-                    location.lat = $0["geometry"]["location"]["lat"].doubleValue
-                    location.lng = $0["geometry"]["location"]["lng"].doubleValue
-                    let Pin: MKPointAnnotation = MKPointAnnotation()
-                    Pin.coordinate = CLLocationCoordinate2DMake(location.lat,location.lng)
-                    Pin.title = location.storename
-                    self.mapView.addAnnotation(Pin)
-                    location.annotation = Pin
-                    self.locations.append(location)
-                    
-                })
-            }
-            sleep(1)
-            semaphore.signal()
-        }).resume()
-        _ = semaphore.wait(timeout: DispatchTime.distantFuture)
-        storeTableView.reloadData()
-
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let searchword : String = "カラオケ"
-        locations = []
-        searchBar.endEditing(true)
-        let semaphore = DispatchSemaphore(value: 0)
-        let encodeStr = searchword.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
-        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(nowlat!),\(nowlng!)&radius=2000&sensor=true&key=\(key)&name=\(encodeStr!)&lang=ja&types=cafe"
-        let testURL:URL = URL(string: url)!
-        let session = URLSession(configuration: URLSessionConfiguration.default)
-        session.dataTask(with: testURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
-            if error != nil {
-                print("\(String(describing: error))")
-            } else {
-                if let statusCode = response as? HTTPURLResponse {
-                    if statusCode.statusCode != 200 {
-                        print("\(String(describing: response))")
-                    }
-                }
-                guard let data:Data = data else {return}
-                let json = JSON(data)
-                json["results"].array?.forEach({
-                    var location:Location = Mapper<Location>().map(JSON: $0.dictionaryObject!)!
-                    location.lat = $0["geometry"]["location"]["lat"].doubleValue
-                    location.lng = $0["geometry"]["location"]["lng"].doubleValue
-                    let Pin: MKPointAnnotation = MKPointAnnotation()
-                    Pin.coordinate = CLLocationCoordinate2DMake(location.lat,location.lng)
-                    Pin.title = location.storename
-                    self.mapView.addAnnotation(Pin)
-                    location.annotation = Pin
-                    self.locations.append(location)
-                    
-                })
-            }
-            sleep(1)
-            semaphore.signal()
-        }).resume()
-        _ = semaphore.wait(timeout: DispatchTime.distantFuture)
+                sleep(UInt32(0.1))
+                semaphore.signal()
+            }).resume()
+            _ = semaphore.wait(timeout: DispatchTime.distantFuture)
+        }
         storeTableView.reloadData()
         
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
@@ -199,7 +161,8 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             tableView.isEditing = false
             let viewController = DetailViewController()
             viewController.detailData.placeId = self.locations[indexPath.row].placeid
-            self.navigationController?.pushViewController(viewController, animated: true)
+            //self.navigationController?.pushViewController(viewController, animated: true)
+            self.present(viewController, animated: true, completion: nil)
             
         }
         detailButton.backgroundColor = UIColor.blue
