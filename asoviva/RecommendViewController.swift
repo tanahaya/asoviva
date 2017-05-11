@@ -14,6 +14,8 @@ import ObjectMapper
 import SwiftyJSON
 
 
+
+
 class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
     lazy var mapView: MKMapView = {
@@ -83,6 +85,11 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         self.view.addSubview(storeTableView)
         
         self.searchrecommendPlace()
+        
+        
+        let leftButton = UIBarButtonItem(title: "alert", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(alert))
+        self.navigationItem.leftBarButtonItem = leftButton
+        self.navigationItem.hidesBackButton = true
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -236,6 +243,10 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         routeRenderer.lineWidth = 5.0
         routeRenderer.strokeColor = UIColor.red
         return routeRenderer
+    }
+    func alert() {
+        print("alert")
+        
     }
     
     

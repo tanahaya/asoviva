@@ -23,13 +23,15 @@
 		9F8CBB121DD1E574002B3DBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8CBB101DD1E574002B3DBA /* Main.storyboard */; };
 		9F8CBB141DD1E574002B3DBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F8CBB131DD1E574002B3DBA /* Assets.xcassets */; };
 		9F8CBB171DD1E574002B3DBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */; };
-		9F8CBB221DD1E574002B3DBA /* asovivaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8CBB211DD1E574002B3DBA /* asovivaTests.swift */; };
-		9F8CBB2D1DD1E574002B3DBA /* asovivaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8CBB2C1DD1E574002B3DBA /* asovivaUITests.swift */; };
 		9FB64B041E3762DF00C3C430 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB64B031E3762DF00C3C430 /* Location.swift */; };
 		9FECD2B51EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */; };
 		9FECD2B61EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FECD2B41EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib */; };
 		9FECD2B81EC1D89B007E3C87 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */; };
 		9FECD2BA1EC318BE007E3C87 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2B91EC318BE007E3C87 /* RecommendViewController.swift */; };
+		9FECD2C81EC4B3CF007E3C87 /* asovivaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2C31EC4B3CF007E3C87 /* asovivaTests.swift */; };
+		9FECD2C91EC4B3CF007E3C87 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FECD2C41EC4B3CF007E3C87 /* Info.plist */; };
+		9FECD2CA1EC4B3CF007E3C87 /* asovivaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2C61EC4B3CF007E3C87 /* asovivaUITests.swift */; };
+		9FECD2CB1EC4B3CF007E3C87 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FECD2C71EC4B3CF007E3C87 /* Info.plist */; };
 		9FFC054F1E77E6670032589C /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFC054E1E77E6670032589C /* Eureka.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,16 +75,17 @@
 		9F8CBB161DD1E574002B3DBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F8CBB181DD1E574002B3DBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F8CBB1D1DD1E574002B3DBA /* asovivaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = asovivaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F8CBB211DD1E574002B3DBA /* asovivaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = asovivaTests.swift; sourceTree = "<group>"; };
-		9F8CBB231DD1E574002B3DBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F8CBB281DD1E574002B3DBA /* asovivaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = asovivaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F8CBB2C1DD1E574002B3DBA /* asovivaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = asovivaUITests.swift; sourceTree = "<group>"; };
-		9F8CBB2E1DD1E574002B3DBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FB64B031E3762DF00C3C430 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurekaImageCellTableViewCell.swift; sourceTree = "<group>"; };
 		9FECD2B41EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EurekaImageCellTableViewCell.xib; sourceTree = "<group>"; };
 		9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		9FECD2B91EC318BE007E3C87 /* RecommendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
+		9FECD2C01EC4B0DC007E3C87 /* SCLAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertView.framework; path = "Pods/../build/Debug-iphoneos/SCLAlertView/SCLAlertView.framework"; sourceTree = "<group>"; };
+		9FECD2C31EC4B3CF007E3C87 /* asovivaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = asovivaTests.swift; sourceTree = "<group>"; };
+		9FECD2C41EC4B3CF007E3C87 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FECD2C61EC4B3CF007E3C87 /* asovivaUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = asovivaUITests.swift; sourceTree = "<group>"; };
+		9FECD2C71EC4B3CF007E3C87 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FFC054E1E77E6670032589C /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
 		CA0C2308D4C80FE916A3DE8E /* Pods_asovivaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_asovivaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB105D80A53C4A293E4B534F /* Pods-asovivaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +141,7 @@
 		9F63FBD41DD1F14100150F34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9FECD2C01EC4B0DC007E3C87 /* SCLAlertView.framework */,
 				9FFC054E1E77E6670032589C /* Eureka.framework */,
 				9F04782C1E40982800656393 /* SwiftyJSON.framework */,
 				9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */,
@@ -154,10 +158,10 @@
 			isa = PBXGroup;
 			children = (
 				9F8CBB0B1DD1E574002B3DBA /* asoviva */,
-				9F8CBB201DD1E574002B3DBA /* asovivaTests */,
-				9F8CBB2B1DD1E574002B3DBA /* asovivaUITests */,
 				9F8CBB0A1DD1E574002B3DBA /* Products */,
 				9F63FBD41DD1F14100150F34 /* Frameworks */,
+				9FECD2C21EC4B3CF007E3C87 /* asovivaTests */,
+				9FECD2C51EC4B3CF007E3C87 /* asovivaUITests */,
 				26C72D310407639AC2017C31 /* Pods */,
 			);
 			sourceTree = "<group>";
@@ -194,20 +198,20 @@
 			path = asoviva;
 			sourceTree = "<group>";
 		};
-		9F8CBB201DD1E574002B3DBA /* asovivaTests */ = {
+		9FECD2C21EC4B3CF007E3C87 /* asovivaTests */ = {
 			isa = PBXGroup;
 			children = (
-				9F8CBB211DD1E574002B3DBA /* asovivaTests.swift */,
-				9F8CBB231DD1E574002B3DBA /* Info.plist */,
+				9FECD2C31EC4B3CF007E3C87 /* asovivaTests.swift */,
+				9FECD2C41EC4B3CF007E3C87 /* Info.plist */,
 			);
 			path = asovivaTests;
 			sourceTree = "<group>";
 		};
-		9F8CBB2B1DD1E574002B3DBA /* asovivaUITests */ = {
+		9FECD2C51EC4B3CF007E3C87 /* asovivaUITests */ = {
 			isa = PBXGroup;
 			children = (
-				9F8CBB2C1DD1E574002B3DBA /* asovivaUITests.swift */,
-				9F8CBB2E1DD1E574002B3DBA /* Info.plist */,
+				9FECD2C61EC4B3CF007E3C87 /* asovivaUITests.swift */,
+				9FECD2C71EC4B3CF007E3C87 /* Info.plist */,
 			);
 			path = asovivaUITests;
 			sourceTree = "<group>";
@@ -333,7 +337,9 @@
 			files = (
 				9FECD2B61EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib in Resources */,
 				9F8CBB171DD1E574002B3DBA /* LaunchScreen.storyboard in Resources */,
+				9FECD2CB1EC4B3CF007E3C87 /* Info.plist in Resources */,
 				9F8CBB141DD1E574002B3DBA /* Assets.xcassets in Resources */,
+				9FECD2C91EC4B3CF007E3C87 /* Info.plist in Resources */,
 				9F8CBB121DD1E574002B3DBA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,6 +506,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FECD2C81EC4B3CF007E3C87 /* asovivaTests.swift in Sources */,
 				9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */,
 				9F63FBD31DD1EEE100150F34 /* SearchViewController.swift in Sources */,
 				9F49E3421E5324C800D190AD /* PlaygroundDetail.swift in Sources */,
@@ -508,6 +515,7 @@
 				9F4A4BD91E49D2C500065862 /* DetailViewController.swift in Sources */,
 				9F8CBB0D1DD1E574002B3DBA /* AppDelegate.swift in Sources */,
 				9FECD2B51EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift in Sources */,
+				9FECD2CA1EC4B3CF007E3C87 /* asovivaUITests.swift in Sources */,
 				9F736F531E24D7FD00EC8D00 /* HomeViewController.swift in Sources */,
 				9FECD2BA1EC318BE007E3C87 /* RecommendViewController.swift in Sources */,
 			);
@@ -517,7 +525,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F8CBB221DD1E574002B3DBA /* asovivaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,7 +532,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F8CBB2D1DD1E574002B3DBA /* asovivaUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,6 +670,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SCLAlertView",
 				);
 				INFOPLIST_FILE = asoviva/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -682,6 +689,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SCLAlertView",
 				);
 				INFOPLIST_FILE = asoviva/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
