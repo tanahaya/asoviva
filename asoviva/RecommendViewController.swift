@@ -87,9 +87,9 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         self.searchrecommendPlace()
         
         
-        let leftButton = UIBarButtonItem(title: "alert", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(alert))
+        let leftButton = UIBarButtonItem(title: "back", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(alert))
         self.navigationItem.leftBarButtonItem = leftButton
-        self.navigationItem.hidesBackButton = true
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -168,8 +168,8 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             tableView.isEditing = false
             let viewController = DetailViewController()
             viewController.detailData.placeId = self.locations[indexPath.row].placeid
-            //self.navigationController?.pushViewController(viewController, animated: true)
-            self.present(viewController, animated: true, completion: nil)
+            self.navigationController?.pushViewController(viewController, animated: true)
+            //self.present(viewController, animated: true, completion: nil)
             
         }
         detailButton.backgroundColor = UIColor.blue
@@ -244,8 +244,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         routeRenderer.strokeColor = UIColor.red
         return routeRenderer
     }
-    func alert() {
-        print("alert")
+    func alert(){
         
     }
     

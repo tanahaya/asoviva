@@ -20,7 +20,6 @@ class DetailViewController: FormViewController {
     var detailArray:[String] = []
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,19 +57,18 @@ class DetailViewController: FormViewController {
     func setup() {
         self.form +++ Section("お店の名前")
             <<< LabelRow() {
-                $0.title = "名前:" + detailData.name
+                $0.title = detailData.name
+                
             }
             <<< CustomRow() {
                 
                 $0.cellSetup({ (cell, row) in
-                    print("hello")
                     cell.customImage.frame = CGRect(x: 20, y: 20, width:170 , height: 170)
                     cell.customImage.layer.position =  CGPoint(x: self.view.frame.width / 2, y: 100)
                     let nowimage = UIImage.fontAwesomeIcon(name: .mapPin, textColor: UIColor.black, size: CGSize(width:100,height:100))
                     cell.customImage.image = nowimage
                     
                 })
-                
                 
             }
             
@@ -92,8 +90,16 @@ class DetailViewController: FormViewController {
             }
             <<< LabelRow() {
                 $0.title = "カテゴリー:" + detailData.types[0]
+            }
+            +++ Section("")
+            <<< LabelRow() {
+                $0.title = ""
         }
         
+    }
+    func back(){
+        let viewController = RecommendViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
