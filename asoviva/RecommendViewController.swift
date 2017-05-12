@@ -84,7 +84,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         self.searchrecommendPlace()
         
         
-        let leftButton = UIBarButtonItem(title: "back", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(alert))
+        let leftButton = UIBarButtonItem(title: "alert", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(alert))
         self.navigationItem.leftBarButtonItem = leftButton
         
     }
