@@ -13,7 +13,6 @@ import GoogleMaps
 import ObjectMapper
 import SwiftyJSON
 
-
 class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
     lazy var mapView: MKMapView = {
@@ -243,7 +242,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         return routeRenderer
     }
     func alert(){
-        
+        SCLAlertView().showInfo("infomation", subTitle: "subTitle")
     }
     
     
