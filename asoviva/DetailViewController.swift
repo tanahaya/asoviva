@@ -74,22 +74,28 @@ class DetailViewController: FormViewController {
             
             +++ Section("お店の情報")
             <<< LabelRow() {
-                $0.title = "住所:" + detailData.address
+                $0.title = "住所:"
+                $0.value = detailData.address
             }
             <<< LabelRow() {
-                $0.title = "電話番号:" + detailData.phonenumber
+                $0.title = "電話番号:"
+                $0.value = detailData.phonenumber
             }
             <<< LabelRow() {
-                $0.title = "評価:" + String(detailData.rating)
+                $0.title = "評価:"
+                $0.value = String(detailData.rating)
             }
             <<< LabelRow() {
-                $0.title = "電話番号:" + detailData.phonenumber
+                $0.title = "電話番号:"
+                $0.value = detailData.phonenumber
             }
             <<< LabelRow() {
-                $0.title = "ウェブサイト:" + detailData.website
+                $0.title = "ウェブサイト:"
+                $0.value = detailData.website
             }
             <<< LabelRow() {
-                $0.title = "カテゴリー:" + detailData.types[0]
+                $0.title = "カテゴリー:"
+                $0.value = detailData.types[0]
             }
             +++ Section("")
             <<< LabelRow() {

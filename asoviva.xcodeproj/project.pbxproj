@@ -1,776 +1,1699 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		68D3210B506AF2820E8CCA5F /* Pods_asovivaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88EE371BCA1A995AF80A399E /* Pods_asovivaUITests.framework */; };
-		6EC762A8EDBBD4A49597F584 /* Pods_asovivaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0C2308D4C80FE916A3DE8E /* Pods_asovivaTests.framework */; };
-		86715922B7FC1FED7B1D18B3 /* Pods_asoviva.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61CF553ECAE0B2C5AF5DB596 /* Pods_asoviva.framework */; };
-		9F04782D1E40982800656393 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F04782C1E40982800656393 /* SwiftyJSON.framework */; };
-		9F4514F71E375210002CFE04 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */; };
-		9F49E3421E5324C800D190AD /* PlaygroundDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F49E3411E5324C800D190AD /* PlaygroundDetail.swift */; };
-		9F4A4BD91E49D2C500065862 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4A4BD81E49D2C500065862 /* DetailViewController.swift */; };
-		9F63EE9C1DDB142100D332D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */; };
-		9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63FBD01DD1EE1200150F34 /* MainViewController.swift */; };
-		9F63FBD31DD1EEE100150F34 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63FBD21DD1EEE100150F34 /* SearchViewController.swift */; };
-		9F63FBD61DD1F14100150F34 /* FontAwesome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F63FBD51DD1F14100150F34 /* FontAwesome.framework */; };
-		9F8CBB0D1DD1E574002B3DBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */; };
-		9F8CBB121DD1E574002B3DBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8CBB101DD1E574002B3DBA /* Main.storyboard */; };
-		9F8CBB141DD1E574002B3DBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F8CBB131DD1E574002B3DBA /* Assets.xcassets */; };
-		9F8CBB171DD1E574002B3DBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */; };
-		9FB64B041E3762DF00C3C430 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB64B031E3762DF00C3C430 /* Location.swift */; };
-		9FECD2B51EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */; };
-		9FECD2B61EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FECD2B41EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib */; };
-		9FECD2B81EC1D89B007E3C87 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */; };
-		9FECD2BA1EC318BE007E3C87 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2B91EC318BE007E3C87 /* RecommendViewController.swift */; };
-		9FECD2CD1EC598B9007E3C87 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2CC1EC598B9007E3C87 /* MyPageViewController.swift */; };
-		9FFC054F1E77E6670032589C /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFC054E1E77E6670032589C /* Eureka.framework */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		9F8CBB1E1DD1E574002B3DBA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9F8CBB011DD1E574002B3DBA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9F8CBB081DD1E574002B3DBA;
-			remoteInfo = asoviva;
-		};
-		9F8CBB291DD1E574002B3DBA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9F8CBB011DD1E574002B3DBA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9F8CBB081DD1E574002B3DBA;
-			remoteInfo = asoviva;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		2F3AF750FA1B45E6F99EE965 /* Pods-asoviva.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asoviva.release.xcconfig"; path = "Pods/Target Support Files/Pods-asoviva/Pods-asoviva.release.xcconfig"; sourceTree = "<group>"; };
-		61CF553ECAE0B2C5AF5DB596 /* Pods_asoviva.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_asoviva.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6271883DF96652BC2BC08E7E /* Pods-asovivaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaUITests/Pods-asovivaUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		71902EDE5C8A45CDA48067E8 /* Pods-asovivaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaUITests/Pods-asovivaUITests.release.xcconfig"; sourceTree = "<group>"; };
-		78CF1CE33110201566327E23 /* Pods-asoviva.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asoviva.debug.xcconfig"; path = "Pods/Target Support Files/Pods-asoviva/Pods-asoviva.debug.xcconfig"; sourceTree = "<group>"; };
-		88EE371BCA1A995AF80A399E /* Pods_asovivaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_asovivaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F04782C1E40982800656393 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
-		9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
-		9F49E3411E5324C800D190AD /* PlaygroundDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundDetail.swift; sourceTree = "<group>"; };
-		9F4A4BD81E49D2C500065862 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		9F63FBD01DD1EE1200150F34 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		9F63FBD21DD1EEE100150F34 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		9F63FBD51DD1F14100150F34 /* FontAwesome.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome.framework; path = Carthage/Build/iOS/FontAwesome.framework; sourceTree = "<group>"; };
-		9F8CBB091DD1E574002B3DBA /* asoviva.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = asoviva.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9F8CBB111DD1E574002B3DBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9F8CBB131DD1E574002B3DBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9F8CBB161DD1E574002B3DBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9F8CBB181DD1E574002B3DBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9F8CBB1D1DD1E574002B3DBA /* asovivaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = asovivaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F8CBB281DD1E574002B3DBA /* asovivaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = asovivaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9FB64B031E3762DF00C3C430 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurekaImageCellTableViewCell.swift; sourceTree = "<group>"; };
-		9FECD2B41EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EurekaImageCellTableViewCell.xib; sourceTree = "<group>"; };
-		9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
-		9FECD2B91EC318BE007E3C87 /* RecommendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
-		9FECD2C01EC4B0DC007E3C87 /* SCLAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertView.framework; path = "Pods/../build/Debug-iphoneos/SCLAlertView/SCLAlertView.framework"; sourceTree = "<group>"; };
-		9FECD2CC1EC598B9007E3C87 /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
-		9FFC054E1E77E6670032589C /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
-		CA0C2308D4C80FE916A3DE8E /* Pods_asovivaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_asovivaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB105D80A53C4A293E4B534F /* Pods-asovivaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests.debug.xcconfig"; sourceTree = "<group>"; };
-		FE41C5F1DCA636049125BE31 /* Pods-asovivaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests.release.xcconfig"; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		9F8CBB061DD1E574002B3DBA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9FFC054F1E77E6670032589C /* Eureka.framework in Frameworks */,
-				9F04782D1E40982800656393 /* SwiftyJSON.framework in Frameworks */,
-				9F4514F71E375210002CFE04 /* ObjectMapper.framework in Frameworks */,
-				9F63EE9C1DDB142100D332D6 /* CoreLocation.framework in Frameworks */,
-				9F63FBD61DD1F14100150F34 /* FontAwesome.framework in Frameworks */,
-				86715922B7FC1FED7B1D18B3 /* Pods_asoviva.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9F8CBB1A1DD1E574002B3DBA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6EC762A8EDBBD4A49597F584 /* Pods_asovivaTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9F8CBB251DD1E574002B3DBA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				68D3210B506AF2820E8CCA5F /* Pods_asovivaUITests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		26C72D310407639AC2017C31 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				78CF1CE33110201566327E23 /* Pods-asoviva.debug.xcconfig */,
-				2F3AF750FA1B45E6F99EE965 /* Pods-asoviva.release.xcconfig */,
-				FB105D80A53C4A293E4B534F /* Pods-asovivaTests.debug.xcconfig */,
-				FE41C5F1DCA636049125BE31 /* Pods-asovivaTests.release.xcconfig */,
-				6271883DF96652BC2BC08E7E /* Pods-asovivaUITests.debug.xcconfig */,
-				71902EDE5C8A45CDA48067E8 /* Pods-asovivaUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		9F63FBD41DD1F14100150F34 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9FECD2C01EC4B0DC007E3C87 /* SCLAlertView.framework */,
-				9FFC054E1E77E6670032589C /* Eureka.framework */,
-				9F04782C1E40982800656393 /* SwiftyJSON.framework */,
-				9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */,
-				9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */,
-				9F63FBD51DD1F14100150F34 /* FontAwesome.framework */,
-				61CF553ECAE0B2C5AF5DB596 /* Pods_asoviva.framework */,
-				CA0C2308D4C80FE916A3DE8E /* Pods_asovivaTests.framework */,
-				88EE371BCA1A995AF80A399E /* Pods_asovivaUITests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9F8CBB001DD1E574002B3DBA = {
-			isa = PBXGroup;
-			children = (
-				9F8CBB0B1DD1E574002B3DBA /* asoviva */,
-				9F8CBB0A1DD1E574002B3DBA /* Products */,
-				9F63FBD41DD1F14100150F34 /* Frameworks */,
-				26C72D310407639AC2017C31 /* Pods */,
-			);
-			sourceTree = "<group>";
-		};
-		9F8CBB0A1DD1E574002B3DBA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9F8CBB091DD1E574002B3DBA /* asoviva.app */,
-				9F8CBB1D1DD1E574002B3DBA /* asovivaTests.xctest */,
-				9F8CBB281DD1E574002B3DBA /* asovivaUITests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		9F8CBB0B1DD1E574002B3DBA /* asoviva */ = {
-			isa = PBXGroup;
-			children = (
-				9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */,
-				9F63FBD01DD1EE1200150F34 /* MainViewController.swift */,
-				9FECD2B91EC318BE007E3C87 /* RecommendViewController.swift */,
-				9F63FBD21DD1EEE100150F34 /* SearchViewController.swift */,
-				9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */,
-				9FECD2CC1EC598B9007E3C87 /* MyPageViewController.swift */,
-				9F4A4BD81E49D2C500065862 /* DetailViewController.swift */,
-				9FB64B031E3762DF00C3C430 /* Location.swift */,
-				9F49E3411E5324C800D190AD /* PlaygroundDetail.swift */,
-				9F8CBB101DD1E574002B3DBA /* Main.storyboard */,
-				9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */,
-				9FECD2B41EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib */,
-				9F8CBB131DD1E574002B3DBA /* Assets.xcassets */,
-				9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */,
-				9F8CBB181DD1E574002B3DBA /* Info.plist */,
-			);
-			path = asoviva;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		9F8CBB081DD1E574002B3DBA /* asoviva */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9F8CBB311DD1E574002B3DBA /* Build configuration list for PBXNativeTarget "asoviva" */;
-			buildPhases = (
-				19ECA29885FD3AB778BE6EE3 /* [CP] Check Pods Manifest.lock */,
-				9F8CBB051DD1E574002B3DBA /* Sources */,
-				9F8CBB061DD1E574002B3DBA /* Frameworks */,
-				9F8CBB071DD1E574002B3DBA /* Resources */,
-				9F63FBD71DD1F15F00150F34 /* Run Script */,
-				A6F5195E533F76361ED4405B /* [CP] Embed Pods Frameworks */,
-				0D89961872A7C9E7415F3243 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = asoviva;
-			productName = asoviva;
-			productReference = 9F8CBB091DD1E574002B3DBA /* asoviva.app */;
-			productType = "com.apple.product-type.application";
-		};
-		9F8CBB1C1DD1E574002B3DBA /* asovivaTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9F8CBB341DD1E574002B3DBA /* Build configuration list for PBXNativeTarget "asovivaTests" */;
-			buildPhases = (
-				FA27592700E6F93E61C5D03E /* [CP] Check Pods Manifest.lock */,
-				9F8CBB191DD1E574002B3DBA /* Sources */,
-				9F8CBB1A1DD1E574002B3DBA /* Frameworks */,
-				9F8CBB1B1DD1E574002B3DBA /* Resources */,
-				9DDAE328B086CCF8D67D849E /* [CP] Embed Pods Frameworks */,
-				E6C4954DCA26300EF42AC2E4 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9F8CBB1F1DD1E574002B3DBA /* PBXTargetDependency */,
-			);
-			name = asovivaTests;
-			productName = asovivaTests;
-			productReference = 9F8CBB1D1DD1E574002B3DBA /* asovivaTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		9F8CBB271DD1E574002B3DBA /* asovivaUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9F8CBB371DD1E574002B3DBA /* Build configuration list for PBXNativeTarget "asovivaUITests" */;
-			buildPhases = (
-				BA484337C2BA9AB8D60B5703 /* [CP] Check Pods Manifest.lock */,
-				9F8CBB241DD1E574002B3DBA /* Sources */,
-				9F8CBB251DD1E574002B3DBA /* Frameworks */,
-				9F8CBB261DD1E574002B3DBA /* Resources */,
-				14EEFD668535EB555E17B39B /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9F8CBB2A1DD1E574002B3DBA /* PBXTargetDependency */,
-			);
-			name = asovivaUITests;
-			productName = asovivaUITests;
-			productReference = 9F8CBB281DD1E574002B3DBA /* asovivaUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		9F8CBB011DD1E574002B3DBA /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0810;
-				ORGANIZATIONNAME = "田中 颯";
-				TargetAttributes = {
-					9F8CBB081DD1E574002B3DBA = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = J476SJFME4;
-						ProvisioningStyle = Automatic;
-					};
-					9F8CBB1C1DD1E574002B3DBA = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = J476SJFME4;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 9F8CBB081DD1E574002B3DBA;
-					};
-					9F8CBB271DD1E574002B3DBA = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = J476SJFME4;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 9F8CBB081DD1E574002B3DBA;
-					};
-				};
-			};
-			buildConfigurationList = 9F8CBB041DD1E574002B3DBA /* Build configuration list for PBXProject "asoviva" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = 9F8CBB001DD1E574002B3DBA;
-			productRefGroup = 9F8CBB0A1DD1E574002B3DBA /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				9F8CBB081DD1E574002B3DBA /* asoviva */,
-				9F8CBB1C1DD1E574002B3DBA /* asovivaTests */,
-				9F8CBB271DD1E574002B3DBA /* asovivaUITests */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		9F8CBB071DD1E574002B3DBA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9FECD2B61EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib in Resources */,
-				9F8CBB171DD1E574002B3DBA /* LaunchScreen.storyboard in Resources */,
-				9F8CBB141DD1E574002B3DBA /* Assets.xcassets in Resources */,
-				9F8CBB121DD1E574002B3DBA /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9F8CBB1B1DD1E574002B3DBA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9F8CBB261DD1E574002B3DBA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		0D89961872A7C9E7415F3243 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-asoviva/Pods-asoviva-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		14EEFD668535EB555E17B39B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-asovivaUITests/Pods-asovivaUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		19ECA29885FD3AB778BE6EE3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		9DDAE328B086CCF8D67D849E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9F63FBD71DD1F15F00150F34 /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/FontAwesome.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
-			);
-			name = "Run Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-		A6F5195E533F76361ED4405B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-asoviva/Pods-asoviva-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BA484337C2BA9AB8D60B5703 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E6C4954DCA26300EF42AC2E4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FA27592700E6F93E61C5D03E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		9F8CBB051DD1E574002B3DBA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */,
-				9F63FBD31DD1EEE100150F34 /* SearchViewController.swift in Sources */,
-				9F49E3421E5324C800D190AD /* PlaygroundDetail.swift in Sources */,
-				9FB64B041E3762DF00C3C430 /* Location.swift in Sources */,
-				9FECD2B81EC1D89B007E3C87 /* FavoriteViewController.swift in Sources */,
-				9F4A4BD91E49D2C500065862 /* DetailViewController.swift in Sources */,
-				9FECD2CD1EC598B9007E3C87 /* MyPageViewController.swift in Sources */,
-				9F8CBB0D1DD1E574002B3DBA /* AppDelegate.swift in Sources */,
-				9FECD2B51EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift in Sources */,
-				9FECD2BA1EC318BE007E3C87 /* RecommendViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9F8CBB191DD1E574002B3DBA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9F8CBB241DD1E574002B3DBA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9F8CBB1F1DD1E574002B3DBA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9F8CBB081DD1E574002B3DBA /* asoviva */;
-			targetProxy = 9F8CBB1E1DD1E574002B3DBA /* PBXContainerItemProxy */;
-		};
-		9F8CBB2A1DD1E574002B3DBA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9F8CBB081DD1E574002B3DBA /* asoviva */;
-			targetProxy = 9F8CBB291DD1E574002B3DBA /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		9F8CBB101DD1E574002B3DBA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9F8CBB111DD1E574002B3DBA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9F8CBB161DD1E574002B3DBA /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		9F8CBB2F1DD1E574002B3DBA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		9F8CBB301DD1E574002B3DBA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		9F8CBB321DD1E574002B3DBA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 78CF1CE33110201566327E23 /* Pods-asoviva.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = J476SJFME4;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/SCLAlertView",
-				);
-				INFOPLIST_FILE = asoviva/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lit.asoviva;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		9F8CBB331DD1E574002B3DBA /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F3AF750FA1B45E6F99EE965 /* Pods-asoviva.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = J476SJFME4;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/SCLAlertView",
-				);
-				INFOPLIST_FILE = asoviva/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lit.asoviva;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		9F8CBB351DD1E574002B3DBA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB105D80A53C4A293E4B534F /* Pods-asovivaTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = J476SJFME4;
-				INFOPLIST_FILE = asovivaTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lit.asovivaTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/asoviva.app/asoviva";
-			};
-			name = Debug;
-		};
-		9F8CBB361DD1E574002B3DBA /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FE41C5F1DCA636049125BE31 /* Pods-asovivaTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = J476SJFME4;
-				INFOPLIST_FILE = asovivaTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lit.asovivaTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/asoviva.app/asoviva";
-			};
-			name = Release;
-		};
-		9F8CBB381DD1E574002B3DBA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6271883DF96652BC2BC08E7E /* Pods-asovivaUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = J476SJFME4;
-				INFOPLIST_FILE = asovivaUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lit.asovivaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = asoviva;
-			};
-			name = Debug;
-		};
-		9F8CBB391DD1E574002B3DBA /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 71902EDE5C8A45CDA48067E8 /* Pods-asovivaUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = J476SJFME4;
-				INFOPLIST_FILE = asovivaUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lit.asovivaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = asoviva;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		9F8CBB041DD1E574002B3DBA /* Build configuration list for PBXProject "asoviva" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9F8CBB2F1DD1E574002B3DBA /* Debug */,
-				9F8CBB301DD1E574002B3DBA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9F8CBB311DD1E574002B3DBA /* Build configuration list for PBXNativeTarget "asoviva" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9F8CBB321DD1E574002B3DBA /* Debug */,
-				9F8CBB331DD1E574002B3DBA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9F8CBB341DD1E574002B3DBA /* Build configuration list for PBXNativeTarget "asovivaTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9F8CBB351DD1E574002B3DBA /* Debug */,
-				9F8CBB361DD1E574002B3DBA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9F8CBB371DD1E574002B3DBA /* Build configuration list for PBXNativeTarget "asovivaUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9F8CBB381DD1E574002B3DBA /* Debug */,
-				9F8CBB391DD1E574002B3DBA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = 9F8CBB011DD1E574002B3DBA /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>0D89961872A7C9E7415F3243</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-asoviva/Pods-asoviva-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>14EEFD668535EB555E17B39B</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-asovivaUITests/Pods-asovivaUITests-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>185AA5DCB5E42D3EC3C8FBA9</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods_asovivaUITests.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>19ECA29885FD3AB778BE6EE3</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>26C72D310407639AC2017C31</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>78CF1CE33110201566327E23</string>
+				<string>2F3AF750FA1B45E6F99EE965</string>
+				<string>FB105D80A53C4A293E4B534F</string>
+				<string>FE41C5F1DCA636049125BE31</string>
+				<string>6271883DF96652BC2BC08E7E</string>
+				<string>71902EDE5C8A45CDA48067E8</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2F3AF750FA1B45E6F99EE965</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-asoviva.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-asoviva/Pods-asoviva.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3424D628F17B3E2E69BED865</key>
+		<dict>
+			<key>fileRef</key>
+			<string>185AA5DCB5E42D3EC3C8FBA9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>3FC2AEBF12D5AB2F0C47DE3A</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods_asovivaTests.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>5E9B755EA62C7DFD79F3333A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3FC2AEBF12D5AB2F0C47DE3A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>61CF553ECAE0B2C5AF5DB596</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods_asoviva.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>6271883DF96652BC2BC08E7E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-asovivaUITests.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-asovivaUITests/Pods-asovivaUITests.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>71902EDE5C8A45CDA48067E8</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-asovivaUITests.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-asovivaUITests/Pods-asovivaUITests.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>78CF1CE33110201566327E23</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-asoviva.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-asoviva/Pods-asoviva.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>86715922B7FC1FED7B1D18B3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>61CF553ECAE0B2C5AF5DB596</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9DDAE328B086CCF8D67D849E</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>9F04782C1E40982800656393</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>SwiftyJSON.framework</string>
+			<key>path</key>
+			<string>Carthage/Build/iOS/SwiftyJSON.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9F04782D1E40982800656393</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9F04782C1E40982800656393</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9F4514F51E3751CF002CFE04</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>ObjectMapper.framework</string>
+			<key>path</key>
+			<string>../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ObjectMapper/ObjectMapper.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9F4514F71E375210002CFE04</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9F4514F51E3751CF002CFE04</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9F49E3411E5324C800D190AD</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>PlaygroundDetail.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9F49E3421E5324C800D190AD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9F49E3411E5324C800D190AD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9F4A4BD81E49D2C500065862</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>DetailViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9F4A4BD91E49D2C500065862</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9F4A4BD81E49D2C500065862</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9F63EE9B1DDB142100D332D6</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>CoreLocation.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/CoreLocation.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>9F63EE9C1DDB142100D332D6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9F63EE9B1DDB142100D332D6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9F63FBD01DD1EE1200150F34</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>MainViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9F63FBD11DD1EE1200150F34</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9F63FBD01DD1EE1200150F34</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9F63FBD21DD1EEE100150F34</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>SearchViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9F63FBD31DD1EEE100150F34</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9F63FBD21DD1EEE100150F34</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9F63FBD41DD1F14100150F34</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9FFC054E1E77E6670032589C</string>
+				<string>9F04782C1E40982800656393</string>
+				<string>9F4514F51E3751CF002CFE04</string>
+				<string>9F63EE9B1DDB142100D332D6</string>
+				<string>9F63FBD51DD1F14100150F34</string>
+				<string>61CF553ECAE0B2C5AF5DB596</string>
+				<string>3FC2AEBF12D5AB2F0C47DE3A</string>
+				<string>185AA5DCB5E42D3EC3C8FBA9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9F63FBD51DD1F14100150F34</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>FontAwesome.framework</string>
+			<key>path</key>
+			<string>Carthage/Build/iOS/FontAwesome.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9F63FBD61DD1F14100150F34</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9F63FBD51DD1F14100150F34</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9F63FBD71DD1F15F00150F34</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array>
+				<string>$(SRCROOT)/Carthage/Build/iOS/FontAwesome.framework</string>
+				<string>$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework</string>
+				<string>$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework</string>
+				<string>$(SRCROOT)/Carthage/Build/iOS/Eureka.framework</string>
+			</array>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Run Script</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>/usr/local/bin/carthage copy-frameworks</string>
+		</dict>
+		<key>9F8CBB001DD1E574002B3DBA</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9F8CBB0B1DD1E574002B3DBA</string>
+				<string>9F8CBB0A1DD1E574002B3DBA</string>
+				<string>9F63FBD41DD1F14100150F34</string>
+				<string>26C72D310407639AC2017C31</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9F8CBB011DD1E574002B3DBA</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastSwiftUpdateCheck</key>
+				<string>0800</string>
+				<key>LastUpgradeCheck</key>
+				<string>0810</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>&#30000;&#20013; &#39087;</string>
+				<key>TargetAttributes</key>
+				<dict>
+					<key>9F8CBB081DD1E574002B3DBA</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>8.0</string>
+						<key>DevelopmentTeam</key>
+						<string>J476SJFME4</string>
+						<key>ProvisioningStyle</key>
+						<string>Automatic</string>
+					</dict>
+					<key>9F8CBB1C1DD1E574002B3DBA</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>8.0</string>
+						<key>DevelopmentTeam</key>
+						<string>J476SJFME4</string>
+						<key>ProvisioningStyle</key>
+						<string>Automatic</string>
+						<key>TestTargetID</key>
+						<string>9F8CBB081DD1E574002B3DBA</string>
+					</dict>
+					<key>9F8CBB271DD1E574002B3DBA</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>8.0</string>
+						<key>DevelopmentTeam</key>
+						<string>J476SJFME4</string>
+						<key>ProvisioningStyle</key>
+						<string>Automatic</string>
+						<key>TestTargetID</key>
+						<string>9F8CBB081DD1E574002B3DBA</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>9F8CBB041DD1E574002B3DBA</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>Base</string>
+			</array>
+			<key>mainGroup</key>
+			<string>9F8CBB001DD1E574002B3DBA</string>
+			<key>productRefGroup</key>
+			<string>9F8CBB0A1DD1E574002B3DBA</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>9F8CBB081DD1E574002B3DBA</string>
+				<string>9F8CBB1C1DD1E574002B3DBA</string>
+				<string>9F8CBB271DD1E574002B3DBA</string>
+			</array>
+		</dict>
+		<key>9F8CBB041DD1E574002B3DBA</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>9F8CBB2F1DD1E574002B3DBA</string>
+				<string>9F8CBB301DD1E574002B3DBA</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>9F8CBB051DD1E574002B3DBA</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>9F63FBD11DD1EE1200150F34</string>
+				<string>9F63FBD31DD1EEE100150F34</string>
+				<string>9F49E3421E5324C800D190AD</string>
+				<string>9FB64B041E3762DF00C3C430</string>
+				<string>9FECD2B81EC1D89B007E3C87</string>
+				<string>9F4A4BD91E49D2C500065862</string>
+				<string>9FECD2CD1EC598B9007E3C87</string>
+				<string>9F8CBB0D1DD1E574002B3DBA</string>
+				<string>9FECD2B51EC1D142007E3C87</string>
+				<string>9FECD2BA1EC318BE007E3C87</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>9F8CBB061DD1E574002B3DBA</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>9FFC054F1E77E6670032589C</string>
+				<string>9F04782D1E40982800656393</string>
+				<string>9F4514F71E375210002CFE04</string>
+				<string>9F63EE9C1DDB142100D332D6</string>
+				<string>9F63FBD61DD1F14100150F34</string>
+				<string>86715922B7FC1FED7B1D18B3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>9F8CBB071DD1E574002B3DBA</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>9FECD2B61EC1D142007E3C87</string>
+				<string>9F8CBB171DD1E574002B3DBA</string>
+				<string>9F8CBB141DD1E574002B3DBA</string>
+				<string>9F8CBB121DD1E574002B3DBA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>9F8CBB081DD1E574002B3DBA</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>9F8CBB311DD1E574002B3DBA</string>
+			<key>buildPhases</key>
+			<array>
+				<string>19ECA29885FD3AB778BE6EE3</string>
+				<string>9F8CBB051DD1E574002B3DBA</string>
+				<string>9F8CBB061DD1E574002B3DBA</string>
+				<string>9F8CBB071DD1E574002B3DBA</string>
+				<string>9F63FBD71DD1F15F00150F34</string>
+				<string>A6F5195E533F76361ED4405B</string>
+				<string>0D89961872A7C9E7415F3243</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>asoviva</string>
+			<key>productName</key>
+			<string>asoviva</string>
+			<key>productReference</key>
+			<string>9F8CBB091DD1E574002B3DBA</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>9F8CBB091DD1E574002B3DBA</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>asoviva.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>9F8CBB0A1DD1E574002B3DBA</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9F8CBB091DD1E574002B3DBA</string>
+				<string>9F8CBB1D1DD1E574002B3DBA</string>
+				<string>9F8CBB281DD1E574002B3DBA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9F8CBB0B1DD1E574002B3DBA</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9F8CBB0C1DD1E574002B3DBA</string>
+				<string>9F63FBD01DD1EE1200150F34</string>
+				<string>9FECD2B91EC318BE007E3C87</string>
+				<string>9F63FBD21DD1EEE100150F34</string>
+				<string>9FECD2B71EC1D89B007E3C87</string>
+				<string>9FECD2CC1EC598B9007E3C87</string>
+				<string>9F4A4BD81E49D2C500065862</string>
+				<string>9FB64B031E3762DF00C3C430</string>
+				<string>9F49E3411E5324C800D190AD</string>
+				<string>9F8CBB101DD1E574002B3DBA</string>
+				<string>9FECD2B31EC1D142007E3C87</string>
+				<string>9FECD2B41EC1D142007E3C87</string>
+				<string>9F8CBB131DD1E574002B3DBA</string>
+				<string>9F8CBB151DD1E574002B3DBA</string>
+				<string>9F8CBB181DD1E574002B3DBA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>asoviva</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9F8CBB0C1DD1E574002B3DBA</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>AppDelegate.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9F8CBB0D1DD1E574002B3DBA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9F8CBB0C1DD1E574002B3DBA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9F8CBB101DD1E574002B3DBA</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9F8CBB111DD1E574002B3DBA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9F8CBB111DD1E574002B3DBA</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9F8CBB121DD1E574002B3DBA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9F8CBB101DD1E574002B3DBA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9F8CBB131DD1E574002B3DBA</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Assets.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9F8CBB141DD1E574002B3DBA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9F8CBB131DD1E574002B3DBA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9F8CBB151DD1E574002B3DBA</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9F8CBB161DD1E574002B3DBA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>LaunchScreen.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9F8CBB161DD1E574002B3DBA</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/LaunchScreen.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9F8CBB171DD1E574002B3DBA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9F8CBB151DD1E574002B3DBA</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9F8CBB181DD1E574002B3DBA</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9F8CBB191DD1E574002B3DBA</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>9F8CBB1A1DD1E574002B3DBA</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>5E9B755EA62C7DFD79F3333A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>9F8CBB1B1DD1E574002B3DBA</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>9F8CBB1C1DD1E574002B3DBA</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>9F8CBB341DD1E574002B3DBA</string>
+			<key>buildPhases</key>
+			<array>
+				<string>FA27592700E6F93E61C5D03E</string>
+				<string>9F8CBB191DD1E574002B3DBA</string>
+				<string>9F8CBB1A1DD1E574002B3DBA</string>
+				<string>9F8CBB1B1DD1E574002B3DBA</string>
+				<string>9DDAE328B086CCF8D67D849E</string>
+				<string>E6C4954DCA26300EF42AC2E4</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>9F8CBB1F1DD1E574002B3DBA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>asovivaTests</string>
+			<key>productName</key>
+			<string>asovivaTests</string>
+			<key>productReference</key>
+			<string>9F8CBB1D1DD1E574002B3DBA</string>
+			<key>productType</key>
+			<string>com.apple.product-type.bundle.unit-test</string>
+		</dict>
+		<key>9F8CBB1D1DD1E574002B3DBA</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>asovivaTests.xctest</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>9F8CBB1E1DD1E574002B3DBA</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>9F8CBB011DD1E574002B3DBA</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>9F8CBB081DD1E574002B3DBA</string>
+			<key>remoteInfo</key>
+			<string>asoviva</string>
+		</dict>
+		<key>9F8CBB1F1DD1E574002B3DBA</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>9F8CBB081DD1E574002B3DBA</string>
+			<key>targetProxy</key>
+			<string>9F8CBB1E1DD1E574002B3DBA</string>
+		</dict>
+		<key>9F8CBB241DD1E574002B3DBA</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>9F8CBB251DD1E574002B3DBA</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>3424D628F17B3E2E69BED865</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>9F8CBB261DD1E574002B3DBA</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>9F8CBB271DD1E574002B3DBA</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>9F8CBB371DD1E574002B3DBA</string>
+			<key>buildPhases</key>
+			<array>
+				<string>BA484337C2BA9AB8D60B5703</string>
+				<string>9F8CBB241DD1E574002B3DBA</string>
+				<string>9F8CBB251DD1E574002B3DBA</string>
+				<string>9F8CBB261DD1E574002B3DBA</string>
+				<string>14EEFD668535EB555E17B39B</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>9F8CBB2A1DD1E574002B3DBA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>asovivaUITests</string>
+			<key>productName</key>
+			<string>asovivaUITests</string>
+			<key>productReference</key>
+			<string>9F8CBB281DD1E574002B3DBA</string>
+			<key>productType</key>
+			<string>com.apple.product-type.bundle.ui-testing</string>
+		</dict>
+		<key>9F8CBB281DD1E574002B3DBA</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>asovivaUITests.xctest</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>9F8CBB291DD1E574002B3DBA</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>9F8CBB011DD1E574002B3DBA</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>9F8CBB081DD1E574002B3DBA</string>
+			<key>remoteInfo</key>
+			<string>asoviva</string>
+		</dict>
+		<key>9F8CBB2A1DD1E574002B3DBA</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>9F8CBB081DD1E574002B3DBA</string>
+			<key>targetProxy</key>
+			<string>9F8CBB291DD1E574002B3DBA</string>
+		</dict>
+		<key>9F8CBB2F1DD1E574002B3DBA</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_DOCUMENTATION_COMMENTS</key>
+				<string>YES</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INFINITE_RECURSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_SUSPICIOUS_MOVES</key>
+				<string>YES</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>ENABLE_TESTABILITY</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>10.0</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SWIFT_ACTIVE_COMPILATION_CONDITIONS</key>
+				<string>DEBUG</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Onone</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>9F8CBB301DD1E574002B3DBA</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_DOCUMENTATION_COMMENTS</key>
+				<string>YES</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INFINITE_RECURSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_SUSPICIOUS_MOVES</key>
+				<string>YES</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>10.0</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Owholemodule</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>9F8CBB311DD1E574002B3DBA</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>9F8CBB321DD1E574002B3DBA</string>
+				<string>9F8CBB331DD1E574002B3DBA</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>9F8CBB321DD1E574002B3DBA</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>78CF1CE33110201566327E23</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>DEVELOPMENT_TEAM</key>
+				<string>J476SJFME4</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>$(PROJECT_DIR)/Carthage/Build/iOS</string>
+					<string>$(PROJECT_DIR)/build/Debug-iphoneos/SCLAlertView</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>asoviva/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.lit.asoviva</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>9F8CBB331DD1E574002B3DBA</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>2F3AF750FA1B45E6F99EE965</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>DEVELOPMENT_TEAM</key>
+				<string>J476SJFME4</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>$(PROJECT_DIR)/Carthage/Build/iOS</string>
+					<string>$(PROJECT_DIR)/build/Debug-iphoneos/SCLAlertView</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>asoviva/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.lit.asoviva</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>9F8CBB341DD1E574002B3DBA</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>9F8CBB351DD1E574002B3DBA</string>
+				<string>9F8CBB361DD1E574002B3DBA</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>9F8CBB351DD1E574002B3DBA</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>FB105D80A53C4A293E4B534F</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES</key>
+				<string>YES</string>
+				<key>BUNDLE_LOADER</key>
+				<string>$(TEST_HOST)</string>
+				<key>DEVELOPMENT_TEAM</key>
+				<string>J476SJFME4</string>
+				<key>INFOPLIST_FILE</key>
+				<string>asovivaTests/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.lit.asovivaTests</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
+				<key>TEST_HOST</key>
+				<string>$(BUILT_PRODUCTS_DIR)/asoviva.app/asoviva</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>9F8CBB361DD1E574002B3DBA</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>FE41C5F1DCA636049125BE31</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES</key>
+				<string>YES</string>
+				<key>BUNDLE_LOADER</key>
+				<string>$(TEST_HOST)</string>
+				<key>DEVELOPMENT_TEAM</key>
+				<string>J476SJFME4</string>
+				<key>INFOPLIST_FILE</key>
+				<string>asovivaTests/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.lit.asovivaTests</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
+				<key>TEST_HOST</key>
+				<string>$(BUILT_PRODUCTS_DIR)/asoviva.app/asoviva</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>9F8CBB371DD1E574002B3DBA</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>9F8CBB381DD1E574002B3DBA</string>
+				<string>9F8CBB391DD1E574002B3DBA</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>9F8CBB381DD1E574002B3DBA</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>6271883DF96652BC2BC08E7E</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES</key>
+				<string>YES</string>
+				<key>DEVELOPMENT_TEAM</key>
+				<string>J476SJFME4</string>
+				<key>INFOPLIST_FILE</key>
+				<string>asovivaUITests/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.lit.asovivaUITests</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
+				<key>TEST_TARGET_NAME</key>
+				<string>asoviva</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>9F8CBB391DD1E574002B3DBA</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>71902EDE5C8A45CDA48067E8</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES</key>
+				<string>YES</string>
+				<key>DEVELOPMENT_TEAM</key>
+				<string>J476SJFME4</string>
+				<key>INFOPLIST_FILE</key>
+				<string>asovivaUITests/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.lit.asovivaUITests</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
+				<key>TEST_TARGET_NAME</key>
+				<string>asoviva</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>9FB64B031E3762DF00C3C430</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Location.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9FB64B041E3762DF00C3C430</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9FB64B031E3762DF00C3C430</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9FECD2B31EC1D142007E3C87</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>EurekaImageCellTableViewCell.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9FECD2B41EC1D142007E3C87</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>path</key>
+			<string>EurekaImageCellTableViewCell.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9FECD2B51EC1D142007E3C87</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9FECD2B31EC1D142007E3C87</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9FECD2B61EC1D142007E3C87</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9FECD2B41EC1D142007E3C87</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9FECD2B71EC1D89B007E3C87</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>FavoriteViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9FECD2B81EC1D89B007E3C87</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9FECD2B71EC1D89B007E3C87</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9FECD2B91EC318BE007E3C87</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>RecommendViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9FECD2BA1EC318BE007E3C87</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9FECD2B91EC318BE007E3C87</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9FECD2CC1EC598B9007E3C87</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>MyPageViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9FECD2CD1EC598B9007E3C87</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9FECD2CC1EC598B9007E3C87</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9FFC054E1E77E6670032589C</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Eureka.framework</string>
+			<key>path</key>
+			<string>Carthage/Build/iOS/Eureka.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9FFC054F1E77E6670032589C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9FFC054E1E77E6670032589C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A6F5195E533F76361ED4405B</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-asoviva/Pods-asoviva-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>BA484337C2BA9AB8D60B5703</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>E6C4954DCA26300EF42AC2E4</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>FA27592700E6F93E61C5D03E</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>[CP] Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>FB105D80A53C4A293E4B534F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-asovivaTests.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE41C5F1DCA636049125BE31</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-asovivaTests.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>9F8CBB011DD1E574002B3DBA</string>
+</dict>
+</plist>

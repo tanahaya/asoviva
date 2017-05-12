@@ -14,8 +14,6 @@ import ObjectMapper
 import SwiftyJSON
 
 
-
-
 class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
     lazy var mapView: MKMapView = {
