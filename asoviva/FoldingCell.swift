@@ -88,9 +88,11 @@ open class FoldingCell: UITableViewCell {
   func configureDefaultState() {
     
     guard let foregroundViewTop = self.foregroundViewTop,
+        
       let containerViewTop = self.containerViewTop else {
         fatalError("set constratins outlets")
     }
+ 
     
     containerViewTop.constant = foregroundViewTop.constant
     containerView.alpha = 0;

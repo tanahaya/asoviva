@@ -32,8 +32,6 @@
 		9FECD2D71EC5CBB3007E3C87 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2D41EC5CBB3007E3C87 /* SCLAlertView.swift */; };
 		9FECD2D81EC5CBB3007E3C87 /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2D51EC5CBB3007E3C87 /* SCLExtensions.swift */; };
 		9FECD2DD1EC5EA56007E3C87 /* FoldingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2DC1EC5EA56007E3C87 /* FoldingCell.swift */; };
-		9FECD2DF1EC5EB2C007E3C87 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2DE1EC5EB2C007E3C87 /* testViewController.swift */; };
-		9FECD2E11EC5EBCE007E3C87 /* Democell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2E01EC5EBCE007E3C87 /* Democell.swift */; };
 		9FFC054F1E77E6670032589C /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFC054E1E77E6670032589C /* Eureka.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,8 +86,6 @@
 		9FECD2D41EC5CBB3007E3C87 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
 		9FECD2D51EC5CBB3007E3C87 /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLExtensions.swift; sourceTree = "<group>"; };
 		9FECD2DC1EC5EA56007E3C87 /* FoldingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldingCell.swift; sourceTree = "<group>"; };
-		9FECD2DE1EC5EB2C007E3C87 /* testViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
-		9FECD2E01EC5EBCE007E3C87 /* Democell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Democell.swift; sourceTree = "<group>"; };
 		9FFC054E1E77E6670032589C /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
 		FB105D80A53C4A293E4B534F /* Pods-asovivaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FE41C5F1DCA636049125BE31 /* Pods-asovivaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,8 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */,
-				9FECD2DE1EC5EB2C007E3C87 /* testViewController.swift */,
-				9FECD2E01EC5EBCE007E3C87 /* Democell.swift */,
 				9F63FBD01DD1EE1200150F34 /* MainViewController.swift */,
 				9FECD2B91EC318BE007E3C87 /* RecommendViewController.swift */,
 				9F63FBD21DD1EEE100150F34 /* SearchViewController.swift */,
@@ -519,10 +513,8 @@
 			files = (
 				9FECD2D81EC5CBB3007E3C87 /* SCLExtensions.swift in Sources */,
 				9FECD2DD1EC5EA56007E3C87 /* FoldingCell.swift in Sources */,
-				9FECD2DF1EC5EB2C007E3C87 /* testViewController.swift in Sources */,
 				9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */,
 				9F63FBD31DD1EEE100150F34 /* SearchViewController.swift in Sources */,
-				9FECD2E11EC5EBCE007E3C87 /* Democell.swift in Sources */,
 				9F49E3421E5324C800D190AD /* PlaygroundDetail.swift in Sources */,
 				9FB64B041E3762DF00C3C430 /* Location.swift in Sources */,
 				9FECD2B81EC1D89B007E3C87 /* FavoriteViewController.swift in Sources */,

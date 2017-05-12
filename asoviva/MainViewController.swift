@@ -20,7 +20,6 @@ class MainViewController: UITabBarController {
         let recommendView:RecommendViewController = RecommendViewController()
         let FavoriteView:FavoriteViewController = FavoriteViewController()
         let MyPageView:MyPageViewController = MyPageViewController()
-        let testView:testViewController = testViewController()
         
         let recommendImage = UIImage.fontAwesomeIcon(name: .heartO, textColor: UIColor.black, size: CGSize(width:40,height:40))
         let searchImage = UIImage.fontAwesomeIcon(name: .search, textColor: UIColor.black, size: CGSize(width:40,height:40))
@@ -35,18 +34,15 @@ class MainViewController: UITabBarController {
         
         
         
-        testView.tabBarItem = UITabBarItem(title: "おすすめ", image: recommendImage, selectedImage: recommendImage)
-        
         
         let recommendNavigationController = UINavigationController(rootViewController: recommendView)
         let mypageNavigationController = UINavigationController(rootViewController: MyPageView)
         let searchNavigationController = UINavigationController(rootViewController: searchView)
         let favorNavigationController = UINavigationController(rootViewController: FavoriteView)
         
-        let testNavigationController = UINavigationController(rootViewController: testView)
         
         
-        self.setViewControllers([testNavigationController,recommendNavigationController,searchNavigationController,favorNavigationController,mypageNavigationController], animated: false)
+        self.setViewControllers([recommendNavigationController,searchNavigationController,favorNavigationController,mypageNavigationController], animated: false)
         
     }
 
