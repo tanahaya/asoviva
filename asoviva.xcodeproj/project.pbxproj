@@ -11,6 +11,8 @@
 		5E9B755EA62C7DFD79F3333A /* Pods_asovivaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC2AEBF12D5AB2F0C47DE3A /* Pods_asovivaTests.framework */; };
 		86715922B7FC1FED7B1D18B3 /* Pods_asoviva.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61CF553ECAE0B2C5AF5DB596 /* Pods_asoviva.framework */; };
 		9F04782D1E40982800656393 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F04782C1E40982800656393 /* SwiftyJSON.framework */; };
+		9F0BA2A11EC6EEE700B0630A /* storeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0BA29F1EC6EEE700B0630A /* storeTableViewCell.swift */; };
+		9F0BA2A21EC6EEE700B0630A /* storeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */; };
 		9F4514F71E375210002CFE04 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */; };
 		9F49E3421E5324C800D190AD /* PlaygroundDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F49E3411E5324C800D190AD /* PlaygroundDetail.swift */; };
 		9F4A4BD91E49D2C500065862 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4A4BD81E49D2C500065862 /* DetailViewController.swift */; };
@@ -61,6 +63,8 @@
 		78CF1CE33110201566327E23 /* Pods-asoviva.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asoviva.debug.xcconfig"; path = "Pods/Target Support Files/Pods-asoviva/Pods-asoviva.debug.xcconfig"; sourceTree = "<group>"; };
 		9F04782C1E40982800656393 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		9F0BA2901EC6E18A00B0630A /* RAMAnimatedTabBarController.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RAMAnimatedTabBarController.framework.dSYM; path = Carthage/Build/iOS/RAMAnimatedTabBarController.framework.dSYM; sourceTree = "<group>"; };
+		9F0BA29F1EC6EEE700B0630A /* storeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = storeTableViewCell.swift; sourceTree = "<group>"; };
+		9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = storeTableViewCell.xib; sourceTree = "<group>"; };
 		9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
 		9F49E3411E5324C800D190AD /* PlaygroundDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundDetail.swift; sourceTree = "<group>"; };
 		9F4A4BD81E49D2C500065862 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 				9F8CBB101DD1E574002B3DBA /* Main.storyboard */,
 				9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */,
 				9FECD2B41EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib */,
+				9F0BA29F1EC6EEE700B0630A /* storeTableViewCell.swift */,
+				9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */,
 				9F8CBB131DD1E574002B3DBA /* Assets.xcassets */,
 				9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */,
 				9F8CBB181DD1E574002B3DBA /* Info.plist */,
@@ -330,6 +336,7 @@
 				9F8CBB141DD1E574002B3DBA /* Assets.xcassets in Resources */,
 				9FECD2D61EC5CBB3007E3C87 /* Info.plist in Resources */,
 				9F8CBB121DD1E574002B3DBA /* Main.storyboard in Resources */,
+				9F0BA2A21EC6EEE700B0630A /* storeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +522,7 @@
 				9F63FBD31DD1EEE100150F34 /* SearchViewController.swift in Sources */,
 				9F49E3421E5324C800D190AD /* PlaygroundDetail.swift in Sources */,
 				9FB64B041E3762DF00C3C430 /* Location.swift in Sources */,
+				9F0BA2A11EC6EEE700B0630A /* storeTableViewCell.swift in Sources */,
 				9FECD2B81EC1D89B007E3C87 /* FavoriteViewController.swift in Sources */,
 				9F4A4BD91E49D2C500065862 /* DetailViewController.swift in Sources */,
 				9FECD2CD1EC598B9007E3C87 /* MyPageViewController.swift in Sources */,

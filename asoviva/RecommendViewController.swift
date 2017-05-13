@@ -38,6 +38,8 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     var nowlat: CLLocationDegrees!
     var nowlng: CLLocationDegrees!
     
+    let detailcolor = UIColor(red: 0, green: 108, blue: 241, alpha: 1.0)
+    let guidecolor = UIColor(red: 243 , green: 152, blue: 29, alpha: 1.0)
     
     lazy var locationManager:CLLocationManager = {
         
@@ -52,10 +54,12 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     lazy var storeTableView: UITableView = {
         
         let tableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height*4/7 - 30 ,  width: self.view.frame.width, height: 260))
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        //tableView.register(storeTableViewCell.self, forCellReuseIdentifier: "storeTableViewCell")
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
+        var nib = UINib(nibName: "storeTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "storeTableViewCell")
         return tableView
     }()
     
@@ -82,7 +86,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         self.view.addSubview(storeTableView)
         
         self.searchrecommendPlace()
-        
         
         let leftButton = UIBarButtonItem(title: "alert", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(alert))
         self.navigationItem.leftBarButtonItem = leftButton
@@ -147,8 +150,12 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
-        cell.textLabel?.text = locations[indexPath.row].storename
+        let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
+        cell.nameLabel.text = locations[indexPath.row].storename
+        cell.pointLabel.textAlignment = NSTextAlignment.left
+        cell.priceLabel.textAlignment = NSTextAlignment.left
+        cell.distantLabel.textAlignment = NSTextAlignment.left
+        cell.numberLabel.text = "# " + String(indexPath.row)
         return cell
     }
     
@@ -169,7 +176,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             //self.present(viewController, animated: true, completion: nil)
             
         }
-        detailButton.backgroundColor = UIColor.blue
+        detailButton.backgroundColor = UIColor.green
         
         let guideButton: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "道案内") { (action, index) -> Void in
             
@@ -209,7 +216,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
                 
             }
         }
-        guideButton.backgroundColor = UIColor.green
+        guideButton.backgroundColor = UIColor.orange
         return [detailButton, guideButton]
     }
     
@@ -243,6 +250,11 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     }
     func alert(){
         SCLAlertView().showInfo("infomation", subTitle: "subTitle")
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return CGFloat(80)
     }
     
     
