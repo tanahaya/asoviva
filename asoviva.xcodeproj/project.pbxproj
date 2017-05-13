@@ -31,7 +31,6 @@
 		9FECD2D61EC5CBB3007E3C87 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FECD2D31EC5CBB3007E3C87 /* Info.plist */; };
 		9FECD2D71EC5CBB3007E3C87 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2D41EC5CBB3007E3C87 /* SCLAlertView.swift */; };
 		9FECD2D81EC5CBB3007E3C87 /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2D51EC5CBB3007E3C87 /* SCLExtensions.swift */; };
-		9FECD2DD1EC5EA56007E3C87 /* FoldingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2DC1EC5EA56007E3C87 /* FoldingCell.swift */; };
 		9FFC054F1E77E6670032589C /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFC054E1E77E6670032589C /* Eureka.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +60,7 @@
 		71902EDE5C8A45CDA48067E8 /* Pods-asovivaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaUITests/Pods-asovivaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		78CF1CE33110201566327E23 /* Pods-asoviva.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asoviva.debug.xcconfig"; path = "Pods/Target Support Files/Pods-asoviva/Pods-asoviva.debug.xcconfig"; sourceTree = "<group>"; };
 		9F04782C1E40982800656393 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		9F0BA2901EC6E18A00B0630A /* RAMAnimatedTabBarController.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RAMAnimatedTabBarController.framework.dSYM; path = Carthage/Build/iOS/RAMAnimatedTabBarController.framework.dSYM; sourceTree = "<group>"; };
 		9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
 		9F49E3411E5324C800D190AD /* PlaygroundDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundDetail.swift; sourceTree = "<group>"; };
 		9F4A4BD81E49D2C500065862 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -85,7 +85,6 @@
 		9FECD2D31EC5CBB3007E3C87 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FECD2D41EC5CBB3007E3C87 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
 		9FECD2D51EC5CBB3007E3C87 /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLExtensions.swift; sourceTree = "<group>"; };
-		9FECD2DC1EC5EA56007E3C87 /* FoldingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldingCell.swift; sourceTree = "<group>"; };
 		9FFC054E1E77E6670032589C /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
 		FB105D80A53C4A293E4B534F /* Pods-asovivaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FE41C5F1DCA636049125BE31 /* Pods-asovivaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asovivaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-asovivaTests/Pods-asovivaTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +139,7 @@
 		9F63FBD41DD1F14100150F34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F0BA2901EC6E18A00B0630A /* RAMAnimatedTabBarController.framework.dSYM */,
 				9FFC054E1E77E6670032589C /* Eureka.framework */,
 				9F04782C1E40982800656393 /* SwiftyJSON.framework */,
 				9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */,
@@ -187,7 +187,6 @@
 				9F8CBB101DD1E574002B3DBA /* Main.storyboard */,
 				9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */,
 				9FECD2B41EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib */,
-				9FECD2DC1EC5EA56007E3C87 /* FoldingCell.swift */,
 				9F8CBB131DD1E574002B3DBA /* Assets.xcassets */,
 				9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */,
 				9F8CBB181DD1E574002B3DBA /* Info.plist */,
@@ -512,7 +511,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FECD2D81EC5CBB3007E3C87 /* SCLExtensions.swift in Sources */,
-				9FECD2DD1EC5EA56007E3C87 /* FoldingCell.swift in Sources */,
 				9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */,
 				9F63FBD31DD1EEE100150F34 /* SearchViewController.swift in Sources */,
 				9F49E3421E5324C800D190AD /* PlaygroundDetail.swift in Sources */,

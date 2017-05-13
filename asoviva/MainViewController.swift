@@ -10,14 +10,16 @@ import UIKit
 import Foundation
 import FontAwesome
 import CoreLocation
+import RAMAnimatedTabBarController
 
-class MainViewController: UITabBarController {
+class MainViewController: UITabBarController{
    
        override func viewDidLoad() {
         super.viewDidLoad()
         
         let searchView:SearchViewController = SearchViewController()
         let recommendView:RecommendViewController = RecommendViewController()
+        
         let FavoriteView:FavoriteViewController = FavoriteViewController()
         let MyPageView:MyPageViewController = MyPageViewController()
         
