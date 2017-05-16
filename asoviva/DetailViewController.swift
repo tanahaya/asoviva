@@ -49,7 +49,6 @@ class DetailViewController: FormViewController {
                 
             }
             self.setup()
-            print(self.detailData)
         }).resume()
         
     }

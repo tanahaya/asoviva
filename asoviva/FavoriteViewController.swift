@@ -46,7 +46,6 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         let rowInSection = favorites[section].extended ? 2 : 1
-        print(rowInSection)
         
         return rowInSection
     }
@@ -100,7 +99,6 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
             }
             
         }else{ // ADD:
-            print("hello")
             
         }
         

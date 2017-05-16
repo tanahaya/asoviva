@@ -20,6 +20,7 @@ class storedetailTableViewCell: UITableViewCell {
     
     @IBOutlet var favoritebutton: UIButton!
     @IBOutlet var storeImage: UIImageView!
+    var UserDafault:UserDefaults = UserDefaults()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,11 +31,10 @@ class storedetailTableViewCell: UITableViewCell {
 extension storedetailTableViewCell {
     
     @IBAction func favoritebutton(_ sender: AnyObject) {
-        let FavoriteView = FavoriteViewController()
-        let RecommendView = RecommendViewController()
         
-        print(RecommendView.locations)//内容なし
-        //FavoriteView.favorites.append(RecommendView.locations[favoritebutton.tag])
+        let FavoriteView = FavoriteViewController()
+        var favorite:[Location] = UserDafault.object(forKey: "locations") as! [Location]
+        FavoriteView.favorites.append(<#Location#>)
         
         SCLAlertView().showInfo("お気に入り登録完了", subTitle: "をお気に入り登録しました。")
     }

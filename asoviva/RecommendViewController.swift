@@ -37,6 +37,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     var Region: MKCoordinateRegion!
     var nowlat: CLLocationDegrees!
     var nowlng: CLLocationDegrees!
+    var UserDafault:UserDefaults = UserDefaults()
     
     let detailcolor = UIColor(red: 0, green: 108, blue: 241, alpha: 1.0)
     let guidecolor = UIColor(red: 243 , green: 152, blue: 29, alpha: 1.0)
@@ -92,7 +93,9 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         let leftButton = UIBarButtonItem(title: "alert", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(alert))
         self.navigationItem.leftBarButtonItem = leftButton
-        print(locations)
+        
+        // UserDafault.set(locations, forKey: "locations")　でかすぎて駄目らしい
+        
         
     }
     
@@ -145,6 +148,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             _ = semaphore.wait(timeout: DispatchTime.distantFuture)
         }
         storeTableView.reloadData()
+        
     }
     
     func showUserAndDestinationOnMap() {
