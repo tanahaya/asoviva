@@ -9,7 +9,7 @@
 import UIKit
 
 class testAccordionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     var tableView:UITableView?
     
     var sections: [(title: String, details: [String], extended: Bool)] = []
@@ -22,8 +22,10 @@ class testAccordionViewController: UIViewController, UITableViewDelegate, UITabl
         tableView = UITableView(frame: view.frame)
         tableView?.delegate = self
         tableView?.dataSource = self
-        let nib = UINib(nibName: "TitleCell", bundle: nil)
-        tableView?.register(nib, forCellReuseIdentifier: "TitleCell")
+        let nib = UINib(nibName: "storeTableViewCell", bundle: nil)
+        let detailnib = UINib(nibName: "storedetailTableViewCell", bundle: nil)
+        tableView?.register(nib, forCellReuseIdentifier: "storeTableViewCell")
+        tableView?.register(detailnib, forCellReuseIdentifier: "storedetailTableViewCell")
         
         self.view.addSubview(tableView!)
         
@@ -37,48 +39,40 @@ class testAccordionViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         let rowInSection = sections[section].extended ? sections[section].details.count + 1 : 1
-        
+        print(rowInSection)
         return rowInSection
     }
     
     /// MARK: UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let titleCellId = "TitleCell"
-        let detailsCellId = "DetailsCell"
-        var cellId:String = ""
         
         if indexPath.row == 0 {
-            cellId = titleCellId
-        }else{
-            cellId = detailsCellId
-        }
- 
-        //var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: cellId)
-        var cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "TitleCell", for: indexPath as IndexPath) as! storeTableViewCell
-        // cell.nameLabel.text = "hello"
-        /*
-        if nil == cell {
-            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: cellId)
-        }
-        */
-        if indexPath.row == 0 {
-            //cell?.textLabel?.text = sections[indexPath.section].title
-            // cell.nameLabel.text = sections[indexPath.section].title
-
-        }else {
             
-            // cell?.textLabel?.text = "detail" + String(indexPath.row)
-            // cell.nameLabel.text = "detail" + String(indexPath.row)
+            let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
+            
+            cell.nameLabel.text = sections[indexPath.section].title
+            
+            return cell
+            
+        }else{
+            
+            let cell:storedetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storedetailTableViewCell", for: indexPath as IndexPath) as! storedetailTableViewCell
+            
+            cell.nameLabel.text = "detail" + String(indexPath.row)
+            
+            return cell
         }
         
-        return cell
     }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return CGFloat(80)
+        if indexPath.row == 0 {
+            return 80
+        }else {
+            return 300
+        }
     }
     
     
@@ -88,7 +82,7 @@ class testAccordionViewController: UIViewController, UITableViewDelegate, UITabl
         if 0 == indexPath.row {
             // switching open or close
             sections[indexPath.section].extended = !sections[indexPath.section].extended
-            
+            print(sections[indexPath.section].extended)
             if !sections[indexPath.section].extended {
                 self.toContract(tableView, indexPath: indexPath)
             }else{
@@ -107,7 +101,7 @@ class testAccordionViewController: UIViewController, UITableViewDelegate, UITabl
         // deselect
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
     fileprivate func toContract(_ tableView: UITableView, indexPath: IndexPath) {
         
         let startRow = indexPath.row + 1
@@ -143,42 +137,19 @@ class testAccordionViewController: UIViewController, UITableViewDelegate, UITabl
                               at: UITableViewScrollPosition.top, animated: true)
     }
     
-
-
+    
+    
     fileprivate func getSectionsValue(){
         
         var details: [String]
-        details = []
-        details.append("details1")
-        sections.append((title: "SECTION1", details: details, extended: false)) // close
         
-        
-        details = []
-        details.append("details1")
-        details.append("details2")
-        sections.append((title: "SECTION2", details: details, extended: true)) // open
-        
-        details = []
-        details.append("details1")
-        details.append("details2")
-        details.append("details3")
-        sections.append((title: "SECTION3", details: details, extended: true)) // open
-        
-        details = []
-        details.append("details1")
-        details.append("details2")
-        details.append("details3")
-        details.append("details4")
-        sections.append((title: "SECTION4", details: details, extended: false)) // close
-        
-        for i in 5...20 {
+        for i in 0 ..< 20 {
             details = []
             details.append("details1")
-            details.append("details2")
-            sections.append((title: "SECTION\(i)", details: details, extended: false))
+            sections.append((title: "SECTION\(i)", details: details, extended: true ))
         }
         
     }
-
-
+    
+    
 }

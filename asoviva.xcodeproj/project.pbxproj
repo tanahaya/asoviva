@@ -14,6 +14,8 @@
 		9F0BA2A11EC6EEE700B0630A /* storeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0BA29F1EC6EEE700B0630A /* storeTableViewCell.swift */; };
 		9F0BA2A21EC6EEE700B0630A /* storeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */; };
 		9F0BA2A41ECAF24800B0630A /* testAccordionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0BA2A31ECAF24800B0630A /* testAccordionViewController.swift */; };
+		9F0BA2AB1ECB0E2900B0630A /* storedetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0BA2A91ECB0E2900B0630A /* storedetailTableViewCell.swift */; };
+		9F0BA2AC1ECB0E2900B0630A /* storedetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F0BA2AA1ECB0E2900B0630A /* storedetailTableViewCell.xib */; };
 		9F4514F71E375210002CFE04 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */; };
 		9F49E3421E5324C800D190AD /* PlaygroundDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F49E3411E5324C800D190AD /* PlaygroundDetail.swift */; };
 		9F4A4BD91E49D2C500065862 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4A4BD81E49D2C500065862 /* DetailViewController.swift */; };
@@ -67,6 +69,8 @@
 		9F0BA29F1EC6EEE700B0630A /* storeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = storeTableViewCell.swift; sourceTree = "<group>"; };
 		9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = storeTableViewCell.xib; sourceTree = "<group>"; };
 		9F0BA2A31ECAF24800B0630A /* testAccordionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testAccordionViewController.swift; sourceTree = "<group>"; };
+		9F0BA2A91ECB0E2900B0630A /* storedetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = storedetailTableViewCell.swift; sourceTree = "<group>"; };
+		9F0BA2AA1ECB0E2900B0630A /* storedetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = storedetailTableViewCell.xib; sourceTree = "<group>"; };
 		9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
 		9F49E3411E5324C800D190AD /* PlaygroundDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundDetail.swift; sourceTree = "<group>"; };
 		9F4A4BD81E49D2C500065862 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 				9FECD2B41EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib */,
 				9F0BA29F1EC6EEE700B0630A /* storeTableViewCell.swift */,
 				9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */,
+				9F0BA2A91ECB0E2900B0630A /* storedetailTableViewCell.swift */,
+				9F0BA2AA1ECB0E2900B0630A /* storedetailTableViewCell.xib */,
 				9F8CBB131DD1E574002B3DBA /* Assets.xcassets */,
 				9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */,
 				9F8CBB181DD1E574002B3DBA /* Info.plist */,
@@ -335,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FECD2B61EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib in Resources */,
+				9F0BA2AC1ECB0E2900B0630A /* storedetailTableViewCell.xib in Resources */,
 				9F8CBB171DD1E574002B3DBA /* LaunchScreen.storyboard in Resources */,
 				9F8CBB141DD1E574002B3DBA /* Assets.xcassets in Resources */,
 				9FECD2D61EC5CBB3007E3C87 /* Info.plist in Resources */,
@@ -522,6 +529,7 @@
 			files = (
 				9FECD2D81EC5CBB3007E3C87 /* SCLExtensions.swift in Sources */,
 				9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */,
+				9F0BA2AB1ECB0E2900B0630A /* storedetailTableViewCell.swift in Sources */,
 				9F63FBD31DD1EEE100150F34 /* SearchViewController.swift in Sources */,
 				9F49E3421E5324C800D190AD /* PlaygroundDetail.swift in Sources */,
 				9FB64B041E3762DF00C3C430 /* Location.swift in Sources */,

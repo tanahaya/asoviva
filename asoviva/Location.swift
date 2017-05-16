@@ -19,6 +19,7 @@ struct Location: Mappable{
     var vicinity:String!
     var annotation = MKPointAnnotation()
     var placeid:String!
+    var extended: Bool = false
     
     init?(map: Map) {
         

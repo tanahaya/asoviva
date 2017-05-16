@@ -49,6 +49,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         locationManager.distanceFilter = 300
         return locationManager
     }()
+    
     var locations:[Location] = []
     
     lazy var storeTableView: UITableView = {
@@ -58,8 +59,10 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
-        var nib = UINib(nibName: "storeTableViewCell", bundle: nil)
+        let nib = UINib(nibName: "storeTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "storeTableViewCell")
+        let detailnib = UINib(nibName: "storedetailTableViewCell", bundle: nil)
+        tableView.register(detailnib, forCellReuseIdentifier: "storedetailTableViewCell")
         return tableView
     }()
     
@@ -89,6 +92,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         let leftButton = UIBarButtonItem(title: "alert", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(alert))
         self.navigationItem.leftBarButtonItem = leftButton
+        
         
     }
     
@@ -144,32 +148,81 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
     }
     
+    func showUserAndDestinationOnMap() {
+        let maxLat:Double = fmax(userLocation.latitude,  destLocation.latitude)
+        let maxLon:Double = fmax(userLocation.longitude, destLocation.longitude)
+        let minLat:Double = fmin(userLocation.latitude,  destLocation.latitude)
+        let minLon:Double = fmin(userLocation.longitude, destLocation.longitude)
+        
+        let mapMargin:Double = 1.5;  // 経路が入る幅(1.0)＋余白(0.5)
+        let leastCoordSpan:Double = 0.005;    // 拡大表示したときの最大値
+        let span_x:Double = fmax(leastCoordSpan, fabs(maxLat - minLat) * mapMargin)
+        let span_y:Double = fmax(leastCoordSpan, fabs(maxLon - minLon) * mapMargin)
+        
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(span_x, span_y)
+        
+        let center:CLLocationCoordinate2D = CLLocationCoordinate2DMake((maxLat + minLat) / 2, (maxLon + minLon) / 2)
+        let region:MKCoordinateRegion = MKCoordinateRegionMake(center, span)
+        
+        mapView.setRegion(mapView.regionThatFits(region), animated:true)
+    }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
+        let route: MKPolyline = overlay as! MKPolyline
+        let routeRenderer: MKPolylineRenderer = MKPolylineRenderer(polyline: route)
+        routeRenderer.lineWidth = 5.0
+        routeRenderer.strokeColor = UIColor.red
+        return routeRenderer
+    }
+    func alert(){
+        SCLAlertView().showInfo("infomation", subTitle: "subTitle")
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return locations.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    /// MARK: UITableViewDataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
-        cell.nameLabel.text = locations[indexPath.row].storename
-        cell.pointLabel.textAlignment = NSTextAlignment.left
-        cell.priceLabel.textAlignment = NSTextAlignment.left
-        cell.distantLabel.textAlignment = NSTextAlignment.left
-        cell.numberLabel.text = "# " + String(indexPath.row)
-        return cell
+        let rowInSection = locations[section].extended ? 2 : 1
+        print(rowInSection)
+        
+        return rowInSection
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        mapView.setCenter(locations[indexPath.row].annotation.coordinate, animated: false)
-        mapView.selectAnnotation(locations[indexPath.row].annotation as MKAnnotation, animated: false)
-        locationManager.startUpdatingLocation()
+    /// MARK: UITableViewDelegate
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        if indexPath.row == 0 {
+            
+            let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
+            
+            cell.nameLabel.text = locations[indexPath.section].storename
+            cell.pointLabel.textAlignment = NSTextAlignment.left
+            cell.priceLabel.textAlignment = NSTextAlignment.left
+            cell.distantLabel.textAlignment = NSTextAlignment.left
+            cell.numberLabel.text = "# " + String(indexPath.section + 1)
+            
+            return cell
+            
+        }else{
+            
+            let cell:storedetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storedetailTableViewCell", for: indexPath as IndexPath) as! storedetailTableViewCell
+            
+            cell.nameLabel.text = locations[indexPath.section].storename
+            
+            return cell
+        }
         
     }
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let detailButton: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "詳しく") { (action, index) -> Void in
+            
             tableView.isEditing = false
             let viewController = DetailViewController()
             viewController.detailData.placeId = self.locations[indexPath.row].placeid
@@ -221,41 +274,59 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         return [detailButton, guideButton]
     }
     
-    func showUserAndDestinationOnMap() {
-        let maxLat:Double = fmax(userLocation.latitude,  destLocation.latitude)
-        let maxLon:Double = fmax(userLocation.longitude, destLocation.longitude)
-        let minLat:Double = fmin(userLocation.latitude,  destLocation.latitude)
-        let minLon:Double = fmin(userLocation.longitude, destLocation.longitude)
-        
-        let mapMargin:Double = 1.5;  // 経路が入る幅(1.0)＋余白(0.5)
-        let leastCoordSpan:Double = 0.005;    // 拡大表示したときの最大値
-        let span_x:Double = fmax(leastCoordSpan, fabs(maxLat - minLat) * mapMargin)
-        let span_y:Double = fmax(leastCoordSpan, fabs(maxLon - minLon) * mapMargin)
-        
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(span_x, span_y)
-        
-        let center:CLLocationCoordinate2D = CLLocationCoordinate2DMake((maxLat + minLat) / 2, (maxLon + minLon) / 2)
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(center, span)
-        
-        mapView.setRegion(mapView.regionThatFits(region), animated:true)
-    }
-    
-    
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        
-        let route: MKPolyline = overlay as! MKPolyline
-        let routeRenderer: MKPolylineRenderer = MKPolylineRenderer(polyline: route)
-        routeRenderer.lineWidth = 5.0
-        routeRenderer.strokeColor = UIColor.red
-        return routeRenderer
-    }
-    func alert(){
-        SCLAlertView().showInfo("infomation", subTitle: "subTitle")
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 80
+        }else {
+            return 300
+        }
+    }
+    
+    /// MARK: UITableViewDelegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        return CGFloat(80)
+        if 0 == indexPath.row {
+            // switching open or close
+            
+            locations[indexPath.section].extended = !locations[indexPath.section].extended
+            print(locations[indexPath.section].extended)
+            if !locations[indexPath.section].extended {
+                self.toContract(tableView, indexPath: indexPath)
+            }else{
+                self.toExpand(tableView, indexPath: indexPath)
+            }
+            
+        }else{ // ADD:
+            print("hello")
+            
+        }
+        
+        // deselect
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    fileprivate func toContract(_ tableView: UITableView, indexPath: IndexPath) {
+        
+        var indexPaths: [IndexPath] = []
+        indexPaths.append(IndexPath(row: 1 , section:indexPath.section))
+        
+        
+        tableView.deleteRows(at: indexPaths,
+                             with: UITableViewRowAnimation.fade)
+    }
+    
+    fileprivate func toExpand(_ tableView: UITableView, indexPath: IndexPath) {
+        
+        var indexPaths: [IndexPath] = []
+        indexPaths.append(IndexPath(row: 1, section:indexPath.section))
+        
+        
+        tableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.fade)
+        
+        // scroll to the selected cell.
+        tableView.scrollToRow(at: IndexPath(
+            row:indexPath.row, section:indexPath.section),
+                              at: UITableViewScrollPosition.top, animated: true)
     }
     
     
