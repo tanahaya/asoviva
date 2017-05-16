@@ -18,7 +18,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     lazy var mapView: MKMapView = {
         let mapView: MKMapView = MKMapView()
         mapView.delegate = self
-        let mapframe: CGRect = CGRect(x: 0, y: 60 , width: self.view.frame.width, height: self.view.frame.height*4/7)
+        let mapframe: CGRect = CGRect(x: 0, y: 60 , width: self.view.frame.width, height: self.view.frame.height / 2 + 15)
         mapView.frame = mapframe
         let nowlat: Double = 35.680298
         let nowlng: Double = 139.766247
@@ -54,7 +54,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     lazy var storeTableView: UITableView = {
         
-        let tableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height*4/7 - 30 ,  width: self.view.frame.width, height: 260))
+        let tableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height / 2 - 45 ,  width: self.view.frame.width, height: 330))
         //tableView.register(storeTableViewCell.self, forCellReuseIdentifier: "storeTableViewCell")
         tableView.dataSource = self
         tableView.delegate = self
@@ -145,7 +145,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             _ = semaphore.wait(timeout: DispatchTime.distantFuture)
         }
         storeTableView.reloadData()
-        
     }
     
     func showUserAndDestinationOnMap() {
@@ -278,7 +277,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         if indexPath.row == 0 {
             return 80
         }else {
-            return 300
+            return 220
         }
     }
     
