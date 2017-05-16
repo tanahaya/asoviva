@@ -13,6 +13,7 @@
 		9F04782D1E40982800656393 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F04782C1E40982800656393 /* SwiftyJSON.framework */; };
 		9F0BA2A11EC6EEE700B0630A /* storeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0BA29F1EC6EEE700B0630A /* storeTableViewCell.swift */; };
 		9F0BA2A21EC6EEE700B0630A /* storeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */; };
+		9F0BA2A41ECAF24800B0630A /* testAccordionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0BA2A31ECAF24800B0630A /* testAccordionViewController.swift */; };
 		9F4514F71E375210002CFE04 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */; };
 		9F49E3421E5324C800D190AD /* PlaygroundDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F49E3411E5324C800D190AD /* PlaygroundDetail.swift */; };
 		9F4A4BD91E49D2C500065862 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4A4BD81E49D2C500065862 /* DetailViewController.swift */; };
@@ -65,6 +66,7 @@
 		9F0BA2901EC6E18A00B0630A /* RAMAnimatedTabBarController.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RAMAnimatedTabBarController.framework.dSYM; path = Carthage/Build/iOS/RAMAnimatedTabBarController.framework.dSYM; sourceTree = "<group>"; };
 		9F0BA29F1EC6EEE700B0630A /* storeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = storeTableViewCell.swift; sourceTree = "<group>"; };
 		9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = storeTableViewCell.xib; sourceTree = "<group>"; };
+		9F0BA2A31ECAF24800B0630A /* testAccordionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testAccordionViewController.swift; sourceTree = "<group>"; };
 		9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
 		9F49E3411E5324C800D190AD /* PlaygroundDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundDetail.swift; sourceTree = "<group>"; };
 		9F4A4BD81E49D2C500065862 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			children = (
 				9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */,
 				9F63FBD01DD1EE1200150F34 /* MainViewController.swift */,
+				9F0BA2A31ECAF24800B0630A /* testAccordionViewController.swift */,
 				9FECD2B91EC318BE007E3C87 /* RecommendViewController.swift */,
 				9F63FBD21DD1EEE100150F34 /* SearchViewController.swift */,
 				9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */,
@@ -530,6 +533,7 @@
 				9FECD2B51EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift in Sources */,
 				9FECD2D71EC5CBB3007E3C87 /* SCLAlertView.swift in Sources */,
 				9FECD2BA1EC318BE007E3C87 /* RecommendViewController.swift in Sources */,
+				9F0BA2A41ECAF24800B0630A /* testAccordionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,10 +10,9 @@ import UIKit
 import Foundation
 import FontAwesome
 import CoreLocation
-import RAMAnimatedTabBarController
 
 class MainViewController: UITabBarController{
-   
+    
        override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,17 +34,12 @@ class MainViewController: UITabBarController{
         MyPageView.tabBarItem = UITabBarItem(title: "MyPage", image: userImage, selectedImage: userImage)
         
         
-        
-        
         let recommendNavigationController = UINavigationController(rootViewController: recommendView)
         let mypageNavigationController = UINavigationController(rootViewController: MyPageView)
         let searchNavigationController = UINavigationController(rootViewController: searchView)
         let favorNavigationController = UINavigationController(rootViewController: FavoriteView)
         
-        
-        
         self.setViewControllers([recommendNavigationController,searchNavigationController,favorNavigationController,mypageNavigationController], animated: false)
-        
     }
 
 }

@@ -150,6 +150,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
         cell.nameLabel.text = locations[indexPath.row].storename
         cell.pointLabel.textAlignment = NSTextAlignment.left
