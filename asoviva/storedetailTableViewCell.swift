@@ -15,9 +15,10 @@ class storedetailTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var pointLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
-    @IBOutlet var distantLabel: UILabel!
     
     
+    
+    @IBOutlet var favoritebutton: UIButton!
     @IBOutlet var storeImage: UIImageView!
     
     override func awakeFromNib() {
@@ -25,4 +26,16 @@ class storedetailTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+}
+extension storedetailTableViewCell {
+    
+    @IBAction func favoritebutton(_ sender: AnyObject) {
+        let FavoriteView = FavoriteViewController()
+        let RecommendView = RecommendViewController()
+        
+        print(RecommendView.locations)//内容なし
+        //FavoriteView.favorites.append(RecommendView.locations[favoritebutton.tag])
+        
+        SCLAlertView().showInfo("お気に入り登録完了", subTitle: "をお気に入り登録しました。")
+    }
 }

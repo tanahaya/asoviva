@@ -12,7 +12,7 @@ import CoreLocation
 import GoogleMaps
 import ObjectMapper
 import SwiftyJSON
-
+import FontAwesome
 class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
     lazy var mapView: MKMapView = {
@@ -92,7 +92,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         let leftButton = UIBarButtonItem(title: "alert", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(alert))
         self.navigationItem.leftBarButtonItem = leftButton
-        
+        print(locations)
         
     }
     
@@ -187,8 +187,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         let rowInSection = locations[section].extended ? 2 : 1
-        print(rowInSection)
-        
         return rowInSection
     }
     
@@ -212,6 +210,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             let cell:storedetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storedetailTableViewCell", for: indexPath as IndexPath) as! storedetailTableViewCell
             
             cell.nameLabel.text = locations[indexPath.section].storename
+            cell.favoritebutton.tag = indexPath.section
             
             return cell
         }
@@ -288,7 +287,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             // switching open or close
             
             locations[indexPath.section].extended = !locations[indexPath.section].extended
-            print(locations[indexPath.section].extended)
             if !locations[indexPath.section].extended {
                 self.toContract(tableView, indexPath: indexPath)
             }else{
@@ -296,7 +294,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             }
             
         }else{ // ADD:
-            print("hello")
             
         }
         
