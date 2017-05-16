@@ -12,7 +12,6 @@ class testAccordionViewController: UIViewController, UITableViewDelegate, UITabl
 
     var tableView:UITableView?
     
-    
     var sections: [(title: String, details: [String], extended: Bool)] = []
     
     override func viewDidLoad() {
@@ -23,6 +22,8 @@ class testAccordionViewController: UIViewController, UITableViewDelegate, UITabl
         tableView = UITableView(frame: view.frame)
         tableView?.delegate = self
         tableView?.dataSource = self
+        let nib = UINib(nibName: "TitleCell", bundle: nil)
+        tableView?.register(nib, forCellReuseIdentifier: "TitleCell")
         
         self.view.addSubview(tableView!)
         
@@ -52,25 +53,33 @@ class testAccordionViewController: UIViewController, UITableViewDelegate, UITabl
         }else{
             cellId = detailsCellId
         }
-        
-        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: cellId)
+ 
+        //var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: cellId)
+        var cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "TitleCell", for: indexPath as IndexPath) as! storeTableViewCell
+        // cell.nameLabel.text = "hello"
+        /*
         if nil == cell {
             cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: cellId)
         }
-        
+        */
         if indexPath.row == 0 {
-            
-            cell?.textLabel?.text = sections[indexPath.section].title
-            
+            //cell?.textLabel?.text = sections[indexPath.section].title
+            // cell.nameLabel.text = sections[indexPath.section].title
+
         }else {
             
-            cell?.textLabel?.text = "detail" + String(indexPath.row)
+            // cell?.textLabel?.text = "detail" + String(indexPath.row)
+            // cell.nameLabel.text = "detail" + String(indexPath.row)
         }
         
-        return cell!
+        return cell
     }
     
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return CGFloat(80)
+    }
     
     
     /// MARK: UITableViewDelegate
@@ -166,9 +175,6 @@ class testAccordionViewController: UIViewController, UITableViewDelegate, UITabl
             details = []
             details.append("details1")
             details.append("details2")
-            details.append("details3")
-            details.append("details4")
-            details.append("details5")
             sections.append((title: "SECTION\(i)", details: details, extended: false))
         }
         
