@@ -22,6 +22,9 @@
 		9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63FBD01DD1EE1200150F34 /* MainViewController.swift */; };
 		9F63FBD31DD1EEE100150F34 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63FBD21DD1EEE100150F34 /* SearchViewController.swift */; };
 		9F63FBD61DD1F14100150F34 /* FontAwesome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F63FBD51DD1F14100150F34 /* FontAwesome.framework */; };
+		9F8B20651ECC53EB001B7543 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8B20631ECC53EB001B7543 /* Realm.framework */; };
+		9F8B20661ECC53EB001B7543 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8B20641ECC53EB001B7543 /* RealmSwift.framework */; };
+		9F8B20681ECC5865001B7543 /* favoriteRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8B20671ECC5865001B7543 /* favoriteRealm.swift */; };
 		9F8CBB0D1DD1E574002B3DBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */; };
 		9F8CBB121DD1E574002B3DBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8CBB101DD1E574002B3DBA /* Main.storyboard */; };
 		9F8CBB141DD1E574002B3DBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F8CBB131DD1E574002B3DBA /* Assets.xcassets */; };
@@ -76,6 +79,9 @@
 		9F63FBD01DD1EE1200150F34 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9F63FBD21DD1EEE100150F34 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9F63FBD51DD1F14100150F34 /* FontAwesome.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome.framework; path = Carthage/Build/iOS/FontAwesome.framework; sourceTree = "<group>"; };
+		9F8B20631ECC53EB001B7543 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		9F8B20641ECC53EB001B7543 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		9F8B20671ECC5865001B7543 /* favoriteRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = favoriteRealm.swift; sourceTree = "<group>"; };
 		9F8CBB091DD1E574002B3DBA /* asoviva.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = asoviva.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F8CBB111DD1E574002B3DBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -107,7 +113,9 @@
 				9F04782D1E40982800656393 /* SwiftyJSON.framework in Frameworks */,
 				9F4514F71E375210002CFE04 /* ObjectMapper.framework in Frameworks */,
 				9F63EE9C1DDB142100D332D6 /* CoreLocation.framework in Frameworks */,
+				9F8B20651ECC53EB001B7543 /* Realm.framework in Frameworks */,
 				9F63FBD61DD1F14100150F34 /* FontAwesome.framework in Frameworks */,
+				9F8B20661ECC53EB001B7543 /* RealmSwift.framework in Frameworks */,
 				86715922B7FC1FED7B1D18B3 /* Pods_asoviva.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,6 +155,8 @@
 		9F63FBD41DD1F14100150F34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F8B20631ECC53EB001B7543 /* Realm.framework */,
+				9F8B20641ECC53EB001B7543 /* RealmSwift.framework */,
 				9F0BA2901EC6E18A00B0630A /* RAMAnimatedTabBarController.framework.dSYM */,
 				9FFC054E1E77E6670032589C /* Eureka.framework */,
 				9F04782C1E40982800656393 /* SwiftyJSON.framework */,
@@ -188,6 +198,7 @@
 				9FECD2B91EC318BE007E3C87 /* RecommendViewController.swift */,
 				9F63FBD21DD1EEE100150F34 /* SearchViewController.swift */,
 				9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */,
+				9F8B20671ECC5865001B7543 /* favoriteRealm.swift */,
 				9FECD2CC1EC598B9007E3C87 /* MyPageViewController.swift */,
 				9F4A4BD81E49D2C500065862 /* DetailViewController.swift */,
 				9FB64B031E3762DF00C3C430 /* Location.swift */,
@@ -449,6 +460,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
+				"$(SRCROOT)/RealmSwift.framework",
+				"$(SRCROOT)/Realm.framework",
 			);
 			name = "Run Script";
 			outputPaths = (
@@ -528,6 +541,7 @@
 				9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */,
 				9F0BA2AB1ECB0E2900B0630A /* storedetailTableViewCell.swift in Sources */,
 				9F63FBD31DD1EEE100150F34 /* SearchViewController.swift in Sources */,
+				9F8B20681ECC5865001B7543 /* favoriteRealm.swift in Sources */,
 				9F49E3421E5324C800D190AD /* PlaygroundDetail.swift in Sources */,
 				9FB64B041E3762DF00C3C430 /* Location.swift in Sources */,
 				9F0BA2A11EC6EEE700B0630A /* storeTableViewCell.swift in Sources */,
@@ -693,6 +707,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/SCLAlertView",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = asoviva/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -712,6 +727,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/SCLAlertView",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = asoviva/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

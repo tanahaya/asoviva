@@ -33,8 +33,8 @@ extension storedetailTableViewCell {
     @IBAction func favoritebutton(_ sender: AnyObject) {
         
         let FavoriteView = FavoriteViewController()
-        var favorite:[Location] = UserDafault.object(forKey: "locations") as! [Location]
-        FavoriteView.favorites.append(<#Location#>)
+        //var favorite:[Location] = UserDafault.object(forKey: "locations") as! [Location]
+        //FavoriteView.favorites.append(<#Location#>)
         
         SCLAlertView().showInfo("お気に入り登録完了", subTitle: "をお気に入り登録しました。")
     }
