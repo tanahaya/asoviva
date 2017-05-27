@@ -11,7 +11,7 @@ import RealmSwift
 
 class FavoriteViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
     
-    var favorites:[favoriteRealm] = []
+    var favorites:[favorite] = []
     
     let realm = try! Realm()
     
@@ -39,7 +39,7 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
     }
     override func viewWillAppear(_ animated: Bool) {
         
-        favorites = favoriteRealm.loadAll()
+        favorites = favorite.loadAll()
         
         storeTableView.reloadData()
     }

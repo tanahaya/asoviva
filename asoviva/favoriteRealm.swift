@@ -12,7 +12,7 @@ import RealmSwift
 public enum FetchType { // 取得するデータを決めるためのenum
     case All // すべてのToDoを取得するためのenum
 }
-class favoriteRealm: Object{
+class favorite: Object{
     
     static let realm = try! Realm()
     
@@ -28,9 +28,9 @@ class favoriteRealm: Object{
     override static func primaryKey() -> String {
         return "id"
     }
-    static func create(storename:String,lat:Double,lng:Double,vicinity:String,placeid:String) -> favoriteRealm {
+    static func create(storename:String,lat:Double,lng:Double,vicinity:String,placeid:String) -> favorite {
         
-        let storedata = favoriteRealm()
+        let storedata = favorite()
         storedata.storename = storename
         storedata.lat = lat
         storedata.lng = lng
@@ -41,7 +41,7 @@ class favoriteRealm: Object{
         
         
     }
-    static func update(model:favoriteRealm,content: String,dueDate:NSDate,importance:Int) {
+    static func update(model:favorite,content: String,dueDate:NSDate,importance:Int) {
         try! realm.write({
             /*
              model.name = content
@@ -51,18 +51,18 @@ class favoriteRealm: Object{
             
         })
     }
-    static func fetch(FetchType type: FetchType) -> [favoriteRealm] {
+    static func fetch(FetchType type: FetchType) -> [favorite] {
         // .Allなら全件、.UnDoneなら未完了のデータを取得する
         switch type {
         case .All:
             return loadAll()
         }
     }
-    static func loadAll() -> [favoriteRealm] {
+    static func loadAll() -> [favorite] {
         // idでソートしながら、全件取得
-        let todos = realm.objects(favoriteRealm.self).sorted(byKeyPath: "due_date", ascending: true)
+        let todos = realm.objects(favorite.self).sorted(byKeyPath: "due_date", ascending: true)
         // 取得したデータを配列にいれる
-        var ret: [favoriteRealm] = []
+        var ret: [favorite] = []
         for todo in todos {
             ret.append(todo)
         }
@@ -71,7 +71,7 @@ class favoriteRealm: Object{
     static func lastId() -> Int {
         // isDoneの値を変更するとデータベース上の順序が変わるために、以下のようにしてidでソートして最大値を求めて+1して返す
         // 更新の必要がないなら、 realm.objects(ToDoModel).last で最後のデータのidを取得すればよい
-        if let todo = realm.objects(favoriteRealm.self).sorted(byKeyPath: "id", ascending: false).first {
+        if let todo = realm.objects(favorite.self).sorted(byKeyPath: "id", ascending: false).first {
             return todo.id + 1
         }else {
             return 1
@@ -81,23 +81,23 @@ class favoriteRealm: Object{
     // ローカルのdefault.realmに作成したデータを保存するメソッド
     func save() {
         // writeでtransactionを生む
-        try! favoriteRealm.realm.write {
+        try! favorite.realm.write {
             // モデルを保存
-            favoriteRealm.realm.add(self)
+            favorite.realm.add(self)
         }
     }
     
     // TODO: UITableViewRowActionからインスタンスを送れない
     func delete(idOfDelete id: Int)  {
-        let item = favoriteRealm.realm.objects(favoriteRealm.self)[id]
-        try! favoriteRealm.realm.write {
-            favoriteRealm.realm.delete(item)
+        let item = favorite.realm.objects(favorite.self)[id]
+        try! favorite.realm.write {
+            favorite.realm.delete(item)
         }
     }
     
     func updateDone(idOfUpdate id: Int) {
-        let item = favoriteRealm.realm.objects(favoriteRealm.self)[id]
-        try! favoriteRealm.realm.write {
+        let item = favorite.realm.objects(favorite.self)[id]
+        try! favorite.realm.write {
             // item.isDone = 1
         }
     }

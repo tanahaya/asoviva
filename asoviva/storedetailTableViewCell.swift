@@ -38,7 +38,7 @@ extension storedetailTableViewCell {
         let RecommendView:RecommendViewController = RecommendViewController()
         var locations:[Location] = RecommendView.locations
         
-        let storedata = favoriteRealm()
+        let storedata = favorite()
         storedata.storename = locations[tag].storename
         storedata.lat = locations[tag].lat
         storedata.lng = locations[tag].lng
