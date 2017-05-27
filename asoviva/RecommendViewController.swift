@@ -13,6 +13,7 @@ import GoogleMaps
 import ObjectMapper
 import SwiftyJSON
 import FontAwesome
+
 class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
     lazy var mapView: MKMapView = {

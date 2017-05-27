@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 class storedetailTableViewCell: UITableViewCell {
-
+    
+    let realm = try! Realm()
     
     @IBOutlet var numberLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!
@@ -30,11 +32,22 @@ class storedetailTableViewCell: UITableViewCell {
 }
 extension storedetailTableViewCell {
     
+    
     @IBAction func favoritebutton(_ sender: AnyObject) {
         
-        let FavoriteView = FavoriteViewController()
-        //var favorite:[Location] = UserDafault.object(forKey: "locations") as! [Location]
-        //FavoriteView.favorites.append(<#Location#>)
+        let RecommendView:RecommendViewController = RecommendViewController()
+        var locations:[Location] = RecommendView.locations
+        
+        let storedata = favoriteRealm()
+        storedata.storename = locations[tag].storename
+        storedata.lat = locations[tag].lat
+        storedata.lng = locations[tag].lng
+        storedata.vicinity = locations[tag].vicinity
+        storedata.placeid = locations[tag].placeid
+        
+        try! realm.write {
+            realm.add(storedata)
+        }
         
         SCLAlertView().showInfo("お気に入り登録完了", subTitle: "をお気に入り登録しました。")
     }

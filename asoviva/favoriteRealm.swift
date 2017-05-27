@@ -18,8 +18,8 @@ class favoriteRealm: Object{
     
     private var id:Int = 0
     var storename:String!
-    var lat: Float!
-    var lng: Float!
+    var lat: Double!
+    var lng: Double!
     var vicinity:String!
     var placeid:String!
     var extended: Bool = false
@@ -28,7 +28,7 @@ class favoriteRealm: Object{
     override static func primaryKey() -> String {
         return "id"
     }
-    static func create(storename:String,lat:Float,lng:Float,vicinity:String,placeid:String) -> favoriteRealm {
+    static func create(storename:String,lat:Double,lng:Double,vicinity:String,placeid:String) -> favoriteRealm {
         
         let storedata = favoriteRealm()
         storedata.storename = storename

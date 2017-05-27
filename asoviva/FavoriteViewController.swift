@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FavoriteViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
     
-    var favorites:[Location] = []
+    var favorites:[favoriteRealm] = []
+    
+    let realm = try! Realm()
     
     
     lazy var storeTableView: UITableView = {
@@ -35,6 +38,9 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        
+        favorites = favoriteRealm.loadAll()
+        
         storeTableView.reloadData()
     }
     
@@ -78,6 +84,7 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         if indexPath.row == 0 {
             return 80
         }else {
