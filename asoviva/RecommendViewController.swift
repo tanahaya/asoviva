@@ -13,6 +13,7 @@ import GoogleMaps
 import ObjectMapper
 import SwiftyJSON
 import FontAwesome
+import RealmSwift
 
 class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
@@ -39,6 +40,8 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     var nowlat: CLLocationDegrees!
     var nowlng: CLLocationDegrees!
     var UserDafault:UserDefaults = UserDefaults()
+    
+    let realm = try! Realm()
     
     let detailcolor = UIColor(red: 0, green: 108, blue: 241, alpha: 1.0)
     let guidecolor = UIColor(red: 243 , green: 152, blue: 29, alpha: 1.0)
@@ -208,6 +211,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             cell.distantLabel.textAlignment = NSTextAlignment.left
             cell.numberLabel.text = "# " + String(indexPath.section + 1)
             
+            
             return cell
             
         }else{
@@ -215,6 +219,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             let cell:storedetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storedetailTableViewCell", for: indexPath as IndexPath) as! storedetailTableViewCell
             
             cell.nameLabel.text = locations[indexPath.section].storename
+            cell.favoritebutton.addTarget(self, action: #selector(pickfavorite), for: .touchUpInside)
             cell.favoritebutton.tag = indexPath.section
             
             return cell
@@ -330,6 +335,22 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
                               at: UITableViewScrollPosition.top, animated: true)
     }
     
+    func pickfavorite(sender: UIButton) {
+        print("sender:" + String(sender.tag))
+        let storedata = favorite()
+        storedata.storename = locations[sender.tag].storename
+        storedata.lat = locations[sender.tag].lat
+        storedata.lng = locations[sender.tag].lng
+        storedata.vicinity = locations[sender.tag].vicinity
+        storedata.placeid = locations[sender.tag].placeid
+        storedata.id = favorite.lastId()
+        try! realm.write {
+            realm.add(storedata)
+            
+        }
+        
+        SCLAlertView().showInfo("お気に入り登録完了", subTitle: locations[sender.tag].storename + "をお気に入り登録しました。")
+    }
     
 }
 

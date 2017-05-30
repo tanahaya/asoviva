@@ -35,20 +35,5 @@ extension storedetailTableViewCell {
     
     @IBAction func favoritebutton(_ sender: AnyObject) {
         
-        let RecommendView:RecommendViewController = RecommendViewController()
-        var locations:[Location] = RecommendView.locations
-        
-        let storedata = favorite()
-        storedata.storename = locations[tag].storename
-        storedata.lat = locations[tag].lat
-        storedata.lng = locations[tag].lng
-        storedata.vicinity = locations[tag].vicinity
-        storedata.placeid = locations[tag].placeid
-        
-        try! realm.write {
-            realm.add(storedata)
-        }
-        
-        SCLAlertView().showInfo("お気に入り登録完了", subTitle: "をお気に入り登録しました。")
     }
 }

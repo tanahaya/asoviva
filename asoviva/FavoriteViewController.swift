@@ -18,7 +18,7 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
     
     lazy var storeTableView: UITableView = {
         
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0,  width: self.view.frame.width, height: self.view.frame.width - 60))
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0,  width: self.view.frame.width, height: 667))
         //tableView.register(storeTableViewCell.self, forCellReuseIdentifier: "storeTableViewCell")
         tableView.dataSource = self
         tableView.delegate = self
@@ -33,7 +33,7 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         self.view.addSubview(storeTableView)
         
     }
@@ -59,11 +59,15 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
     /// MARK: UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
+        let nowfavorite = favorites[indexPath.section]
+        
         if indexPath.row == 0 {
             
             let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
-            
-            cell.nameLabel.text = favorites[indexPath.section].storename
+            print(nowfavorite)
+            print(nowfavorite.storename)
+            cell.nameLabel.text = nowfavorite.storename
             cell.pointLabel.textAlignment = NSTextAlignment.left
             cell.priceLabel.textAlignment = NSTextAlignment.left
             cell.distantLabel.textAlignment = NSTextAlignment.left
@@ -75,7 +79,9 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
             
             let cell:storedetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storedetailTableViewCell", for: indexPath as IndexPath) as! storedetailTableViewCell
             
-            cell.nameLabel.text = favorites[indexPath.section].storename
+            cell.nameLabel.text = nowfavorite.storename
+            cell.favoritebutton.isHidden = true
+            cell.favoritebutton.isEnabled = false
             
             return cell
         }
@@ -98,7 +104,14 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
         if 0 == indexPath.row {
             // switching open or close
             
-            favorites[indexPath.section].extended = !favorites[indexPath.section].extended
+            try! realm.write {
+                
+                favorites[indexPath.section].extended = !favorites[indexPath.section].extended
+                
+                realm.add(favorites, update: true)
+                // タイトルはそのままで値段のプロパティだけを更新することができます。
+            }
+            
             if !favorites[indexPath.section].extended {
                 self.toContract(tableView, indexPath: indexPath)
             }else{

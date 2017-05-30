@@ -16,13 +16,13 @@ class favorite: Object{
     
     static let realm = try! Realm()
     
-    private var id:Int = 0
-    var storename:String!
-    var lat: Double!
-    var lng: Double!
-    var vicinity:String!
-    var placeid:String!
-    var extended: Bool = false
+    dynamic var id:Int = 0
+    dynamic var storename:String!
+    dynamic var lat: Double = 0.0
+    dynamic var lng: Double = 0.0
+    dynamic var vicinity:String!
+    dynamic var placeid:String!
+    dynamic var extended: Bool = false
     
     
     override static func primaryKey() -> String {
@@ -41,14 +41,14 @@ class favorite: Object{
         
         
     }
-    static func update(model:favorite,content: String,dueDate:NSDate,importance:Int) {
+    static func update(model:favorite,extended: Bool) {
         try! realm.write({
             /*
              model.name = content
              model.due_date = dueDate
              model.isDone = 0
              */
-            
+            model.extended = extended
         })
     }
     static func fetch(FetchType type: FetchType) -> [favorite] {
@@ -60,11 +60,11 @@ class favorite: Object{
     }
     static func loadAll() -> [favorite] {
         // idでソートしながら、全件取得
-        let todos = realm.objects(favorite.self).sorted(byKeyPath: "due_date", ascending: true)
+        let favoritesarray = realm.objects(favorite.self).sorted(byKeyPath: "id", ascending: true)
         // 取得したデータを配列にいれる
         var ret: [favorite] = []
-        for todo in todos {
-            ret.append(todo)
+        for favoritedata in favoritesarray {
+            ret.append(favoritedata)
         }
         return ret
     }
