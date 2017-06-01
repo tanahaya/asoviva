@@ -18,12 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         GMSServices.provideAPIKey("AIzaSyCwcR3jfPvo1SNdLFTTOe0dZ1_PX_AZ2xU")
-        /*
-         let first: MainViewController = MainViewController()
-         let test: testViewController = testViewController()
-         self.window = UIWindow(frame: UIScreen.main.bounds)
-         self.window?.rootViewController = test//first
-         */
+        
+        let first: MainViewController = MainViewController()
+        let test: InputPlaceViewController = InputPlaceViewController()
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = test//first
+        
         self.window?.makeKeyAndVisible()
         
         // Override point for customization after application launch.

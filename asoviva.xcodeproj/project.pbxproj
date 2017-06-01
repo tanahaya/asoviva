@@ -24,12 +24,14 @@
 		9F8B20651ECC53EB001B7543 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8B20631ECC53EB001B7543 /* Realm.framework */; };
 		9F8B20661ECC53EB001B7543 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8B20641ECC53EB001B7543 /* RealmSwift.framework */; };
 		9F8B20681ECC5865001B7543 /* favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8B20671ECC5865001B7543 /* favorite.swift */; };
-		9F8B20881EDD80E3001B7543 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8B20871EDD80E3001B7543 /* testViewController.swift */; };
+		9F8B20881EDD80E3001B7543 /* InputPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8B20871EDD80E3001B7543 /* InputPlaceViewController.swift */; };
 		9F8CBB0D1DD1E574002B3DBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */; };
 		9F8CBB121DD1E574002B3DBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8CBB101DD1E574002B3DBA /* Main.storyboard */; };
 		9F8CBB141DD1E574002B3DBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F8CBB131DD1E574002B3DBA /* Assets.xcassets */; };
 		9F8CBB171DD1E574002B3DBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */; };
 		9FB64B041E3762DF00C3C430 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB64B031E3762DF00C3C430 /* Location.swift */; };
+		9FD5BF031EDF0D3B00D1F65D /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF021EDF0D3B00D1F65D /* WebPageViewController.swift */; };
+		9FD5BF071EDF0D7A00D1F65D /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */; };
 		9FECD2B51EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */; };
 		9FECD2B61EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FECD2B41EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib */; };
 		9FECD2B81EC1D89B007E3C87 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */; };
@@ -82,7 +84,7 @@
 		9F8B20631ECC53EB001B7543 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		9F8B20641ECC53EB001B7543 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		9F8B20671ECC5865001B7543 /* favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = favorite.swift; sourceTree = "<group>"; };
-		9F8B20871EDD80E3001B7543 /* testViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
+		9F8B20871EDD80E3001B7543 /* InputPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPlaceViewController.swift; sourceTree = "<group>"; };
 		9F8B20891EDD8271001B7543 /* GooglePlacesAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlacesAPI.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/GooglePlacesAPI/GooglePlacesAPI.framework"; sourceTree = "<group>"; };
 		9F8CBB091DD1E574002B3DBA /* asoviva.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = asoviva.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,8 @@
 		9F8CBB1D1DD1E574002B3DBA /* asovivaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = asovivaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8CBB281DD1E574002B3DBA /* asovivaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = asovivaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FB64B031E3762DF00C3C430 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		9FD5BF021EDF0D3B00D1F65D /* WebPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebPageViewController.swift; sourceTree = "<group>"; };
+		9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
 		9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurekaImageCellTableViewCell.swift; sourceTree = "<group>"; };
 		9FECD2B41EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EurekaImageCellTableViewCell.xib; sourceTree = "<group>"; };
 		9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -196,10 +200,12 @@
 			isa = PBXGroup;
 			children = (
 				9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */,
-				9F8B20871EDD80E3001B7543 /* testViewController.swift */,
+				9F8B20871EDD80E3001B7543 /* InputPlaceViewController.swift */,
 				9F8CBB101DD1E574002B3DBA /* Main.storyboard */,
 				9F63FBD01DD1EE1200150F34 /* MainViewController.swift */,
 				9FECD2B91EC318BE007E3C87 /* RecommendViewController.swift */,
+				9FD5BF021EDF0D3B00D1F65D /* WebPageViewController.swift */,
+				9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */,
 				9F63FBD21DD1EEE100150F34 /* SearchViewController.swift */,
 				9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */,
 				9F8B20671ECC5865001B7543 /* favorite.swift */,
@@ -542,17 +548,19 @@
 			files = (
 				9FECD2D81EC5CBB3007E3C87 /* SCLExtensions.swift in Sources */,
 				9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */,
-				9F8B20881EDD80E3001B7543 /* testViewController.swift in Sources */,
+				9F8B20881EDD80E3001B7543 /* InputPlaceViewController.swift in Sources */,
 				9F0BA2AB1ECB0E2900B0630A /* storedetailTableViewCell.swift in Sources */,
 				9F63FBD31DD1EEE100150F34 /* SearchViewController.swift in Sources */,
 				9F8B20681ECC5865001B7543 /* favorite.swift in Sources */,
 				9F49E3421E5324C800D190AD /* PlaygroundDetail.swift in Sources */,
 				9FB64B041E3762DF00C3C430 /* Location.swift in Sources */,
 				9F0BA2A11EC6EEE700B0630A /* storeTableViewCell.swift in Sources */,
+				9FD5BF031EDF0D3B00D1F65D /* WebPageViewController.swift in Sources */,
 				9FECD2B81EC1D89B007E3C87 /* FavoriteViewController.swift in Sources */,
 				9F4A4BD91E49D2C500065862 /* DetailViewController.swift in Sources */,
 				9FECD2CD1EC598B9007E3C87 /* MyPageViewController.swift in Sources */,
 				9F8CBB0D1DD1E574002B3DBA /* AppDelegate.swift in Sources */,
+				9FD5BF071EDF0D7A00D1F65D /* RouteViewController.swift in Sources */,
 				9FECD2B51EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift in Sources */,
 				9FECD2D71EC5CBB3007E3C87 /* SCLAlertView.swift in Sources */,
 				9FECD2BA1EC318BE007E3C87 /* RecommendViewController.swift in Sources */,

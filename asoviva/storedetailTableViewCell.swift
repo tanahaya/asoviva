@@ -21,6 +21,11 @@ class storedetailTableViewCell: UITableViewCell {
     
     
     @IBOutlet var favoritebutton: UIButton!
+    @IBOutlet var webbutton: UIButton!
+    @IBOutlet var routebutton: UIButton!
+    
+    @IBOutlet var phonebutton: UIButton!
+    
     @IBOutlet var storeImage: UIImageView!
     var UserDafault:UserDefaults = UserDefaults()
     
@@ -36,4 +41,18 @@ extension storedetailTableViewCell {
     @IBAction func favoritebutton(_ sender: AnyObject) {
         
     }
+    @IBAction func webButton(_ sender: AnyObject) {
+        
+        let webviewController = WebPageViewController()
+        webviewController.navigationController?.pushViewController(webviewController, animated: true)
+    }
+    @IBAction func routebutton(_ sender: AnyObject) {
+        
+        let routeviewController = RouteViewController()
+        routeviewController.navigationController?.pushViewController( routeviewController, animated: true)
+    }
+    @IBAction func phonebutton(_ sender: AnyObject) {
+        
+    }
+
 }

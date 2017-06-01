@@ -52,16 +52,25 @@
                         <rect key="frame" x="167" y="104" width="200" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="東京都東京市東京町10-10-10"/>
+                        <connections>
+                            <action selector="routebutton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="CnT-aY-XBA"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWf-yv-ff1">
                         <rect key="frame" x="275" y="129" width="92" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="websiteのlink"/>
+                        <connections>
+                            <action selector="webButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0Lj-Cy-3iI"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wg-Wm-bF0">
                         <rect key="frame" x="260" y="159" width="107" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="080-8888-888"/>
+                        <connections>
+                            <action selector="phonebutton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Tic-Sf-BOI"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCz-xc-ugz">
                         <rect key="frame" x="40" y="186" width="108" height="30"/>
@@ -122,7 +131,10 @@
             <connections>
                 <outlet property="favoritebutton" destination="ex8-mw-Bce" id="zZo-NB-969"/>
                 <outlet property="nameLabel" destination="wsW-it-cH8" id="gca-mx-0vd"/>
+                <outlet property="phonebutton" destination="6wg-Wm-bF0" id="DVI-9p-1bR"/>
+                <outlet property="routebutton" destination="2u8-f4-zRn" id="vP4-2Q-FUL"/>
                 <outlet property="storeImage" destination="ZRe-vv-a4A" id="gWr-u2-axX"/>
+                <outlet property="webbutton" destination="EWf-yv-ff1" id="5Zm-rh-oaA"/>
             </connections>
             <point key="canvasLocation" x="32.5" y="54"/>
         </tableViewCell>
