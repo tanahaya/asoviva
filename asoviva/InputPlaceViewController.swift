@@ -27,6 +27,10 @@ class InputPlaceViewController: UIViewController{
         
         myButton.addTarget(self, action: #selector(nameInput(_:)), for: .touchUpInside)
         self.view.addSubview(myButton)
+        
+        
+        GMSPlacesClient.provideAPIKey("AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY")
+        GMSServices.provideAPIKey("AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY")
     }
     
     // StoryBoardと接続。UITextに入力しようとした時のアクション。
@@ -44,17 +48,12 @@ class InputPlaceViewController: UIViewController{
 extension InputPlaceViewController: GMSAutocompleteViewControllerDelegate {
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        GMSServices.provideAPIKey("AIzaSyCwcR3jfPvo1SNdLFTTOe0dZ1_PX_AZ2xU")
-        
-    }
     
     // オートコンプリートで場所が選択した時に呼ばれる関数
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         
-        GMSServices.provideAPIKey("AIzaSyCwcR3jfPvo1SNdLFTTOe0dZ1_PX_AZ2xU")
+        
+        
         // 名前をoutletに設定
         // name.text = place.name
         print(place)
