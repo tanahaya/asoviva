@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let first: MainViewController = MainViewController()
         let test: InputPlaceViewController = InputPlaceViewController()
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = test//first
+        self.window?.rootViewController = first
         
         self.window?.makeKeyAndVisible()
         

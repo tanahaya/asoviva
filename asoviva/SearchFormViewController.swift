@@ -1,50 +1,67 @@
-// SDKのインポート
+//
+//  SearchFormViewController.swift
+//  asoviva
+//
+//  Created by 田中千洋 on 2017/06/03.
+//  Copyright © 2017年 田中 颯. All rights reserved.
+//
+
+import UIKit
 import GoogleMaps
+import Eureka
 import GooglePlaces
 
-class InputPlaceViewController: UIViewController{
-    
-    var myButton: UIButton!
+class SearchFormViewController: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        let bWidth: CGFloat = 200
-        let bHeight: CGFloat = 50
-        
-        let posX: CGFloat = self.view.frame.width/2 - bWidth/2
-        let posY: CGFloat = self.view.frame.height/2 - bHeight/2
-        
-        
-        myButton = UIButton()
-        myButton.frame = CGRect(x: posX, y: posY, width: bWidth, height: bHeight)
-        myButton.backgroundColor = UIColor.red
-        myButton.layer.masksToBounds = true
-        myButton.layer.cornerRadius = 20.0
-        myButton.setTitle("ボタン(通常)", for: .normal)
-        myButton.setTitleColor(UIColor.white, for: .normal)
-        
-        myButton.addTarget(self, action: #selector(nameInput(_:)), for: .touchUpInside)
-        self.view.addSubview(myButton)
+        self.view.backgroundColor = UIColor.white
         
         
         GMSPlacesClient.provideAPIKey("AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY")
         GMSServices.provideAPIKey("AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY")
+        
+        self.setup()
+        
     }
     
-    // StoryBoardと接続。UITextに入力しようとした時のアクション。
-    func nameInput(_ sender: UIButton) {
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func setup() {
+        self.form +++ Section("お店検索")
+            /*
+            <<< CustomRow() {
+                $0.cellSetup({ (cell, row) in
+                    cell.customImage.frame = CGRect(x: 20, y: 20, width:170 , height: 170)
+                    cell.customImage.layer.position =  CGPoint(x: self.view.frame.width / 2, y: 100)
+                    let nowimage = UIImage.fontAwesomeIcon(name: .mapPin, textColor: UIColor.black, size: CGSize(width:100,height:100))
+                    cell.customImage.image = nowimage
+                    
+                })
+                
+            }
+ */
+            <<< LabelRow("place"){
+                $0.title = "場所を決める"
+                }.onCellSelection(){row in
+                    self.place()
+                    
+        }
         
+        
+    }
+    func place(){
         let autocompleteController = GMSAutocompleteViewController()
-        // autocompleteController.delegate = self
+        autocompleteController.delegate = self as? GMSAutocompleteViewControllerDelegate
         
-        // オートコンプリート用のViewの表示
         present(autocompleteController, animated: true, completion: nil)
     }
+    
 }
-/*
-// InputPlaceViewControllerを拡張
 extension InputPlaceViewController: GMSAutocompleteViewControllerDelegate {
     
     
@@ -75,4 +92,6 @@ extension InputPlaceViewController: GMSAutocompleteViewControllerDelegate {
         dismiss(animated: true, completion: nil)
     }
 }
-*/
+
+
+

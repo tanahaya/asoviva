@@ -95,12 +95,5 @@ class favorite: Object{
         }
     }
     
-    func updateDone(idOfUpdate id: Int) {
-        let item = favorite.realm.objects(favorite.self)[id]
-        try! favorite.realm.write {
-            // item.isDone = 1
-        }
-    }
-    
     
 }

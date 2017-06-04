@@ -16,7 +16,7 @@ class MainViewController: UITabBarController{
        override func viewDidLoad() {
         super.viewDidLoad()
         
-        let searchView:SearchViewController = SearchViewController()
+        let searchView:SearchFormViewController = SearchFormViewController()
         let recommendView:RecommendViewController = RecommendViewController()
         
         let FavoriteView:FavoriteViewController = FavoriteViewController()

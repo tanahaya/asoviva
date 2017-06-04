@@ -32,6 +32,7 @@
 		9FB64B041E3762DF00C3C430 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB64B031E3762DF00C3C430 /* Location.swift */; };
 		9FD5BF031EDF0D3B00D1F65D /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF021EDF0D3B00D1F65D /* WebPageViewController.swift */; };
 		9FD5BF071EDF0D7A00D1F65D /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */; };
+		9FD5BF091EE2F4F300D1F65D /* SearchFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF081EE2F4F300D1F65D /* SearchFormViewController.swift */; };
 		9FECD2B51EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */; };
 		9FECD2B61EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FECD2B41EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib */; };
 		9FECD2B81EC1D89B007E3C87 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */; };
@@ -97,6 +98,7 @@
 		9FB64B031E3762DF00C3C430 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		9FD5BF021EDF0D3B00D1F65D /* WebPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebPageViewController.swift; sourceTree = "<group>"; };
 		9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
+		9FD5BF081EE2F4F300D1F65D /* SearchFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFormViewController.swift; sourceTree = "<group>"; };
 		9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurekaImageCellTableViewCell.swift; sourceTree = "<group>"; };
 		9FECD2B41EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EurekaImageCellTableViewCell.xib; sourceTree = "<group>"; };
 		9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				9FECD2B91EC318BE007E3C87 /* RecommendViewController.swift */,
 				9FD5BF021EDF0D3B00D1F65D /* WebPageViewController.swift */,
 				9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */,
+				9FD5BF081EE2F4F300D1F65D /* SearchFormViewController.swift */,
 				9F63FBD21DD1EEE100150F34 /* SearchViewController.swift */,
 				9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */,
 				9F8B20671ECC5865001B7543 /* favorite.swift */,
@@ -551,6 +554,7 @@
 				9F8B20881EDD80E3001B7543 /* InputPlaceViewController.swift in Sources */,
 				9F0BA2AB1ECB0E2900B0630A /* storedetailTableViewCell.swift in Sources */,
 				9F63FBD31DD1EEE100150F34 /* SearchViewController.swift in Sources */,
+				9FD5BF091EE2F4F300D1F65D /* SearchFormViewController.swift in Sources */,
 				9F8B20681ECC5865001B7543 /* favorite.swift in Sources */,
 				9F49E3421E5324C800D190AD /* PlaygroundDetail.swift in Sources */,
 				9FB64B041E3762DF00C3C430 /* Location.swift in Sources */,
