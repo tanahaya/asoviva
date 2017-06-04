@@ -34,49 +34,48 @@ class SearchFormViewController: FormViewController {
     func setup() {
         self.form +++ Section("お店検索")
             /*
-            <<< CustomRow() {
-                $0.cellSetup({ (cell, row) in
-                    cell.customImage.frame = CGRect(x: 20, y: 20, width:170 , height: 170)
-                    cell.customImage.layer.position =  CGPoint(x: self.view.frame.width / 2, y: 100)
-                    let nowimage = UIImage.fontAwesomeIcon(name: .mapPin, textColor: UIColor.black, size: CGSize(width:100,height:100))
-                    cell.customImage.image = nowimage
-                    
-                })
-                
-            }
- */
+             <<< CustomRow() {
+             $0.cellSetup({ (cell, row) in
+             cell.customImage.frame = CGRect(x: 20, y: 20, width:170 , height: 170)
+             cell.customImage.layer.position =  CGPoint(x: self.view.frame.width / 2, y: 100)
+             let nowimage = UIImage.fontAwesomeIcon(name: .mapPin, textColor: UIColor.black, size: CGSize(width:100,height:100))
+             cell.customImage.image = nowimage
+             
+             })
+             
+             }
+             */
             <<< LabelRow("place"){
                 $0.title = "場所を決める"
+                $0.value = ""
+                
                 }.onCellSelection(){row in
                     self.place()
                     
-        }
-        
+                }        
         
     }
     func place(){
         let autocompleteController = GMSAutocompleteViewController()
-        autocompleteController.delegate = self as? GMSAutocompleteViewControllerDelegate
+        autocompleteController.delegate = self
         
         present(autocompleteController, animated: true, completion: nil)
     }
     
 }
-extension InputPlaceViewController: GMSAutocompleteViewControllerDelegate {
-    
-    
+extension SearchFormViewController: GMSAutocompleteViewControllerDelegate {
     
     // オートコンプリートで場所が選択した時に呼ばれる関数
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         
-        
-        
         // 名前をoutletに設定
         // name.text = place.name
+        
         print(place)
         print("Place name: \(place.name)")
         print("Place address: \(String(describing: place.formattedAddress))")
         print("Place attributions: \(String(describing: place.attributions))")
+        
         dismiss(animated: true, completion: nil)
     }
     

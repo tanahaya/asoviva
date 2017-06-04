@@ -98,9 +98,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         let leftButton = UIBarButtonItem(title: "alert", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(alert))
         self.navigationItem.leftBarButtonItem = leftButton
         
-        // UserDafault.set(locations, forKey: "locations")　でかすぎて駄目らしい
-        
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -191,14 +188,12 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         return locations.count
     }
     
-    /// MARK: UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         let rowInSection = locations[section].extended ? 2 : 1
         return rowInSection
     }
     
-    /// MARK: UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0 {
@@ -210,7 +205,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             cell.priceLabel.textAlignment = NSTextAlignment.left
             cell.distantLabel.textAlignment = NSTextAlignment.left
             cell.numberLabel.text = "# " + String(indexPath.section + 1)
-            
             
             return cell
             
@@ -232,10 +226,12 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         let detailButton: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "詳しく") { (action, index) -> Void in
             
             tableView.isEditing = false
-            let viewController = DetailViewController()
-            viewController.detailData.placeId = self.locations[indexPath.row].placeid
-            self.navigationController?.pushViewController(viewController, animated: true)
-            //self.present(viewController, animated: true, completion: nil)
+            /*
+             let viewController = DetailViewController()
+             viewController.detailData.placeId = self.locations[indexPath.row].placeid
+             self.navigationController?.pushViewController(viewController, animated: true)
+             self.present(viewController, animated: true, completion: nil)
+             */
             
         }
         detailButton.backgroundColor = UIColor.green
@@ -290,7 +286,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         }
     }
     
-    /// MARK: UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if 0 == indexPath.row {
@@ -307,7 +302,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             
         }
         
-        // deselect
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -329,7 +323,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         tableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.fade)
         
-        // scroll to the selected cell.
         tableView.scrollToRow(at: IndexPath(
             row:indexPath.row, section:indexPath.section),
                               at: UITableViewScrollPosition.top, animated: true)

@@ -48,7 +48,6 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
         return favorites.count
     }
     
-    /// MARK: UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         let rowInSection = favorites[section].extended ? 2 : 1
@@ -56,7 +55,6 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
         return rowInSection
     }
     
-    /// MARK: UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
@@ -98,7 +96,6 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
         }
     }
     
-    /// MARK: UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if 0 == indexPath.row {

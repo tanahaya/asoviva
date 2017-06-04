@@ -165,9 +165,11 @@ class SearchViewController: UIViewController, MKMapViewDelegate, UISearchBarDele
         
         let detailButton: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "詳しく") { (action, index) -> Void in
             tableView.isEditing = false
+            /*
             let detailviewController = DetailViewController()
             detailviewController.detailData.placeId = self.locations[indexPath.row].placeid
             self.navigationController?.pushViewController(detailviewController, animated: true)
+ */
         }
         
         detailButton.backgroundColor = UIColor.blue
@@ -233,7 +235,6 @@ class SearchViewController: UIViewController, MKMapViewDelegate, UISearchBarDele
         
         mapView.setRegion(mapView.regionThatFits(region), animated:true)
     }
-    
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
