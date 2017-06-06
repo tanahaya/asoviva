@@ -15,7 +15,7 @@ import SwiftyJSON
 import FontAwesome
 import RealmSwift
 
-class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
+class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
     lazy var mapView: MKMapView = {
         let mapView: MKMapView = MKMapView()
@@ -40,6 +40,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     var nowlat: CLLocationDegrees!
     var nowlng: CLLocationDegrees!
     var UserDafault:UserDefaults = UserDefaults()
+    var url :String = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?radius=2000&sensor=true&key=AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY&lang=ja"
     
     let realm = try! Realm()
     
@@ -114,7 +115,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         let semaphore = DispatchSemaphore(value: 0)
         for i in 0 ..< searchword.count {
             let encodeStr = searchword[i].addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
-            let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(nowlat!),\(nowlng!)&radius=2000&sensor=true&key=\(key)&name=\(encodeStr!)&lang=ja"
+            // url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(nowlat!),\(nowlng!)&radius=2000&sensor=true&key=\(key)&name=\(encodeStr!)&lang=ja"
             let testURL:URL = URL(string: url)!
             let session = URLSession(configuration: URLSessionConfiguration.default)
             session.dataTask(with: testURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in

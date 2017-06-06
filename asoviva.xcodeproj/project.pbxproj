@@ -17,7 +17,7 @@
 		9F4514F71E375210002CFE04 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */; };
 		9F63EE9C1DDB142100D332D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */; };
 		9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63FBD01DD1EE1200150F34 /* MainViewController.swift */; };
-		9F63FBD31DD1EEE100150F34 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63FBD21DD1EEE100150F34 /* SearchViewController.swift */; };
+		9F63FBD31DD1EEE100150F34 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63FBD21DD1EEE100150F34 /* SearchResultViewController.swift */; };
 		9F63FBD61DD1F14100150F34 /* FontAwesome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F63FBD51DD1F14100150F34 /* FontAwesome.framework */; };
 		9F8B20651ECC53EB001B7543 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8B20631ECC53EB001B7543 /* Realm.framework */; };
 		9F8B20661ECC53EB001B7543 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8B20641ECC53EB001B7543 /* RealmSwift.framework */; };
@@ -75,7 +75,7 @@
 		9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
 		9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9F63FBD01DD1EE1200150F34 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		9F63FBD21DD1EEE100150F34 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		9F63FBD21DD1EEE100150F34 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		9F63FBD51DD1F14100150F34 /* FontAwesome.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome.framework; path = Carthage/Build/iOS/FontAwesome.framework; sourceTree = "<group>"; };
 		9F8B20631ECC53EB001B7543 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		9F8B20641ECC53EB001B7543 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 				9FD5BF021EDF0D3B00D1F65D /* WebPageViewController.swift */,
 				9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */,
 				9FD5BF081EE2F4F300D1F65D /* SearchFormViewController.swift */,
-				9F63FBD21DD1EEE100150F34 /* SearchViewController.swift */,
+				9F63FBD21DD1EEE100150F34 /* SearchResultViewController.swift */,
 				9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */,
 				9F8B20671ECC5865001B7543 /* favorite.swift */,
 				9FECD2CC1EC598B9007E3C87 /* MyPageViewController.swift */,
@@ -543,7 +543,7 @@
 				9FECD2D81EC5CBB3007E3C87 /* SCLExtensions.swift in Sources */,
 				9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */,
 				9F0BA2AB1ECB0E2900B0630A /* storedetailTableViewCell.swift in Sources */,
-				9F63FBD31DD1EEE100150F34 /* SearchViewController.swift in Sources */,
+				9F63FBD31DD1EEE100150F34 /* SearchResultViewController.swift in Sources */,
 				9FD5BF091EE2F4F300D1F65D /* SearchFormViewController.swift in Sources */,
 				9F8B20681ECC5865001B7543 /* favorite.swift in Sources */,
 				9FB64B041E3762DF00C3C430 /* Location.swift in Sources */,

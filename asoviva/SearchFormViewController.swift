@@ -13,10 +13,17 @@ import GooglePlaces
 
 class SearchFormViewController: FormViewController {
     
+    
+    let key = "AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.white
+        
+        let searchButtton = UIBarButtonItem(title: "検索", style: UIBarButtonItemStyle.plain, target: self, action: #selector(search(sender:)))
+        
+        self.navigationItem.setRightBarButton(searchButtton, animated: true)
         
         
         GMSPlacesClient.provideAPIKey("AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY")
@@ -29,6 +36,14 @@ class SearchFormViewController: FormViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func search(sender: UIButton){
+        print("search")
+        
+        let searchResultView = SearchResultViewController()
+        present(searchResultView, animated: true, completion: nil)
+        
     }
     
     func setup() {
@@ -70,7 +85,8 @@ extension SearchFormViewController: GMSAutocompleteViewControllerDelegate {
         
         // 名前をoutletに設定
         // name.text = place.name
-        
+        let SearchResultView:SearchResultViewController = SearchResultViewController()
+        // SearchResultView.url = SearchResultView.url + "&location=\(nowlat!),\(nowlng!)"
         print(place)
         print("Place name: \(place.name)")
         print("Place address: \(String(describing: place.formattedAddress))")
