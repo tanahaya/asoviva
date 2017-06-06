@@ -1,5 +1,6 @@
+
 //
-//  HomeViewController.swift
+//  SearchResultViewController.swift
 //  asoviva
 //
 //  Created by 田中千洋 on 2016/11/15.
@@ -17,15 +18,27 @@ import RealmSwift
 
 class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
+    
+    let userDefaults = UserDefaults.standard
+    
+    var lat: Double!
+    var lng: Double!
+    
     lazy var mapView: MKMapView = {
         let mapView: MKMapView = MKMapView()
         mapView.delegate = self
         let mapframe: CGRect = CGRect(x: 0, y: 60 , width: self.view.frame.width, height: self.view.frame.height / 2 + 15)
         mapView.frame = mapframe
-        let nowlat: Double = 35.680298
-        let nowlng: Double = 139.766247
-        let myLatitude: CLLocationDegrees = nowlat
-        let myLongitude: CLLocationDegrees = nowlng
+        self.lat = 35.680298
+        self.lng = 139.766247
+        
+        if (self.userDefaults.object(forKey: "lat") != nil) {
+            self.lat = self.userDefaults.double(forKey: "lat")
+            self.lng = self.userDefaults.double(forKey: "lng")
+        }
+        
+        let myLatitude: CLLocationDegrees = self.lat!
+        let myLongitude: CLLocationDegrees = self.lng!
         let center: CLLocationCoordinate2D = CLLocationCoordinate2DMake(myLatitude, myLongitude)
         mapView.setCenter(center, animated: true)
         let mySpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
@@ -37,10 +50,7 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
     var userLocation: CLLocationCoordinate2D!
     var destLocation : CLLocationCoordinate2D!
     var Region: MKCoordinateRegion!
-    var nowlat: CLLocationDegrees!
-    var nowlng: CLLocationDegrees!
     var UserDafault:UserDefaults = UserDefaults()
-    var url :String = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?radius=2000&sensor=true&key=AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY&lang=ja"
     
     let realm = try! Realm()
     
@@ -88,9 +98,7 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
             locationManager.startUpdatingLocation()
         }
         //nowlat = locationManager.location!.coordinate.latitude
-        nowlat  = 35.680298
         // nowlng = locationManager.location!.coordinate.longitude
-        nowlng = 139.766247
         self.view.addSubview(mapView)
         self.view.addSubview(storeTableView)
         
@@ -115,7 +123,7 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         let semaphore = DispatchSemaphore(value: 0)
         for i in 0 ..< searchword.count {
             let encodeStr = searchword[i].addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
-            // url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(nowlat!),\(nowlng!)&radius=2000&sensor=true&key=\(key)&name=\(encodeStr!)&lang=ja"
+            let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(lat!),\(lng!)&radius=2000&sensor=true&key=\(key)&lang=ja"
             let testURL:URL = URL(string: url)!
             let session = URLSession(configuration: URLSessionConfiguration.default)
             session.dataTask(with: testURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
@@ -234,7 +242,7 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         
         let guideButton: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "道案内") { (action, index) -> Void in
             
-            self.userLocation = CLLocationCoordinate2DMake(self.nowlat, self.nowlng)
+            self.userLocation = CLLocationCoordinate2DMake(self.lat!, self.lng!)
             // self.destLocation = CLLocationCoordinate2DMake(self.locations[indexPath.row].lat, self.locations[indexPath.row].lng)
             /*
              let fromPin: MKPointAnnotation = MKPointAnnotation()
@@ -342,6 +350,15 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
     }
     
 }
+
+
+
+
+
+
+
+
+
 
 
 

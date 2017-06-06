@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  RecommendViewController.swift
 //  asoviva
 //
 //  Created by 田中千洋 on 2016/11/15.
