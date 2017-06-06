@@ -126,10 +126,14 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
             var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(lat!),\(lng!)&radius=2000&sensor=true&key=\(key)&language=ja"
             if (self.userDefaults.object(forKey: "opennow") != nil) {
                 var opennow:Bool = self.userDefaults.bool(forKey: "opennow")
+                if opennow {
+                url = url + "&opennow=true"
+                }
             }
             if (self.userDefaults.object(forKey: "keyword") != nil) {
                 
-                var opennow:String = self.userDefaults.string(forKey: "keyword")!
+                var keyword:String = self.userDefaults.string(forKey: "keyword")!
+                url = url + "&name=\(keyword)"
                 
             }
             let testURL:URL = URL(string: url)!
