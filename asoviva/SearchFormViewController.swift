@@ -63,14 +63,30 @@ class SearchFormViewController: FormViewController {
              }
              */
             <<< LabelRow("place"){
-                $0.title = "場所を決める"
-                $0.value = ""
+                $0.title = "場所"
+                $0.value = "現在地"
                 
                 }.onCellSelection(){row in
                     self.place()
                     
+            }
+            <<< TextRow("keyword"){
+                $0.title = "キーワード"
+                $0.placeholder = "キーワードで検索"
+                
+                }.onChange(){row in
+                    print(row.value ?? String())
+                    self.userDefaults.set(row.value ?? String(), forKey: "keyword")
+            }
+            
+            <<< CheckRow("opennow"){
+                $0.title = "開店中"
+                
+                }.onChange(){row in
+                    print(row.value ?? Bool())
+                    
+                    self.userDefaults.set(row.value ?? Bool(), forKey: "opennow")
         }
-        
     }
     func place(){
         let autocompleteController = GMSAutocompleteViewController()

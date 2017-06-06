@@ -216,63 +216,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        let detailButton: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "詳しく") { (action, index) -> Void in
-            
-            tableView.isEditing = false
-            /*
-             let viewController = DetailViewController()
-             viewController.detailData.placeId = self.locations[indexPath.row].placeid
-             self.navigationController?.pushViewController(viewController, animated: true)
-             self.present(viewController, animated: true, completion: nil)
-             */
-            
-        }
-        detailButton.backgroundColor = UIColor.green
-        
-        let guideButton: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "道案内") { (action, index) -> Void in
-            
-            self.userLocation = CLLocationCoordinate2DMake(self.nowlat, self.nowlng)
-            // self.destLocation = CLLocationCoordinate2DMake(self.locations[indexPath.row].lat, self.locations[indexPath.row].lng)
-            /*
-             let fromPin: MKPointAnnotation = MKPointAnnotation()
-             fromPin.coordinate = self.userLocation
-             fromPin.title = "現在地"
-             self.mapView.addAnnotation(fromPin)
-             */
-            
-            let fromPlacemark = MKPlacemark(coordinate:self.userLocation, addressDictionary:nil)
-            // let toPlacemark   = MKPlacemark(coordinate:self.destLocation, addressDictionary:nil)
-            let toPlacemark = MKPlacemark(coordinate: self.locations[indexPath.row].annotation.coordinate)
-            
-            let fromItem = MKMapItem(placemark: fromPlacemark)
-            let toItem   = MKMapItem(placemark: toPlacemark)
-            
-            let request:  MKDirectionsRequest = MKDirectionsRequest()
-            
-            request.source = fromItem
-            request.destination = toItem
-            
-            request.requestsAlternateRoutes = true
-            request.transportType = MKDirectionsTransportType.walking
-            
-            let directions: MKDirections = MKDirections(request: request)
-            directions.calculate { (response, error) in
-                if error != nil || response!.routes.isEmpty {
-                    print("noroute")
-                    return
-                }
-                let route: MKRoute = response!.routes[0] as MKRoute
-                //print("目的地まで \(route.distance)m" + "所要時間 \(Int(route.expectedTravelTime/60))分")
-                self.mapView.add(route.polyline)
-                
-            }
-        }
-        guideButton.backgroundColor = UIColor.orange
-        return [detailButton, guideButton]
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return 80
