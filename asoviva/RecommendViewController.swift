@@ -211,6 +211,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             cell.favoritebutton.addTarget(self, action: #selector(pickfavorite), for: .touchUpInside)
             cell.favoritebutton.tag = indexPath.section
             
+            cell.webbutton.addTarget(self, action: #selector(pickfavorite), for: .touchUpInside)
             return cell
         }
         
@@ -281,6 +282,13 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         }
         
         SCLAlertView().showInfo("お気に入り登録完了", subTitle: locations[sender.tag].storename + "をお気に入り登録しました。")
+    }
+    func moveweb(sender: UIButton) {
+        
+        let webviewController = WebPageViewController()
+        // webviewController.url = locations[sender.tag]
+        
+        webviewController.navigationController?.pushViewController(webviewController, animated: true)
     }
     
 }

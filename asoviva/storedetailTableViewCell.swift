@@ -43,8 +43,6 @@ extension storedetailTableViewCell {
     }
     @IBAction func webButton(_ sender: AnyObject) {
         
-        let webviewController = WebPageViewController()
-        webviewController.navigationController?.pushViewController(webviewController, animated: true)
     }
     @IBAction func routebutton(_ sender: AnyObject) {
         

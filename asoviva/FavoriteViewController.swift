@@ -30,13 +30,13 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
         return tableView
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         self.view.addSubview(storeTableView)
         
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         
         favorites = favorite.loadAll()
@@ -57,14 +57,11 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
         let nowfavorite = favorites[indexPath.section]
         
         if indexPath.row == 0 {
             
             let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
-            print(nowfavorite)
-            print(nowfavorite.storename)
             cell.nameLabel.text = nowfavorite.storename
             cell.pointLabel.textAlignment = NSTextAlignment.left
             cell.priceLabel.textAlignment = NSTextAlignment.left
@@ -99,7 +96,6 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if 0 == indexPath.row {
-            // switching open or close
             
             try! realm.write {
                 

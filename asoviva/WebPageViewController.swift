@@ -8,10 +8,20 @@
 
 import UIKit
 
-class WebPageViewController: UIViewController {
+class WebPageViewController: UIViewController, UIWebViewDelegate {
 
+    var WebView: UIWebView!
+    var url:String!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        WebView = UIWebView()
+        WebView.delegate = self
+        WebView.frame = self.view.bounds
+        let url: URL = URL(string: self.url)!
+        let request: NSURLRequest = NSURLRequest(url: url)
+        WebView.loadRequest(request as URLRequest)
+        self.view.addSubview(WebView)
 
         // Do any additional setup after loading the view.
     }
@@ -21,4 +31,14 @@ class WebPageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        print("webViewDidFinishLoad")
+    }
+    
+    /*
+     PageがLoadされ始めた時、呼ばれる.
+     */
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        print("webViewDidStartLoad")
+    }
 }

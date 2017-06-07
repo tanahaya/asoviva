@@ -18,7 +18,6 @@ import RealmSwift
 
 class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
-    
     let userDefaults = UserDefaults.standard
     
     var lat: Double!
@@ -309,22 +308,4 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
