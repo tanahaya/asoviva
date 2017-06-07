@@ -21,6 +21,9 @@ class SearchFormViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.userDefaults.set("", forKey: "keyword")
+        self.userDefaults.set(false, forKey: "opennow")
+        
         self.view.backgroundColor = UIColor.white
         
         let searchButtton = UIBarButtonItem(title: "検索", style: UIBarButtonItemStyle.plain, target: self, action: #selector(search(sender:)))

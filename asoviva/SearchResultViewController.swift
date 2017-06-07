@@ -122,20 +122,24 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         locations = []
         let semaphore = DispatchSemaphore(value: 0)
         for i in 0 ..< searchword.count {
-            let encodeStr = searchword[i].addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+            // let encodeStr = searchword[i].addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
             var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(lat!),\(lng!)&radius=2000&sensor=true&key=\(key)&language=ja"
             if (self.userDefaults.object(forKey: "opennow") != nil) {
-                var opennow:Bool = self.userDefaults.bool(forKey: "opennow")
+                let opennow:Bool = self.userDefaults.bool(forKey: "opennow")
                 if opennow {
                 url = url + "&opennow=true"
                 }
+                
+                print(url)
             }
             if (self.userDefaults.object(forKey: "keyword") != nil) {
                 
-                var keyword:String = self.userDefaults.string(forKey: "keyword")!
+                let keyword:String = self.userDefaults.string(forKey: "keyword")!
                 url = url + "&name=\(keyword)"
+                print(url)
                 
             }
+            
             let testURL:URL = URL(string: url)!
             let session = URLSession(configuration: URLSessionConfiguration.default)
             session.dataTask(with: testURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
