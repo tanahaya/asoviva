@@ -38,7 +38,13 @@ class MyPageViewController: FormViewController {
                 
                 }.onCellSelection(){row in
                     
+                    
             }
+            <<< ButtonRow("Custom Cells") { (row: ButtonRow) -> () in
+                row.title = row.tag
+            }
+
+            
             <<< TextRow("keyword"){
                 $0.title = "キーワード"
                 $0.placeholder = "キーワードで検索"

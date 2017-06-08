@@ -288,7 +288,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         let webviewController = WebPageViewController()
         // webviewController.url = locations[sender.tag]
         
-        webviewController.navigationController?.pushViewController(webviewController, animated: true)
+        self.navigationController?.pushViewController(webviewController, animated: true)
     }
     
 }
