@@ -10,7 +10,7 @@ import UIKit
 import Eureka
 
 class MyPageViewController: FormViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,49 +19,55 @@ class MyPageViewController: FormViewController {
         // Do any additional setup after loading the view.
     }
     func setup() {
-        self.form +++ Section("お店検索")
-            /*
-             <<< CustomRow() {
-             $0.cellSetup({ (cell, row) in
-             cell.customImage.frame = CGRect(x: 20, y: 20, width:170 , height: 170)
-             cell.customImage.layer.position =  CGPoint(x: self.view.frame.width / 2, y: 100)
-             let nowimage = UIImage.fontAwesomeIcon(name: .mapPin, textColor: UIColor.black, size: CGSize(width:100,height:100))
-             cell.customImage.image = nowimage
-             
-             })
-             
-             }
-             */
-            <<< LabelRow("place"){
-                $0.title = "場所"
-                $0.value = "現在地"
-                
-                }.onCellSelection(){row in
-                    
-                    
-            }
-            <<< ButtonRow("Custom Cells") { (row: ButtonRow) -> () in
-                row.title = row.tag
-            }
-
+        self.form +++ Section("")
             
-            <<< TextRow("keyword"){
-                $0.title = "キーワード"
-                $0.placeholder = "キーワードで検索"
+            <<< CustomRow() {
+                $0.cellSetup({ (cell, row) in
+                    cell.customImage.frame = CGRect(x: 20, y: 20, width:80 , height: 80)
+                    cell.customImage.layer.position =  CGPoint(x: 50, y: 50)
+                    //let nowimage = UIImage.fontAwesomeIcon(name: .mapPin, textColor: UIColor.black, size: CGSize(width:100,height:100))
+                    
+                    let nowImage: UIImage = UIImage(named: "sampleimage.jpg")!
+                    cell.customImage.layer.masksToBounds = true
+                    cell.customImage.layer.cornerRadius = 40
+                    cell.customImage.image = nowImage
+                    
+                })
                 
-                }.onChange(){row in
-                    print(row.value ?? String())
-            }
-            
-            <<< CheckRow("opennow"){
-                $0.title = "開店中"
-                
-                }.onChange(){row in
-                    print(row.value ?? Bool())
         }
+        
+        self.form +++ Section("")
+            
+            <<< ButtonRow("学生登録") { (row: ButtonRow) -> () in
+                row.title = row.tag
+                row.value = ""
+            }
+            
+            <<< ButtonRow("通知設定") { (row: ButtonRow) -> () in
+                row.title = row.tag
+                row.value = ""
+            }
+            <<< ButtonRow("アカウント設定") { (row: ButtonRow) -> () in
+                row.title = row.tag
+                row.value = ""
+        }
+        
+        self.form +++ Section("")
+            <<< ButtonRow("レビューとお問い合わせ") { (row: ButtonRow) -> () in
+                row.title = row.tag
+                row.value = ""
+            }
+            
+            <<< ButtonRow("利用規約") { (row: ButtonRow) -> () in
+                row.title = row.tag
+                row.value = ""
+            }
+            <<< ButtonRow("Third Party Software") { (row: ButtonRow) -> () in
+                row.title = row.tag
+                row.value = ""
+        }
+        
+        
     }
-
     
-
-
 }
