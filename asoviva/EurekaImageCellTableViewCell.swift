@@ -14,9 +14,11 @@ public class EurekaImageCellTableViewCell: Cell<Bool>, CellType{
     
     @IBOutlet var customImage: UIImageView!
     
+    @IBOutlet var nameLabel: UILabel!
+    
     public override func setup() {
         super.setup()
-        height = { return 200 }
+        height = { return 100 }
         self.addSubview(customImage)
     }
     
