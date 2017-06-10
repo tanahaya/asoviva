@@ -18,8 +18,6 @@ class storedetailTableViewCell: UITableViewCell {
     @IBOutlet var pointLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
     
-    
-    
     @IBOutlet var favoritebutton: UIButton!
     @IBOutlet var sharebutton: UIButton!
     @IBOutlet var webbutton: UIButton!
@@ -37,7 +35,6 @@ class storedetailTableViewCell: UITableViewCell {
 
 }
 extension storedetailTableViewCell {
-    
     
     @IBAction func favoritebutton(_ sender: AnyObject) {
         

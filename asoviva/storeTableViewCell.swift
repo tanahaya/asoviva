@@ -9,14 +9,12 @@
 import UIKit
 
 class storeTableViewCell: UITableViewCell {
-
     
     @IBOutlet var numberLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var pointLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
     @IBOutlet var distantLabel: UILabel!
-    
     
     override func awakeFromNib() {
         

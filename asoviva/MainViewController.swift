@@ -31,12 +31,12 @@ class MainViewController: UITabBarController{
         FavoriteView.tabBarItem = UITabBarItem(title: "お気に入り", image: FavorImage, selectedImage: FavorImage)
         MyPageView.tabBarItem = UITabBarItem(title: "MyPage", image: userImage, selectedImage: userImage)
         
-        let recommendNavigationController = UINavigationController(rootViewController: recommendView)
-        let mypageNavigationController = UINavigationController(rootViewController: MyPageView)
-        let searchNavigationController = UINavigationController(rootViewController: searchView)
-        let favorNavigationController = UINavigationController(rootViewController: FavoriteView)
+        let recommendNavi :UIViewController = UINavigationController(rootViewController: recommendView)
+        let searchNavi :UIViewController = UINavigationController(rootViewController: searchView)
+        let favorNavi :UIViewController = UINavigationController(rootViewController: FavoriteView)
+        let mypageNavi :UIViewController = UINavigationController(rootViewController: MyPageView)
         
-        self.setViewControllers([recommendNavigationController,searchNavigationController,favorNavigationController,mypageNavigationController], animated: false)
+        self.setViewControllers([recommendNavi,searchNavi,favorNavi,mypageNavi ], animated: false)
     }
 
 }

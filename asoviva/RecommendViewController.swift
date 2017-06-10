@@ -18,10 +18,30 @@ import Social
 
 class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
+    var userLocation: CLLocationCoordinate2D!
+    var destLocation : CLLocationCoordinate2D!
+    var Region: MKCoordinateRegion!
+    var nowlat: CLLocationDegrees!
+    var nowlng: CLLocationDegrees!
+    var UserDafault:UserDefaults = UserDefaults()
+    
+    let realm = try! Realm()
+    
+    var Segcon: UISegmentedControl!
+    let underlineLayer = CALayer()
+    var segmentItemWidth:CGFloat = 0
+    
+    let detailcolor = UIColor(red: 0, green: 108, blue: 241, alpha: 1.0)
+    let guidecolor = UIColor(red: 243 , green: 152, blue: 29, alpha: 1.0)
+    
+    var locations:[Location] = []
+    
     lazy var mapView: MKMapView = {
+        
         let mapView: MKMapView = MKMapView()
         mapView.delegate = self
-        let mapframe: CGRect = CGRect(x: 0, y: 60 , width: self.view.frame.width, height: self.view.frame.height / 2 + 15)
+        let mapframe: CGRect = CGRect(x: 0, y: 95, width: self.view.frame.width, height: self.view.frame.height / 2 - 95 )
+        //let mapframe: CGRect = CGRect(x: 0, y: 60 , width: self.view.frame.width, height: self.view.frame.height / 2 + 15)
         mapView.frame = mapframe
         let nowlat: Double = 35.680298
         let nowlng: Double = 139.766247
@@ -35,18 +55,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         return mapView
     }()
     
-    var userLocation: CLLocationCoordinate2D!
-    var destLocation : CLLocationCoordinate2D!
-    var Region: MKCoordinateRegion!
-    var nowlat: CLLocationDegrees!
-    var nowlng: CLLocationDegrees!
-    var UserDafault:UserDefaults = UserDefaults()
-    
-    let realm = try! Realm()
-    
-    let detailcolor = UIColor(red: 0, green: 108, blue: 241, alpha: 1.0)
-    let guidecolor = UIColor(red: 243 , green: 152, blue: 29, alpha: 1.0)
-    
     lazy var locationManager:CLLocationManager = {
         
         let locationManager = CLLocationManager()
@@ -56,12 +64,10 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         return locationManager
     }()
     
-    var locations:[Location] = []
-    
     lazy var storeTableView: UITableView = {
         
-        let tableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height / 2 - 45 ,  width: self.view.frame.width, height: 330))
-        //tableView.register(storeTableViewCell.self, forCellReuseIdentifier: "storeTableViewCell")
+        let tableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height / 2 - 15,  width: self.view.frame.width, height: self.view.frame.height / 2 ))
+        //let tableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height / 2 - 45 ,  width: self.view.frame.width, height: 330))
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
@@ -76,6 +82,23 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let sortArray: NSArray = ["値段","評価","距離"]
+        Segcon = UISegmentedControl(items: sortArray as [AnyObject])
+        
+        let attribute = [NSForegroundColorAttributeName:UIColor.white]
+        Segcon.setTitleTextAttributes(attribute, for: .normal)
+        Segcon.frame = CGRect(x:0,y: 0 ,width: self.view.frame.width, height:30)
+        Segcon.center = CGPoint(x: self.view.frame.width/2, y: 80)
+        Segcon.backgroundColor = UIColor.orange
+        Segcon.tintColor = UIColor.clear
+        Segcon.addTarget(self, action: #selector(sortchange(segcon:)), for: UIControlEvents.valueChanged)
+        self.view.addSubview(Segcon)
+        
+        segmentItemWidth = self.view.frame.width / 3
+        underlineLayer.backgroundColor = UIColor.yellow.cgColor
+        underlineLayer.frame = CGRect(x:0,y: 27.5, width:self.view.frame.width / 3,height: 2.5)
+        Segcon.layer.addSublayer(underlineLayer)
         
         self.view.backgroundColor = UIColor.white
         let status = CLLocationManager.authorizationStatus()
@@ -93,10 +116,8 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         nowlng = 139.766247
         self.view.addSubview(mapView)
         self.view.addSubview(storeTableView)
-        
         self.searchrecommendPlace()
-        
-        
+        self.navigationItem.title  = "Asoviva"
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -170,7 +191,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         mapView.setRegion(mapView.regionThatFits(region), animated:true)
     }
     
-    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         let route: MKPolyline = overlay as! MKPolyline
@@ -222,7 +242,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         if indexPath.row == 0 {
             return 80
         }else {
-            return 220
+            return 210
         }
     }
     
@@ -326,5 +346,22 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         self.present(composeViewController, animated: true, completion: nil)
     }
     
+    func sortchange(segcon: UISegmentedControl){
+        
+        let x = CGFloat(Segcon.selectedSegmentIndex) * segmentItemWidth
+        underlineLayer.frame.origin.x = x
+        
+        switch segcon.selectedSegmentIndex {
+        case 0:
+            print("0")
+        case 1:
+            print("1")
+        case 2:
+            print("2")
+        default:
+            print("Error")
+        }
+        
+    }
 }
 
