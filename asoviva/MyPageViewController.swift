@@ -38,11 +38,15 @@ class MyPageViewController: FormViewController {
         
         self.form +++ Section("")
             
-            <<< ButtonRow("学生登録") { (row: ButtonRow) -> () in
-                row.title = row.tag
-                row.value = ""
+            <<< LabelRow("学生登録"){
+                $0.title = "学生登録"
+                // cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+                
+                
+                }.onCellSelection(){row in
+                    
+                    
             }
-            
             <<< ButtonRow("通知設定") { (row: ButtonRow) -> () in
                 row.title = row.tag
                 row.value = ""

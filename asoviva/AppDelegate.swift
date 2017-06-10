@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyCwcR3jfPvo1SNdLFTTOe0dZ1_PX_AZ2xU")
         
         let first: MainViewController = MainViewController()
+        let social: socialViewController = socialViewController()
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = first
         

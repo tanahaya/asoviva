@@ -21,6 +21,7 @@ class storedetailTableViewCell: UITableViewCell {
     
     
     @IBOutlet var favoritebutton: UIButton!
+    @IBOutlet var sharebutton: UIButton!
     @IBOutlet var webbutton: UIButton!
     @IBOutlet var routebutton: UIButton!
     

@@ -14,6 +14,7 @@ import ObjectMapper
 import SwiftyJSON
 import FontAwesome
 import RealmSwift
+import Social
 
 class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
@@ -210,8 +211,8 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             cell.nameLabel.text = locations[indexPath.section].storename
             cell.favoritebutton.addTarget(self, action: #selector(pickfavorite), for: .touchUpInside)
             cell.favoritebutton.tag = indexPath.section
-            
-            cell.webbutton.addTarget(self, action: #selector(pickfavorite), for: .touchUpInside)
+            cell.webbutton.addTarget(self, action: #selector(moveweb), for: .touchUpInside)
+            cell.sharebutton.addTarget(self, action: #selector(share), for: .touchUpInside)
             return cell
         }
         
@@ -289,6 +290,40 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         // webviewController.url = locations[sender.tag]
         
         self.navigationController?.pushViewController(webviewController, animated: true)
+    }
+    func share(sender: UIButton){
+        
+        let alertView = SCLAlertView()
+        alertView.addButton("facebookでシェア", target:self, selector:#selector(sharetwitter))
+        alertView.addButton("Twitterでシェア") {
+            print("Second button tapped")
+            self.sharefacebook()
+        }
+        alertView.showSuccess("Button View", subTitle: "This alert view has buttons")
+        
+        //SCLAlertView().showInfo("お気に入り登録完了", subTitle: locations[sender.tag].storename + "をお気に入り登録しました。")
+    }
+    func firstButton(){
+        print("first")
+    }
+    func sharetwitter() {
+        
+        let text = "twitter share text"
+        
+        let composeViewController: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)!
+        composeViewController.setInitialText(text)
+        
+        self.present(composeViewController, animated: true, completion: nil)
+    }
+    
+    func sharefacebook() {
+        
+        let text = "facebook share text"
+        
+        let composeViewController: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)!
+        composeViewController.setInitialText(text)
+        
+        self.present(composeViewController, animated: true, completion: nil)
     }
     
 }
