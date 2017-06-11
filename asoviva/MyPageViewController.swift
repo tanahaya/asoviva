@@ -38,39 +38,51 @@ class MyPageViewController: FormViewController {
         
         self.form +++ Section("")
             
-            <<< LabelRow("学生登録"){
-                $0.title = "学生登録"
-                // cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            <<< CustomButtonRow() {
                 
+                $0.cellSetup({ (cell, row) in
+                    
+                    cell.nameLabel.text = "学生登録"
+                })
+            }
+            <<< CustomButtonRow() {
                 
-                }.onCellSelection(){row in
-                    
-                    
+                $0.cellSetup({ (cell, row) in
+    
+                    cell.nameLabel.text = "通知設定"
+                })
             }
-            <<< ButtonRow("通知設定") { (row: ButtonRow) -> () in
-                row.title = row.tag
-                row.value = ""
+            <<< CustomButtonRow() {
+                
+                $0.cellSetup({ (cell, row) in
+                    
+                    cell.nameLabel.text = "アカウント設定"
+                })
             }
-            <<< ButtonRow("アカウント設定") { (row: ButtonRow) -> () in
-                row.title = row.tag
-                row.value = ""
-        }
+
         
         self.form +++ Section("")
-            <<< ButtonRow("レビューとお問い合わせ") { (row: ButtonRow) -> () in
-                row.title = row.tag
-                row.value = ""
+            <<< CustomButtonRow() {
+                
+                $0.cellSetup({ (cell, row) in
+                    
+                    cell.nameLabel.text = "レビューとお問い合わせ"
+                })
             }
-            
-            <<< ButtonRow("利用規約") { (row: ButtonRow) -> () in
-                row.title = row.tag
-                row.value = ""
+            <<< CustomButtonRow() {
+                
+                $0.cellSetup({ (cell, row) in
+                    
+                    cell.nameLabel.text = "利用規約"
+                })
             }
-            <<< ButtonRow("Third Party Software") { (row: ButtonRow) -> () in
-                row.title = row.tag
-                row.value = ""
-        }
-        
+            <<< CustomButtonRow() {
+                
+                $0.cellSetup({ (cell, row) in
+                    
+                    cell.nameLabel.text = "Third Party Software"
+                })
+            }
         
     }
     

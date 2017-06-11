@@ -351,9 +351,9 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     func sortchange(segcon: UISegmentedControl){
         
-        underlineLayer.frame.origin.x = CGFloat(Segcon.selectedSegmentIndex) * segmentItemWidth
+        underlineLayer.frame.origin.x = CGFloat(segcon.selectedSegmentIndex) * segmentItemWidth
         
-        switch sender.selectedSegmentIndex {
+        switch segcon.selectedSegmentIndex {
         case 0:
             print("0")
         case 1:
