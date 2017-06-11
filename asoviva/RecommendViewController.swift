@@ -65,7 +65,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     lazy var storeTableView: UITableView = {
         
-        let tableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height / 2 - 15,  width: self.view.frame.width, height: self.view.frame.height / 2 ))
+        let tableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height / 2 - 15,  width: self.view.frame.width, height: self.view.frame.height / 2 - 35 ))
         //let tableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height / 2 - 45 ,  width: self.view.frame.width, height: 330))
         tableView.dataSource = self
         tableView.delegate = self
@@ -273,7 +273,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         var indexPaths: [IndexPath] = []
         indexPaths.append(IndexPath(row: 1 , section:indexPath.section))
         
-        
         tableView.deleteRows(at: indexPaths,
                              with: UITableViewRowAnimation.fade)
     }
@@ -283,12 +282,10 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         var indexPaths: [IndexPath] = []
         indexPaths.append(IndexPath(row: 1, section:indexPath.section))
         
-        
         tableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.fade)
         
         tableView.scrollToRow(at: IndexPath(
-            row:indexPath.row, section:indexPath.section),
-                              at: UITableViewScrollPosition.top, animated: true)
+            row:indexPath.row, section:indexPath.section),at: UITableViewScrollPosition.top, animated: true)
     }
     
     func pickfavorite(sender: UIButton) {
@@ -365,5 +362,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         }
         
     }
+    
 }
 

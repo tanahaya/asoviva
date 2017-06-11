@@ -14,6 +14,7 @@
 		9F0BA2A21EC6EEE700B0630A /* storeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */; };
 		9F0BA2AB1ECB0E2900B0630A /* storedetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0BA2A91ECB0E2900B0630A /* storedetailTableViewCell.swift */; };
 		9F0BA2AC1ECB0E2900B0630A /* storedetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F0BA2AA1ECB0E2900B0630A /* storedetailTableViewCell.xib */; };
+		9F38BF801EED22050028A8D9 /* ピン.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F38BF7F1EED22050028A8D9 /* ピン.png */; };
 		9F4514F71E375210002CFE04 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */; };
 		9F63EE9C1DDB142100D332D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */; };
 		9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63FBD01DD1EE1200150F34 /* MainViewController.swift */; };
@@ -75,6 +76,7 @@
 		9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = storeTableViewCell.xib; sourceTree = "<group>"; };
 		9F0BA2A91ECB0E2900B0630A /* storedetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = storedetailTableViewCell.swift; sourceTree = "<group>"; };
 		9F0BA2AA1ECB0E2900B0630A /* storedetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = storedetailTableViewCell.xib; sourceTree = "<group>"; };
+		9F38BF7F1EED22050028A8D9 /* ピン.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ピン.png"; sourceTree = SOURCE_ROOT; };
 		9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
 		9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9F63FBD01DD1EE1200150F34 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */,
 				9F8CBB181DD1E574002B3DBA /* Info.plist */,
 				9F9B56491EE99B3400673F60 /* sampleimage.jpg */,
+				9F38BF7F1EED22050028A8D9 /* ピン.png */,
 				9FECD2D21EC5CBB3007E3C87 /* SCLAlertView */,
 			);
 			path = asoviva;
@@ -363,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FECD2B61EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib in Resources */,
+				9F38BF801EED22050028A8D9 /* ピン.png in Resources */,
 				9F9B56541EECEB6D00673F60 /* EurekaButtonTableViewCell.xib in Resources */,
 				9F0BA2AC1ECB0E2900B0630A /* storedetailTableViewCell.xib in Resources */,
 				9F8CBB171DD1E574002B3DBA /* LaunchScreen.storyboard in Resources */,

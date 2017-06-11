@@ -20,7 +20,7 @@ public class EurekaButtonTableViewCell: Cell<Bool>, CellType{
         super.setup()
         height = { return 44 }
         
-        let recommendImage = UIImage.fontAwesomeIcon(name: .angleRight, textColor: UIColor.black, size: CGSize(width:44,height:44))
+        let recommendImage = UIImage.fontAwesomeIcon(name: .angleRight, textColor: UIColor.black, size: CGSize(width:30,height:30))
         customImage.image = recommendImage
         self.addSubview(customImage)
     }
