@@ -27,7 +27,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     let realm = try! Realm()
     
-    var Segcon: UISegmentedControl!
     let underlineLayer = CALayer()
     var segmentItemWidth:CGFloat = 0
     
@@ -83,9 +82,10 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let sortArray: NSArray = ["値段","評価","距離"]
-        Segcon = UISegmentedControl(items: sortArray as [AnyObject])
+        let sortArray: [String] = ["値段","評価","距離"]
         
+        var Segcon: UISegmentedControl!
+        Segcon = UISegmentedControl(items: sortArray as [AnyObject])
         let attribute = [NSForegroundColorAttributeName:UIColor.white]
         Segcon.setTitleTextAttributes(attribute, for: .normal)
         Segcon.frame = CGRect(x:0,y: 0 ,width: self.view.frame.width, height:30)
@@ -217,6 +217,9 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
             
             cell.nameLabel.text = locations[indexPath.section].storename
+            //cell.pointLabel.text = locations[indexPath.section]
+            //cell.priceLabel.text = locations[indexPath.section]
+            //cell.distantLabel.text= locations[indexPath.section]
             cell.pointLabel.textAlignment = NSTextAlignment.left
             cell.priceLabel.textAlignment = NSTextAlignment.left
             cell.distantLabel.textAlignment = NSTextAlignment.left
@@ -348,10 +351,9 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     func sortchange(segcon: UISegmentedControl){
         
-        let x = CGFloat(Segcon.selectedSegmentIndex) * segmentItemWidth
-        underlineLayer.frame.origin.x = x
+        underlineLayer.frame.origin.x = CGFloat(Segcon.selectedSegmentIndex) * segmentItemWidth
         
-        switch segcon.selectedSegmentIndex {
+        switch sender.selectedSegmentIndex {
         case 0:
             print("0")
         case 1:
