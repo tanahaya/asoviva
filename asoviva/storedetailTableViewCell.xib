@@ -124,7 +124,7 @@
                         <state key="normal" title="お店をシェア"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ex8-mw-Bce">
-                        <rect key="frame" x="133" y="175" width="108" height="30"/>
+                        <rect key="frame" x="124" y="175" width="132" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="お気に入り登録"/>
                         <connections>
@@ -152,7 +152,7 @@
                 <outlet property="storeImage" destination="ZRe-vv-a4A" id="gWr-u2-axX"/>
                 <outlet property="webbutton" destination="EWf-yv-ff1" id="5Zm-rh-oaA"/>
             </connections>
-            <point key="canvasLocation" x="62" y="115"/>
+            <point key="canvasLocation" x="61.5" y="115"/>
         </tableViewCell>
     </objects>
 </document>

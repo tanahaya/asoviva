@@ -14,6 +14,7 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
     var favorites:[favorite] = []
     
     let realm = try! Realm()
+    var sendernumber:Int = 0
     
     
     lazy var storeTableView: UITableView = {
@@ -75,8 +76,9 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
             let cell:storedetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storedetailTableViewCell", for: indexPath as IndexPath) as! storedetailTableViewCell
             
             cell.nameLabel.text = nowfavorite.storename
-            cell.favoritebutton.isHidden = true
-            cell.favoritebutton.isEnabled = false
+            cell.favoritebutton.setTitle("お気に入り解除", for: .normal)
+            cell.favoritebutton.tag = indexPath.section
+            cell.favoritebutton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
             
             return cell
         }
@@ -89,7 +91,7 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
         if indexPath.row == 0 {
             return 80
         }else {
-            return 220
+            return 210
         }
     }
     
@@ -141,5 +143,24 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
         tableView.scrollToRow(at: IndexPath(
             row:indexPath.row, section:indexPath.section),
                               at: UITableViewScrollPosition.top, animated: true)
+    }
+    func cancel(sender:UIButton) {
+        sendernumber = sender.tag
+        let alertView = SCLAlertView()
+        alertView.addButton("お気に入りを解除する", target:self, selector:#selector(deleterealm))
+        alertView.showSuccess("Button View", subTitle: "This alert view has buttons")
+        
+        
+    }
+    func deleterealm() {
+        let item = self.favorites[sendernumber]
+        
+        try! realm.write {
+            realm.delete(item)
+            
+        }
+        self.favorites.remove(at: sendernumber)
+        //storeTableView.deleteRowsAtIndexPaths([sender.tag], withRowAnimation: .Fade)
+        self.storeTableView.reloadData()
     }
 }
