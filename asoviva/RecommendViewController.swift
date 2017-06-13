@@ -25,6 +25,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     var nowlng: CLLocationDegrees!
     var UserDafault:UserDefaults = UserDefaults()
     
+    let placeID = "ChIJV4k8_9UodTERU5KXbkYpSYs"
     let realm = try! Realm()
     
     let underlineLayer = CALayer()
@@ -118,6 +119,8 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         self.view.addSubview(storeTableView)
         self.searchrecommendPlace()
         self.navigationItem.title  = "Asoviva"
+        
+       
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
