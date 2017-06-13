@@ -85,20 +85,24 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         let sortArray: [String] = ["値段","評価","距離"]
         
+        let purple   = UIColor(red:255/255, green: 165/255, blue: 0/255, alpha: 0.4)
+        
         var Segcon: UISegmentedControl!
         Segcon = UISegmentedControl(items: sortArray as [AnyObject])
-        let attribute = [NSForegroundColorAttributeName:UIColor.white]
+        let attribute = [NSForegroundColorAttributeName:UIColor.black]
         Segcon.setTitleTextAttributes(attribute, for: .normal)
         Segcon.frame = CGRect(x:0,y: 0 ,width: self.view.frame.width, height:30)
         Segcon.center = CGPoint(x: self.view.frame.width/2, y: 80)
-        Segcon.backgroundColor = UIColor.orange
+        Segcon.backgroundColor = UIColor.white
         Segcon.tintColor = UIColor.clear
         Segcon.addTarget(self, action: #selector(sortchange(segcon:)), for: UIControlEvents.valueChanged)
         self.view.addSubview(Segcon)
         
         segmentItemWidth = self.view.frame.width / 3
-        underlineLayer.backgroundColor = UIColor.yellow.cgColor
-        underlineLayer.frame = CGRect(x:0,y: 27.5, width:self.view.frame.width / 3,height: 2.5)
+        underlineLayer.backgroundColor = purple.cgColor
+        underlineLayer.frame = CGRect(x:15,y: 5, width:self.view.frame.width / 3 - 30,height: 20)
+        underlineLayer.masksToBounds = true
+        underlineLayer.cornerRadius = 5.0
         Segcon.layer.addSublayer(underlineLayer)
         
         self.view.backgroundColor = UIColor.white
@@ -120,7 +124,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         self.searchrecommendPlace()
         self.navigationItem.title  = "Asoviva"
         
-       
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -351,7 +354,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     func sortchange(segcon: UISegmentedControl){
         
-        underlineLayer.frame.origin.x = CGFloat(segcon.selectedSegmentIndex) * segmentItemWidth
+        underlineLayer.frame.origin.x = CGFloat(segcon.selectedSegmentIndex) * segmentItemWidth + 15
         
         switch segcon.selectedSegmentIndex {
         case 0:
@@ -361,7 +364,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         case 2:
             print("2")
         default:
-            print("Error")
+            print("default")
         }
         
     }

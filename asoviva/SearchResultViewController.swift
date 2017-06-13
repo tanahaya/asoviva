@@ -126,7 +126,7 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
             if (self.userDefaults.object(forKey: "opennow") != nil) {
                 let opennow:Bool = self.userDefaults.bool(forKey: "opennow")
                 if opennow {
-                url = url + "&opennow=true"
+                    url = url + "&opennow=true"
                 }
                 
                 print(url)
@@ -192,7 +192,6 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         
         mapView.setRegion(mapView.regionThatFits(region), animated:true)
     }
-    
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
