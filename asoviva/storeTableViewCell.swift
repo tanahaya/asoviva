@@ -19,8 +19,30 @@ class storeTableViewCell: UITableViewCell {
     @IBOutlet var leftView: UIView!
     
     
+    @IBOutlet var commentimage:UIImageView!
+    @IBOutlet var favorimage:UIImageView!
+    @IBOutlet var shareimage:UIImageView!
+    
+    
+    @IBOutlet var commentnumber:UILabel!
+    @IBOutlet var favornumber:UILabel!
+    @IBOutlet var sharenumber:UILabel!
+    
     override func awakeFromNib() {
         leftView.backgroundColor = UIColor.flatYellowColorDark()
+        
+        let Image1 = UIImage.fontAwesomeIcon(name: .commentO, textColor: UIColor.flatGrayColorDark(), size: CGSize(width:20,height:20))
+        let Image2 = UIImage.fontAwesomeIcon(name: .heartO, textColor: UIColor.flatGrayColorDark(), size: CGSize(width:20,height:20))
+        let Image3 = UIImage.fontAwesomeIcon(name: .shareAlt, textColor: UIColor.flatGrayColorDark(), size: CGSize(width:20,height:20))
+        
+        commentimage.image = Image1
+        favorimage.image = Image2
+        shareimage.image = Image3
+        
+        commentnumber.textColor = UIColor.flatGrayColorDark()
+        sharenumber.textColor = UIColor.flatGrayColorDark()
+        favornumber.textColor = UIColor.flatGrayColorDark()
+        
         super.awakeFromNib()
     }
 
