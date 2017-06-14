@@ -101,6 +101,9 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         self.view.addSubview(mapView)
         self.view.addSubview(storeTableView)
         
+        
+        self.navigationItem.title  = "Asoviva"
+        
         self.searchrecommendPlace()
         
         

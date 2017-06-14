@@ -10,11 +10,21 @@ import UIKit
 import Foundation
 import FontAwesome
 import CoreLocation
+import Chameleon
 
 class MainViewController: UITabBarController{
     
        override func viewDidLoad() {
         super.viewDidLoad()
+        let maincolor = UIColor.flatYellowColorDark()
+        //ナビゲーションアイテムの色を変更
+        UINavigationBar.appearance().tintColor = ContrastColorOf( maincolor!, returnFlat: true)
+        //ナビゲーションバーの背景を変更
+        UINavigationBar.appearance().barTintColor = maincolor
+        //ナビゲーションのタイトル文字列の色を変更
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : ContrastColorOf( maincolor!, returnFlat: true)]
+        
+        self.tabBar.tintColor = maincolor
         
         let SearchView:SearchFormViewController = SearchFormViewController()
         let RecommendView:RecommendViewController = RecommendViewController()
@@ -36,8 +46,6 @@ class MainViewController: UITabBarController{
         let favorNavi :UIViewController = UINavigationController(rootViewController: FavoriteView)
         let mypageNavi :UIViewController = UINavigationController(rootViewController: MyPageView)
         
-        let colorKey = UIColor(red: 255/255, green: 158/255, blue: 35/255, alpha: 1.0)
-        self.tabBar.tintColor = colorKey
         
         self.setViewControllers([recommendNavi,searchNavi,favorNavi,mypageNavi ], animated: false)
     }

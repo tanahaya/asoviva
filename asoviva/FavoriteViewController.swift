@@ -36,6 +36,8 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         self.view.addSubview(storeTableView)
         
+        
+        self.navigationItem.title  = "Asoviva"
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -16,6 +16,7 @@ class MyPageViewController: FormViewController {
         
         self.setup()
         
+        self.navigationItem.title  = "Asoviva"
         // Do any additional setup after loading the view.
     }
     func setup() {

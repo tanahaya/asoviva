@@ -36,6 +36,8 @@ class SearchFormViewController: FormViewController {
         
         self.setup()
         
+        self.navigationItem.title  = "Asoviva"
+        
     }
     
     override func didReceiveMemoryWarning() {

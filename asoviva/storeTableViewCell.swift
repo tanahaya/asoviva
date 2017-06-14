@@ -15,9 +15,11 @@ class storeTableViewCell: UITableViewCell {
     @IBOutlet var pointLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
     @IBOutlet var distantLabel: UILabel!
+    @IBOutlet var leftView: UIView!
+    
     
     override func awakeFromNib() {
-        
+        leftView.backgroundColor = UIColor.flatYellowColorDark()
         super.awakeFromNib()
     }
 
