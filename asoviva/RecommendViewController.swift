@@ -15,6 +15,7 @@ import SwiftyJSON
 import FontAwesome
 import RealmSwift
 import Social
+import Chameleon
 
 class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
@@ -83,9 +84,9 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let sortArray: [String] = ["値段","評価","距離"]
+        let sortArray: [String] = ["","",""]
         
-        let purple   = UIColor(red:255/255, green: 165/255, blue: 0/255, alpha: 0.4)
+        let orange = UIColor(red:255/255, green: 165/255, blue: 0/255, alpha: 0.4)
         
         var Segcon: UISegmentedControl!
         Segcon = UISegmentedControl(items: sortArray as [AnyObject])
@@ -99,11 +100,32 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         self.view.addSubview(Segcon)
         
         segmentItemWidth = self.view.frame.width / 3
-        underlineLayer.backgroundColor = purple.cgColor
+        underlineLayer.backgroundColor = orange.cgColor
         underlineLayer.frame = CGRect(x:15,y: 5, width:self.view.frame.width / 3 - 30,height: 20)
         underlineLayer.masksToBounds = true
         underlineLayer.cornerRadius = 5.0
         Segcon.layer.addSublayer(underlineLayer)
+        
+        let label1: UILabel = UILabel(frame: CGRect(x:0 , y: 0, width: 100, height: 20))
+        label1.textColor = UIColor.black
+        label1.text = "値段"
+        label1.textAlignment = NSTextAlignment.center
+        label1.layer.position = CGPoint(x:self.view.frame.width / 6,y: 15)
+        Segcon.addSubview(label1)
+        
+        let label2: UILabel = UILabel(frame: CGRect(x:0 , y: 0, width: 100, height: 20))
+        label2.textColor = UIColor.black
+        label2.text = "評価"
+        label2.textAlignment = NSTextAlignment.center
+        label2.layer.position = CGPoint(x:self.view.frame.width / 2,y: 15)
+        Segcon.addSubview(label2)
+        
+        let label3: UILabel = UILabel(frame: CGRect(x:0 , y: 0, width: 100, height: 20))
+        label3.textColor = UIColor.black
+        label3.text = "距離"
+        label3.textAlignment = NSTextAlignment.center
+        label3.layer.position = CGPoint(x:self.view.frame.width * 5 / 6,y: 15)
+        Segcon.addSubview(label3)
         
         self.view.backgroundColor = UIColor.white
         let status = CLLocationManager.authorizationStatus()

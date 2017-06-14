@@ -31,6 +31,7 @@
 		9F9B56531EECEB6D00673F60 /* EurekaButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B56511EECEB6D00673F60 /* EurekaButtonTableViewCell.swift */; };
 		9F9B56541EECEB6D00673F60 /* EurekaButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F9B56521EECEB6D00673F60 /* EurekaButtonTableViewCell.xib */; };
 		9FB64B041E3762DF00C3C430 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB64B031E3762DF00C3C430 /* Location.swift */; };
+		9FC4E9671EF1258F00DD039F /* Chameleon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC4E9661EF1258F00DD039F /* Chameleon.framework */; };
 		9FD5BF031EDF0D3B00D1F65D /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF021EDF0D3B00D1F65D /* WebPageViewController.swift */; };
 		9FD5BF071EDF0D7A00D1F65D /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */; };
 		9FD5BF091EE2F4F300D1F65D /* SearchFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF081EE2F4F300D1F65D /* SearchFormViewController.swift */; };
@@ -100,6 +101,8 @@
 		9F9B56511EECEB6D00673F60 /* EurekaButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurekaButtonTableViewCell.swift; sourceTree = "<group>"; };
 		9F9B56521EECEB6D00673F60 /* EurekaButtonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EurekaButtonTableViewCell.xib; sourceTree = "<group>"; };
 		9FB64B031E3762DF00C3C430 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		9FC4E9641EF1232B00DD039F /* ChameleonFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ChameleonFramework.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ChameleonFramework/ChameleonFramework.framework"; sourceTree = "<group>"; };
+		9FC4E9661EF1258F00DD039F /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
 		9FD5BF021EDF0D3B00D1F65D /* WebPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebPageViewController.swift; sourceTree = "<group>"; };
 		9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
 		9FD5BF081EE2F4F300D1F65D /* SearchFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFormViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FC4E9671EF1258F00DD039F /* Chameleon.framework in Frameworks */,
 				9FFC054F1E77E6670032589C /* Eureka.framework in Frameworks */,
 				9F4514F71E375210002CFE04 /* ObjectMapper.framework in Frameworks */,
 				9F63EE9C1DDB142100D332D6 /* CoreLocation.framework in Frameworks */,
@@ -166,6 +170,8 @@
 		9F63FBD41DD1F14100150F34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9FC4E9661EF1258F00DD039F /* Chameleon.framework */,
+				9FC4E9641EF1232B00DD039F /* ChameleonFramework.framework */,
 				9F8B20891EDD8271001B7543 /* GooglePlacesAPI.framework */,
 				9F8B20631ECC53EB001B7543 /* Realm.framework */,
 				9F8B20641ECC53EB001B7543 /* RealmSwift.framework */,
@@ -482,6 +488,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
 				"$(SRCROOT)/RealmSwift.framework",
 				"$(SRCROOT)/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Chameleon.framework",
 			);
 			name = "Run Script";
 			outputPaths = (
