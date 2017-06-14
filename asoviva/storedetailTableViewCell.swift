@@ -8,13 +8,13 @@
 
 import UIKit
 import RealmSwift
+import FontAwesome
 
 class storedetailTableViewCell: UITableViewCell {
     
     let realm = try! Realm()
     
     @IBOutlet var numberLabel: UILabel!
-    @IBOutlet var nameLabel: UILabel!
     @IBOutlet var pointLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
     
@@ -22,13 +22,28 @@ class storedetailTableViewCell: UITableViewCell {
     @IBOutlet var sharebutton: UIButton!
     @IBOutlet var webbutton: UIButton!
     @IBOutlet var routebutton: UIButton!
-    
+    @IBOutlet var commentbutton: UIButton!
     @IBOutlet var phonebutton: UIButton!
-    
     @IBOutlet var storeImage: UIImageView!
-    var UserDafault:UserDefaults = UserDefaults()
+    
+    @IBOutlet var commentimage:UIImageView!
+    @IBOutlet var favorimage:UIImageView!
+    @IBOutlet var shareimage:UIImageView!
     
     override func awakeFromNib() {
+        
+        let Image1 = UIImage.fontAwesomeIcon(name: .commentO, textColor: UIColor.flatGrayColorDark(), size: CGSize(width:20,height:20))
+        let Image2 = UIImage.fontAwesomeIcon(name: .heartO, textColor: UIColor.flatGrayColorDark(), size: CGSize(width:20,height:20))
+        let Image3 = UIImage.fontAwesomeIcon(name: .shareAlt, textColor: UIColor.flatGrayColorDark(), size: CGSize(width:20,height:20))
+        
+        commentimage.image = Image1
+        favorimage.image = Image2
+        shareimage.image = Image3
+        
+        favoritebutton.setTitleColor(UIColor.flatGrayColorDark(), for: .normal)
+        sharebutton.setTitleColor(UIColor.flatGrayColorDark(), for: .normal)
+        commentbutton.setTitleColor(UIColor.flatGrayColorDark(), for: .normal)
+        
         super.awakeFromNib()
         // Initialization code
     }

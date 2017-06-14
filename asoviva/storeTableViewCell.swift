@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Chameleon
 
 class storeTableViewCell: UITableViewCell {
     

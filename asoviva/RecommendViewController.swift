@@ -76,6 +76,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         tableView.register(nib, forCellReuseIdentifier: "storeTableViewCell")
         let detailnib = UINib(nibName: "storedetailTableViewCell", bundle: nil)
         tableView.register(detailnib, forCellReuseIdentifier: "storedetailTableViewCell")
+        tableView.separatorColor = UIColor.clear
         return tableView
     }()
     
@@ -86,7 +87,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         let sortArray: [String] = ["","",""]
         
-        let orange = UIColor(red:255/255, green: 165/255, blue: 0/255, alpha: 0.4)
+        let orange = UIColor(red:255/255, green: 165/255, blue: 0/255, alpha: 0.6)
         
         var Segcon: UISegmentedControl!
         Segcon = UISegmentedControl(items: sortArray as [AnyObject])
@@ -259,7 +260,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             
             let cell:storedetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storedetailTableViewCell", for: indexPath as IndexPath) as! storedetailTableViewCell
             
-            cell.nameLabel.text = locations[indexPath.section].storename
             cell.favoritebutton.addTarget(self, action: #selector(pickfavorite), for: .touchUpInside)
             cell.favoritebutton.tag = indexPath.section
             cell.webbutton.addTarget(self, action: #selector(moveweb), for: .touchUpInside)

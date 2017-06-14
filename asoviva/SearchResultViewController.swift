@@ -233,7 +233,6 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
             
             let cell:storedetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storedetailTableViewCell", for: indexPath as IndexPath) as! storedetailTableViewCell
             
-            cell.nameLabel.text = locations[indexPath.section].storename
             cell.favoritebutton.addTarget(self, action: #selector(pickfavorite), for: .touchUpInside)
             cell.favoritebutton.tag = indexPath.section
             

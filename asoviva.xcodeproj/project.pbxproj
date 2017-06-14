@@ -103,6 +103,8 @@
 		9FB64B031E3762DF00C3C430 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		9FC4E9641EF1232B00DD039F /* ChameleonFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ChameleonFramework.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ChameleonFramework/ChameleonFramework.framework"; sourceTree = "<group>"; };
 		9FC4E9661EF1258F00DD039F /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
+		9FC4E96E1EF1354100DD039F /* FoldingCell.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = FoldingCell.framework.dSYM; path = Carthage/Build/iOS/FoldingCell.framework.dSYM; sourceTree = "<group>"; };
+		9FC4E9701EF1355000DD039F /* FoldingCell.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FoldingCell.framework; path = Carthage/Build/iOS/FoldingCell.framework; sourceTree = "<group>"; };
 		9FD5BF021EDF0D3B00D1F65D /* WebPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebPageViewController.swift; sourceTree = "<group>"; };
 		9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
 		9FD5BF081EE2F4F300D1F65D /* SearchFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFormViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +172,8 @@
 		9F63FBD41DD1F14100150F34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9FC4E9701EF1355000DD039F /* FoldingCell.framework */,
+				9FC4E96E1EF1354100DD039F /* FoldingCell.framework.dSYM */,
 				9FC4E9661EF1258F00DD039F /* Chameleon.framework */,
 				9FC4E9641EF1232B00DD039F /* ChameleonFramework.framework */,
 				9F8B20891EDD8271001B7543 /* GooglePlacesAPI.framework */,
