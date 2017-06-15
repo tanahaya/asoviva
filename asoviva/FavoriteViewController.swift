@@ -68,8 +68,7 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
             cell.nameLabel.text = nowfavorite.storename
             cell.pointLabel.textAlignment = NSTextAlignment.left
             cell.priceLabel.textAlignment = NSTextAlignment.left
-            cell.distantLabel.textAlignment = NSTextAlignment.left
-            cell.numberLabel.text = "# " + String(indexPath.section + 1)
+            cell.distanceLabel.textAlignment = NSTextAlignment.left
             
             return cell
             

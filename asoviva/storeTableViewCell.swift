@@ -9,39 +9,62 @@
 import UIKit
 import Chameleon
 
-class storeTableViewCell: UITableViewCell {
+class storeTableViewCell: UITableViewCell{
     
-    @IBOutlet var numberLabel: UILabel!
+    @IBOutlet var backview: UIView!
+    
     @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var tagLabel: UILabel!
+    
+    
     @IBOutlet var pointLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
-    @IBOutlet var distantLabel: UILabel!
-    @IBOutlet var leftView: UIView!
+    @IBOutlet var commentLabel: UILabel!
+    @IBOutlet var distanceLabel: UILabel!
     
     
+    @IBOutlet var pointimage:UIImageView!
+    @IBOutlet var priceimage:UIImageView!
     @IBOutlet var commentimage:UIImageView!
-    @IBOutlet var favorimage:UIImageView!
-    @IBOutlet var shareimage:UIImageView!
+    @IBOutlet var distanceimage:UIImageView!
     
     
-    @IBOutlet var commentnumber:UILabel!
-    @IBOutlet var favornumber:UILabel!
-    @IBOutlet var sharenumber:UILabel!
+    @IBOutlet var point:UILabel!
+    @IBOutlet var price:UILabel!
+    @IBOutlet var comment:UILabel!
+    @IBOutlet var distance:UILabel!
+    
     
     override func awakeFromNib() {
-        leftView.backgroundColor = UIColor.flatYellowColorDark()
         
-        let Image1 = UIImage.fontAwesomeIcon(name: .commentO, textColor: UIColor.flatGrayColorDark(), size: CGSize(width:20,height:20))
-        let Image2 = UIImage.fontAwesomeIcon(name: .heartO, textColor: UIColor.flatGrayColorDark(), size: CGSize(width:20,height:20))
-        let Image3 = UIImage.fontAwesomeIcon(name: .shareAlt, textColor: UIColor.flatGrayColorDark(), size: CGSize(width:20,height:20))
+        let Image1 = UIImage.fontAwesomeIcon(name: .heartO, textColor: UIColor.flatGrayColorDark(), size: CGSize(width:25,height:25))
+        let Image2 = UIImage.fontAwesomeIcon(name: .jpy, textColor: UIColor.flatGrayColorDark(), size: CGSize(width:25,height:25))
+        let Image3 = UIImage.fontAwesomeIcon(name: .commentingO, textColor: UIColor.flatGrayColorDark(), size: CGSize(width:25,height:25))
+        let Image4 = UIImage.fontAwesomeIcon(name: .mapMarker, textColor: UIColor.flatGrayColorDark(), size: CGSize(width:25,height:25))
         
-        commentimage.image = Image1
-        favorimage.image = Image2
-        shareimage.image = Image3
+        pointimage.image = Image1
+        priceimage.image = Image2
+        commentimage.image = Image3
+        distanceimage.image = Image4
         
-        commentnumber.textColor = UIColor.flatGrayColorDark()
-        sharenumber.textColor = UIColor.flatGrayColorDark()
-        favornumber.textColor = UIColor.flatGrayColorDark()
+        //backview.backgroundColor = UIColor.flatWhite()
+        nameLabel.textColor = UIColor.flatBlack()
+        tagLabel.textColor = UIColor.flatGray()
+        
+        pointLabel.textColor = UIColor.flatGrayColorDark()
+        priceLabel.textColor = UIColor.flatGrayColorDark()
+        distanceLabel.textColor = UIColor.flatGrayColorDark()
+        commentLabel.textColor = UIColor.flatGrayColorDark()
+        
+        pointLabel.textAlignment = NSTextAlignment.right
+        priceLabel.textAlignment = NSTextAlignment.right
+        commentLabel.textAlignment = NSTextAlignment.right
+        distanceLabel.textAlignment = NSTextAlignment.right
+        
+        point.isHidden = true
+        price.isHidden = true
+        comment.isHidden = true
+        distance.isHidden = true
         
         super.awakeFromNib()
     }

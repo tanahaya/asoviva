@@ -249,10 +249,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             //cell.pointLabel.text = locations[indexPath.section]
             //cell.priceLabel.text = locations[indexPath.section]
             //cell.distantLabel.text= locations[indexPath.section]
-            cell.pointLabel.textAlignment = NSTextAlignment.left
-            cell.priceLabel.textAlignment = NSTextAlignment.left
-            cell.distantLabel.textAlignment = NSTextAlignment.left
-            cell.numberLabel.text = "# " + String(indexPath.section + 1)
             
             return cell
             

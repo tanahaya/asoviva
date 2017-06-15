@@ -224,8 +224,7 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
             cell.nameLabel.text = locations[indexPath.section].storename
             cell.pointLabel.textAlignment = NSTextAlignment.left
             cell.priceLabel.textAlignment = NSTextAlignment.left
-            cell.distantLabel.textAlignment = NSTextAlignment.left
-            cell.numberLabel.text = "# " + String(indexPath.section + 1)
+            cell.distanceLabel.textAlignment = NSTextAlignment.left
             
             return cell
             
