@@ -246,6 +246,18 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
             
             cell.nameLabel.text = locations[indexPath.section].storename
+            
+            cell.photoButton.addTarget(self, action: #selector(photobutton), for: .touchUpInside)
+            cell.phoneButton.addTarget(self, action: #selector(phonebutton), for: .touchUpInside)
+            cell.priceButton.addTarget(self, action: #selector(pricebutton), for: .touchUpInside)
+            cell.commentButton.addTarget(self, action: #selector(commentbutton), for: .touchUpInside)
+            cell.distanceButton.addTarget(self, action: #selector(distancebutton), for: .touchUpInside)
+            cell.shareButton.addTarget(self, action: #selector(sharebutton), for: .touchUpInside)
+            cell.favoriteButton.addTarget(self, action: #selector(favoritebutton), for: .touchUpInside)
+            cell.timeButton.addTarget(self, action: #selector(timebutton), for: .touchUpInside)
+            
+
+            
             //cell.pointLabel.text = locations[indexPath.section]
             //cell.priceLabel.text = locations[indexPath.section]
             //cell.distantLabel.text= locations[indexPath.section]
@@ -305,6 +317,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         var indexPaths: [IndexPath] = []
         indexPaths.append(IndexPath(row: 1, section:indexPath.section))
+        
         
         tableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.fade)
         
@@ -385,6 +398,30 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             print("default")
         }
         
+    }
+    func phonebutton(){
+        print("phone")
+    }
+    func pricebutton(){
+        print("price")
+    }
+    func timebutton(){
+        print("time")
+    }
+    func distancebutton(){
+        print("distance")
+    }
+    func favoritebutton() {
+        print("favorite")
+    }
+    func sharebutton() {
+        print("share")
+    }
+    func commentbutton() {
+        print("comment")
+    }
+    func photobutton() {
+        print("photo")
     }
     
 }

@@ -18,6 +18,9 @@ class storedetailTableViewCell: UITableViewCell {
     @IBOutlet var pointLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
     
+    
+    @IBOutlet var buttom: UIView!
+    
     @IBOutlet var favoritebutton: UIButton!
     @IBOutlet var sharebutton: UIButton!
     @IBOutlet var webbutton: UIButton!

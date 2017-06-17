@@ -66,9 +66,6 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
             
             let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
             cell.nameLabel.text = nowfavorite.storename
-            cell.pointLabel.textAlignment = NSTextAlignment.left
-            cell.priceLabel.textAlignment = NSTextAlignment.left
-            cell.distanceLabel.textAlignment = NSTextAlignment.left
             
             return cell
             

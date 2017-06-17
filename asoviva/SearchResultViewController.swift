@@ -222,9 +222,6 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
             let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
             
             cell.nameLabel.text = locations[indexPath.section].storename
-            cell.pointLabel.textAlignment = NSTextAlignment.left
-            cell.priceLabel.textAlignment = NSTextAlignment.left
-            cell.distanceLabel.textAlignment = NSTextAlignment.left
             
             return cell
             
