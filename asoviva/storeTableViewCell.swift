@@ -13,6 +13,7 @@ class storeTableViewCell: UITableViewCell{
     
     @IBOutlet var backview: UIView!
     @IBOutlet var upperview: UIView!
+    @IBOutlet var nameunderview: UIView!
     
     @IBOutlet var nameLabel: UILabel!
     
@@ -70,6 +71,7 @@ class storeTableViewCell: UITableViewCell{
         
         //backview.backgroundColor = UIColor.flatWhite()
         nameLabel.textColor = UIColor.flatBlack()
+        nameunderview.backgroundColor = UIColor.flatSkyBlue()
         
         photoLabel.textColor = UIColor.white
         priceLabel.textColor = UIColor.white

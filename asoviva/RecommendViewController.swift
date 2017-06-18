@@ -236,6 +236,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         let rowInSection = locations[section].extended ? 2 : 1
+        // let rowInSection = 1
         return rowInSection
     }
     
@@ -256,7 +257,14 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             cell.favoriteButton.addTarget(self, action: #selector(favoritebutton), for: .touchUpInside)
             cell.timeButton.addTarget(self, action: #selector(timebutton), for: .touchUpInside)
             
-
+            cell.photoButton.tag = indexPath.section
+            cell.phoneButton.tag = indexPath.section
+            cell.priceButton.tag = indexPath.section
+            cell.commentButton.tag = indexPath.section
+            cell.distanceButton.tag = indexPath.section
+            cell.shareButton.tag = indexPath.section
+            cell.favoriteButton.tag = indexPath.section
+            cell.timeButton.tag = indexPath.section
             
             //cell.pointLabel.text = locations[indexPath.section]
             //cell.priceLabel.text = locations[indexPath.section]
@@ -271,7 +279,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             cell.favoritebutton.addTarget(self, action: #selector(pickfavorite), for: .touchUpInside)
             cell.favoritebutton.tag = indexPath.section
             cell.webbutton.addTarget(self, action: #selector(moveweb), for: .touchUpInside)
-            cell.sharebutton.addTarget(self, action: #selector(share), for: .touchUpInside)
             return cell
         }
         
@@ -286,37 +293,30 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if 0 == indexPath.row {
-            // switching open or close
-            
-            locations[indexPath.section].extended = !locations[indexPath.section].extended
-            if !locations[indexPath.section].extended {
-                self.toContract(tableView, indexPath: indexPath)
-            }else{
-                self.toExpand(tableView, indexPath: indexPath)
-            }
-            
-        }else{ // ADD:
-            
-        }
-        
+        print(indexPath.row)
+        /*
+         if 0 == indexPath.row {
+         // switching open or close
+         
+         locations[indexPath.section].extended = !locations[indexPath.section].extended
+         if !locations[indexPath.section].extended {
+         self.toContract(tableView, indexPath: indexPath)
+         }else{
+         self.toExpand(tableView, indexPath: indexPath)
+         }
+         
+         }else{ // ADD:
+         
+         }
+         */
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    fileprivate func toContract(_ tableView: UITableView, indexPath: IndexPath) {
         
-        var indexPaths: [IndexPath] = []
-        indexPaths.append(IndexPath(row: 1 , section:indexPath.section))
-        
-        tableView.deleteRows(at: indexPaths,
-                             with: UITableViewRowAnimation.fade)
     }
     
     fileprivate func toExpand(_ tableView: UITableView, indexPath: IndexPath) {
         
         var indexPaths: [IndexPath] = []
-        indexPaths.append(IndexPath(row: 1, section:indexPath.section))
+        indexPaths.append(IndexPath(row: indexPath.row, section:indexPath.section))
         
         
         tableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.fade)
@@ -325,7 +325,18 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             row:indexPath.row, section:indexPath.section),at: UITableViewScrollPosition.top, animated: true)
     }
     
+    fileprivate func toContract(_ tableView: UITableView, indexPath: IndexPath) {
+        
+        var indexPaths: [IndexPath] = []
+        indexPaths.append(IndexPath(row: indexPath.row , section:indexPath.section))
+        
+        tableView.deleteRows(at: indexPaths,
+                             with: UITableViewRowAnimation.fade)
+    }
+    
+    
     func pickfavorite(sender: UIButton) {
+        
         print("sender:" + String(sender.tag))
         let storedata = favorite()
         storedata.storename = locations[sender.tag].storename
@@ -348,18 +359,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         self.navigationController?.pushViewController(webviewController, animated: true)
     }
-    func share(sender: UIButton){
-        
-        let alertView = SCLAlertView()
-        alertView.addButton("facebookでシェア", target:self, selector:#selector(sharetwitter))
-        alertView.addButton("Twitterでシェア") {
-            print("Second button tapped")
-            self.sharefacebook()
-        }
-        alertView.showSuccess("Button View", subTitle: "This alert view has buttons")
-        
-        //SCLAlertView().showInfo("お気に入り登録完了", subTitle: locations[sender.tag].storename + "をお気に入り登録しました。")
-    }
+    
     func firstButton(){
         print("first")
     }
@@ -399,30 +399,53 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         }
         
     }
-    func phonebutton(){
-        print("phone")
-    }
-    func pricebutton(){
+    func pricebutton(sender: UIButton){
         print("price")
-    }
-    func timebutton(){
-        print("time")
-    }
-    func distancebutton(){
-        print("distance")
-    }
-    func favoritebutton() {
-        print("favorite")
-    }
-    func sharebutton() {
-        print("share")
-    }
-    func commentbutton() {
-        print("comment")
-    }
-    func photobutton() {
-        print("photo")
+        /*
+         var indexPaths: [IndexPath] = []
+         indexPaths.append(IndexPath(row: 1, section:sender.tag))
+         
+         
+         tableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.fade)
+         
+         tableView.scrollToRow(at: sender.tag(
+         row:1, section:sender.tag),at: UITableViewScrollPosition.top, animated: true)
+         */
     }
     
+    func phonebutton(sender: UIButton){
+        print("phone")
+    }
+    
+    func commentbutton(sender: UIButton) {
+        print("comment")
+    }
+    
+    func distancebutton(sender: UIButton){
+        print("distance")
+    }
+    func favoritebutton(sender: UIButton) {
+        print("favorite")
+    }
+    
+    func sharebutton(sender: UIButton) {
+        print("share")
+        
+        
+        let alertView = SCLAlertView()
+        alertView.addButton("facebookでシェア", target:self, selector:#selector(sharetwitter))
+        alertView.addButton("Twitterでシェア") {
+            print("Second button tapped")
+            self.sharefacebook()
+        }
+        alertView.showSuccess("Button View", subTitle: "This alert view has buttons")
+        
+    }
+    func photobutton(sender: UIButton) {
+        print("photo")
+    }
+    func timebutton(sender: UIButton) {
+        print("time")
+    }
 }
 

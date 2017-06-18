@@ -14,6 +14,8 @@
 		9F0BA2A21EC6EEE700B0630A /* storeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */; };
 		9F0BA2AB1ECB0E2900B0630A /* storedetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0BA2A91ECB0E2900B0630A /* storedetailTableViewCell.swift */; };
 		9F0BA2AC1ECB0E2900B0630A /* storedetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F0BA2AA1ECB0E2900B0630A /* storedetailTableViewCell.xib */; };
+		9F1CBFB01EF64610008335FE /* priceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1CBFAE1EF64610008335FE /* priceTableViewCell.swift */; };
+		9F1CBFB11EF64610008335FE /* priceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F1CBFAF1EF64610008335FE /* priceTableViewCell.xib */; };
 		9F38BF801EED22050028A8D9 /* ピン.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F38BF7F1EED22050028A8D9 /* ピン.png */; };
 		9F4514F71E375210002CFE04 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */; };
 		9F63EE9C1DDB142100D332D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */; };
@@ -77,6 +79,8 @@
 		9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = storeTableViewCell.xib; sourceTree = "<group>"; };
 		9F0BA2A91ECB0E2900B0630A /* storedetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = storedetailTableViewCell.swift; sourceTree = "<group>"; };
 		9F0BA2AA1ECB0E2900B0630A /* storedetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = storedetailTableViewCell.xib; sourceTree = "<group>"; };
+		9F1CBFAE1EF64610008335FE /* priceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = priceTableViewCell.swift; sourceTree = "<group>"; };
+		9F1CBFAF1EF64610008335FE /* priceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = priceTableViewCell.xib; sourceTree = "<group>"; };
 		9F38BF7F1EED22050028A8D9 /* ピン.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ピン.png"; sourceTree = SOURCE_ROOT; };
 		9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
 		9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -222,6 +226,8 @@
 				9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */,
 				9F0BA2A91ECB0E2900B0630A /* storedetailTableViewCell.swift */,
 				9F0BA2AA1ECB0E2900B0630A /* storedetailTableViewCell.xib */,
+				9F1CBFAE1EF64610008335FE /* priceTableViewCell.swift */,
+				9F1CBFAF1EF64610008335FE /* priceTableViewCell.xib */,
 				9FB64B031E3762DF00C3C430 /* Location.swift */,
 				9FD5BF021EDF0D3B00D1F65D /* WebPageViewController.swift */,
 				9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */,
@@ -381,6 +387,7 @@
 				9F0BA2AC1ECB0E2900B0630A /* storedetailTableViewCell.xib in Resources */,
 				9F8CBB171DD1E574002B3DBA /* LaunchScreen.storyboard in Resources */,
 				9F9B564A1EE99B3400673F60 /* sampleimage.jpg in Resources */,
+				9F1CBFB11EF64610008335FE /* priceTableViewCell.xib in Resources */,
 				9F8CBB141DD1E574002B3DBA /* Assets.xcassets in Resources */,
 				9FECD2D61EC5CBB3007E3C87 /* Info.plist in Resources */,
 				9F8CBB121DD1E574002B3DBA /* Main.storyboard in Resources */,
@@ -575,6 +582,7 @@
 				9FD5BF091EE2F4F300D1F65D /* SearchFormViewController.swift in Sources */,
 				9F8B20681ECC5865001B7543 /* favorite.swift in Sources */,
 				9F9B56531EECEB6D00673F60 /* EurekaButtonTableViewCell.swift in Sources */,
+				9F1CBFB01EF64610008335FE /* priceTableViewCell.swift in Sources */,
 				9FB64B041E3762DF00C3C430 /* Location.swift in Sources */,
 				9F0BA2A11EC6EEE700B0630A /* storeTableViewCell.swift in Sources */,
 				9FD5BF031EDF0D3B00D1F65D /* WebPageViewController.swift in Sources */,
