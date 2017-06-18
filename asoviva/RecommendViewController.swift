@@ -21,7 +21,7 @@ import GooglePlaces
 class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
     var userLocation: CLLocationCoordinate2D!
-    var destLocation : CLLocationCoordinate2D!
+    var destLocation: CLLocationCoordinate2D!
     var Region: MKCoordinateRegion!
     var nowlat: CLLocationDegrees!
     var nowlng: CLLocationDegrees!
@@ -421,13 +421,17 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         print("comment")
         
         let commentview = commentViewController()
-        // webviewController.url = locations[sender.tag]
-        
         self.navigationController?.pushViewController(commentview, animated: true)
     }
     
     func distancebutton(sender: UIButton){
         print("distance")
+        UserDafault.set(nowlat, forKey: "nowlat")
+        UserDafault.set(nowlng, forKey: "nowlng")
+        UserDafault.set(locations[sender.tag].lat, forKey: "goallat")
+        UserDafault.set(locations[sender.tag].lng, forKey: "goallng")
+        let routeview = RouteViewController()
+        self.navigationController?.pushViewController( routeview, animated: true)
     }
     func favoritebutton(sender: UIButton) {
         print("favorite")
@@ -491,7 +495,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
                 // self.imageView.image = photo
                 // self.attributionTextView.attributedText = photoMetadata.attributions
                 self.locations[IndexPath.section].storeimage = photo
-                print(photoMetadata.attributions)
                 self.storeTableView.reloadData()
             }
         })
