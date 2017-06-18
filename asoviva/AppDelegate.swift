@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         GMSServices.provideAPIKey("AIzaSyCwcR3jfPvo1SNdLFTTOe0dZ1_PX_AZ2xU")
-        
+        let test: phototestViewController = phototestViewController()
         let first: MainViewController = MainViewController()
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = first

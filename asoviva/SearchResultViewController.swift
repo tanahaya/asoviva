@@ -229,8 +229,6 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
             
             let cell:storedetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storedetailTableViewCell", for: indexPath as IndexPath) as! storedetailTableViewCell
             
-            cell.favoritebutton.addTarget(self, action: #selector(pickfavorite), for: .touchUpInside)
-            cell.favoritebutton.tag = indexPath.section
             
             return cell
         }
@@ -294,7 +292,7 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         storedata.lat = locations[sender.tag].lat
         storedata.lng = locations[sender.tag].lng
         storedata.vicinity = locations[sender.tag].vicinity
-        storedata.placeid = locations[sender.tag].placeid
+        storedata.placeid = locations[sender.tag].placeId
         storedata.id = favorite.lastId()
         try! realm.write {
             realm.add(storedata)

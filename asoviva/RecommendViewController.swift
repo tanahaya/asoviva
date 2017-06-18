@@ -16,6 +16,7 @@ import FontAwesome
 import RealmSwift
 import Social
 import Chameleon
+import GooglePlaces
 
 class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
@@ -84,6 +85,9 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        GMSPlacesClient.provideAPIKey("AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY")
+        GMSServices.provideAPIKey("AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY")
         
         let sortArray: [String] = ["","",""]
         
@@ -275,10 +279,13 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         }else{
             
             let cell:storedetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storedetailTableViewCell", for: indexPath as IndexPath) as! storedetailTableViewCell
+            // cell.storeImage.image
+            if locations[indexPath.section].storeimage == nil{
+                
+            }else{
+                cell.storeImage.image = locations[indexPath.section].storeimage
+            }
             
-            cell.favoritebutton.addTarget(self, action: #selector(pickfavorite), for: .touchUpInside)
-            cell.favoritebutton.tag = indexPath.section
-            cell.webbutton.addTarget(self, action: #selector(moveweb), for: .touchUpInside)
             return cell
         }
         
@@ -294,7 +301,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
-        /*
+        
          if 0 == indexPath.row {
          // switching open or close
          
@@ -308,15 +315,17 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
          }else{ // ADD:
          
          }
-         */
+        
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
     
     fileprivate func toExpand(_ tableView: UITableView, indexPath: IndexPath) {
         
+        self.loadFirstPhotoForPlace(placeID: locations[indexPath.section].placeId,IndexPath: indexPath)
+        
         var indexPaths: [IndexPath] = []
-        indexPaths.append(IndexPath(row: indexPath.row, section:indexPath.section))
+        indexPaths.append(IndexPath(row:1, section:indexPath.section))
         
         
         tableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.fade)
@@ -328,7 +337,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     fileprivate func toContract(_ tableView: UITableView, indexPath: IndexPath) {
         
         var indexPaths: [IndexPath] = []
-        indexPaths.append(IndexPath(row: indexPath.row , section:indexPath.section))
+        indexPaths.append(IndexPath(row: 1, section:indexPath.section))
         
         tableView.deleteRows(at: indexPaths,
                              with: UITableViewRowAnimation.fade)
@@ -343,7 +352,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         storedata.lat = locations[sender.tag].lat
         storedata.lng = locations[sender.tag].lng
         storedata.vicinity = locations[sender.tag].vicinity
-        storedata.placeid = locations[sender.tag].placeid
+        storedata.placeid = locations[sender.tag].placeId
         storedata.id = favorite.lastId()
         try! realm.write {
             realm.add(storedata)
@@ -401,16 +410,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     }
     func pricebutton(sender: UIButton){
         print("price")
-        /*
-         var indexPaths: [IndexPath] = []
-         indexPaths.append(IndexPath(row: 1, section:sender.tag))
-         
-         
-         tableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.fade)
-         
-         tableView.scrollToRow(at: sender.tag(
-         row:1, section:sender.tag),at: UITableViewScrollPosition.top, animated: true)
-         */
+        
     }
     
     func phonebutton(sender: UIButton){
@@ -419,6 +419,11 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     func commentbutton(sender: UIButton) {
         print("comment")
+        
+        let commentview = commentViewController()
+        // webviewController.url = locations[sender.tag]
+        
+        self.navigationController?.pushViewController(commentview, animated: true)
     }
     
     func distancebutton(sender: UIButton){
@@ -426,6 +431,22 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     }
     func favoritebutton(sender: UIButton) {
         print("favorite")
+        
+        print("sender:" + String(sender.tag))
+        let storedata = favorite()
+        storedata.storename = locations[sender.tag].storename
+        storedata.lat = locations[sender.tag].lat
+        storedata.lng = locations[sender.tag].lng
+        storedata.vicinity = locations[sender.tag].vicinity
+        storedata.placeid = locations[sender.tag].placeId
+        storedata.id = favorite.lastId()
+        try! realm.write {
+            realm.add(storedata)
+            
+        }
+        
+        SCLAlertView().showInfo("お気に入り登録完了", subTitle: locations[sender.tag].storename + "をお気に入り登録しました。")
+
     }
     
     func sharebutton(sender: UIButton) {
@@ -446,6 +467,34 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     }
     func timebutton(sender: UIButton) {
         print("time")
+    }
+    func loadFirstPhotoForPlace(placeID: String,IndexPath:IndexPath) {
+        GMSPlacesClient.shared().lookUpPhotos(forPlaceID: placeID) { (photos, error) -> Void in
+            if let error = error {
+                // TODO: handle the error.
+                print("Error: \(error.localizedDescription)")
+            } else {
+                if let firstPhoto = photos?.results.first {
+                    self.loadImageForMetadata(photoMetadata: firstPhoto,IndexPath:IndexPath)
+                }
+            }
+        }
+    }
+    
+    func loadImageForMetadata(photoMetadata: GMSPlacePhotoMetadata,IndexPath:IndexPath) {
+        GMSPlacesClient.shared().loadPlacePhoto(photoMetadata, callback: {
+            (photo, error) -> Void in
+            if let error = error {
+                // TODO: handle the error.
+                print("Error: \(error.localizedDescription)")
+            } else {
+                // self.imageView.image = photo
+                // self.attributionTextView.attributedText = photoMetadata.attributions
+                self.locations[IndexPath.section].storeimage = photo
+                print(photoMetadata.attributions)
+                self.storeTableView.reloadData()
+            }
+        })
     }
 }
 

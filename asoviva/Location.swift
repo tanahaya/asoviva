@@ -18,8 +18,9 @@ struct Location: Mappable{
     var lng:Double!
     var vicinity:String!
     var annotation = MKPointAnnotation()
-    var placeid:String!
+    var placeId:String!
     var extended: Bool = false
+    var storeimage:UIImage? = nil
     
     init?(map: Map) {
         
@@ -28,7 +29,7 @@ struct Location: Mappable{
     mutating func mapping(map: Map) {
         storename <- map["name"]
         vicinity <- map["vicinity"]
-        placeid <- map["place_id"]
+        placeId <- map["place_id"]
     }
 
 }

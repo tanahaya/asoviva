@@ -73,9 +73,6 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
             
             let cell:storedetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storedetailTableViewCell", for: indexPath as IndexPath) as! storedetailTableViewCell
             
-            cell.favoritebutton.setTitle("お気に入り解除", for: .normal)
-            cell.favoritebutton.tag = indexPath.section
-            cell.favoritebutton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
             
             return cell
         }
