@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:asoviva.xcodeproj">
+      location = "self:Alamofire.xcodeproj">
    </FileRef>
 </Workspace>

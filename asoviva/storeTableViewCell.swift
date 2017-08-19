@@ -89,6 +89,12 @@ class storeTableViewCell: UITableViewCell{
         favoriteview.backgroundColor = UIColor.flatPink()
         timeview.backgroundColor = UIColor.flatMint()
         
+        /*
+        phoneview.backgroundColor = UIColor.clear
+        photoview.backgroundColor = UIColor.clear
+        commentview.backgroundColor = UIColor.clear
+        distanceview.backgroundColor = UIColor.clear
+        */
         photoview.layer.masksToBounds = true
         priceview.layer.masksToBounds = true
         commentview.layer.masksToBounds = true

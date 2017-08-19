@@ -2,3 +2,5 @@ github "thii/FontAwesome.swift"
 github "Hearst-DD/ObjectMapper" 
 github "xmartlabs/Eureka" ~> 3.0
 github "ViccAlexander/Chameleon"
+github "Alamofire/Alamofire"
+github "SwiftyJSON/SwiftyJSON"
