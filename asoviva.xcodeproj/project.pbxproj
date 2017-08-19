@@ -16,11 +16,14 @@
 		9F0BA2AC1ECB0E2900B0630A /* storedetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F0BA2AA1ECB0E2900B0630A /* storedetailTableViewCell.xib */; };
 		9F1CBFB31EF662E2008335FE /* commentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1CBFB21EF662E2008335FE /* commentViewController.swift */; };
 		9F38BF801EED22050028A8D9 /* ピン.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F38BF7F1EED22050028A8D9 /* ピン.png */; };
-		9F4514F71E375210002CFE04 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */; };
+		9F613CEE1F481C9D0049AFD2 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFC054E1E77E6670032589C /* Eureka.framework */; };
 		9F63EE9C1DDB142100D332D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */; };
 		9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63FBD01DD1EE1200150F34 /* MainViewController.swift */; };
 		9F63FBD31DD1EEE100150F34 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F63FBD21DD1EEE100150F34 /* SearchResultViewController.swift */; };
 		9F63FBD61DD1F14100150F34 /* FontAwesome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F63FBD51DD1F14100150F34 /* FontAwesome.framework */; };
+		9F833B4E1F4814C700084243 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F833B4D1F4814C700084243 /* testViewController.swift */; };
+		9F833B511F48161C00084243 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F833B501F48161C00084243 /* Alamofire.framework */; };
+		9F833B541F481A0A00084243 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F833B521F4818CC00084243 /* ObjectMapper.framework */; };
 		9F8B20651ECC53EB001B7543 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8B20631ECC53EB001B7543 /* Realm.framework */; };
 		9F8B20661ECC53EB001B7543 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8B20641ECC53EB001B7543 /* RealmSwift.framework */; };
 		9F8B20681ECC5865001B7543 /* favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8B20671ECC5865001B7543 /* favorite.swift */; };
@@ -44,7 +47,6 @@
 		9FECD2D61EC5CBB3007E3C87 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FECD2D31EC5CBB3007E3C87 /* Info.plist */; };
 		9FECD2D71EC5CBB3007E3C87 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2D41EC5CBB3007E3C87 /* SCLAlertView.swift */; };
 		9FECD2D81EC5CBB3007E3C87 /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2D51EC5CBB3007E3C87 /* SCLExtensions.swift */; };
-		9FFC054F1E77E6670032589C /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFC054E1E77E6670032589C /* Eureka.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,9 @@
 		9F63FBD01DD1EE1200150F34 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9F63FBD21DD1EEE100150F34 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		9F63FBD51DD1F14100150F34 /* FontAwesome.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome.framework; path = Carthage/Build/iOS/FontAwesome.framework; sourceTree = "<group>"; };
+		9F833B4D1F4814C700084243 /* testViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
+		9F833B501F48161C00084243 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		9F833B521F4818CC00084243 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		9F8B20631ECC53EB001B7543 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		9F8B20641ECC53EB001B7543 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		9F8B20671ECC5865001B7543 /* favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = favorite.swift; sourceTree = "<group>"; };
@@ -128,9 +133,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F613CEE1F481C9D0049AFD2 /* Eureka.framework in Frameworks */,
+				9F833B541F481A0A00084243 /* ObjectMapper.framework in Frameworks */,
+				9F833B511F48161C00084243 /* Alamofire.framework in Frameworks */,
 				9FC4E9671EF1258F00DD039F /* Chameleon.framework in Frameworks */,
-				9FFC054F1E77E6670032589C /* Eureka.framework in Frameworks */,
-				9F4514F71E375210002CFE04 /* ObjectMapper.framework in Frameworks */,
 				9F63EE9C1DDB142100D332D6 /* CoreLocation.framework in Frameworks */,
 				9F8B20651ECC53EB001B7543 /* Realm.framework in Frameworks */,
 				9F63FBD61DD1F14100150F34 /* FontAwesome.framework in Frameworks */,
@@ -174,6 +180,8 @@
 		9F63FBD41DD1F14100150F34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F833B521F4818CC00084243 /* ObjectMapper.framework */,
+				9F833B501F48161C00084243 /* Alamofire.framework */,
 				9FC4E9701EF1355000DD039F /* FoldingCell.framework */,
 				9FC4E96E1EF1354100DD039F /* FoldingCell.framework.dSYM */,
 				9FC4E9661EF1258F00DD039F /* Chameleon.framework */,
@@ -218,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */,
+				9F833B4D1F4814C700084243 /* testViewController.swift */,
 				9F63FBD01DD1EE1200150F34 /* MainViewController.swift */,
 				9FECD2B91EC318BE007E3C87 /* RecommendViewController.swift */,
 				9F0BA29F1EC6EEE700B0630A /* storeTableViewCell.swift */,
@@ -490,12 +499,11 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/FontAwesome.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
 				"$(SRCROOT)/RealmSwift.framework",
 				"$(SRCROOT)/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Chameleon.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
 			);
 			name = "Run Script";
 			outputPaths = (
@@ -578,6 +586,7 @@
 				9FD5BF091EE2F4F300D1F65D /* SearchFormViewController.swift in Sources */,
 				9F8B20681ECC5865001B7543 /* favorite.swift in Sources */,
 				9F9B56531EECEB6D00673F60 /* EurekaButtonTableViewCell.swift in Sources */,
+				9F833B4E1F4814C700084243 /* testViewController.swift in Sources */,
 				9FB64B041E3762DF00C3C430 /* Location.swift in Sources */,
 				9F1CBFB31EF662E2008335FE /* commentViewController.swift in Sources */,
 				9F0BA2A11EC6EEE700B0630A /* storeTableViewCell.swift in Sources */,
