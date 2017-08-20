@@ -16,7 +16,6 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
     let realm = try! Realm()
     var sendernumber:Int = 0
     
-    
     lazy var storeTableView: UITableView = {
         
         let tableView = UITableView(frame: CGRect(x: 0, y: 0,  width: self.view.frame.width, height: 667))

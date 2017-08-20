@@ -12,10 +12,11 @@
 		86715922B7FC1FED7B1D18B3 /* Pods_asoviva.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61CF553ECAE0B2C5AF5DB596 /* Pods_asoviva.framework */; };
 		9F0BA2A11EC6EEE700B0630A /* storeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0BA29F1EC6EEE700B0630A /* storeTableViewCell.swift */; };
 		9F0BA2A21EC6EEE700B0630A /* storeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */; };
-		9F127E8D1F48221400ACDA14 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F127E8C1F48221400ACDA14 /* Memo.swift */; };
-		9F127E8F1F48222700ACDA14 /* StockMemos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F127E8E1F48222700ACDA14 /* StockMemos.swift */; };
+		9F127E8D1F48221400ACDA14 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F127E8C1F48221400ACDA14 /* User.swift */; };
+		9F127E8F1F48222700ACDA14 /* StockUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F127E8E1F48222700ACDA14 /* StockUsers.swift */; };
 		9F1C807E1F48A719003EED9F /* commentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1C807C1F48A719003EED9F /* commentTableViewCell.swift */; };
 		9F1C807F1F48A719003EED9F /* commentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F1C807D1F48A719003EED9F /* commentTableViewCell.xib */; };
+		9F1C80811F49B11A003EED9F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1C80801F49B11A003EED9F /* SignupViewController.swift */; };
 		9F1CBFB31EF662E2008335FE /* commentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1CBFB21EF662E2008335FE /* commentViewController.swift */; };
 		9F38BF801EED22050028A8D9 /* ピン.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F38BF7F1EED22050028A8D9 /* ピン.png */; };
 		9F613CEE1F481C9D0049AFD2 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFC054E1E77E6670032589C /* Eureka.framework */; };
@@ -80,10 +81,11 @@
 		9F0BA2901EC6E18A00B0630A /* RAMAnimatedTabBarController.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RAMAnimatedTabBarController.framework.dSYM; path = Carthage/Build/iOS/RAMAnimatedTabBarController.framework.dSYM; sourceTree = "<group>"; };
 		9F0BA29F1EC6EEE700B0630A /* storeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = storeTableViewCell.swift; sourceTree = "<group>"; };
 		9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = storeTableViewCell.xib; sourceTree = "<group>"; };
-		9F127E8C1F48221400ACDA14 /* Memo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
-		9F127E8E1F48222700ACDA14 /* StockMemos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMemos.swift; sourceTree = "<group>"; };
+		9F127E8C1F48221400ACDA14 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9F127E8E1F48222700ACDA14 /* StockUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockUsers.swift; sourceTree = "<group>"; };
 		9F1C807C1F48A719003EED9F /* commentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentTableViewCell.swift; sourceTree = "<group>"; };
 		9F1C807D1F48A719003EED9F /* commentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = commentTableViewCell.xib; sourceTree = "<group>"; };
+		9F1C80801F49B11A003EED9F /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		9F1CBFB21EF662E2008335FE /* commentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentViewController.swift; sourceTree = "<group>"; };
 		9F38BF7F1EED22050028A8D9 /* ピン.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ピン.png"; sourceTree = SOURCE_ROOT; };
 		9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
@@ -233,8 +235,8 @@
 			children = (
 				9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */,
 				9F833B4D1F4814C700084243 /* testViewController.swift */,
-				9F127E8C1F48221400ACDA14 /* Memo.swift */,
-				9F127E8E1F48222700ACDA14 /* StockMemos.swift */,
+				9F127E8C1F48221400ACDA14 /* User.swift */,
+				9F127E8E1F48222700ACDA14 /* StockUsers.swift */,
 				9F63FBD01DD1EE1200150F34 /* MainViewController.swift */,
 				9FECD2B91EC318BE007E3C87 /* RecommendViewController.swift */,
 				9F0BA29F1EC6EEE700B0630A /* storeTableViewCell.swift */,
@@ -250,6 +252,7 @@
 				9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */,
 				9F8B20671ECC5865001B7543 /* favorite.swift */,
 				9FECD2CC1EC598B9007E3C87 /* MyPageViewController.swift */,
+				9F1C80801F49B11A003EED9F /* SignupViewController.swift */,
 				9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */,
 				9FECD2B41EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib */,
 				9F9B56511EECEB6D00673F60 /* EurekaButtonTableViewCell.swift */,
@@ -589,7 +592,8 @@
 			files = (
 				9FECD2D81EC5CBB3007E3C87 /* SCLExtensions.swift in Sources */,
 				9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */,
-				9F127E8F1F48222700ACDA14 /* StockMemos.swift in Sources */,
+				9F1C80811F49B11A003EED9F /* SignupViewController.swift in Sources */,
+				9F127E8F1F48222700ACDA14 /* StockUsers.swift in Sources */,
 				9F1C807E1F48A719003EED9F /* commentTableViewCell.swift in Sources */,
 				9F63FBD31DD1EEE100150F34 /* SearchResultViewController.swift in Sources */,
 				9FD5BF091EE2F4F300D1F65D /* SearchFormViewController.swift in Sources */,
@@ -607,7 +611,7 @@
 				9FECD2B51EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift in Sources */,
 				9FECD2D71EC5CBB3007E3C87 /* SCLAlertView.swift in Sources */,
 				9FECD2BA1EC318BE007E3C87 /* RecommendViewController.swift in Sources */,
-				9F127E8D1F48221400ACDA14 /* Memo.swift in Sources */,
+				9F127E8D1F48221400ACDA14 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

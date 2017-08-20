@@ -29,9 +29,14 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3cV-J4-8Bu">
+                        <rect key="frame" x="337" y="34" width="30" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="arrowImage" destination="3cV-J4-8Bu" id="ozD-Ry-alD"/>
                 <outlet property="customImage" destination="jIO-Vh-Wz2" id="muf-sx-Zvu"/>
                 <outlet property="nameLabel" destination="Cwc-3E-Dho" id="Nuz-pO-CSW"/>
             </connections>

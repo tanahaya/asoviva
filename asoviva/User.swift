@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Memo: NSObject {
+class User: NSObject {
 
      var text: String = ""
 }

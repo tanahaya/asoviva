@@ -35,6 +35,12 @@ class MyPageViewController: FormViewController {
                     
                 })
                 
+                }.onCellSelection(){row in
+                    let SignupController = SignupViewController()
+                    // webviewController.url = locations[sender.tag]
+                    
+                    self.navigationController?.pushViewController(SignupController, animated: true)
+                    
         }
         
         self.form +++ Section("")
@@ -49,7 +55,7 @@ class MyPageViewController: FormViewController {
             <<< CustomButtonRow() {
                 
                 $0.cellSetup({ (cell, row) in
-    
+                    
                     cell.nameLabel.text = "通知設定"
                 })
             }
@@ -59,8 +65,8 @@ class MyPageViewController: FormViewController {
                     
                     cell.nameLabel.text = "アカウント設定"
                 })
-            }
-
+        }
+        
         
         self.form +++ Section("")
             <<< CustomButtonRow() {
@@ -83,7 +89,7 @@ class MyPageViewController: FormViewController {
                     
                     cell.nameLabel.text = "Third Party Software"
                 })
-            }
+        }
         
     }
     

@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let test: testViewController = testViewController()
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = test//first
+        self.window?.rootViewController = first
         
         self.window?.makeKeyAndVisible()
         

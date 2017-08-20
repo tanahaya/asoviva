@@ -102,10 +102,10 @@ class testViewController: UIViewController {
     func tap(){
         print("hello")
         
-        let memo = Memo()
-        memo.text = myTextView.text
+        let user = User()
+        user.text = myTextView.text
         
-        StockMemos.postMemo(memo: memo)
+        StockUsers.postMemo(user: user)
     }
     
 

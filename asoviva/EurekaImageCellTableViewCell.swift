@@ -13,13 +13,15 @@ public class EurekaImageCellTableViewCell: Cell<Bool>, CellType{
     
     
     @IBOutlet var customImage: UIImageView!
-    
+    @IBOutlet var arrowImage: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     
     public override func setup() {
         super.setup()
         height = { return 100 }
         self.addSubview(customImage)
+        let recommendImage = UIImage.fontAwesomeIcon(name: .angleRight, textColor: UIColor.black, size: CGSize(width:30,height:30))
+        arrowImage.image = recommendImage
     }
     
     public override func update() {
