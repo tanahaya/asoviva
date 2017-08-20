@@ -62,20 +62,13 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
         
         let nowfavorite = favorites[indexPath.section]
         
-        if indexPath.row == 0 {
-            
-            let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
-            cell.nameLabel.text = nowfavorite.storename
-            
-            return cell
-            
-        }else{
-            
-            let cell:storedetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storedetailTableViewCell", for: indexPath as IndexPath) as! storedetailTableViewCell
-            
-            
-            return cell
-        }
+        
+        let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
+        cell.nameLabel.text = nowfavorite.storename
+        
+        return cell
+        
+        
         
     }
     
