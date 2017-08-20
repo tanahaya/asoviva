@@ -12,13 +12,15 @@ import Alamofire
 class testViewController: UIViewController {
 
     var button:UIButton!
+    var myTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor.blue
         button = UIButton()
 
-        button.frame = CGRect(x: 50, y: 50, width: 100, height: 100)
+        button.frame = CGRect(x: 30, y: 50, width: self.view.frame.width - 60, height: 100)
         
         // ボタンの背景色を設定.
         button.backgroundColor = UIColor.red
@@ -48,7 +50,9 @@ class testViewController: UIViewController {
         self.view.addSubview(button)
         // Do any additional setup after loading the view.
         
-        let myTextView: UITextView = UITextView(frame: CGRect(x:10, y:50, width:self.view.frame.width - 20, height:500))
+        myTextView = UITextView()
+        
+        myTextView.frame = CGRect(x:10, y:200, width:self.view.frame.width - 20, height:300)
         
         // TextViewの背景を黃色に設定する.
         myTextView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 1, alpha: 1.0)
@@ -96,7 +100,12 @@ class testViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     func tap(){
+        print("hello")
         
+        let memo = Memo()
+        memo.text = myTextView.text
+        
+        StockMemos.postMemo(memo: memo)
     }
     
 

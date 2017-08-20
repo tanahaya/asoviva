@@ -7,8 +7,6 @@ target 'asoviva' do
   pod 'GoogleMaps'
   pod 'GooglePlaces' 
   pod 'Alamofire'
-  pod 'SwiftyJSON'
-
   # Pods for asoviva
   
 

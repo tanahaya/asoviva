@@ -75,8 +75,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         tableView.tableFooterView = UIView()
         let nib = UINib(nibName: "storeTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "storeTableViewCell")
-        let detailnib = UINib(nibName: "storedetailTableViewCell", bundle: nil)
-        tableView.register(detailnib, forCellReuseIdentifier: "storedetailTableViewCell")
         tableView.separatorColor = UIColor.clear
         return tableView
     }()
@@ -142,6 +140,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             locationManager = CLLocationManager()
             locationManager.startUpdatingLocation()
         }
+        
         //nowlat = locationManager.location!.coordinate.latitude
         nowlat  = 35.680298
         // nowlng = locationManager.location!.coordinate.longitude
@@ -163,6 +162,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             break
         }
     }
+    
     func searchrecommendPlace(){
         let searchword : [String] = ["カラオケ"]
         locations = []
@@ -232,76 +232,87 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         routeRenderer.strokeColor = UIColor.red
         return routeRenderer
     }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return locations.count
-    }
+    /*
+     func numberOfSections(in tableView: UITableView) -> Int {
+     return locations.count
+     }
+     
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     
+     let rowInSection = locations[section].extended ? 2 : 1
+     // let rowInSection = 1
+     return rowInSection
+     }
+     */
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        let rowInSection = locations[section].extended ? 2 : 1
-        // let rowInSection = 1
-        return rowInSection
+        return locations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row == 0 {
-            
-            let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
-            
-            cell.nameLabel.text = locations[indexPath.section].storename
-            
-            cell.photoButton.addTarget(self, action: #selector(photobutton), for: .touchUpInside)
-            cell.phoneButton.addTarget(self, action: #selector(phonebutton), for: .touchUpInside)
-            cell.priceButton.addTarget(self, action: #selector(pricebutton), for: .touchUpInside)
-            cell.commentButton.addTarget(self, action: #selector(commentbutton), for: .touchUpInside)
-            cell.distanceButton.addTarget(self, action: #selector(distancebutton), for: .touchUpInside)
-            cell.shareButton.addTarget(self, action: #selector(sharebutton), for: .touchUpInside)
-            cell.favoriteButton.addTarget(self, action: #selector(favoritebutton), for: .touchUpInside)
-            cell.timeButton.addTarget(self, action: #selector(timebutton), for: .touchUpInside)
-            
-            cell.photoButton.tag = indexPath.section
-            cell.phoneButton.tag = indexPath.section
-            cell.priceButton.tag = indexPath.section
-            cell.commentButton.tag = indexPath.section
-            cell.distanceButton.tag = indexPath.section
-            cell.shareButton.tag = indexPath.section
-            cell.favoriteButton.tag = indexPath.section
-            cell.timeButton.tag = indexPath.section
-            
-            //cell.pointLabel.text = locations[indexPath.section]
-            //cell.priceLabel.text = locations[indexPath.section]
-            //cell.distantLabel.text= locations[indexPath.section]
-            
-            return cell
-            
-        }else{
-            
-            let cell:storedetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storedetailTableViewCell", for: indexPath as IndexPath) as! storedetailTableViewCell
-            // cell.storeImage.image
-            if locations[indexPath.section].storeimage == nil{
-                
-            }else{
-                cell.storeImage.image = locations[indexPath.section].storeimage
-            }
-            
-            return cell
-        }
+        // if indexPath.row == 0 {
+        
+        let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
+        
+        cell.nameLabel.text = locations[indexPath.section].storename
+        
+        cell.photoButton.addTarget(self, action: #selector(photobutton), for: .touchUpInside)
+        cell.phoneButton.addTarget(self, action: #selector(phonebutton), for: .touchUpInside)
+        cell.priceButton.addTarget(self, action: #selector(pricebutton), for: .touchUpInside)
+        cell.commentButton.addTarget(self, action: #selector(commentbutton), for: .touchUpInside)
+        cell.distanceButton.addTarget(self, action: #selector(distancebutton), for: .touchUpInside)
+        cell.shareButton.addTarget(self, action: #selector(sharebutton), for: .touchUpInside)
+        cell.favoriteButton.addTarget(self, action: #selector(favoritebutton), for: .touchUpInside)
+        cell.timeButton.addTarget(self, action: #selector(timebutton), for: .touchUpInside)
+        
+        cell.photoButton.tag = indexPath.section
+        cell.phoneButton.tag = indexPath.section
+        cell.priceButton.tag = indexPath.section
+        cell.commentButton.tag = indexPath.section
+        cell.distanceButton.tag = indexPath.section
+        cell.shareButton.tag = indexPath.section
+        cell.favoriteButton.tag = indexPath.section
+        cell.timeButton.tag = indexPath.section
+        
+        //cell.pointLabel.text = locations[indexPath.section]
+        //cell.priceLabel.text = locations[indexPath.section]
+        //cell.distantLabel.text= locations[indexPath.section]
+        
+        return cell
+        
+        
+        /*
+         }else{
+         
+         let cell:storedetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storedetailTableViewCell", for: indexPath as IndexPath) as! storedetailTableViewCell
+         // cell.storeImage.image
+         if locations[indexPath.section].storeimage == nil{
+         
+         }else{
+         cell.storeImage.image = locations[indexPath.section].storeimage
+         }
+         
+         return cell
+         }
+         */
         
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 80
-        }else {
-            return 210
-        }
+        /*
+         if indexPath.row == 0 {
+         return 80
+         }else {
+         return 210
+         }
+         */
+        return 160
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
-        
+        /*
          if 0 == indexPath.row {
          // switching open or close
          
@@ -315,7 +326,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
          }else{ // ADD:
          
          }
-        
+         */
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
@@ -450,7 +461,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         }
         
         SCLAlertView().showInfo("お気に入り登録完了", subTitle: locations[sender.tag].storename + "をお気に入り登録しました。")
-
+        
     }
     
     func sharebutton(sender: UIButton) {

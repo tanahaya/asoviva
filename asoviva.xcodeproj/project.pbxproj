@@ -14,6 +14,10 @@
 		9F0BA2A21EC6EEE700B0630A /* storeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */; };
 		9F0BA2AB1ECB0E2900B0630A /* storedetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0BA2A91ECB0E2900B0630A /* storedetailTableViewCell.swift */; };
 		9F0BA2AC1ECB0E2900B0630A /* storedetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F0BA2AA1ECB0E2900B0630A /* storedetailTableViewCell.xib */; };
+		9F127E8D1F48221400ACDA14 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F127E8C1F48221400ACDA14 /* Memo.swift */; };
+		9F127E8F1F48222700ACDA14 /* StockMemos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F127E8E1F48222700ACDA14 /* StockMemos.swift */; };
+		9F1C807E1F48A719003EED9F /* commentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1C807C1F48A719003EED9F /* commentTableViewCell.swift */; };
+		9F1C807F1F48A719003EED9F /* commentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F1C807D1F48A719003EED9F /* commentTableViewCell.xib */; };
 		9F1CBFB31EF662E2008335FE /* commentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1CBFB21EF662E2008335FE /* commentViewController.swift */; };
 		9F38BF801EED22050028A8D9 /* ピン.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F38BF7F1EED22050028A8D9 /* ピン.png */; };
 		9F613CEE1F481C9D0049AFD2 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFC054E1E77E6670032589C /* Eureka.framework */; };
@@ -80,9 +84,14 @@
 		9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = storeTableViewCell.xib; sourceTree = "<group>"; };
 		9F0BA2A91ECB0E2900B0630A /* storedetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = storedetailTableViewCell.swift; sourceTree = "<group>"; };
 		9F0BA2AA1ECB0E2900B0630A /* storedetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = storedetailTableViewCell.xib; sourceTree = "<group>"; };
+		9F127E8C1F48221400ACDA14 /* Memo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
+		9F127E8E1F48222700ACDA14 /* StockMemos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMemos.swift; sourceTree = "<group>"; };
+		9F1C807C1F48A719003EED9F /* commentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentTableViewCell.swift; sourceTree = "<group>"; };
+		9F1C807D1F48A719003EED9F /* commentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = commentTableViewCell.xib; sourceTree = "<group>"; };
 		9F1CBFB21EF662E2008335FE /* commentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentViewController.swift; sourceTree = "<group>"; };
 		9F38BF7F1EED22050028A8D9 /* ピン.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ピン.png"; sourceTree = SOURCE_ROOT; };
 		9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
+		9F613CEF1F481F3A0049AFD2 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		9F63EE9B1DDB142100D332D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9F63FBD01DD1EE1200150F34 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9F63FBD21DD1EEE100150F34 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +189,7 @@
 		9F63FBD41DD1F14100150F34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F613CEF1F481F3A0049AFD2 /* SwiftyJSON.framework */,
 				9F833B521F4818CC00084243 /* ObjectMapper.framework */,
 				9F833B501F48161C00084243 /* Alamofire.framework */,
 				9FC4E9701EF1355000DD039F /* FoldingCell.framework */,
@@ -227,10 +237,14 @@
 			children = (
 				9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */,
 				9F833B4D1F4814C700084243 /* testViewController.swift */,
+				9F127E8C1F48221400ACDA14 /* Memo.swift */,
+				9F127E8E1F48222700ACDA14 /* StockMemos.swift */,
 				9F63FBD01DD1EE1200150F34 /* MainViewController.swift */,
 				9FECD2B91EC318BE007E3C87 /* RecommendViewController.swift */,
 				9F0BA29F1EC6EEE700B0630A /* storeTableViewCell.swift */,
 				9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */,
+				9F1C807C1F48A719003EED9F /* commentTableViewCell.swift */,
+				9F1C807D1F48A719003EED9F /* commentTableViewCell.xib */,
 				9F0BA2A91ECB0E2900B0630A /* storedetailTableViewCell.swift */,
 				9F0BA2AA1ECB0E2900B0630A /* storedetailTableViewCell.xib */,
 				9F1CBFB21EF662E2008335FE /* commentViewController.swift */,
@@ -396,6 +410,7 @@
 				9F8CBB141DD1E574002B3DBA /* Assets.xcassets in Resources */,
 				9FECD2D61EC5CBB3007E3C87 /* Info.plist in Resources */,
 				9F8CBB121DD1E574002B3DBA /* Main.storyboard in Resources */,
+				9F1C807F1F48A719003EED9F /* commentTableViewCell.xib in Resources */,
 				9F0BA2A21EC6EEE700B0630A /* storeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -581,6 +596,8 @@
 			files = (
 				9FECD2D81EC5CBB3007E3C87 /* SCLExtensions.swift in Sources */,
 				9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */,
+				9F127E8F1F48222700ACDA14 /* StockMemos.swift in Sources */,
+				9F1C807E1F48A719003EED9F /* commentTableViewCell.swift in Sources */,
 				9F0BA2AB1ECB0E2900B0630A /* storedetailTableViewCell.swift in Sources */,
 				9F63FBD31DD1EEE100150F34 /* SearchResultViewController.swift in Sources */,
 				9FD5BF091EE2F4F300D1F65D /* SearchFormViewController.swift in Sources */,
@@ -598,6 +615,7 @@
 				9FECD2B51EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift in Sources */,
 				9FECD2D71EC5CBB3007E3C87 /* SCLAlertView.swift in Sources */,
 				9FECD2BA1EC318BE007E3C87 /* RecommendViewController.swift in Sources */,
+				9F127E8D1F48221400ACDA14 /* Memo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

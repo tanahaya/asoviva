@@ -40,6 +40,11 @@ class storeTableViewCell: UITableViewCell{
     @IBOutlet var favoriteimage:UIImageView!
     @IBOutlet var timeimage:UIImageView!
     
+    @IBOutlet var photoimage1:UIImageView!
+    @IBOutlet var photoimage2:UIImageView!
+    @IBOutlet var photoimage3:UIImageView!
+    @IBOutlet var photoimage4:UIImageView!
+    
     @IBOutlet var photoButton:UIButton!
     @IBOutlet var priceButton:UIButton!
     @IBOutlet var commentButton:UIButton!
@@ -95,6 +100,7 @@ class storeTableViewCell: UITableViewCell{
         commentview.backgroundColor = UIColor.clear
         distanceview.backgroundColor = UIColor.clear
         */
+        
         photoview.layer.masksToBounds = true
         priceview.layer.masksToBounds = true
         commentview.layer.masksToBounds = true
