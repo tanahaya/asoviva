@@ -18,9 +18,10 @@ class StockMemos: NSObject {
         ]
         
         // HTTP通
-        let URL = NSURL(string: "https:asoviva-server-tanahaya.c9users.io/index")
+        let URL = NSURL(string: "https://memo-tanahaya.c9users.io/api/memos")
         let req = NSMutableURLRequest(url: URL! as URL)
-        Alamofire.request(req , method: .post, parameters: params, encoding: .URL, headers: nil).responseJSON { (request, response, JSON, error) in
+        /*
+        Alamofire.request(req , method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { (request, response, JSON, error) in
             
             println("=============request=============")
             println(request)
@@ -32,6 +33,8 @@ class StockMemos: NSObject {
             println(error)
             println("=================================")
         }
+ */
+
         
         
     }

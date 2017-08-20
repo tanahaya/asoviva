@@ -21,13 +21,13 @@ class storeTableViewCell: UITableViewCell{
     @IBOutlet var priceLabel: UILabel!
     @IBOutlet var commentLabel: UILabel!
     @IBOutlet var distanceLabel: UILabel!
+    @IBOutlet var favoriteLabel: UILabel!
     
     @IBOutlet var photoview:UIView!
     @IBOutlet var priceview:UIView!
     @IBOutlet var commentview:UIView!
     @IBOutlet var distanceview:UIView!
     @IBOutlet var phoneview:UIView!
-    @IBOutlet var shareview:UIView!
     @IBOutlet var favoriteview:UIView!
     @IBOutlet var timeview:UIView!
     
@@ -36,21 +36,19 @@ class storeTableViewCell: UITableViewCell{
     @IBOutlet var commentimage:UIImageView!
     @IBOutlet var distanceimage:UIImageView!
     @IBOutlet var phoneimage:UIImageView!
-    @IBOutlet var shareimage:UIImageView!
     @IBOutlet var favoriteimage:UIImageView!
     @IBOutlet var timeimage:UIImageView!
     
-    @IBOutlet var photoimage1:UIImageView!
-    @IBOutlet var photoimage2:UIImageView!
-    @IBOutlet var photoimage3:UIImageView!
-    @IBOutlet var photoimage4:UIImageView!
+    @IBOutlet var storeimage1:UIImageView!
+    @IBOutlet var storeimage2:UIImageView!
+    @IBOutlet var storeimage3:UIImageView!
+    @IBOutlet var storeimage4:UIImageView!
     
     @IBOutlet var photoButton:UIButton!
     @IBOutlet var priceButton:UIButton!
     @IBOutlet var commentButton:UIButton!
     @IBOutlet var distanceButton:UIButton!
     @IBOutlet var phoneButton:UIButton!
-    @IBOutlet var shareButton:UIButton!
     @IBOutlet var favoriteButton:UIButton!
     @IBOutlet var timeButton:UIButton!
     
@@ -62,7 +60,6 @@ class storeTableViewCell: UITableViewCell{
         let mapImage = UIImage.fontAwesomeIcon(name: .mapMarker, textColor: UIColor.white, size: CGSize(width:25,height:25))
         let cameraImage = UIImage.fontAwesomeIcon(name: .camera, textColor: UIColor.white, size: CGSize(width:25,height:25))
         let phoneImage = UIImage.fontAwesomeIcon(name: .phone, textColor: UIColor.white, size: CGSize(width:25,height:25))
-        let shareImage = UIImage.fontAwesomeIcon(name: .shareSquareO, textColor: UIColor.white, size: CGSize(width:25,height:25))
         let clockImage = UIImage.fontAwesomeIcon(name: .clockO, textColor: UIColor.white, size: CGSize(width:25,height:25))
         
         photoimage.image = cameraImage
@@ -70,7 +67,6 @@ class storeTableViewCell: UITableViewCell{
         commentimage.image = commentImage
         distanceimage.image = mapImage
         phoneimage.image = phoneImage
-        shareimage.image = shareImage
         favoriteimage.image = heartImage
         timeimage.image = clockImage
         
@@ -90,7 +86,6 @@ class storeTableViewCell: UITableViewCell{
         commentview.backgroundColor = UIColor.flatWatermelon()
         distanceview.backgroundColor = UIColor.flatGreen()
         phoneview.backgroundColor = UIColor.flatSkyBlue()
-        shareview.backgroundColor = UIColor.flatLime()
         favoriteview.backgroundColor = UIColor.flatPink()
         timeview.backgroundColor = UIColor.flatMint()
         
@@ -106,7 +101,6 @@ class storeTableViewCell: UITableViewCell{
         commentview.layer.masksToBounds = true
         distanceview.layer.masksToBounds = true
         phoneview.layer.masksToBounds = true
-        shareview.layer.masksToBounds = true
         favoriteview.layer.masksToBounds = true
         timeview.layer.masksToBounds = true
         
@@ -115,7 +109,6 @@ class storeTableViewCell: UITableViewCell{
         commentview.layer.cornerRadius = 5.0
         distanceview.layer.cornerRadius = 5.0
         phoneview.layer.cornerRadius = 5.0
-        shareview.layer.cornerRadius = 5.0
         favoriteview.layer.cornerRadius = 5.0
         timeview.layer.cornerRadius = 5.0
         

@@ -262,7 +262,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         cell.priceButton.addTarget(self, action: #selector(pricebutton), for: .touchUpInside)
         cell.commentButton.addTarget(self, action: #selector(commentbutton), for: .touchUpInside)
         cell.distanceButton.addTarget(self, action: #selector(distancebutton), for: .touchUpInside)
-        cell.shareButton.addTarget(self, action: #selector(sharebutton), for: .touchUpInside)
         cell.favoriteButton.addTarget(self, action: #selector(favoritebutton), for: .touchUpInside)
         cell.timeButton.addTarget(self, action: #selector(timebutton), for: .touchUpInside)
         
@@ -271,9 +270,14 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         cell.priceButton.tag = indexPath.section
         cell.commentButton.tag = indexPath.section
         cell.distanceButton.tag = indexPath.section
-        cell.shareButton.tag = indexPath.section
         cell.favoriteButton.tag = indexPath.section
         cell.timeButton.tag = indexPath.section
+        
+        if locations[indexPath.section].storeimage == nil{
+            
+        }else{
+            cell.storeimage1.image = locations[indexPath.section].storeimage
+        }
         
         //cell.pointLabel.text = locations[indexPath.section]
         //cell.priceLabel.text = locations[indexPath.section]
@@ -383,25 +387,9 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     func firstButton(){
         print("first")
     }
-    func sharetwitter() {
-        
-        let text = "twitter share text"
-        
-        let composeViewController: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)!
-        composeViewController.setInitialText(text)
-        
-        self.present(composeViewController, animated: true, completion: nil)
-    }
     
-    func sharefacebook() {
-        
-        let text = "facebook share text"
-        
-        let composeViewController: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)!
-        composeViewController.setInitialText(text)
-        
-        self.present(composeViewController, animated: true, completion: nil)
-    }
+    
+   
     
     func sortchange(segcon: UISegmentedControl){
         
@@ -464,19 +452,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
     }
     
-    func sharebutton(sender: UIButton) {
-        print("share")
-        
-        
-        let alertView = SCLAlertView()
-        alertView.addButton("facebookでシェア", target:self, selector:#selector(sharetwitter))
-        alertView.addButton("Twitterでシェア") {
-            print("Second button tapped")
-            self.sharefacebook()
-        }
-        alertView.showSuccess("Button View", subTitle: "This alert view has buttons")
-        
-    }
+    
     func photobutton(sender: UIButton) {
         print("photo")
     }
