@@ -232,18 +232,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         routeRenderer.strokeColor = UIColor.red
         return routeRenderer
     }
-    /*
-     func numberOfSections(in tableView: UITableView) -> Int {
-     return locations.count
-     }
-     
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-     
-     let rowInSection = locations[section].extended ? 2 : 1
-     // let rowInSection = 1
-     return rowInSection
-     }
-     */
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
@@ -251,7 +239,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        // if indexPath.row == 0 {
         
         let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
         
@@ -286,76 +273,18 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         return cell
         
         
-        /*
-         }else{
-         
-         let cell:storedetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storedetailTableViewCell", for: indexPath as IndexPath) as! storedetailTableViewCell
-         // cell.storeImage.image
-         if locations[indexPath.section].storeimage == nil{
-         
-         }else{
-         cell.storeImage.image = locations[indexPath.section].storeimage
-         }
-         
-         return cell
-         }
-         */
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        /*
-         if indexPath.row == 0 {
-         return 80
-         }else {
-         return 210
-         }
-         */
+        
         return 160
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
-        /*
-         if 0 == indexPath.row {
-         // switching open or close
-         
-         locations[indexPath.section].extended = !locations[indexPath.section].extended
-         if !locations[indexPath.section].extended {
-         self.toContract(tableView, indexPath: indexPath)
-         }else{
-         self.toExpand(tableView, indexPath: indexPath)
-         }
-         
-         }else{ // ADD:
-         
-         }
-         */
+        
         tableView.deselectRow(at: indexPath, animated: true)
         
-    }
-    
-    fileprivate func toExpand(_ tableView: UITableView, indexPath: IndexPath) {
-        
-        self.loadFirstPhotoForPlace(placeID: locations[indexPath.section].placeId,IndexPath: indexPath)
-        
-        var indexPaths: [IndexPath] = []
-        indexPaths.append(IndexPath(row:1, section:indexPath.section))
-        
-        
-        tableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.fade)
-        
-        tableView.scrollToRow(at: IndexPath(
-            row:indexPath.row, section:indexPath.section),at: UITableViewScrollPosition.top, animated: true)
-    }
-    
-    fileprivate func toContract(_ tableView: UITableView, indexPath: IndexPath) {
-        
-        var indexPaths: [IndexPath] = []
-        indexPaths.append(IndexPath(row: 1, section:indexPath.section))
-        
-        tableView.deleteRows(at: indexPaths,
-                             with: UITableViewRowAnimation.fade)
     }
     
     
@@ -389,7 +318,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     }
     
     
-   
+    
     
     func sortchange(segcon: UISegmentedControl){
         
@@ -451,7 +380,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         SCLAlertView().showInfo("お気に入り登録完了", subTitle: locations[sender.tag].storename + "をお気に入り登録しました。")
         
     }
-    
     
     func photobutton(sender: UIButton) {
         print("photo")

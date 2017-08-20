@@ -12,8 +12,6 @@
 		86715922B7FC1FED7B1D18B3 /* Pods_asoviva.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61CF553ECAE0B2C5AF5DB596 /* Pods_asoviva.framework */; };
 		9F0BA2A11EC6EEE700B0630A /* storeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0BA29F1EC6EEE700B0630A /* storeTableViewCell.swift */; };
 		9F0BA2A21EC6EEE700B0630A /* storeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */; };
-		9F0BA2AB1ECB0E2900B0630A /* storedetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0BA2A91ECB0E2900B0630A /* storedetailTableViewCell.swift */; };
-		9F0BA2AC1ECB0E2900B0630A /* storedetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F0BA2AA1ECB0E2900B0630A /* storedetailTableViewCell.xib */; };
 		9F127E8D1F48221400ACDA14 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F127E8C1F48221400ACDA14 /* Memo.swift */; };
 		9F127E8F1F48222700ACDA14 /* StockMemos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F127E8E1F48222700ACDA14 /* StockMemos.swift */; };
 		9F1C807E1F48A719003EED9F /* commentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1C807C1F48A719003EED9F /* commentTableViewCell.swift */; };
@@ -82,8 +80,6 @@
 		9F0BA2901EC6E18A00B0630A /* RAMAnimatedTabBarController.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RAMAnimatedTabBarController.framework.dSYM; path = Carthage/Build/iOS/RAMAnimatedTabBarController.framework.dSYM; sourceTree = "<group>"; };
 		9F0BA29F1EC6EEE700B0630A /* storeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = storeTableViewCell.swift; sourceTree = "<group>"; };
 		9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = storeTableViewCell.xib; sourceTree = "<group>"; };
-		9F0BA2A91ECB0E2900B0630A /* storedetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = storedetailTableViewCell.swift; sourceTree = "<group>"; };
-		9F0BA2AA1ECB0E2900B0630A /* storedetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = storedetailTableViewCell.xib; sourceTree = "<group>"; };
 		9F127E8C1F48221400ACDA14 /* Memo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		9F127E8E1F48222700ACDA14 /* StockMemos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockMemos.swift; sourceTree = "<group>"; };
 		9F1C807C1F48A719003EED9F /* commentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentTableViewCell.swift; sourceTree = "<group>"; };
@@ -245,8 +241,6 @@
 				9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */,
 				9F1C807C1F48A719003EED9F /* commentTableViewCell.swift */,
 				9F1C807D1F48A719003EED9F /* commentTableViewCell.xib */,
-				9F0BA2A91ECB0E2900B0630A /* storedetailTableViewCell.swift */,
-				9F0BA2AA1ECB0E2900B0630A /* storedetailTableViewCell.xib */,
 				9F1CBFB21EF662E2008335FE /* commentViewController.swift */,
 				9FB64B031E3762DF00C3C430 /* Location.swift */,
 				9FD5BF021EDF0D3B00D1F65D /* WebPageViewController.swift */,
@@ -404,7 +398,6 @@
 				9FECD2B61EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib in Resources */,
 				9F38BF801EED22050028A8D9 /* ピン.png in Resources */,
 				9F9B56541EECEB6D00673F60 /* EurekaButtonTableViewCell.xib in Resources */,
-				9F0BA2AC1ECB0E2900B0630A /* storedetailTableViewCell.xib in Resources */,
 				9F8CBB171DD1E574002B3DBA /* LaunchScreen.storyboard in Resources */,
 				9F9B564A1EE99B3400673F60 /* sampleimage.jpg in Resources */,
 				9F8CBB141DD1E574002B3DBA /* Assets.xcassets in Resources */,
@@ -598,7 +591,6 @@
 				9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */,
 				9F127E8F1F48222700ACDA14 /* StockMemos.swift in Sources */,
 				9F1C807E1F48A719003EED9F /* commentTableViewCell.swift in Sources */,
-				9F0BA2AB1ECB0E2900B0630A /* storedetailTableViewCell.swift in Sources */,
 				9F63FBD31DD1EEE100150F34 /* SearchResultViewController.swift in Sources */,
 				9FD5BF091EE2F4F300D1F65D /* SearchFormViewController.swift in Sources */,
 				9F8B20681ECC5865001B7543 /* favorite.swift in Sources */,

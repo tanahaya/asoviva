@@ -10,7 +10,6 @@ import UIKit
 import Chameleon
 
 class commentTableViewCell: UITableViewCell {
-
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
