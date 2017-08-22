@@ -13,7 +13,7 @@ import Alamofire
 class SignupViewController: FormViewController {
     
     var params: [String: Any] = [
-        "user": "","email": "","school": "" ,"password": ""]
+        "username": "","email": "","school": "" ,"password": ""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class SignupViewController: FormViewController {
                 row.title = "ユーザー名"
                 row.placeholder = "ユーザー名を決めて下さい"
                 }.onChange(){row in
-                    self.params["user"] = row.value ?? String()
+                    self.params["username"] = row.value ?? String()
             }
             
             <<< TextRow("学校"){ row in
@@ -58,19 +58,27 @@ class SignupViewController: FormViewController {
         form +++ Section("ユーザー情報")
             <<< ButtonRow("登録"){ row in
                 row.title = "登録"
+                
                 }.onCellSelection(){row in
                     
-                    print(self.params)
-                    Alamofire.request("https://ide.c9.io/tanahaya/asovivaserver/api/memos" , method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+                    self.params["username"] = "tanahaya"
+                    self.params["school"] = "seiko"
+                    self.params["email"] = "tanahaya00623@gmail.com"
+                    self.params["password"] = "hayate"
+                    
+                    Alamofire.request("https://asovivaserver-tanahaya.c9users.io/api/signup" , method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
                         
                     }
                     
                     let MyPageController = MyPageViewController()
-                    // webviewController.url = locations[sender.tag]
-                    self.navigationController?.pushViewController(MyPageController, animated: true)
+                    // self.navigationController?.pushViewController(MyPageController, animated: true)
+                    
+                    let content: [String: Any] = [ "email": "tanahaya00623@gmail.com","content": "ajfeoai;nvoeajfeoai;nvoeajfeoai;nvoeajfeoai;nvoeajfeoai;nvoeajfe"]
+                    Alamofire.request("https://asovivaserver-tanahaya.c9users.io/api/microposts" , method: .post, parameters: content, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+                        
+                    }
                     
         }
-        
         
     }
     
