@@ -14,7 +14,9 @@ import Chameleon
 
 class MainViewController: UITabBarController{
     
-       override func viewDidLoad() {
+    
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
         let maincolor = UIColor.flatYellowColorDark()
         //ナビゲーションアイテムの色を変更
@@ -49,5 +51,5 @@ class MainViewController: UITabBarController{
         
         self.setViewControllers([recommendNavi,searchNavi,favorNavi,mypageNavi ], animated: false)
     }
-
+    
 }

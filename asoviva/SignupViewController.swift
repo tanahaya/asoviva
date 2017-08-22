@@ -12,6 +12,8 @@ import Alamofire
 
 class SignupViewController: FormViewController {
     
+    let userDefaults = UserDefaults.standard
+    
     var params: [String: Any] = [
         "username": "","email": "","school": "" ,"password": ""]
     
@@ -55,6 +57,8 @@ class SignupViewController: FormViewController {
         }
         
         
+        
+        
         form +++ Section("ユーザー情報")
             <<< ButtonRow("登録"){ row in
                 row.title = "登録"
@@ -65,8 +69,15 @@ class SignupViewController: FormViewController {
                         
                     }
                     
+                    if self.userDefaults.bool(forKey: "signup") {
+                        self.userDefaults.set(false, forKey: "signup")
+                        print("初回起動")
+                    }
+                    
+                    self.userDefaults.set( self.params, forKey: "userinformation")
+                    
                     let MyPageController = MyPageViewController()
-                    // self.navigationController?.pushViewController(MyPageController, animated: true)
+                    self.navigationController?.pushViewController(MyPageController, animated: true)
                     
                     
         }

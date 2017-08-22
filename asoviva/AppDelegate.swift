@@ -14,11 +14,16 @@ import GooglePlaces
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    let userDefaults = UserDefaults.standard
+    let dict = ["signup": true]
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         GMSServices.provideAPIKey("AIzaSyCwcR3jfPvo1SNdLFTTOe0dZ1_PX_AZ2xU")
+        
+        self.userDefaults.register(defaults: dict)
+        
         let first: MainViewController = MainViewController()
-
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = first
         

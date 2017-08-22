@@ -11,10 +11,17 @@ import Eureka
 
 class MyPageViewController: FormViewController {
     
+    let userDefaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setup()
+        
+        if self.userDefaults.bool(forKey: "signup") == false {
+            
+            print("Signup済み")
+        }
         
         self.navigationItem.title  = "Asoviva"
         // Do any additional setup after loading the view.
@@ -26,8 +33,6 @@ class MyPageViewController: FormViewController {
                 $0.cellSetup({ (cell, row) in
                     cell.customImage.frame = CGRect(x: 20, y: 20, width:80 , height: 80)
                     cell.customImage.layer.position =  CGPoint(x: 50, y: 50)
-                    //let nowimage = UIImage.fontAwesomeIcon(name: .mapPin, textColor: UIColor.black, size: CGSize(width:100,height:100))
-                    
                     let nowImage: UIImage = UIImage(named: "sampleimage.jpg")!
                     cell.customImage.layer.masksToBounds = true
                     cell.customImage.layer.cornerRadius = 40
@@ -36,10 +41,14 @@ class MyPageViewController: FormViewController {
                 })
                 
                 }.onCellSelection(){row in
-                    let SignupController = SignupViewController()
-                    // webviewController.url = locations[sender.tag]
-                    
-                    self.navigationController?.pushViewController(SignupController, animated: true)
+                    if self.userDefaults.bool(forKey: "signup") == false {
+                        
+                        print("Signup済み")
+                    }else if self.userDefaults.bool(forKey: "signup"){
+                        
+                        let SignupController = SignupViewController()
+                        self.navigationController?.pushViewController(SignupController, animated: true)
+                    }
                     
         }
         
@@ -66,7 +75,6 @@ class MyPageViewController: FormViewController {
                     cell.nameLabel.text = "アカウント設定"
                 })
         }
-        
         
         self.form +++ Section("")
             <<< CustomButtonRow() {

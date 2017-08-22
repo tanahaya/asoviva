@@ -11,6 +11,7 @@ import RealmSwift
 
 class FavoriteViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
     
+    let userDefaults = UserDefaults.standard
     var favorites:[favorite] = []
     
     let realm = try! Realm()

@@ -12,8 +12,9 @@ import Alamofire
 
 class postcommentFormViewController:FormViewController {
     
+    let userDefaults = UserDefaults.standard
     var params: [String: Any] = [
-        "title": "","content": "","time": 0,"money": 0,"recommentnumber": 0,"user_id": 0,"placeid": ""]
+        "title": "タイトル","content": "Hello,world","time": 0,"money": 0,"recommentnumber": 0,"user_email": "","placeid": ""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,7 @@ class postcommentFormViewController:FormViewController {
                 $0.maximumValue = 5.0
                 $0.value = 5.0
                 }.onChange(){row in
+                    self.params["recommentnumber"] = row.value
                     
             }
             
@@ -46,6 +48,7 @@ class postcommentFormViewController:FormViewController {
                 $0.title = "過ごした時間"
                 $0.value = 5.0
                 }.onChange(){row in
+                    self.params["time"] = row.value
                     
             }
             
@@ -53,8 +56,9 @@ class postcommentFormViewController:FormViewController {
                 $0.title = "値段"
                 $0.minimumValue = 0
                 $0.maximumValue = 10000
-                $0.value = 5000
+                $0.value = 1000
                 }.onChange(){row in
+                    self.params["money"] = row.value
                     
             }
             <<< TextAreaRow("口コミ本文") {
@@ -71,16 +75,12 @@ class postcommentFormViewController:FormViewController {
                 }.onCellSelection(){row in
                     
                     Alamofire.request("https://asovivaserver-tanahaya.c9users.io/api/micropost" , method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
-                        
                     }
                     
                     let MyPageController = MyPageViewController()
                     //self.navigationController?.pushViewController(MyPageController, animated: true)
-                    
         }
         
-        
     }
-    
     
 }
