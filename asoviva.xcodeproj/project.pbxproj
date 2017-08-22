@@ -16,6 +16,7 @@
 		9F1C807F1F48A719003EED9F /* commentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F1C807D1F48A719003EED9F /* commentTableViewCell.xib */; };
 		9F1C80811F49B11A003EED9F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1C80801F49B11A003EED9F /* SignupViewController.swift */; };
 		9F1C80841F4C44EF003EED9F /* postcommentFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1C80831F4C44EF003EED9F /* postcommentFormViewController.swift */; };
+		9F1C80871F4CC448003EED9F /* showImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1C80861F4CC448003EED9F /* showImageViewController.swift */; };
 		9F1CBFB31EF662E2008335FE /* commentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1CBFB21EF662E2008335FE /* commentViewController.swift */; };
 		9F38BF801EED22050028A8D9 /* ピン.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F38BF7F1EED22050028A8D9 /* ピン.png */; };
 		9F613CEE1F481C9D0049AFD2 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFC054E1E77E6670032589C /* Eureka.framework */; };
@@ -83,6 +84,7 @@
 		9F1C807D1F48A719003EED9F /* commentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = commentTableViewCell.xib; sourceTree = "<group>"; };
 		9F1C80801F49B11A003EED9F /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		9F1C80831F4C44EF003EED9F /* postcommentFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postcommentFormViewController.swift; sourceTree = "<group>"; };
+		9F1C80861F4CC448003EED9F /* showImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showImageViewController.swift; sourceTree = "<group>"; };
 		9F1CBFB21EF662E2008335FE /* commentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentViewController.swift; sourceTree = "<group>"; };
 		9F38BF7F1EED22050028A8D9 /* ピン.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ピン.png"; sourceTree = SOURCE_ROOT; };
 		9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				9F1CBFB21EF662E2008335FE /* commentViewController.swift */,
 				9F1C80831F4C44EF003EED9F /* postcommentFormViewController.swift */,
 				9FB64B031E3762DF00C3C430 /* Location.swift */,
+				9F1C80861F4CC448003EED9F /* showImageViewController.swift */,
 				9FD5BF021EDF0D3B00D1F65D /* WebPageViewController.swift */,
 				9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */,
 				9FD5BF081EE2F4F300D1F65D /* SearchFormViewController.swift */,
@@ -585,6 +588,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FECD2D81EC5CBB3007E3C87 /* SCLExtensions.swift in Sources */,
+				9F1C80871F4CC448003EED9F /* showImageViewController.swift in Sources */,
 				9F63FBD11DD1EE1200150F34 /* MainViewController.swift in Sources */,
 				9F1C80811F49B11A003EED9F /* SignupViewController.swift in Sources */,
 				9F1C807E1F48A719003EED9F /* commentTableViewCell.swift in Sources */,

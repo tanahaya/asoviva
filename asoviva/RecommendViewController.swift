@@ -343,10 +343,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     func phonebutton(sender: UIButton){
         print("phone")
-        
-        let commentview = commentViewController()
-        self.navigationController?.pushViewController(commentview, animated: true)
-        
     }
     
     func commentbutton(sender: UIButton) {
@@ -386,6 +382,10 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     func photobutton(sender: UIButton) {
         print("photo")
+        
+        let showImage = showImageViewController()
+        self.navigationController?.pushViewController(showImage, animated: true)
+        
     }
     func timebutton(sender: UIButton) {
         print("time")
