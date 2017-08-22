@@ -15,6 +15,7 @@
 		9F1C807E1F48A719003EED9F /* commentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1C807C1F48A719003EED9F /* commentTableViewCell.swift */; };
 		9F1C807F1F48A719003EED9F /* commentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F1C807D1F48A719003EED9F /* commentTableViewCell.xib */; };
 		9F1C80811F49B11A003EED9F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1C80801F49B11A003EED9F /* SignupViewController.swift */; };
+		9F1C80841F4C44EF003EED9F /* postcommentFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1C80831F4C44EF003EED9F /* postcommentFormViewController.swift */; };
 		9F1CBFB31EF662E2008335FE /* commentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1CBFB21EF662E2008335FE /* commentViewController.swift */; };
 		9F38BF801EED22050028A8D9 /* ピン.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F38BF7F1EED22050028A8D9 /* ピン.png */; };
 		9F613CEE1F481C9D0049AFD2 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFC054E1E77E6670032589C /* Eureka.framework */; };
@@ -81,6 +82,7 @@
 		9F1C807C1F48A719003EED9F /* commentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentTableViewCell.swift; sourceTree = "<group>"; };
 		9F1C807D1F48A719003EED9F /* commentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = commentTableViewCell.xib; sourceTree = "<group>"; };
 		9F1C80801F49B11A003EED9F /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		9F1C80831F4C44EF003EED9F /* postcommentFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postcommentFormViewController.swift; sourceTree = "<group>"; };
 		9F1CBFB21EF662E2008335FE /* commentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentViewController.swift; sourceTree = "<group>"; };
 		9F38BF7F1EED22050028A8D9 /* ピン.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ピン.png"; sourceTree = SOURCE_ROOT; };
 		9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				9F1C807C1F48A719003EED9F /* commentTableViewCell.swift */,
 				9F1C807D1F48A719003EED9F /* commentTableViewCell.xib */,
 				9F1CBFB21EF662E2008335FE /* commentViewController.swift */,
+				9F1C80831F4C44EF003EED9F /* postcommentFormViewController.swift */,
 				9FB64B031E3762DF00C3C430 /* Location.swift */,
 				9FD5BF021EDF0D3B00D1F65D /* WebPageViewController.swift */,
 				9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */,
@@ -595,6 +598,7 @@
 				9FD5BF031EDF0D3B00D1F65D /* WebPageViewController.swift in Sources */,
 				9FECD2B81EC1D89B007E3C87 /* FavoriteViewController.swift in Sources */,
 				9FECD2CD1EC598B9007E3C87 /* MyPageViewController.swift in Sources */,
+				9F1C80841F4C44EF003EED9F /* postcommentFormViewController.swift in Sources */,
 				9F8CBB0D1DD1E574002B3DBA /* AppDelegate.swift in Sources */,
 				9FD5BF071EDF0D7A00D1F65D /* RouteViewController.swift in Sources */,
 				9FECD2B51EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift in Sources */,

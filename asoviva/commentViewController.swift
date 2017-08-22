@@ -38,6 +38,9 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Viewに追加する.
         self.view.addSubview(myTableView)
         
+        let rightButton = UIBarButtonItem(title: "コメントする", style: UIBarButtonItemStyle.plain, target: self, action: #selector(gocomment(sender:)))
+        self.navigationItem.rightBarButtonItem = rightButton
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,31 +48,34 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
-    /*
-     Cellが選択された際に呼び出される
-     */
+    
+    func gocomment(sender: UIButton){
+        
+        let postcommentForm = postcommentFormViewController()
+        self.navigationController?.pushViewController( postcommentForm, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Num: \(indexPath.row)")
         print("Value: \(myItems[indexPath.row])")
     }
     
-    /*
-     Cellの総数を返す.
-     */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myItems.count
     }
     
-    /*
-     Cellに値を設定する
-     */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // 再利用するCellを取得する.
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
         
-        // Cellに値を設定する.
         cell.textLabel!.text = "\(myItems[indexPath.row])"
         
         return cell
     }
+    
+    
+    
+    
+    
+    
 }

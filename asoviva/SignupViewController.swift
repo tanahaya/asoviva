@@ -61,11 +61,6 @@ class SignupViewController: FormViewController {
                 
                 }.onCellSelection(){row in
                     
-                    self.params["username"] = "tanahaya"
-                    self.params["school"] = "seiko"
-                    self.params["email"] = "tanahaya00623@gmail.com"
-                    self.params["password"] = "hayate"
-                    
                     Alamofire.request("https://asovivaserver-tanahaya.c9users.io/api/signup" , method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
                         
                     }
@@ -73,10 +68,6 @@ class SignupViewController: FormViewController {
                     let MyPageController = MyPageViewController()
                     // self.navigationController?.pushViewController(MyPageController, animated: true)
                     
-                    let content: [String: Any] = [ "email": "tanahaya00623@gmail.com","content": "ajfeoai;nvoeajfeoai;nvoeajfeoai;nvoeajfeoai;nvoeajfeoai;nvoeajfe"]
-                    Alamofire.request("https://asovivaserver-tanahaya.c9users.io/api/microposts" , method: .post, parameters: content, encoding: URLEncoding.default, headers: nil).responseJSON { response in
-                        
-                    }
                     
         }
         
