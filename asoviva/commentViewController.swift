@@ -10,7 +10,7 @@ import UIKit
 
 class commentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
+    let userDefaults = UserDefaults.standard
     private var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -40,9 +40,15 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func gocomment(sender: UIButton){
-        
-        let postcommentForm = postcommentFormViewController()
-        self.navigationController?.pushViewController( postcommentForm, animated: true)
+        if self.userDefaults.bool(forKey: "signup") == false {
+            print("Signup済み")
+            let postcommentForm = postcommentFormViewController()
+            self.navigationController?.pushViewController( postcommentForm, animated: true)
+            
+        }else if self.userDefaults.bool(forKey: "signup"){
+            print("Signupまだ")
+            SCLAlertView().showInfo("ユーザー登録をしてください", subTitle: "MyPageに行きましょう")
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

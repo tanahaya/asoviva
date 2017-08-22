@@ -56,18 +56,17 @@ class commentTableViewCell: UITableViewCell {
         timeImageView.image = clockImage
         arrowImageView.image = arrowImage
         
-        storeView.backgroundColor = UIColor.flatPurple()//flatWatermelon()
+        storeView.backgroundColor = UIColor.flatMagenta()
         writerView.backgroundColor = UIColor.flatSkyBlue()
         favoriteView.backgroundColor = UIColor.flatPink()
         priceView.backgroundColor = UIColor.flatYellow()
-        timeView.backgroundColor = UIColor.flatMint()
+        timeView.backgroundColor = UIColor.flatGreen()
         
         storeView.layer.masksToBounds = true
         writerView.layer.masksToBounds = true
         favoriteView.layer.masksToBounds = true
         priceView.layer.masksToBounds = true
         timeView.layer.masksToBounds = true
-        
         
         storeView.layer.cornerRadius = 5.0
         writerView.layer.cornerRadius = 5.0

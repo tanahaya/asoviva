@@ -57,8 +57,6 @@ class SignupViewController: FormViewController {
         }
         
         
-        
-        
         form +++ Section("ユーザー情報")
             <<< ButtonRow("登録"){ row in
                 row.title = "登録"

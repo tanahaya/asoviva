@@ -14,7 +14,6 @@ class storeTableViewCell: UITableViewCell{
     @IBOutlet var backview: UIView!
     @IBOutlet var upperview: UIView!
     @IBOutlet var nameunderview: UIView!
-    
     @IBOutlet var nameLabel: UILabel!
     
     @IBOutlet var photoLabel: UILabel!
@@ -89,13 +88,6 @@ class storeTableViewCell: UITableViewCell{
         favoriteview.backgroundColor = UIColor.flatPink()
         timeview.backgroundColor = UIColor.flatMint()
         
-        /*
-        phoneview.backgroundColor = UIColor.clear
-        photoview.backgroundColor = UIColor.clear
-        commentview.backgroundColor = UIColor.clear
-        distanceview.backgroundColor = UIColor.clear
-        */
-        
         photoview.layer.masksToBounds = true
         priceview.layer.masksToBounds = true
         commentview.layer.masksToBounds = true
@@ -111,7 +103,6 @@ class storeTableViewCell: UITableViewCell{
         phoneview.layer.cornerRadius = 5.0
         favoriteview.layer.cornerRadius = 5.0
         timeview.layer.cornerRadius = 5.0
-        
         
         super.awakeFromNib()
     }

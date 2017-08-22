@@ -24,8 +24,10 @@ class MyPageViewController: FormViewController {
         }
         
         self.navigationItem.title  = "Asoviva"
+        
         // Do any additional setup after loading the view.
     }
+    
     func setup() {
         self.form +++ Section("")
             
@@ -37,6 +39,13 @@ class MyPageViewController: FormViewController {
                     cell.customImage.layer.masksToBounds = true
                     cell.customImage.layer.cornerRadius = 40
                     cell.customImage.image = nowImage
+                    if self.userDefaults.bool(forKey: "signup") == false {
+                        
+                        cell.nameLabel.text = self.userDefaults.dictionary(forKey: "userinformation")?["username"] as? String
+                        print("Signup済み")
+                    }else if self.userDefaults.bool(forKey: "signup"){
+                        
+                    }
                     
                 })
                 
@@ -98,7 +107,5 @@ class MyPageViewController: FormViewController {
                     cell.nameLabel.text = "Third Party Software"
                 })
         }
-        
     }
-    
 }

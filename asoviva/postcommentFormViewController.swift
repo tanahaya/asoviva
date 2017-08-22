@@ -21,6 +21,8 @@ class postcommentFormViewController:FormViewController {
         
         self.setup()
         
+        params["user_email"] = userDefaults.dictionary(forKey: "userinformation")?["email"]
+        
         self.navigationItem.title  = "Asoviva"
         // Do any additional setup after loading the view.
     }
@@ -77,8 +79,10 @@ class postcommentFormViewController:FormViewController {
                     Alamofire.request("https://asovivaserver-tanahaya.c9users.io/api/micropost" , method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
                     }
                     
-                    let MyPageController = MyPageViewController()
+                    //let MyPageController = MyPageViewController()
+                    self.navigationController?.presentingViewController?.dismiss(animated: true, completion: nil)
                     //self.navigationController?.pushViewController(MyPageController, animated: true)
+                    
         }
         
     }
