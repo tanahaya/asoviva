@@ -35,6 +35,8 @@ class postcommentFormViewController:FormViewController {
             }
             <<< SliderRow() {
                 $0.title = "おすすめ度"
+                $0.minimumValue = 1.0
+                $0.maximumValue = 5.0
                 $0.value = 5.0
                 }.onChange(){row in
                     
@@ -49,13 +51,15 @@ class postcommentFormViewController:FormViewController {
             
             <<< SliderRow() {
                 $0.title = "値段"
-                $0.value = 1000
+                $0.minimumValue = 0
+                $0.maximumValue = 10000
+                $0.value = 5000
                 }.onChange(){row in
                     
             }
             <<< TextAreaRow("口コミ本文") {
                 $0.placeholder = "口コミ本文を入れて下さい"
-                $0.textAreaHeight = .dynamic(initialTextViewHeight: 50)
+                $0.textAreaHeight = .dynamic(initialTextViewHeight: 100)
                 }.onChange(){row in
                     
         }

@@ -32,6 +32,8 @@ class commentTableViewCell: UITableViewCell {
     @IBOutlet var priceImageView:UIImageView!
     @IBOutlet var timeImageView:UIImageView!
     
+    @IBOutlet var arrowImageView:UIImageView!
+    
     @IBOutlet var storeButton:UIButton!
     
     @IBOutlet var commentcontent:UITextView!
@@ -43,15 +45,19 @@ class commentTableViewCell: UITableViewCell {
         let yenImage = UIImage.fontAwesomeIcon(name: .jpy, textColor: UIColor.white, size: CGSize(width:25,height:25))
         let writerImage = UIImage.fontAwesomeIcon(name: .userCircle, textColor: UIColor.white, size: CGSize(width:25,height:25))
         let storeImage = UIImage.fontAwesomeIcon(name: .mapPin, textColor: UIColor.white, size: CGSize(width:25,height:25))
+        let arrowImage = UIImage.fontAwesomeIcon(name: .angleRight, textColor: UIColor.white, size: CGSize(width:25,height:25))
+        
+        //storeLabel.textColor = UIColor.black
         
         storeImageView.image = storeImage
         writerImageView.image = writerImage
         favoriteImageView.image = heartImage
         priceImageView.image = yenImage
         timeImageView.image = clockImage
+        arrowImageView.image = arrowImage
         
-        storeView.backgroundColor = UIColor.flatWhite()
-        writerView.backgroundColor = UIColor.flatWatermelon()
+        storeView.backgroundColor = UIColor.flatPurple()//flatWatermelon()
+        writerView.backgroundColor = UIColor.flatSkyBlue()
         favoriteView.backgroundColor = UIColor.flatPink()
         priceView.backgroundColor = UIColor.flatYellow()
         timeView.backgroundColor = UIColor.flatMint()

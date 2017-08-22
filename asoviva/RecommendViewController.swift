@@ -343,11 +343,14 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     func phonebutton(sender: UIButton){
         print("phone")
+        
+        let commentview = commentViewController()
+        self.navigationController?.pushViewController(commentview, animated: true)
+        
     }
     
     func commentbutton(sender: UIButton) {
         print("comment")
-        
         let commentview = commentViewController()
         self.navigationController?.pushViewController(commentview, animated: true)
     }

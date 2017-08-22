@@ -21,7 +21,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ちょーうまかった" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypE-UG-iDt" userLabel="nameLabel">
                         <rect key="frame" x="5" y="5" width="287" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -176,19 +176,20 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="arrowImageView" destination="TQV-hh-MPe" id="3KJ-zw-DGW"/>
                 <outlet property="commentcontent" destination="lqC-KZ-no3" id="DS3-GT-Gs5"/>
                 <outlet property="dateLabel" destination="310-sL-jie" id="VJ9-kz-0ZN"/>
-                <outlet property="favoriteImageView" destination="rrB-K7-2on" id="gC7-Nj-viC"/>
+                <outlet property="favoriteImageView" destination="7gn-36-zMt" id="uIt-eZ-wx2"/>
                 <outlet property="favoriteLabel" destination="ThC-QE-GH6" id="gO0-Rd-fty"/>
                 <outlet property="favoriteView" destination="h30-8r-MMX" id="HPI-Lw-NUr"/>
-                <outlet property="priceImageView" destination="7ay-2Y-Gcj" id="bVh-lU-qb9"/>
+                <outlet property="priceImageView" destination="rrB-K7-2on" id="FyU-1Q-uU9"/>
                 <outlet property="priceLabel" destination="0AH-Qe-DGv" id="iVD-9d-8tI"/>
                 <outlet property="priceView" destination="QV1-Ts-gpw" id="ANV-Vl-EFM"/>
                 <outlet property="storeButton" destination="HqN-DD-nub" id="iLi-UU-cCY"/>
                 <outlet property="storeImageView" destination="VPB-Ae-PqG" id="nRK-kB-wJc"/>
                 <outlet property="storeLabel" destination="pkr-e0-U7U" id="C0q-gH-GEd"/>
                 <outlet property="storeView" destination="5ec-jw-JBn" id="B6h-WW-x6o"/>
-                <outlet property="timeImageView" destination="7gn-36-zMt" id="cer-9r-OS9"/>
+                <outlet property="timeImageView" destination="7ay-2Y-Gcj" id="kYY-yv-kBa"/>
                 <outlet property="timeLabel" destination="hD5-h4-Sag" id="4iT-LJ-zoj"/>
                 <outlet property="timeView" destination="0kc-zJ-ZB7" id="bi2-LJ-leJ"/>
                 <outlet property="titleLabel" destination="ypE-UG-iDt" id="ZaS-V9-tpu"/>
