@@ -56,7 +56,7 @@ class commentTableViewCell: UITableViewCell {
         timeImageView.image = clockImage
         arrowImageView.image = arrowImage
         
-        storeView.backgroundColor = UIColor.flatMagenta()
+        storeView.backgroundColor = UIColor.flatYellowColorDark()
         writerView.backgroundColor = UIColor.flatSkyBlue()
         favoriteView.backgroundColor = UIColor.flatPink()
         priceView.backgroundColor = UIColor.flatYellow()

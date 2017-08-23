@@ -14,14 +14,14 @@ class postcommentFormViewController:FormViewController {
     
     let userDefaults = UserDefaults.standard
     var params: [String: Any] = [
-        "title": "タイトル","content": "Hello,world","time": 0,"money": 0,"recommentnumber": 0,"user_email": "","placeid": ""]
+        "title": "タイトル","content": "Hello,world","time": 1.0,"money": 1000,"recommentnumber": 5.0,"user_id": 1,"placeid": ""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setup()
         
-        params["user_email"] = userDefaults.dictionary(forKey: "userinformation")?["email"]
+        //params["user_id"] = userDefaults.dictionary(forKey: "userinformation")?["id"]
         
         self.navigationItem.title  = "Asoviva"
         // Do any additional setup after loading the view.
@@ -48,7 +48,7 @@ class postcommentFormViewController:FormViewController {
             
             <<< SliderRow() {
                 $0.title = "過ごした時間"
-                $0.value = 5.0
+                $0.value = 1.0
                 }.onChange(){row in
                     self.params["time"] = row.value
                     
@@ -61,8 +61,8 @@ class postcommentFormViewController:FormViewController {
                 $0.value = 1000
                 }.onChange(){row in
                     self.params["money"] = row.value
-                    
             }
+            
             <<< TextAreaRow("口コミ本文") {
                 $0.placeholder = "口コミ本文を入れて下さい"
                 $0.textAreaHeight = .dynamic(initialTextViewHeight: 100)
@@ -75,8 +75,9 @@ class postcommentFormViewController:FormViewController {
                 row.title = "投稿する"
                 
                 }.onCellSelection(){row in
+                    print(self.params)
                     
-                    Alamofire.request("https://asovivaserver-tanahaya.c9users.io/api/micropost" , method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+                    Alamofire.request("https://asovivaserver-tanahaya.c9users.io/api/microposts" , method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
                     }
                     
                     //let MyPageController = MyPageViewController()

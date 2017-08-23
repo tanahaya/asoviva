@@ -25,6 +25,7 @@ class MyPageViewController: FormViewController {
         
         self.navigationItem.title  = "Asoviva"
         
+        self.navigationItem.hidesBackButton = true
         // Do any additional setup after loading the view.
     }
     
@@ -50,8 +51,10 @@ class MyPageViewController: FormViewController {
                 })
                 
                 }.onCellSelection(){row in
+                    
                     if self.userDefaults.bool(forKey: "signup") == false {
                         
+                        self.userDefaults.set(true, forKey: "signup")
                         print("Signup済み")
                     }else if self.userDefaults.bool(forKey: "signup"){
                         

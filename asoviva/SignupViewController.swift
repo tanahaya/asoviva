@@ -75,7 +75,7 @@ class SignupViewController: FormViewController {
                     self.userDefaults.set( self.params, forKey: "userinformation")
                     
                     let MyPageController = MyPageViewController()
-                    self.navigationController?.pushViewController(MyPageController, animated: true)
+                    // self.navigationController?.pushViewController(MyPageController, animated: true)
                     
                     
         }
