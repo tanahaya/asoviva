@@ -223,8 +223,6 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
             cell.nameLabel.text = locations[indexPath.section].storename
             
             return cell
-            
-        
         
     }
     

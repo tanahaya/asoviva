@@ -19,7 +19,6 @@ import Chameleon
 import GooglePlaces
 import Alamofire
 
-
 class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
     var userLocation: CLLocationCoordinate2D!
@@ -434,7 +433,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             //print(result)
             
         }
-        
     }
 }
 

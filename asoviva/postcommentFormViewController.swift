@@ -13,8 +13,8 @@ import Alamofire
 class postcommentFormViewController:FormViewController {
     
     let userDefaults = UserDefaults.standard
-    var params: [String: Any] = [
-        "title": "タイトル","content": "Hello,world","time": 1.0,"money": 1000,"recommentnumber": 5.0,"user_id": 0,"placeid": ""]
+    //var params: [String: Any] = ["title": "タイトル","content": "Hello,world","time": 1.0,"money": 1000,"recommentnumber": 5.0,"user_id": 0,"placeid": ""]
+    var params:[String:Any] = ["content":"Hello,world","user_id":0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
