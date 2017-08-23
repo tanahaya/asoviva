@@ -78,6 +78,9 @@ class postcommentFormViewController:FormViewController {
                     print(self.params)
                     
                     Alamofire.request("https://asovivaserver-tanahaya.c9users.io/api/microposts" , method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+                        
+                        print(response.result.value!)
+                        
                     }
                     
                     //let MyPageController = MyPageViewController()

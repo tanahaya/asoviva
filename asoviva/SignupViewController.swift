@@ -14,9 +14,8 @@ class SignupViewController: FormViewController {
     
     let userDefaults = UserDefaults.standard
     
-    var params: [String: Any] = [
-        "username": "","email": "","school": "" ,"password": ""]
-    
+    var params: [String: Any] = ["username": "","email": "","school": "","password": ""]
+    var add:[String:Any] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,14 +64,17 @@ class SignupViewController: FormViewController {
                     
                     Alamofire.request("https://asovivaserver-tanahaya.c9users.io/api/signup" , method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
                         
+                        //print(response.result.value as! [String : Any])
+                        self.add = response.result.value as! [String : Any]
+                        self.params["user_id"] = self.add["user_id"]
+                        print(self.params)
+                        self.userDefaults.set( self.params, forKey: "userinformation")
                     }
                     
                     if self.userDefaults.bool(forKey: "signup") {
                         self.userDefaults.set(false, forKey: "signup")
                         print("初回起動")
                     }
-                    
-                    self.userDefaults.set( self.params, forKey: "userinformation")
                     
                     let MyPageController = MyPageViewController()
                     // self.navigationController?.pushViewController(MyPageController, animated: true)

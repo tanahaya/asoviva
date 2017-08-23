@@ -17,6 +17,8 @@ import RealmSwift
 import Social
 import Chameleon
 import GooglePlaces
+import Alamofire
+
 
 class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
@@ -87,6 +89,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         GMSPlacesClient.provideAPIKey("AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY")
         GMSServices.provideAPIKey("AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY")
         
+        
         let sortArray: [String] = ["","",""]
         
         let orange = UIColor(red:255/255, green: 165/255, blue: 0/255, alpha: 0.6)
@@ -149,6 +152,9 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         self.view.addSubview(storeTableView)
         self.searchrecommendPlace()
         self.navigationItem.title  = "Asoviva"
+        
+        let rightButton = UIBarButtonItem(title: "Test用", style: UIBarButtonItemStyle.plain, target: self, action: #selector(searchplaceRubyonRails(sender:)))
+        self.navigationItem.rightBarButtonItem = rightButton
         
     }
     
@@ -415,6 +421,20 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
                 self.storeTableView.reloadData()
             }
         })
+    }
+    
+    func searchplaceRubyonRails(sender: UIButton){
+        
+        let params:[String: Any] = ["nowlat":"","nowlng":""]
+        
+        Alamofire.request("https://asovivaserver-tanahaya.c9users.io/api/searchplace", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+            
+            let result:[String: Any] = response.result.value as! [String : Any]
+            
+            print(result)
+            
+        }
+        
     }
 }
 
