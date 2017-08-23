@@ -14,14 +14,15 @@ class postcommentFormViewController:FormViewController {
     
     let userDefaults = UserDefaults.standard
     var params: [String: Any] = [
-        "title": "タイトル","content": "Hello,world","time": 1.0,"money": 1000,"recommentnumber": 5.0,"user_id": 1,"placeid": ""]
+        "title": "タイトル","content": "Hello,world","time": 1.0,"money": 1000,"recommentnumber": 5.0,"user_id": 0,"placeid": ""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setup()
         
-        //params["user_id"] = userDefaults.dictionary(forKey: "userinformation")?["id"]
+        params["user_id"] = userDefaults.dictionary(forKey: "userinformation")?["user_id"]
+        print(params)
         
         self.navigationItem.title  = "Asoviva"
         // Do any additional setup after loading the view.
@@ -79,7 +80,7 @@ class postcommentFormViewController:FormViewController {
                     
                     Alamofire.request("https://asovivaserver-tanahaya.c9users.io/api/microposts" , method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
                         
-                        print(response.result.value!)
+                        // print(response.result.value!)
                         
                     }
                     

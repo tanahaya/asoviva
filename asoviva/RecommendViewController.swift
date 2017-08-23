@@ -425,13 +425,13 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     func searchplaceRubyonRails(sender: UIButton){
         
-        let params:[String: Any] = ["nowlat":"","nowlng":""]
+        let params:[String: Any] = ["lat": 35.680298,"lng": 139.766247]
         
         Alamofire.request("https://asovivaserver-tanahaya.c9users.io/api/searchplace", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
             
-            let result:[String: Any] = response.result.value as! [String : Any]
+            //let result:[String: Any] = response.result.value as! [String : Any]
             
-            print(result)
+            //print(result)
             
         }
         

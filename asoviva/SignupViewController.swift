@@ -77,9 +77,7 @@ class SignupViewController: FormViewController {
                     }
                     
                     let MyPageController = MyPageViewController()
-                    // self.navigationController?.pushViewController(MyPageController, animated: true)
-                    
-                    
+                    self.navigationController?.pushViewController(MyPageController, animated: true)
         }
         
     }
