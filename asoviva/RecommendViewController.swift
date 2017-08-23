@@ -291,7 +291,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
     }
     
-    
     func pickfavorite(sender: UIButton) {
         
         print("sender:" + String(sender.tag))
@@ -320,8 +319,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     func firstButton(){
         print("first")
     }
-    
-    
     
     
     func sortchange(segcon: UISegmentedControl){
@@ -429,10 +426,8 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         Alamofire.request("https://asovivaserver-tanahaya.c9users.io/api/searchplace", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
             
             //let result:[String: Any] = response.result.value as! [String : Any]
-            
             //print(result)
             
         }
     }
 }
-

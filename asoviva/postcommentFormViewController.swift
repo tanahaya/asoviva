@@ -14,14 +14,14 @@ class postcommentFormViewController:FormViewController {
     
     let userDefaults = UserDefaults.standard
     //var params: [String: Any] = ["title": "タイトル","content": "Hello,world","time": 1.0,"money": 1000,"recommentnumber": 5.0,"user_id": 0,"placeid": ""]
-    var params:[String:Any] = ["content":"Hello,world","user_id":0]
+    var params:[String:Any] = ["microposts":["content":"Hello,world"],"user_id":1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setup()
         
-        params["user_id"] = userDefaults.dictionary(forKey: "userinformation")?["user_id"]
+        // params["user_id"] = userDefaults.dictionary(forKey: "userinformation")?["user_id"]
         print(params)
         
         self.navigationItem.title  = "Asoviva"
