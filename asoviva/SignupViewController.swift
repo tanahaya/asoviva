@@ -62,7 +62,7 @@ class SignupViewController: FormViewController {
                 
                 }.onCellSelection(){row in
                     
-                    Alamofire.request("https://asovivaserver-tanahaya.c9users.io/api/signup" , method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+                    Alamofire.request("https://server-tanahaya.c9users.io/api/signup" , method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
                         
                         //print(response.result.value as! [String : Any])
                         self.add = response.result.value as! [String : Any]

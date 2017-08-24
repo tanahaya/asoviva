@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import Alamofire
 
 class commentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     let userDefaults = UserDefaults.standard
     private var tableView: UITableView!
+    var params:[String:Any] = ["place_id":"aaaa"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.getComment()
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
         
@@ -70,6 +73,13 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     
     return 250
+    }
+    func getComment(){
+        
+        Alamofire.request("https://server-tanahaya.c9users.io/api/showcomment", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
+            
+        }
+        
     }
     
 }

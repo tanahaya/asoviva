@@ -39,6 +39,8 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     var locations:[Location] = []
     
+    var params:[String:Any] = ["place_id":"aaaa"]
+    
     lazy var mapView: MKMapView = {
         
         let mapView: MKMapView = MKMapView()
@@ -154,6 +156,9 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         let rightButton = UIBarButtonItem(title: "Test用", style: UIBarButtonItemStyle.plain, target: self, action: #selector(searchplaceRubyonRails(sender:)))
         self.navigationItem.rightBarButtonItem = rightButton
+        
+        let leftButton = UIBarButtonItem(title: "コメント表示用", style: UIBarButtonItemStyle.plain, target: self, action: #selector(getComment(sender:)))
+        self.navigationItem.leftBarButtonItem = leftButton
         
     }
     
@@ -423,11 +428,19 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         let params:[String: Any] = ["lat": 35.680298,"lng": 139.766247]
         
-        Alamofire.request("https://asovivaserver-tanahaya.c9users.io/api/searchplace", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
             
-            //let result:[String: Any] = response.result.value as! [String : Any]
-            //print(result)
             
         }
+        
+    }
+    
+    func getComment(sender: UIButton){
+        
+        Alamofire.request("https://server-tanahaya.c9users.io/api/showcomment", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
+            print(response.result.value!)
+        }
+
+        
     }
 }
