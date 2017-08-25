@@ -9,14 +9,12 @@
 import UIKit
 import MapKit
 import CoreLocation
-import GoogleMaps
 import ObjectMapper
 import SwiftyJSON
 import FontAwesome
 import RealmSwift
 import Social
 import Chameleon
-import GooglePlaces
 import Alamofire
 
 class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
@@ -86,10 +84,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        GMSPlacesClient.provideAPIKey("AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY")
-        GMSServices.provideAPIKey("AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY")
-        
         
         let sortArray: [String] = ["","",""]
         
@@ -269,6 +263,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         SCLAlertView().showInfo("お気に入り登録完了", subTitle: locations[sender.tag].storename + "をお気に入り登録しました。")
     }
+    
     func moveweb(sender: UIButton) {
         
         let webviewController = WebPageViewController()
@@ -280,7 +275,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     func firstButton(){
         print("first")
     }
-    
     
     func sortchange(segcon: UISegmentedControl){
         
@@ -333,9 +327,9 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         storedata.vicinity = locations[sender.tag].vicinity
         storedata.placeid = locations[sender.tag].placeId
         storedata.id = favorite.lastId()
+        
         try! realm.write {
             realm.add(storedata)
-            
         }
         
         SCLAlertView().showInfo("お気に入り登録完了", subTitle: locations[sender.tag].storename + "をお気に入り登録しました。")
@@ -352,33 +346,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     func timebutton(sender: UIButton) {
         print("time")
     }
-    func loadFirstPhotoForPlace(placeID: String,IndexPath:IndexPath) {
-        GMSPlacesClient.shared().lookUpPhotos(forPlaceID: placeID) { (photos, error) -> Void in
-            if let error = error {
-                // TODO: handle the error.
-                print("Error: \(error.localizedDescription)")
-            } else {
-                if let firstPhoto = photos?.results.first {
-                    self.loadImageForMetadata(photoMetadata: firstPhoto,IndexPath:IndexPath)
-                }
-            }
-        }
-    }
     
-    func loadImageForMetadata(photoMetadata: GMSPlacePhotoMetadata,IndexPath:IndexPath) {
-        GMSPlacesClient.shared().loadPlacePhoto(photoMetadata, callback: {
-            (photo, error) -> Void in
-            if let error = error {
-                // TODO: handle the error.
-                print("Error: \(error.localizedDescription)")
-            } else {
-                // self.imageView.image = photo
-                // self.attributionTextView.attributedText = photoMetadata.attributions
-                self.locations[IndexPath.section].storeimage = photo
-                self.storeTableView.reloadData()
-            }
-        })
-    }
     
     func searchplaceRubyonRails(){
         
