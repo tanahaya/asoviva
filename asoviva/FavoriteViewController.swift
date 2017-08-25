@@ -123,10 +123,8 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
         var indexPaths: [IndexPath] = []
         indexPaths.append(IndexPath(row: 1, section:indexPath.section))
         
-        
         tableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.fade)
         
-        // scroll to the selected cell.
         tableView.scrollToRow(at: IndexPath(row:indexPath.row, section:indexPath.section),
                               at: UITableViewScrollPosition.top, animated: true)
     }

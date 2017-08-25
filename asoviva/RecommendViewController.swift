@@ -38,6 +38,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     let guidecolor = UIColor(red: 243 , green: 152, blue: 29, alpha: 1.0)
     
     var locations:[Location] = []
+    var testlocations:[Location] = []
     
     var params:[String:Any] = ["place_id":"aaaa"]
     
@@ -429,8 +430,22 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         let params:[String: Any] = ["lat": 35.680298,"lng": 139.766247]
         
         Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+            //print(response.result.value!)
             
+            let res = JSON(response.result.value!)
             
+            res["results"].array?.forEach({
+                var location:Location = Mapper<Location>().map(JSON: $0.dictionaryObject!)!
+                location.lat = $0["geometry"]["location"]["lat"].doubleValue
+                location.lng = $0["geometry"]["location"]["lng"].doubleValue
+                let Pin: MKPointAnnotation = MKPointAnnotation()
+                Pin.coordinate = CLLocationCoordinate2DMake(location.lat,location.lng)
+                Pin.title = location.storename
+                self.mapView.addAnnotation(Pin)
+                location.annotation = Pin
+                self.testlocations.append(location)
+                print(self.testlocations)
+            })
         }
         
     }
@@ -438,9 +453,9 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     func getComment(sender: UIButton){
         
         Alamofire.request("https://server-tanahaya.c9users.io/api/showcomment", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
+            
             print(response.result.value!)
+            
         }
-
-        
     }
 }

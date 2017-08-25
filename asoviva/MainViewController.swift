@@ -14,16 +14,11 @@ import Chameleon
 
 class MainViewController: UITabBarController{
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let maincolor = UIColor.flatYellowColorDark()
-        //ナビゲーションアイテムの色を変更
         UINavigationBar.appearance().tintColor = ContrastColorOf( maincolor!, returnFlat: true)
-        //ナビゲーションバーの背景を変更
         UINavigationBar.appearance().barTintColor = maincolor
-        //ナビゲーションのタイトル文字列の色を変更
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : ContrastColorOf( maincolor!, returnFlat: true)]
         
         self.tabBar.tintColor = maincolor
@@ -47,7 +42,6 @@ class MainViewController: UITabBarController{
         let searchNavi :UIViewController = UINavigationController(rootViewController: SearchView)
         let favorNavi :UIViewController = UINavigationController(rootViewController: FavoriteView)
         let mypageNavi :UIViewController = UINavigationController(rootViewController: MyPageView)
-        
         
         self.setViewControllers([recommendNavi,searchNavi,favorNavi,mypageNavi ], animated: false)
     }

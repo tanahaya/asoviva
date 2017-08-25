@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 class commentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     let userDefaults = UserDefaults.standard
     private var tableView: UITableView!
     var params:[String:Any] = ["place_id":"aaaa"]
@@ -38,9 +38,7 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
     
     func gocomment(sender: UIButton){
         if self.userDefaults.bool(forKey: "signup") == false {
@@ -71,15 +69,14 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    
-    return 250
+        
+        return 250
     }
     func getComment(){
         
         Alamofire.request("https://server-tanahaya.c9users.io/api/showcomment", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
             
         }
-        
     }
     
 }
