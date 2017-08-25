@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.userDefaults.register(defaults: dict)
         
         let first: MainViewController = MainViewController()
+        let start: startViewController = startViewController()
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = first
         
