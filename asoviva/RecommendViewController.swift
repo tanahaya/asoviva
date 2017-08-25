@@ -38,7 +38,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     let guidecolor = UIColor(red: 243 , green: 152, blue: 29, alpha: 1.0)
     
     var locations:[Location] = []
-    var testlocations:[Location] = []
     
     var params:[String:Any] = ["place_id":"aaaa"]
     
@@ -152,11 +151,9 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         nowlng = 139.766247
         self.view.addSubview(mapView)
         self.view.addSubview(storeTableView)
-        self.searchrecommendPlace()
+        //self.searchrecommendPlace()
+        self.searchplaceRubyonRails()
         self.navigationItem.title  = "Asoviva"
-        
-        let rightButton = UIBarButtonItem(title: "Test用", style: UIBarButtonItemStyle.plain, target: self, action: #selector(searchplaceRubyonRails(sender:)))
-        self.navigationItem.rightBarButtonItem = rightButton
         
         let leftButton = UIBarButtonItem(title: "コメント表示用", style: UIBarButtonItemStyle.plain, target: self, action: #selector(getComment(sender:)))
         self.navigationItem.leftBarButtonItem = leftButton
@@ -172,48 +169,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         case .authorizedAlways, .authorizedWhenInUse:
             break
         }
-    }
-    
-    func searchrecommendPlace(){
-        let searchword : [String] = ["カラオケ"]
-        locations = []
-        let semaphore = DispatchSemaphore(value: 0)
-        for i in 0 ..< searchword.count {
-            let encodeStr = searchword[i].addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
-            let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(nowlat!),\(nowlng!)&radius=2000&sensor=true&key=\(key)&name=\(encodeStr!)&lang=ja"
-            let testURL:URL = URL(string: url)!
-            let session = URLSession(configuration: URLSessionConfiguration.default)
-            session.dataTask(with: testURL, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
-                if error != nil {
-                    print("\(String(describing: error))")
-                } else {
-                    if let statusCode = response as? HTTPURLResponse {
-                        if statusCode.statusCode != 200 {
-                            print("\(String(describing: response))")
-                        }
-                    }
-                    guard let data:Data = data else {return}
-                    let json = JSON(data)
-                    json["results"].array?.forEach({
-                        var location:Location = Mapper<Location>().map(JSON: $0.dictionaryObject!)!
-                        location.lat = $0["geometry"]["location"]["lat"].doubleValue
-                        location.lng = $0["geometry"]["location"]["lng"].doubleValue
-                        let Pin: MKPointAnnotation = MKPointAnnotation()
-                        Pin.coordinate = CLLocationCoordinate2DMake(location.lat,location.lng)
-                        Pin.title = location.storename
-                        self.mapView.addAnnotation(Pin)
-                        location.annotation = Pin
-                        self.locations.append(location)
-                        
-                    })
-                }
-                sleep(UInt32(0.1))
-                semaphore.signal()
-            }).resume()
-            _ = semaphore.wait(timeout: DispatchTime.distantFuture)
-        }
-        storeTableView.reloadData()
-        
     }
     
     func showUserAndDestinationOnMap() {
@@ -287,7 +242,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 160
+        return 165
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -425,7 +380,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         })
     }
     
-    func searchplaceRubyonRails(sender: UIButton){
+    func searchplaceRubyonRails(){
         
         let params:[String: Any] = ["lat": 35.680298,"lng": 139.766247]
         
@@ -443,9 +398,11 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
                 Pin.title = location.storename
                 self.mapView.addAnnotation(Pin)
                 location.annotation = Pin
-                self.testlocations.append(location)
-                print(self.testlocations)
+                self.locations.append(location)
+                print(self.locations)
             })
+            
+            self.storeTableView.reloadData()
         }
         
     }
