@@ -19,8 +19,7 @@ import Alamofire
 
 class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
-    var userLocation: CLLocationCoordinate2D!
-    var destLocation: CLLocationCoordinate2D!
+    
     var Region: MKCoordinateRegion!
     var nowlat: CLLocationDegrees!
     var nowlng: CLLocationDegrees!
@@ -165,33 +164,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         }
     }
     
-    func showUserAndDestinationOnMap() {
-        let maxLat:Double = fmax(userLocation.latitude,  destLocation.latitude)
-        let maxLon:Double = fmax(userLocation.longitude, destLocation.longitude)
-        let minLat:Double = fmin(userLocation.latitude,  destLocation.latitude)
-        let minLon:Double = fmin(userLocation.longitude, destLocation.longitude)
-        
-        let mapMargin:Double = 1.5;  // 経路が入る幅(1.0)＋余白(0.5)
-        let leastCoordSpan:Double = 0.005;    // 拡大表示したときの最大値
-        let span_x:Double = fmax(leastCoordSpan, fabs(maxLat - minLat) * mapMargin)
-        let span_y:Double = fmax(leastCoordSpan, fabs(maxLon - minLon) * mapMargin)
-        
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(span_x, span_y)
-        
-        let center:CLLocationCoordinate2D = CLLocationCoordinate2DMake((maxLat + minLat) / 2, (maxLon + minLon) / 2)
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(center, span)
-        
-        mapView.setRegion(mapView.regionThatFits(region), animated:true)
-    }
     
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        
-        let route: MKPolyline = overlay as! MKPolyline
-        let routeRenderer: MKPolylineRenderer = MKPolylineRenderer(polyline: route)
-        routeRenderer.lineWidth = 5.0
-        routeRenderer.strokeColor = UIColor.red
-        return routeRenderer
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
@@ -202,7 +175,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
         
-        cell.nameLabel.text = locations[indexPath.section].storename
+        cell.nameLabel.text = locations[indexPath.row].storename
         
         cell.photoButton.addTarget(self, action: #selector(photobutton), for: .touchUpInside)
         cell.phoneButton.addTarget(self, action: #selector(phonebutton), for: .touchUpInside)
@@ -212,18 +185,18 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         cell.favoriteButton.addTarget(self, action: #selector(favoritebutton), for: .touchUpInside)
         cell.timeButton.addTarget(self, action: #selector(timebutton), for: .touchUpInside)
         
-        cell.photoButton.tag = indexPath.section
-        cell.phoneButton.tag = indexPath.section
-        cell.priceButton.tag = indexPath.section
-        cell.commentButton.tag = indexPath.section
-        cell.distanceButton.tag = indexPath.section
-        cell.favoriteButton.tag = indexPath.section
-        cell.timeButton.tag = indexPath.section
+        cell.photoButton.tag = indexPath.row
+        cell.phoneButton.tag = indexPath.row
+        cell.priceButton.tag = indexPath.row
+        cell.commentButton.tag = indexPath.row
+        cell.distanceButton.tag = indexPath.row
+        cell.favoriteButton.tag = indexPath.row
+        cell.timeButton.tag = indexPath.row
         
-        if locations[indexPath.section].storeimage == nil{
+        if locations[indexPath.row].storeimage == nil{
             
         }else{
-            cell.storeimage1.image = locations[indexPath.section].storeimage
+            cell.storeimage1.image = locations[indexPath.row].storeimage
         }
         
         //cell.pointLabel.text = locations[indexPath.section]
@@ -298,6 +271,12 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     }
     
     func phonebutton(sender: UIButton){
+        let url = NSURL(string: "tel://09012345678")!
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url as URL)
+        } else {
+            UIApplication.shared.openURL(url as URL)
+        }
         print("phone")
     }
     
@@ -347,7 +326,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         print("time")
     }
     
-    
     func searchplaceRubyonRails(){
         
         let params:[String: Any] = ["lat": 35.680298,"lng": 139.766247]
@@ -372,7 +350,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             
             self.storeTableView.reloadData()
         }
-        
     }
     
     func getComment(sender: UIButton){

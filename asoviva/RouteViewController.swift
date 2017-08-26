@@ -19,6 +19,11 @@ class RouteViewController: UIViewController, MKMapViewDelegate,CLLocationManager
     var goallat:Double!
     var goallng:Double!
     
+    var userLocation: CLLocationCoordinate2D!
+    var destLocation: CLLocationCoordinate2D!
+    var start: CLLocationCoordinate2D!
+    var goal: CLLocationCoordinate2D!
+    
     lazy var mapView: MKMapView = {
         
         let mapView: MKMapView = MKMapView()
@@ -43,19 +48,42 @@ class RouteViewController: UIViewController, MKMapViewDelegate,CLLocationManager
         
         nowlat = UserDafault.double(forKey: "nowlat")
         nowlng = UserDafault.double(forKey: "nowlng")
+        goallat = UserDafault.double(forKey: "goallat")
         goallng = UserDafault.double(forKey: "goallng")
-        goallat = UserDafault.double(forKey: "goallng")
-        
-        
+        print(goallat)
+        print(goallng)
+        self.pin(lat: nowlat, lng: nowlng, goallat: goallat, goallng: goallng)
         self.view.addSubview(mapView)
-
+        
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func pin(lat:Double,lng:Double,goallat:Double,goallng:Double){
+        
+        let nowPin: MKPointAnnotation = MKPointAnnotation()
+        start = CLLocationCoordinate2DMake( lat, lng)
+        nowPin.coordinate = start
+        nowPin.title = "START"
+        nowPin.subtitle = ""
+        mapView.addAnnotation(nowPin)
+        
+        let goalPin: MKPointAnnotation = MKPointAnnotation()
+        goal = CLLocationCoordinate2DMake( goallat, goallng)
+        goalPin.coordinate = goal
+        goalPin.title = "GOAL"
+        goalPin.subtitle = ""
+        mapView.addAnnotation(goalPin)
+        
     }
     
-
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let testPinView = MKPinAnnotationView()
+        testPinView.annotation = annotation
+        testPinView.pinTintColor = UIColor.red
+        testPinView.canShowCallout = true
+        
+        return testPinView
+    }
+    
 }
