@@ -24,6 +24,8 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     var nowlng: CLLocationDegrees!
     var UserDafault:UserDefaults = UserDefaults()
     
+    var yourImageView:UIImageView!
+    
     let placeID = "ChIJV4k8_9UodTERU5KXbkYpSYs"
     let realm = try! Realm()
     
@@ -149,6 +151,13 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         let leftButton = UIBarButtonItem(title: "コメント表示用", style: UIBarButtonItemStyle.plain, target: self, action: #selector(getComment(sender:)))
         self.navigationItem.leftBarButtonItem = leftButton
+        let rightButton = UIBarButtonItem(title: "画像用", style: UIBarButtonItemStyle.plain, target: self, action: #selector(postimage(sender:)))
+        self.navigationItem.rightBarButtonItem = rightButton
+        
+        
+        yourImageView = UIImageView(frame: CGRect(x:0,y:0,width:100,height:120))
+        yourImageView.layer.position = CGPoint(x: self.view.bounds.width/2, y: 200.0)
+        self.view.addSubview(yourImageView)
         
     }
     
@@ -173,6 +182,16 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
         
         cell.nameLabel.text = locations[indexPath.row].storename
+        
+        if locations[indexPath.row].storename.characters.count > 24 {
+            cell.nameLabel.font = UIFont.systemFont(ofSize: 10)
+        }else if locations[indexPath.row].storename.characters.count > 19 {
+            cell.nameLabel.font = UIFont.systemFont(ofSize: 12)
+        }else if locations[indexPath.row].storename.characters.count > 14 {
+            cell.nameLabel.font = UIFont.systemFont(ofSize: 14)
+        }else  {
+            cell.nameLabel.font = UIFont.systemFont(ofSize: 17)
+        }
         
         cell.photoButton.addTarget(self, action: #selector(photobutton), for: .touchUpInside)
         cell.phoneButton.addTarget(self, action: #selector(phonebutton), for: .touchUpInside)
@@ -214,24 +233,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-    }
-    
-    func pickfavorite(sender: UIButton) {
-        
-        print("sender:" + String(sender.tag))
-        let storedata = favorite()
-        storedata.storename = locations[sender.tag].storename
-        storedata.lat = locations[sender.tag].lat
-        storedata.lng = locations[sender.tag].lng
-        storedata.vicinity = locations[sender.tag].vicinity
-        storedata.placeid = locations[sender.tag].placeId
-        storedata.id = favorite.lastId()
-        try! realm.write {
-            realm.add(storedata)
-            
-        }
-        
-        SCLAlertView().showInfo("お気に入り登録完了", subTitle: locations[sender.tag].storename + "をお気に入り登録しました。")
     }
     
     func moveweb(sender: UIButton) {
@@ -342,7 +343,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
                 self.mapView.addAnnotation(Pin)
                 location.annotation = Pin
                 self.locations.append(location)
-                print(self.locations)
+                //print(self.locations)
             })
             
             self.storeTableView.reloadData()
@@ -354,7 +355,18 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         Alamofire.request("https://server-tanahaya.c9users.io/api/showcomment", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
             
             print(response.result.value!)
-            
         }
+    }
+    func postimage(sender: UIButton){
+        let image = UIImage(named: "sampleimage.jpg")
+        //Alamofire.upload(NSImage, to: "https://server-tanahaya.c9users.io/api/microposts/image")
+        let data: NSData = UIImageJPEGRepresentation(image!, 0.25)! as NSData
+        
+        let encodeString:String = data.base64EncodedString(options: .lineLength64Characters)
+        print(encodeString)
+        
+        let dataDecoded : Data = Data(base64Encoded: encodeString, options: .ignoreUnknownCharacters)!
+        let decodedimage = UIImage(data: dataDecoded)
+        yourImageView.image = decodedimage
     }
 }

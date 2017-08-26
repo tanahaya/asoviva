@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Chameleon
 
 class RouteViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDelegate {
     
@@ -78,7 +79,6 @@ class RouteViewController: UIViewController, MKMapViewDelegate,CLLocationManager
         
         let myDirections: MKDirections = MKDirections(request: myRequest)
         
-        // 経路探索.
         myDirections.calculate { (response, error) in
             
             if error != nil || response!.routes.isEmpty {
@@ -95,22 +95,16 @@ class RouteViewController: UIViewController, MKMapViewDelegate,CLLocationManager
         let fromPin: MKPointAnnotation = MKPointAnnotation()
         let toPin: MKPointAnnotation = MKPointAnnotation()
         
-        // 座標をセット.
         fromPin.coordinate = fromCoordinate
         toPin.coordinate = requestCoordinate
         
-        // titleをセット.
         fromPin.title = "出発地点"
         toPin.title = "目的地"
         
-        // mapViewに追加.
         mapView.addAnnotation(fromPin)
         mapView.addAnnotation(toPin)
         
-        
         self.view.addSubview(mapView)
-        
-        // Do any additional setup after loading the view.
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -118,9 +112,9 @@ class RouteViewController: UIViewController, MKMapViewDelegate,CLLocationManager
         let route: MKPolyline = overlay as! MKPolyline
         let routeRenderer: MKPolylineRenderer = MKPolylineRenderer(polyline: route)
         // ルートの線の太さ.
-        routeRenderer.lineWidth = 5.0
+        routeRenderer.lineWidth = 10.0
         // ルートの線の色.
-        routeRenderer.strokeColor = UIColor.red
+        routeRenderer.strokeColor = UIColor.flatYellowColorDark()
         return routeRenderer
     }
     

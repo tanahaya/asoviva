@@ -22,22 +22,14 @@ class WebPageViewController: UIViewController, UIWebViewDelegate {
         let request: NSURLRequest = NSURLRequest(url: url)
         WebView.loadRequest(request as URLRequest)
         self.view.addSubview(WebView)
-
-        // Do any additional setup after loading the view.
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
     func webViewDidFinishLoad(_ webView: UIWebView) {
         print("webViewDidFinishLoad")
     }
     
-    /*
-     PageがLoadされ始めた時、呼ばれる.
-     */
+    
     func webViewDidStartLoad(_ webView: UIWebView) {
         print("webViewDidStartLoad")
     }

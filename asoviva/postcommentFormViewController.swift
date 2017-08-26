@@ -16,7 +16,6 @@ class postcommentFormViewController:FormViewController {
     let userDefaults = UserDefaults.standard
     var comment: [String: Any] = ["title": "タイトル","content": "Hello,world","time": 1.0,"money": 1000,"recommendnumber": 5.0,"place_id": "aaaa"]
     var params: [String: Any] = [:]
-    //var params:[String:Any] = ["microposts":["content":"Hello,world"],"user_id":1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +26,6 @@ class postcommentFormViewController:FormViewController {
         print(params)
         
         self.navigationItem.title  = "Asoviva"
-        // Do any additional setup after loading the view.
     }
     
     func setup() {
