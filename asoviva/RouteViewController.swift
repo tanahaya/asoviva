@@ -35,11 +35,7 @@ class RouteViewController: UIViewController, MKMapViewDelegate,CLLocationManager
         let nowlng: Double = 139.766247
         let myLatitude: CLLocationDegrees = nowlat
         let myLongitude: CLLocationDegrees = nowlng
-        let center: CLLocationCoordinate2D = CLLocationCoordinate2DMake(myLatitude, myLongitude)
-        mapView.setCenter(center, animated: true)
-        let mySpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
-        let region = MKCoordinateRegionMake(center, mySpan)
-        mapView.region = region
+        
         return mapView
     }()
     
@@ -52,38 +48,80 @@ class RouteViewController: UIViewController, MKMapViewDelegate,CLLocationManager
         goallng = UserDafault.double(forKey: "goallng")
         print(goallat)
         print(goallng)
-        self.pin(lat: nowlat, lng: nowlng, goallat: goallat, goallng: goallng)
+        
+        let requestCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(goallat, goallng)
+        let fromCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake( nowlat, nowlng)
+        
+        let center: CLLocationCoordinate2D = CLLocationCoordinate2DMake((nowlat + goallat)/2, ( nowlng + goallng)/2)
+        mapView.setCenter(center, animated: true)
+        
+        let mySpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+        let region = MKCoordinateRegionMake(center, mySpan)
+        mapView.region = region
+        
+        let fromPlace: MKPlacemark = MKPlacemark(coordinate: fromCoordinate, addressDictionary: nil)
+        let toPlace: MKPlacemark = MKPlacemark(coordinate: requestCoordinate, addressDictionary: nil)
+        
+        
+        let fromItem: MKMapItem = MKMapItem(placemark: fromPlace)
+        let toItem: MKMapItem = MKMapItem(placemark: toPlace)
+        
+        let myRequest: MKDirectionsRequest = MKDirectionsRequest()
+        
+        myRequest.source = fromItem
+        
+        myRequest.destination = toItem
+        
+        myRequest.requestsAlternateRoutes = true
+        
+        myRequest.transportType = MKDirectionsTransportType.automobile
+        
+        let myDirections: MKDirections = MKDirections(request: myRequest)
+        
+        // 経路探索.
+        myDirections.calculate { (response, error) in
+            
+            if error != nil || response!.routes.isEmpty {
+                return
+            }
+            
+            let route: MKRoute = response!.routes[0] as MKRoute
+            print("目的地まで \(route.distance)km")
+            print("所要時間 \(Int(route.expectedTravelTime/60))分")
+            
+            self.mapView.add(route.polyline)
+        }
+        
+        let fromPin: MKPointAnnotation = MKPointAnnotation()
+        let toPin: MKPointAnnotation = MKPointAnnotation()
+        
+        // 座標をセット.
+        fromPin.coordinate = fromCoordinate
+        toPin.coordinate = requestCoordinate
+        
+        // titleをセット.
+        fromPin.title = "出発地点"
+        toPin.title = "目的地"
+        
+        // mapViewに追加.
+        mapView.addAnnotation(fromPin)
+        mapView.addAnnotation(toPin)
+        
+        
         self.view.addSubview(mapView)
         
         // Do any additional setup after loading the view.
     }
     
-    func pin(lat:Double,lng:Double,goallat:Double,goallng:Double){
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
-        let nowPin: MKPointAnnotation = MKPointAnnotation()
-        start = CLLocationCoordinate2DMake( lat, lng)
-        nowPin.coordinate = start
-        nowPin.title = "START"
-        nowPin.subtitle = ""
-        mapView.addAnnotation(nowPin)
-        
-        let goalPin: MKPointAnnotation = MKPointAnnotation()
-        goal = CLLocationCoordinate2DMake( goallat, goallng)
-        goalPin.coordinate = goal
-        goalPin.title = "GOAL"
-        goalPin.subtitle = ""
-        mapView.addAnnotation(goalPin)
-        
-    }
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        let testPinView = MKPinAnnotationView()
-        testPinView.annotation = annotation
-        testPinView.pinTintColor = UIColor.red
-        testPinView.canShowCallout = true
-        
-        return testPinView
+        let route: MKPolyline = overlay as! MKPolyline
+        let routeRenderer: MKPolylineRenderer = MKPolylineRenderer(polyline: route)
+        // ルートの線の太さ.
+        routeRenderer.lineWidth = 5.0
+        // ルートの線の色.
+        routeRenderer.strokeColor = UIColor.red
+        return routeRenderer
     }
     
 }

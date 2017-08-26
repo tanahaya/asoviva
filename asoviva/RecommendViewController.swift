@@ -19,7 +19,6 @@ import Alamofire
 
 class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
-    
     var Region: MKCoordinateRegion!
     var nowlat: CLLocationDegrees!
     var nowlng: CLLocationDegrees!
@@ -163,8 +162,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             break
         }
     }
-    
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
