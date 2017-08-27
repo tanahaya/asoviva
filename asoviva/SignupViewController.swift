@@ -55,7 +55,6 @@ class SignupViewController: FormViewController {
                     self.params["password"] = row.value ?? String()
         }
         
-        
         form +++ Section("ユーザー情報")
             <<< ButtonRow("登録"){ row in
                 row.title = "登録"

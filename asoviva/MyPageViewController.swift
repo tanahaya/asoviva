@@ -26,7 +26,6 @@ class MyPageViewController: FormViewController {
         self.navigationItem.title  = "Asoviva"
         
         self.navigationItem.hidesBackButton = true
-        // Do any additional setup after loading the view.
     }
     
     func setup() {

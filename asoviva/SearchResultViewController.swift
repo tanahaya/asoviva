@@ -236,7 +236,6 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-        
     func pickfavorite(sender: UIButton) {
         print("sender:" + String(sender.tag))
         let storedata = favorite()

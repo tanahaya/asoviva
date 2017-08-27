@@ -17,7 +17,6 @@
 		9F1C80811F49B11A003EED9F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1C80801F49B11A003EED9F /* SignupViewController.swift */; };
 		9F1C80841F4C44EF003EED9F /* postcommentFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1C80831F4C44EF003EED9F /* postcommentFormViewController.swift */; };
 		9F1C80871F4CC448003EED9F /* showImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1C80861F4CC448003EED9F /* showImageViewController.swift */; };
-		9F1C80891F50466D003EED9F /* startViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1C80881F50466D003EED9F /* startViewController.swift */; };
 		9F1C808B1F504791003EED9F /* アイコン.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9F1C808A1F504791003EED9F /* アイコン.jpg */; };
 		9F1C808D1F5049E6003EED9F /* asoviva.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F1C808C1F5049E6003EED9F /* asoviva.png */; };
 		9F1CBFB31EF662E2008335FE /* commentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1CBFB21EF662E2008335FE /* commentViewController.swift */; };
@@ -90,7 +89,6 @@
 		9F1C80801F49B11A003EED9F /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		9F1C80831F4C44EF003EED9F /* postcommentFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postcommentFormViewController.swift; sourceTree = "<group>"; };
 		9F1C80861F4CC448003EED9F /* showImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showImageViewController.swift; sourceTree = "<group>"; };
-		9F1C80881F50466D003EED9F /* startViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = startViewController.swift; sourceTree = "<group>"; };
 		9F1C808A1F504791003EED9F /* アイコン.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "アイコン.jpg"; sourceTree = "<group>"; };
 		9F1C808C1F5049E6003EED9F /* asoviva.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asoviva.png; sourceTree = "<group>"; };
 		9F1CBFB21EF662E2008335FE /* commentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentViewController.swift; sourceTree = "<group>"; };
@@ -242,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */,
-				9F1C80881F50466D003EED9F /* startViewController.swift */,
 				9F63FBD01DD1EE1200150F34 /* MainViewController.swift */,
 				9FECD2B91EC318BE007E3C87 /* RecommendViewController.swift */,
 				9F0BA29F1EC6EEE700B0630A /* storeTableViewCell.swift */,
@@ -612,7 +609,6 @@
 				9F1C807E1F48A719003EED9F /* commentTableViewCell.swift in Sources */,
 				9F63FBD31DD1EEE100150F34 /* SearchResultViewController.swift in Sources */,
 				9FD5BF091EE2F4F300D1F65D /* SearchFormViewController.swift in Sources */,
-				9F1C80891F50466D003EED9F /* startViewController.swift in Sources */,
 				9F8B20681ECC5865001B7543 /* favorite.swift in Sources */,
 				9F9B56531EECEB6D00673F60 /* EurekaButtonTableViewCell.swift in Sources */,
 				9FB64B041E3762DF00C3C430 /* Location.swift in Sources */,

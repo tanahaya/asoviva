@@ -106,7 +106,6 @@ class postcommentFormViewController:FormViewController {
                     }
                     row.0.selectLabel.text = ""
                     self.present(pickerController, animated: true) {}
-                    
         }
         
         form +++ Section("投稿")
@@ -127,8 +126,5 @@ class postcommentFormViewController:FormViewController {
                     //self.navigationController?.pushViewController(MyPageController, animated: true)
                     
         }
-        
-        
     }
-    
 }
