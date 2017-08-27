@@ -10,13 +10,15 @@ import UIKit
 import Eureka
 import Alamofire
 import SwiftyJSON
+import DKImagePickerController
+
 
 class postcommentFormViewController:FormViewController {
     
     let userDefaults = UserDefaults.standard
     var comment: [String: Any] = ["title": "タイトル","content": "Hello,world","time": 1.0,"money": 1000,"recommendnumber": 5.0,"place_id": "aaaa"]
     var params: [String: Any] = [:]
-    
+    var number:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,6 +73,42 @@ class postcommentFormViewController:FormViewController {
                     self.comment["content"] = row.value
         }
         
+        form +++ Section("写真投稿")
+            <<< CustomImageRow("image"){ row in
+                
+                
+                
+                }.onCellSelection(){row in
+                    
+                    let pickerController = DKImagePickerController()
+                    
+                    pickerController.maxSelectableCount = 4
+                    pickerController.didSelectAssets = { [unowned self] (assets: [DKAsset]) in
+                        
+                        // 選択された画像はassetsに入れて返却されますのでfetchして取り出すとよいでしょう
+                        for asset in assets {
+                            self.number = self.number + 1
+                            asset.fetchFullScreenImage(true, completeBlock: { (image, info) in
+                                // ここで取り出せます
+                                if self.number == 1 {
+                                    row.0.imageView1.image = image
+                                }else if self.number == 2 {
+                                    row.0.imageView2.image = image
+                                }else if self.number == 3 {
+                                    row.0.imageView3.image = image
+                                }else if self.number == 4 {
+                                    row.0.imageView4.image = image
+                                }
+                                
+                            })
+                            
+                        }
+                    }
+                    row.0.selectLabel.text = ""
+                    self.present(pickerController, animated: true) {}
+                    
+        }
+        
         form +++ Section("投稿")
             <<< ButtonRow("投稿する"){ row in
                 row.title = "投稿する"
@@ -89,6 +127,7 @@ class postcommentFormViewController:FormViewController {
                     //self.navigationController?.pushViewController(MyPageController, animated: true)
                     
         }
+        
         
     }
     

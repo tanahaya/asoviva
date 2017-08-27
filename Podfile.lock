@@ -1,23 +1,30 @@
 PODS:
   - Alamofire (4.5.0)
-  - GoogleMaps (2.3.0):
-    - GoogleMaps/Maps (= 2.3.0)
-  - GoogleMaps/Base (2.3.0)
-  - GoogleMaps/Maps (2.3.0):
+  - DKImagePickerController (3.6.0):
+    - DKImagePickerController/Camera (= 3.6.0)
+    - DKImagePickerController/ImageManager (= 3.6.0)
+  - DKImagePickerController/Camera (3.6.0)
+  - DKImagePickerController/ImageManager (3.6.0)
+  - GoogleMaps (2.4.0):
+    - GoogleMaps/Maps (= 2.4.0)
+  - GoogleMaps/Base (2.4.0)
+  - GoogleMaps/Maps (2.4.0):
     - GoogleMaps/Base
-  - GooglePlaces (2.3.0):
-    - GoogleMaps/Base (= 2.3.0)
+  - GooglePlaces (2.4.0):
+    - GoogleMaps/Base (= 2.4.0)
 
 DEPENDENCIES:
   - Alamofire
+  - DKImagePickerController
   - GoogleMaps
   - GooglePlaces
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  GoogleMaps: 340a6a0bebd17c2db8abcd3921976c7c53c86cb8
-  GooglePlaces: 74d322c74184ea4576184089b496d291cf0dcd38
+  DKImagePickerController: fea6912931577f2ba978c4c01e56b1ab2b0456fb
+  GoogleMaps: 8436ab5d1c25e36915b2f7416d0c8e3fa2e76c61
+  GooglePlaces: aafe5990fa7951e98e078761bbdaaf236d7e0c65
 
-PODFILE CHECKSUM: 13943fcdd3f97e22e1cdf0a1e5bd09d956a0ef4c
+PODFILE CHECKSUM: 238b0f69390f60c5851cc9aae08c39eb731f7605
 
 COCOAPODS: 1.2.1
