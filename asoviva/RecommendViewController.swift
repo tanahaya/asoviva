@@ -37,7 +37,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     var locations:[Location] = []
     
-    var params:[String:Any] = ["place_id":"aaaa"]
     
     lazy var mapView: MKMapView = {
         
@@ -178,10 +177,14 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
         let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
         
         cell.nameLabel.text = locations[indexPath.row].storename
+        cell.priceLabel.text = " \(locations[indexPath.row].price!)"
+        cell.favoriteLabel.text = "\(locations[indexPath.row].recommendnumber!)"
+        cell.commentLabel.text = "\(locations[indexPath.row].commentnumber!)"
+        self.gettimeroute()
+        cell.distanceLabel.text = "10" + "分"
         
         if locations[indexPath.row].storename.characters.count > 24 {
             cell.nameLabel.font = UIFont.systemFont(ofSize: 10)
@@ -280,6 +283,9 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     func commentbutton(sender: UIButton) {
         print("comment")
+        
+        UserDafault.set(locations[sender.tag].placeId, forKey: "place_id")
+        UserDafault.set(locations[sender.tag].storename, forKey: "place_name")
         let commentview = commentViewController()
         self.navigationController?.pushViewController(commentview, animated: true)
     }
@@ -332,7 +338,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             //print(response.result.value!)
             
             let res = JSON(response.result.value!)
-            
+            print(response.result.value!)
             res["results"].array?.forEach({
                 var location:Location = Mapper<Location>().map(JSON: $0.dictionaryObject!)!
                 location.lat = $0["geometry"]["location"]["lat"].doubleValue
@@ -347,12 +353,20 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             })
             
             self.storeTableView.reloadData()
+            
         }
     }
     
     func getComment(sender: UIButton){
         
+        var placeidparams:[String:Any] = ["place_id":"aaaa"]
+        /*
         Alamofire.request("https://server-tanahaya.c9users.io/api/showcomment", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
+            
+            print(response.result.value!)
+        }
+ */
+        Alamofire.request("https://server-tanahaya.c9users.io/api/showcomment", method: .post, parameters: placeidparams, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
             
             print(response.result.value!)
         }
@@ -369,4 +383,8 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         let decodedimage = UIImage(data: dataDecoded)
         yourImageView.image = decodedimage
     }
+    func gettimeroute(){
+        
+    }
+    
 }

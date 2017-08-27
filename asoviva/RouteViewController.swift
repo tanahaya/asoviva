@@ -47,8 +47,6 @@ class RouteViewController: UIViewController, MKMapViewDelegate,CLLocationManager
         nowlng = UserDafault.double(forKey: "nowlng")
         goallat = UserDafault.double(forKey: "goallat")
         goallng = UserDafault.double(forKey: "goallng")
-        print(goallat)
-        print(goallng)
         
         let requestCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(goallat, goallng)
         let fromCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake( nowlat, nowlng)
@@ -70,11 +68,8 @@ class RouteViewController: UIViewController, MKMapViewDelegate,CLLocationManager
         let myRequest: MKDirectionsRequest = MKDirectionsRequest()
         
         myRequest.source = fromItem
-        
         myRequest.destination = toItem
-        
         myRequest.requestsAlternateRoutes = true
-        
         myRequest.transportType = MKDirectionsTransportType.automobile
         
         let myDirections: MKDirections = MKDirections(request: myRequest)

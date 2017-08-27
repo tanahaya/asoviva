@@ -20,6 +20,9 @@ struct Location: Mappable{
     var annotation = MKPointAnnotation()
     var placeId:String!
     var storeimage:UIImage? = nil
+    var price:Int!
+    var commentnumber:Int!
+    var recommendnumber:Int!
     
     init?(map: Map) {
         
@@ -29,6 +32,9 @@ struct Location: Mappable{
         storename <- map["name"]
         vicinity <- map["vicinity"]
         placeId <- map["place_id"]
+        price <- map["price"]
+        commentnumber <- map["commentnumber"]
+        recommendnumber <- map["recommendnumber"]
     }
 
 }
