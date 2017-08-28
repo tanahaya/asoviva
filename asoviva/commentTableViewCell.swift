@@ -52,8 +52,6 @@ class commentTableViewCell: UITableViewCell {
         let storeImage = UIImage.fontAwesomeIcon(name: .mapPin, textColor: UIColor.white, size: CGSize(width:25,height:25))
         let arrowImage = UIImage.fontAwesomeIcon(name: .angleRight, textColor: UIColor.white, size: CGSize(width:25,height:25))
         
-        //storeLabel.textColor = UIColor.black
-        
         storeImageView.image = storeImage
         writerImageView.image = writerImage
         favoriteImageView.image = heartImage
@@ -62,7 +60,7 @@ class commentTableViewCell: UITableViewCell {
         arrowImageView.image = arrowImage
         
         storeView.backgroundColor = UIColor.flatYellowColorDark()
-        writerView.backgroundColor = UIColor.flatPowderBlue()
+        writerView.backgroundColor = UIColor.flatBlue()
         favoriteView.backgroundColor = UIColor.flatPink()
         priceView.backgroundColor = UIColor.flatYellow()
         timeView.backgroundColor = UIColor.flatGreen()

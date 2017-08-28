@@ -40,10 +40,6 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.getComment()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     func gocomment(sender: UIButton){
         if self.userDefaults.bool(forKey: "signup") == false {
             print("Signup済み")
@@ -96,12 +92,13 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
         let decodedimage4 = UIImage(data: dataDecoded4)
         cell.image4.image = decodedimage4
         
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 250
+        return 270
         
     }
     

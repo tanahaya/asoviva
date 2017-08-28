@@ -145,8 +145,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         self.searchplaceRubyonRails()
         self.navigationItem.title  = "Asoviva"
         
-        let leftButton = UIBarButtonItem(title: "コメント表示用", style: UIBarButtonItemStyle.plain, target: self, action: #selector(getComment(sender:)))
-        self.navigationItem.leftBarButtonItem = leftButton
         
         
     }
@@ -207,6 +205,35 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             
         }else{
             cell.storeimage1.image = locations[indexPath.row].storeimage
+        }
+        
+        if locations[indexPath.row].photos == nil {
+            
+        }else{
+            
+            let dataDecoded1 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[0])!, options: .ignoreUnknownCharacters)!
+            let decodedimage1 = UIImage(data: dataDecoded1)
+            cell.storeimage1.image = decodedimage1
+            if locations[indexPath.row].photos?[1] == nil{
+                
+            }else{
+                let dataDecoded2 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[1])!, options: .ignoreUnknownCharacters)!
+                let decodedimage2 = UIImage(data: dataDecoded2)
+                cell.storeimage2.image = decodedimage2
+                if locations[indexPath.row].photos?[2] == nil{
+                }else{
+                    let dataDecoded3 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[2])!, options: .ignoreUnknownCharacters)!
+                    let decodedimage3 = UIImage(data: dataDecoded3)
+                    cell.storeimage3.image = decodedimage3
+                    
+                    if locations[indexPath.row].photos?[3] == nil{
+                    }else{
+                        let dataDecoded4 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[3])!, options: .ignoreUnknownCharacters)!
+                        let decodedimage4 = UIImage(data: dataDecoded4)
+                        cell.storeimage4.image = decodedimage4
+                    }
+                }
+            }
         }
         
         return cell
@@ -335,21 +362,11 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
                 self.mapView.addAnnotation(Pin)
                 location.annotation = Pin
                 self.locations.append(location)
-                //print(self.locations)
             })
             
+            print(self.locations)
             self.storeTableView.reloadData()
             
-        }
-    }
-    
-    func getComment(sender: UIButton){
-        
-        var placeidparams:[String:Any] = ["place_id":"aaaa"]
-        
-        Alamofire.request("https://server-tanahaya.c9users.io/api/showcomment", method: .post, parameters: placeidparams, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
-            
-            print(response.result.value!)
         }
     }
     
