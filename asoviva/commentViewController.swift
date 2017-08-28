@@ -8,17 +8,21 @@
 
 import UIKit
 import Alamofire
+import ObjectMapper
+import SwiftyJSON
 
 class commentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let userDefaults = UserDefaults.standard
-    private var tableView: UITableView!
-    var params:[String:Any] = ["place_id":"aaaa"]
+    var tableView: UITableView!
+    var params:[String:Any] = [:]
+    var comments:[Comment] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        params["place_id"] = userDefaults.string(forKey: "place_id")
         
-        self.getComment()
+        
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
         
@@ -30,10 +34,10 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         
         self.view.addSubview(tableView)
-        
         let rightButton = UIBarButtonItem(title: "コメントする", style: UIBarButtonItemStyle.plain, target: self, action: #selector(gocomment(sender:)))
         self.navigationItem.rightBarButtonItem = rightButton
         
+        self.getComment()
     }
     
     override func didReceiveMemoryWarning() {
@@ -58,23 +62,63 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return comments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell:commentTableViewCell = tableView.dequeueReusableCell(withIdentifier: "commentTableViewCell", for: indexPath as IndexPath) as! commentTableViewCell
+        cell.titleLabel.text = comments[indexPath.row].title
+        cell.writerLabel.text = comments[indexPath.row].writer
+        cell.storeLabel.text = comments[indexPath.row].storename
+        cell.favoriteLabel.text = "\(comments[indexPath.row].recommendnumber!)"
+        cell.priceLabel.text = "\(comments[indexPath.row].price!)"
+        cell.timeLabel.text = "\(comments[indexPath.row].time!)" + "時間"
+        cell.commentcontent.text = comments[indexPath.row].content
         
+        let str = comments[indexPath.row].date
+        let currentIndex = str.index(str.endIndex, offsetBy: -10)
+        cell.dateLabel.text = str.substring(to: currentIndex)
+        
+        let dataDecoded1 : Data = Data(base64Encoded: comments[indexPath.row].photo1, options: .ignoreUnknownCharacters)!
+        let decodedimage1 = UIImage(data: dataDecoded1)
+        cell.image1.image = decodedimage1
+        
+        let dataDecoded2 : Data = Data(base64Encoded: comments[indexPath.row].photo2, options: .ignoreUnknownCharacters)!
+        let decodedimage2 = UIImage(data: dataDecoded2)
+        cell.image2.image = decodedimage2
+        
+        let dataDecoded3 : Data = Data(base64Encoded: comments[indexPath.row].photo3, options: .ignoreUnknownCharacters)!
+        let decodedimage3 = UIImage(data: dataDecoded3)
+        cell.image3.image = decodedimage3
+        
+        let dataDecoded4 : Data = Data(base64Encoded: comments[indexPath.row].photo4, options: .ignoreUnknownCharacters)!
+        let decodedimage4 = UIImage(data: dataDecoded4)
+        cell.image4.image = decodedimage4
         
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 250
+        
     }
+    
     func getComment(){
         
         Alamofire.request("https://server-tanahaya.c9users.io/api/showcomment", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
+            
+            let res = JSON(response.result.value!)
+            print(res)
+            res.array?.forEach({
+                let comment:Comment = Mapper<Comment>().map(JSON: $0.dictionaryObject!)!
+                
+                self.comments.append(comment)
+                
+            })
+            print(self.comments)
+            self.tableView.reloadData()
             
         }
     }

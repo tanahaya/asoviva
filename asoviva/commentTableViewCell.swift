@@ -38,6 +38,11 @@ class commentTableViewCell: UITableViewCell {
     
     @IBOutlet var commentcontent:UITextView!
     
+    @IBOutlet var image1:UIImageView!
+    @IBOutlet var image2:UIImageView!
+    @IBOutlet var image3:UIImageView!
+    @IBOutlet var image4:UIImageView!
+    
     override func awakeFromNib() {
         
         let heartImage = UIImage.fontAwesomeIcon(name: .heartO, textColor: UIColor.white, size: CGSize(width:25,height:25))
@@ -57,7 +62,7 @@ class commentTableViewCell: UITableViewCell {
         arrowImageView.image = arrowImage
         
         storeView.backgroundColor = UIColor.flatYellowColorDark()
-        writerView.backgroundColor = UIColor.flatSkyBlue()
+        writerView.backgroundColor = UIColor.flatPowderBlue()
         favoriteView.backgroundColor = UIColor.flatPink()
         priceView.backgroundColor = UIColor.flatYellow()
         timeView.backgroundColor = UIColor.flatGreen()
@@ -75,7 +80,6 @@ class commentTableViewCell: UITableViewCell {
         timeView.layer.cornerRadius = 5.0
         
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -24,8 +24,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     var nowlng: CLLocationDegrees!
     var UserDafault:UserDefaults = UserDefaults()
     
-    var yourImageView:UIImageView!
-    
     let placeID = "ChIJV4k8_9UodTERU5KXbkYpSYs"
     let realm = try! Realm()
     
@@ -36,7 +34,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     let guidecolor = UIColor(red: 243 , green: 152, blue: 29, alpha: 1.0)
     
     var locations:[Location] = []
-    
     
     lazy var mapView: MKMapView = {
         
@@ -150,13 +147,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         let leftButton = UIBarButtonItem(title: "コメント表示用", style: UIBarButtonItemStyle.plain, target: self, action: #selector(getComment(sender:)))
         self.navigationItem.leftBarButtonItem = leftButton
-        let rightButton = UIBarButtonItem(title: "画像用", style: UIBarButtonItemStyle.plain, target: self, action: #selector(postimage(sender:)))
-        self.navigationItem.rightBarButtonItem = rightButton
         
-        
-        yourImageView = UIImageView(frame: CGRect(x:0,y:0,width:100,height:120))
-        yourImageView.layer.position = CGPoint(x: self.view.bounds.width/2, y: 200.0)
-        self.view.addSubview(yourImageView)
         
     }
     
@@ -181,7 +172,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         cell.nameLabel.text = locations[indexPath.row].storename
         cell.priceLabel.text = " \(locations[indexPath.row].price!)"
-        cell.favoriteLabel.text = "\(locations[indexPath.row].recommendnumber!)"
+        cell.favoriteLabel.text = "\( Double(locations[indexPath.row].recommendnumber) / 10.0 )"
         cell.commentLabel.text = "\(locations[indexPath.row].commentnumber!)"
         self.gettimeroute()
         cell.distanceLabel.text = "10" + "分"
@@ -217,10 +208,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         }else{
             cell.storeimage1.image = locations[indexPath.row].storeimage
         }
-        
-        //cell.pointLabel.text = locations[indexPath.section]
-        //cell.priceLabel.text = locations[indexPath.section]
-        //cell.distantLabel.text= locations[indexPath.section]
         
         return cell
         
@@ -335,7 +322,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         let params:[String: Any] = ["lat": 35.680298,"lng": 139.766247]
         
         Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
-            //print(response.result.value!)
             
             let res = JSON(response.result.value!)
             print(response.result.value!)
@@ -360,29 +346,13 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     func getComment(sender: UIButton){
         
         var placeidparams:[String:Any] = ["place_id":"aaaa"]
-        /*
-        Alamofire.request("https://server-tanahaya.c9users.io/api/showcomment", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
-            
-            print(response.result.value!)
-        }
- */
+        
         Alamofire.request("https://server-tanahaya.c9users.io/api/showcomment", method: .post, parameters: placeidparams, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
             
             print(response.result.value!)
         }
     }
-    func postimage(sender: UIButton){
-        let image = UIImage(named: "sampleimage.jpg")
-        //Alamofire.upload(NSImage, to: "https://server-tanahaya.c9users.io/api/microposts/image")
-        let data: NSData = UIImageJPEGRepresentation(image!, 0.25)! as NSData
-        
-        let encodeString:String = data.base64EncodedString(options: .lineLength64Characters)
-        print(encodeString)
-        
-        let dataDecoded : Data = Data(base64Encoded: encodeString, options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        yourImageView.image = decodedimage
-    }
+    
     func gettimeroute(){
         
     }

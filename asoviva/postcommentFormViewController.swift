@@ -24,9 +24,12 @@ class postcommentFormViewController:FormViewController {
         
         self.setup()
         params["user_id"] = userDefaults.dictionary(forKey: "userinformation")?["user_id"]
+        comment["writer"] = userDefaults.dictionary(forKey: "userinformation")?["username"]
+        comment["school"] = userDefaults.dictionary(forKey: "userinformation")?["school"]
         comment["place_id"] = userDefaults.string(forKey: "place_id")
-        params["name"] = userDefaults.string(forKey: "place_name")
         params["place_id"] = userDefaults.string(forKey: "place_id")
+        params["name"] = userDefaults.string(forKey: "place_name")
+        comment["name"] = userDefaults.string(forKey: "place_name")
         print(params)
         
         self.navigationItem.title  = "Asoviva"
@@ -85,38 +88,36 @@ class postcommentFormViewController:FormViewController {
                     
                     pickerController.maxSelectableCount = 4
                     pickerController.didSelectAssets = { [unowned self] (assets: [DKAsset]) in
-                        
                         // 選択された画像はassetsに入れて返却されますのでfetchして取り出すとよいでしょう
                         for asset in assets {
                             self.number = self.number + 1
                             asset.fetchFullScreenImage(true, completeBlock: { (image, info) in
-                                // ここで取り出せます
+                                
                                 if self.number == 1 {
                                     row.0.imageView1.image = image
-                                    let data1: NSData = UIImageJPEGRepresentation(image!, 0.25)! as NSData
+                                    let data1: NSData = UIImageJPEGRepresentation(image!, 1.0)! as NSData
                                     let encodeString1:String = data1.base64EncodedString(options: .lineLength64Characters)
                                     self.comment["photo1"] = encodeString1
                                     self.params["photo1"] = encodeString1
                                 }else if self.number == 2 {
                                     row.0.imageView2.image = image
-                                    let data2: NSData = UIImageJPEGRepresentation(image!, 0.25)! as NSData
+                                    let data2: NSData = UIImageJPEGRepresentation(image!, 1.0)! as NSData
                                     let encodeString2:String = data2.base64EncodedString(options: .lineLength64Characters)
                                     self.comment["photo2"] = encodeString2
                                     self.params["photo2"] = encodeString2
                                 }else if self.number == 3 {
                                     row.0.imageView3.image = image
-                                    let data3: NSData = UIImageJPEGRepresentation(image!, 0.25)! as NSData
+                                    let data3: NSData = UIImageJPEGRepresentation(image!, 1.0)! as NSData
                                     let encodeString3:String = data3.base64EncodedString(options: .lineLength64Characters)
                                     self.comment["photo3"] = encodeString3
                                     self.params["photo3"] = encodeString3
                                 }else if self.number == 4 {
                                     row.0.imageView4.image = image
-                                    let data4: NSData = UIImageJPEGRepresentation(image!, 0.25)! as NSData
+                                    let data4: NSData = UIImageJPEGRepresentation(image!, 1.0)! as NSData
                                     let encodeString4:String = data4.base64EncodedString(options: .lineLength64Characters)
                                     self.comment["photo4"] = encodeString4
                                     self.params["photo4"] = encodeString4
                                 }
-                                
                             })
                         }
                     }
