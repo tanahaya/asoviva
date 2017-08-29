@@ -15,6 +15,7 @@ import Chameleon
 class MainViewController: UITabBarController{
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         let maincolor = UIColor.flatYellowColorDark()
         UINavigationBar.appearance().tintColor = ContrastColorOf( maincolor!, returnFlat: true)

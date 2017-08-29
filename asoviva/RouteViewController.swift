@@ -93,6 +93,8 @@ class RouteViewController: UIViewController, MKMapViewDelegate,CLLocationManager
         fromPin.coordinate = fromCoordinate
         toPin.coordinate = requestCoordinate
         
+        
+        
         fromPin.title = "出発地点"
         toPin.title = "目的地"
         
@@ -111,6 +113,17 @@ class RouteViewController: UIViewController, MKMapViewDelegate,CLLocationManager
         // ルートの線の色.
         routeRenderer.strokeColor = UIColor.flatYellowColorDark()
         return routeRenderer
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let testPinView = MKAnnotationView()
+        
+        testPinView.annotation = annotation
+        testPinView.image = UIImage(named:"pin.png")
+        testPinView.canShowCallout = true
+        
+        return testPinView
     }
     
 }
