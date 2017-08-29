@@ -3,49 +3,49 @@
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "asoviva-icon40.png",
+      "filename" : "asovivaIcon40.png",
       "scale" : "2x"
     },
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "asoviva-icon60.png",
+      "filename" : "asovivaIcon60.png",
       "scale" : "3x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "asoviva-icon58.png",
+      "filename" : "asovivaIcon58.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "asoviva-icon87.png",
+      "filename" : "asovivaIcon87.png",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "asoviva-icon80.png",
+      "filename" : "asovivaIcon80.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "asoviva-icon120-1.png",
+      "filename" : "asovivaIcon120-1.png",
       "scale" : "3x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "asoviva-icon120.png",
+      "filename" : "asovivaIcon120.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "asoviva-icon180.png",
+      "filename" : "asovivaIcon180.png",
       "scale" : "3x"
     }
   ],

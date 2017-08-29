@@ -120,7 +120,7 @@ class RouteViewController: UIViewController, MKMapViewDelegate,CLLocationManager
         let testPinView = MKAnnotationView()
         
         testPinView.annotation = annotation
-        testPinView.image = UIImage(named:"pin.png")
+        testPinView.image = UIImage(named:"pin2.png")
         testPinView.canShowCallout = true
         
         return testPinView
