@@ -20,8 +20,8 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        params["place_id"] = userDefaults.string(forKey: "place_id")
         
+        params["place_id"] = userDefaults.string(forKey: "place_id")
         
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height

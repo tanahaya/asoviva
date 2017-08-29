@@ -50,18 +50,7 @@ class SearchFormViewController: FormViewController {
     
     func setup() {
         self.form +++ Section("お店検索")
-            /*
-             <<< CustomRow() {
-             $0.cellSetup({ (cell, row) in
-             cell.customImage.frame = CGRect(x: 20, y: 20, width:170 , height: 170)
-             cell.customImage.layer.position =  CGPoint(x: self.view.frame.width / 2, y: 100)
-             let nowimage = UIImage.fontAwesomeIcon(name: .mapPin, textColor: UIColor.black, size: CGSize(width:100,height:100))
-             cell.customImage.image = nowimage
-             
-             })
-             
-             }
-             */
+            
             <<< LabelRow("place"){
                 $0.title = "場所"
                 $0.value = "現在地"
@@ -87,6 +76,30 @@ class SearchFormViewController: FormViewController {
                     
                     self.userDefaults.set(row.value ?? Bool(), forKey: "opennow")
         }
+            <<< SliderRow() {
+                $0.title = "値段の上限"
+                $0.minimumValue = 0
+                $0.maximumValue = 10000
+                $0.value = 1000
+                }.onChange(){row in
+                    
+        }
+            <<< SliderRow() {
+                $0.title = "値段の下限"
+                $0.minimumValue = 0
+                $0.maximumValue = 10000
+                $0.value = 1000
+                }.onChange(){row in
+                    
+        }
+            <<< SliderRow() {
+                $0.title = "評価の下限"
+                $0.minimumValue = 1
+                $0.maximumValue = 5
+                $0.value = 5
+                }.onChange(){row in
+                    
+        }
     }
     func place(){
         let autocompleteController = GMSAutocompleteViewController()
@@ -103,9 +116,6 @@ extension SearchFormViewController: GMSAutocompleteViewControllerDelegate {
         
         // 名前をoutletに設定
         // name.text = place.name
-        let SearchResultView:SearchResultViewController = SearchResultViewController()
-        SearchResultView.lat = place.coordinate.latitude
-        SearchResultView.lat = place.coordinate.longitude
         
         userDefaults.set(place.coordinate.latitude, forKey: "lat")
         userDefaults.set(place.coordinate.longitude, forKey: "lng")

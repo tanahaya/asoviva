@@ -15,12 +15,15 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
         
         let userDefaults = UserDefaults.standard
         var tableView: UITableView!
-        var params:[String:Any] = [:]
+        var params:[String:Any] = ["school":"Tewtaewa"]
         var comments:[Comment] = []
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            params["school"] = userDefaults.string(forKey: "school")
+            
+            self.navigationItem.title  = "Asoviva"
+            
+            //params["school"] = userDefaults.string(forKey: "school")
             
             let displayWidth: CGFloat = self.view.frame.width
             let displayHeight: CGFloat = self.view.frame.height
@@ -34,7 +37,7 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
             
             self.view.addSubview(tableView)
             
-            // self.getComment()
+            self.getComment()
         }
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -89,11 +92,13 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
         }
         
         func getComment(){
+            
+            print(self.params)
             var comments: [Comment] = []
             Alamofire.request("https://server-tanahaya.c9users.io/api/showcomment/school", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
                 
                 let res = JSON(response.result.value!)
-                print(res)
+                
                 res.array?.forEach({
                     let comment:Comment = Mapper<Comment>().map(JSON: $0.dictionaryObject!)!
                     
