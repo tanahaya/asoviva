@@ -64,24 +64,25 @@ class showImageViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func getimage(){
-        var photos: [String] = []
+        
         /*
-        Alamofire.request("https://server-tanahaya.c9users.io/api/microposts/image", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
-            
-            let res = JSON(response.result.value!)
-            print(res)
-            res.array?.forEach({
-                
-                //let comment:Comment = Mapper<Comment>().map(JSON: $0.dictionaryObject!)!
-                
-                //photos.append(comment)
-                
-            })
-            
-            self.images = photos
-            
-        }
- */
+         var photos: [String] = []
+         
+         Alamofire.request("https://server-tanahaya.c9users.io/api/microposts/image", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
+         
+         let res = JSON(response.result.value!)
+         print(res)
+         res.array?.forEach({
+         
+         //let comment:Comment = Mapper<Comment>().map(JSON: $0.dictionaryObject!)!
+         
+         //photos.append(comment)
+         
+         })
+         self.images = photos
+         
+         }
+         */
     }
     
 }

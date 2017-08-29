@@ -92,7 +92,6 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
         let decodedimage4 = UIImage(data: dataDecoded4)
         cell.image4.image = decodedimage4
         
-        
         return cell
     }
     
