@@ -13,7 +13,6 @@ import GooglePlaces
 
 class SearchFormViewController: FormViewController {
     
-    
     let userDefaults = UserDefaults.standard
     
     let key = "AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY"
@@ -96,7 +95,7 @@ class SearchFormViewController: FormViewController {
                 $0.title = "評価の下限"
                 $0.minimumValue = 1
                 $0.maximumValue = 5
-                $0.value = 5
+                $0.value = 1
                 }.onChange(){row in
                     
         }
