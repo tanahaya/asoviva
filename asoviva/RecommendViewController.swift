@@ -144,8 +144,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         self.searchplaceRubyonRails()
         self.navigationItem.title  = "Asoviva"
         
-        
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -326,7 +324,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     func photobutton(sender: UIButton) {
         print("photo")
-        
+        UserDafault.set(locations[sender.tag].placeId, forKey: "place_id")
         let showImage = showImageViewController()
         self.navigationController?.pushViewController(showImage, animated: true)
         
@@ -342,7 +340,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
             
             let res = JSON(response.result.value!)
-            
+            var locations: [Location] = []
             res["results"].array?.forEach({
                 var location:Location = Mapper<Location>().map(JSON: $0.dictionaryObject!)!
                 location.lat = $0["geometry"]["location"]["lat"].doubleValue
@@ -352,10 +350,10 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
                 Pin.title = location.storename
                 self.mapView.addAnnotation(Pin)
                 location.annotation = Pin
-                self.locations.append(location)
+                locations.append(location)
             })
-            
-            print(self.locations)
+            self.locations = locations
+            //print(self.locations)
             self.storeTableView.reloadData()
         }
     }

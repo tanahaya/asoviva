@@ -73,7 +73,7 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.commentcontent.text = comments[indexPath.row].content
         
         let str = comments[indexPath.row].date
-        let currentIndex = str.index(str.endIndex, offsetBy: -10)
+        let currentIndex = str.index(str.endIndex, offsetBy: -8)
         cell.dateLabel.text = str.substring(to: currentIndex)
         
         let dataDecoded1 : Data = Data(base64Encoded: comments[indexPath.row].photo1, options: .ignoreUnknownCharacters)!
@@ -114,7 +114,7 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
                 comments.append(comment)
                 
             })
-            print(self.comments)
+            
             self.comments = comments
             self.tableView.reloadData()
             
