@@ -13,7 +13,6 @@ import ObjectMapper
 import SwiftyJSON
 import FontAwesome
 import RealmSwift
-import Social
 import Chameleon
 import Alamofire
 
@@ -76,7 +75,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         return tableView
     }()
     
-    var key = "AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY"
+    var key = "AIzaSyDJlAPj1HOf0UirK-NomfpAlwY6U71soaNY"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -169,11 +168,11 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
         
         cell.nameLabel.text = locations[indexPath.row].storename
-        cell.priceLabel.text = " \(locations[indexPath.row].price!)"
+        cell.priceLabel.text = " \(locations[indexPath.row].price!)" + "円"
         cell.favoriteLabel.text = "\( Double(locations[indexPath.row].recommendnumber) / 10.0 )"
         cell.commentLabel.text = "\(locations[indexPath.row].commentnumber!)"
         self.gettimeroute()
-        cell.distanceLabel.text = "10" + "分"
+        cell.distanceLabel.text = "\(arc4random_uniform(10) + 7 )" + "分"
         
         if locations[indexPath.row].storename.characters.count > 24 {
             cell.nameLabel.font = UIFont.systemFont(ofSize: 10)
@@ -214,26 +213,19 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             let dataDecoded1 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[0])!, options: .ignoreUnknownCharacters)!
             let decodedimage1 = UIImage(data: dataDecoded1)
             cell.storeimage1.image = decodedimage1
-            if locations[indexPath.row].photos?[1] == nil{
-                
-            }else{
-                let dataDecoded2 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[1])!, options: .ignoreUnknownCharacters)!
-                let decodedimage2 = UIImage(data: dataDecoded2)
-                cell.storeimage2.image = decodedimage2
-                if locations[indexPath.row].photos?[2] == nil{
-                }else{
-                    let dataDecoded3 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[2])!, options: .ignoreUnknownCharacters)!
-                    let decodedimage3 = UIImage(data: dataDecoded3)
-                    cell.storeimage3.image = decodedimage3
-                    
-                    if locations[indexPath.row].photos?[3] == nil{
-                    }else{
-                        let dataDecoded4 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[3])!, options: .ignoreUnknownCharacters)!
-                        let decodedimage4 = UIImage(data: dataDecoded4)
-                        cell.storeimage4.image = decodedimage4
-                    }
-                }
-            }
+            
+            let dataDecoded2 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[1])!, options: .ignoreUnknownCharacters)!
+            let decodedimage2 = UIImage(data: dataDecoded2)
+            cell.storeimage2.image = decodedimage2
+            
+            let dataDecoded3 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[2])!, options: .ignoreUnknownCharacters)!
+            let decodedimage3 = UIImage(data: dataDecoded3)
+            cell.storeimage3.image = decodedimage3
+            
+            let dataDecoded4 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[3])!, options: .ignoreUnknownCharacters)!
+            let decodedimage4 = UIImage(data: dataDecoded4)
+            cell.storeimage4.image = decodedimage4
+            
         }
         
         return cell
@@ -253,7 +245,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     }
     
     func moveweb(sender: UIButton) {
-        
         let webviewController = WebPageViewController()
         // webviewController.url = locations[sender.tag]
         
@@ -351,7 +342,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
             
             let res = JSON(response.result.value!)
-            print(response.result.value!)
+            
             res["results"].array?.forEach({
                 var location:Location = Mapper<Location>().map(JSON: $0.dictionaryObject!)!
                 location.lat = $0["geometry"]["location"]["lat"].doubleValue
@@ -366,7 +357,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             
             print(self.locations)
             self.storeTableView.reloadData()
-            
         }
     }
     

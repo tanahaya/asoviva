@@ -95,25 +95,25 @@ class postcommentFormViewController:FormViewController {
                                 
                                 if self.number == 1 {
                                     row.0.imageView1.image = image
-                                    let data1: NSData = UIImageJPEGRepresentation(image!, 1.0)! as NSData
+                                    let data1: NSData = UIImageJPEGRepresentation(image!, 0.2)! as NSData
                                     let encodeString1:String = data1.base64EncodedString(options: .lineLength64Characters)
                                     self.comment["photo1"] = encodeString1
                                     self.params["photo1"] = encodeString1
                                 }else if self.number == 2 {
                                     row.0.imageView2.image = image
-                                    let data2: NSData = UIImageJPEGRepresentation(image!, 1.0)! as NSData
+                                    let data2: NSData = UIImageJPEGRepresentation(image!, 0.2)! as NSData
                                     let encodeString2:String = data2.base64EncodedString(options: .lineLength64Characters)
                                     self.comment["photo2"] = encodeString2
                                     self.params["photo2"] = encodeString2
                                 }else if self.number == 3 {
                                     row.0.imageView3.image = image
-                                    let data3: NSData = UIImageJPEGRepresentation(image!, 1.0)! as NSData
+                                    let data3: NSData = UIImageJPEGRepresentation(image!, 0.2)! as NSData
                                     let encodeString3:String = data3.base64EncodedString(options: .lineLength64Characters)
                                     self.comment["photo3"] = encodeString3
                                     self.params["photo3"] = encodeString3
                                 }else if self.number == 4 {
                                     row.0.imageView4.image = image
-                                    let data4: NSData = UIImageJPEGRepresentation(image!, 1.0)! as NSData
+                                    let data4: NSData = UIImageJPEGRepresentation(image!, 0.2)! as NSData
                                     let encodeString4:String = data4.base64EncodedString(options: .lineLength64Characters)
                                     self.comment["photo4"] = encodeString4
                                     self.params["photo4"] = encodeString4

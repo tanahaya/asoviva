@@ -67,8 +67,8 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.titleLabel.text = comments[indexPath.row].title
         cell.writerLabel.text = comments[indexPath.row].writer
         cell.storeLabel.text = comments[indexPath.row].storename
-        cell.favoriteLabel.text = "\(comments[indexPath.row].recommendnumber!)"
-        cell.priceLabel.text = "\(comments[indexPath.row].price!)"
+        cell.favoriteLabel.text = "\( Double(comments[indexPath.row].recommendnumber!) / 10.0 )"
+        cell.priceLabel.text = "\(comments[indexPath.row].price!)" + "円"
         cell.timeLabel.text = "\(comments[indexPath.row].time!)" + "時間"
         cell.commentcontent.text = comments[indexPath.row].content
         
@@ -103,7 +103,7 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func getComment(){
-        
+        var comments: [Comment] = []
         Alamofire.request("https://server-tanahaya.c9users.io/api/showcomment", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
             
             let res = JSON(response.result.value!)
@@ -111,10 +111,11 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
             res.array?.forEach({
                 let comment:Comment = Mapper<Comment>().map(JSON: $0.dictionaryObject!)!
                 
-                self.comments.append(comment)
+                comments.append(comment)
                 
             })
             print(self.comments)
+            self.comments = comments
             self.tableView.reloadData()
             
         }

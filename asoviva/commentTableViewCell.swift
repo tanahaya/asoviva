@@ -77,6 +77,9 @@ class commentTableViewCell: UITableViewCell {
         priceView.layer.cornerRadius = 5.0
         timeView.layer.cornerRadius = 5.0
         
+        commentcontent.backgroundColor = UIColor.flatWhite()
+        commentcontent.isEditable = false
+        
         super.awakeFromNib()
     }
 
