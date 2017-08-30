@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3424D628F17B3E2E69BED865 /* Pods_asovivaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185AA5DCB5E42D3EC3C8FBA9 /* Pods_asovivaUITests.framework */; };
 		5E9B755EA62C7DFD79F3333A /* Pods_asovivaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC2AEBF12D5AB2F0C47DE3A /* Pods_asovivaTests.framework */; };
-		86715922B7FC1FED7B1D18B3 /* Pods_asoviva.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61CF553ECAE0B2C5AF5DB596 /* Pods_asoviva.framework */; };
 		9F0BA2A11EC6EEE700B0630A /* storeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0BA29F1EC6EEE700B0630A /* storeTableViewCell.swift */; };
 		9F0BA2A21EC6EEE700B0630A /* storeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */; };
 		9F1C807E1F48A719003EED9F /* commentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1C807C1F48A719003EED9F /* commentTableViewCell.swift */; };
@@ -22,6 +21,8 @@
 		9F1CBFB31EF662E2008335FE /* commentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1CBFB21EF662E2008335FE /* commentViewController.swift */; };
 		9F238EB01F55652600890BAC /* schoolTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F238EAF1F55652600890BAC /* schoolTimelineViewController.swift */; };
 		9F238EB21F55728100890BAC /* imageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F238EB11F55728100890BAC /* imageCollectionViewCell.swift */; };
+		9F271BA01F56F01D003DB766 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F271B9E1F56F01D003DB766 /* Realm.framework */; };
+		9F271BA11F56F01D003DB766 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F271B9F1F56F01D003DB766 /* RealmSwift.framework */; };
 		9F571F5F1F52498F00279CE4 /* selectImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F571F5D1F52498F00279CE4 /* selectImageTableViewCell.swift */; };
 		9F571F601F52498F00279CE4 /* selectImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F571F5E1F52498F00279CE4 /* selectImageTableViewCell.xib */; };
 		9F571F621F53891000279CE4 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F571F611F53891000279CE4 /* Comment.swift */; };
@@ -33,8 +34,6 @@
 		9F6439351F55AE7A00C5CADD /* pin2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F6439341F55AE7A00C5CADD /* pin2.png */; };
 		9F833B511F48161C00084243 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F833B501F48161C00084243 /* Alamofire.framework */; };
 		9F833B541F481A0A00084243 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F833B521F4818CC00084243 /* ObjectMapper.framework */; };
-		9F8B20651ECC53EB001B7543 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8B20631ECC53EB001B7543 /* Realm.framework */; };
-		9F8B20661ECC53EB001B7543 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8B20641ECC53EB001B7543 /* RealmSwift.framework */; };
 		9F8B20681ECC5865001B7543 /* favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8B20671ECC5865001B7543 /* favorite.swift */; };
 		9F8CBB0D1DD1E574002B3DBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8CBB0C1DD1E574002B3DBA /* AppDelegate.swift */; };
 		9F8CBB121DD1E574002B3DBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8CBB101DD1E574002B3DBA /* Main.storyboard */; };
@@ -97,6 +96,8 @@
 		9F1CBFB21EF662E2008335FE /* commentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commentViewController.swift; sourceTree = "<group>"; };
 		9F238EAF1F55652600890BAC /* schoolTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = schoolTimelineViewController.swift; sourceTree = "<group>"; };
 		9F238EB11F55728100890BAC /* imageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageCollectionViewCell.swift; sourceTree = "<group>"; };
+		9F271B9E1F56F01D003DB766 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		9F271B9F1F56F01D003DB766 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
 		9F571F5D1F52498F00279CE4 /* selectImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectImageTableViewCell.swift; sourceTree = "<group>"; };
 		9F571F5E1F52498F00279CE4 /* selectImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = selectImageTableViewCell.xib; sourceTree = "<group>"; };
@@ -152,15 +153,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F271BA01F56F01D003DB766 /* Realm.framework in Frameworks */,
+				9F271BA11F56F01D003DB766 /* RealmSwift.framework in Frameworks */,
 				9F613CEE1F481C9D0049AFD2 /* Eureka.framework in Frameworks */,
 				9F833B541F481A0A00084243 /* ObjectMapper.framework in Frameworks */,
 				9F833B511F48161C00084243 /* Alamofire.framework in Frameworks */,
 				9FC4E9671EF1258F00DD039F /* Chameleon.framework in Frameworks */,
 				9F63EE9C1DDB142100D332D6 /* CoreLocation.framework in Frameworks */,
-				9F8B20651ECC53EB001B7543 /* Realm.framework in Frameworks */,
 				9F63FBD61DD1F14100150F34 /* FontAwesome.framework in Frameworks */,
-				9F8B20661ECC53EB001B7543 /* RealmSwift.framework in Frameworks */,
-				86715922B7FC1FED7B1D18B3 /* Pods_asoviva.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +199,8 @@
 		9F63FBD41DD1F14100150F34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F271B9E1F56F01D003DB766 /* Realm.framework */,
+				9F271B9F1F56F01D003DB766 /* RealmSwift.framework */,
 				9F613CEF1F481F3A0049AFD2 /* SwiftyJSON.framework */,
 				9F833B521F4818CC00084243 /* ObjectMapper.framework */,
 				9F833B501F48161C00084243 /* Alamofire.framework */,
@@ -532,10 +534,10 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/FontAwesome.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
-				"$(SRCROOT)/RealmSwift.framework",
-				"$(SRCROOT)/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Chameleon.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 			);
 			name = "Run Script";
 			outputPaths = (

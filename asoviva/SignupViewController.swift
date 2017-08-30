@@ -74,6 +74,7 @@ class SignupViewController: FormViewController {
                         self.userDefaults.set(false, forKey: "signup")
                         print("初回起動")
                     }
+                    SCLAlertView().showInfo("お気に入り登録完了", subTitle: "")
                     
                     let MyPageController = MyPageViewController()
                     self.navigationController?.pushViewController(MyPageController, animated: true)

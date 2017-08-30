@@ -11,26 +11,33 @@ import Alamofire
 import ObjectMapper
 import SwiftyJSON
 
-class showImageViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class showImageViewController: UIViewController,UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     let userDefaults = UserDefaults.standard
     var collectionView : UICollectionView!
     var params:[String:Any] = [:]
     var images:[String] = []
     
+    var detailWindow:UIWindow!
+    var detailScrollView:UIScrollView!
+    var detailPageControl:UIPageControl!
+    var closeButton:UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.getimage()
+        //self.getimage()
         
         params["place_id"] = userDefaults.string(forKey: "place_id")
         
+        collectionView.backgroundColor = UIColor.clear
+        self.view.backgroundColor = UIColor.flatSand()
+        
+        print(params)
+        
         let layout = UICollectionViewFlowLayout()
-        
         layout.itemSize = CGSize(width:100, height:100)
-        
         layout.sectionInset = UIEdgeInsetsMake(16, 16, 32, 16)
-        
         layout.headerReferenceSize = CGSize(width:100,height:30)
         
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
@@ -48,10 +55,46 @@ class showImageViewController: UIViewController, UICollectionViewDelegate, UICol
         print("Num: \(indexPath.row)")
         print("Value:\(collectionView)")
         
+        
+        detailWindow = UIWindow()
+        detailWindow.frame = CGRect(x:0, y:0, width:340, height:540)
+        detailWindow.layer.position = CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2)
+        detailWindow.alpha = 1.0
+        detailWindow.layer.cornerRadius = 10
+        detailWindow.makeKey()
+        self.detailWindow.makeKeyAndVisible()
+        
+        let pageSize = 4
+        
+        detailScrollView = UIScrollView(frame: self.view.frame)
+        detailScrollView.showsHorizontalScrollIndicator = false
+        detailScrollView.showsVerticalScrollIndicator = false
+        detailScrollView.isPagingEnabled = true
+        detailScrollView.delegate = self
+        detailScrollView.contentSize = CGSize(width:760 ,height: 0)
+        
+        
+        detailPageControl = UIPageControl(frame: CGRect(x: 120,y: 310,width: 100,height: 50))
+        detailPageControl.numberOfPages = pageSize
+        detailPageControl.currentPage = 0
+        detailPageControl.isUserInteractionEnabled = false
+        
+        closeButton = UIButton(frame: CGRect(x:0, y:0, width:80, height:50))
+        closeButton.backgroundColor = UIColor.orange
+        closeButton.setTitle("Close", for: .normal)
+        closeButton.setTitleColor(UIColor.white, for: .normal)
+        closeButton.layer.masksToBounds = true
+        closeButton.layer.cornerRadius = 5.0
+        closeButton.layer.position = CGPoint(x:self.detailWindow.frame.width/2, y:self.detailWindow.frame.height - 40)
+        closeButton.addTarget(self, action: #selector(hide), for: .touchUpInside)
+        
+        detailWindow.addSubview(detailScrollView)
+        detailWindow.addSubview(detailPageControl)
+        detailWindow.addSubview(closeButton)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return 4//images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -60,7 +103,7 @@ class showImageViewController: UIViewController, UICollectionViewDelegate, UICol
         
         cell.backgroundColor = UIColor.orange
         
-        let dataDecoded : Data = Data(base64Encoded: images[indexPath.row], options: .ignoreUnknownCharacters)!
+        let dataDecoded : Data = Data(base64Encoded: userDefaults.string(forKey: "photo\(indexPath.row)")!, options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         cell.ImageView.image = decodedimage
         
@@ -73,23 +116,37 @@ class showImageViewController: UIViewController, UICollectionViewDelegate, UICol
     func getimage(){
         
         print("getimage")
-         var photos: [String] = []
-         
-         Alamofire.request("https://server-tanahaya.c9users.io/api/microposts/image", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
-         
-         let res = JSON(response.result.value!)
-         print(res)
-         res["photos"].array?.forEach({_ in
-            //res.stringValue
-         //let comment:Comment = Mapper<Comment>().map(JSON: $0.dictionaryObject!)!
-         
-         //photos.append($0.dictionaryObject!)
-         
-         })
-         self.images = photos
-         
-         }
+        var photos: [String] = []
+        
+        Alamofire.request("https://server-tanahaya.c9users.io/api/microposts/image", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
+            
+            let res = JSON(response.result.value!)
+            print(res)
+            
+            //self.images = res.rawValue as! [String]
+            
+        }
+        
+    }
+    
+    func hide(){
+        
+        detailWindow.isHidden = true
+        detailScrollView.isHidden = true
+        detailPageControl.isHidden = true
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        if fmod(detailScrollView.contentOffset.x, detailScrollView.frame.maxX) == 0 {
+            let on:Int = Int(detailScrollView.contentOffset.x / detailScrollView.frame.maxX)
+            
+            detailPageControl.currentPage = on
+        }
         
     }
     
 }
+
+
+

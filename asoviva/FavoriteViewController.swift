@@ -34,15 +34,10 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for i in 0 ..< favorites.count {
-            let all = self.favorites[i]
-        
-            try! realm.write {
-                realm.delete(all)
-                
-            }
+        try! realm.write {
+            realm.deleteAll()
         }
-        
+ 
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         self.view.addSubview(storeTableView)
@@ -70,16 +65,33 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
         
         let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
         cell.nameLabel.text = nowfavorite.storename
+        cell.priceLabel.text = " \(nowfavorite.price)" + "円"
+        cell.favoriteLabel.text = "\( Double(nowfavorite.recommendnumber) / 10.0 )"
+        cell.commentLabel.text = "\(nowfavorite.commentnumber)"
+        cell.distanceLabel.text = "8分"
+        let dataDecoded1 : Data = Data(base64Encoded: nowfavorite.photo1, options: .ignoreUnknownCharacters)!
+        let decodedimage1 = UIImage(data: dataDecoded1)
+        cell.storeimage1.image = decodedimage1
+        
+        let dataDecoded2 : Data = Data(base64Encoded: nowfavorite.photo2, options: .ignoreUnknownCharacters)!
+        let decodedimage2 = UIImage(data: dataDecoded2)
+        cell.storeimage2.image = decodedimage2
+        
+        let dataDecoded3 : Data = Data(base64Encoded: nowfavorite.photo3, options: .ignoreUnknownCharacters)!
+        let decodedimage3 = UIImage(data: dataDecoded3)
+        cell.storeimage3.image = decodedimage3
+        
+        let dataDecoded4 : Data = Data(base64Encoded: nowfavorite.photo4, options: .ignoreUnknownCharacters)!
+        let decodedimage4 = UIImage(data: dataDecoded4)
+        cell.storeimage4.image = decodedimage4
         
         return cell
-        
-        
         
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 270
+        return 165
         
         
     }

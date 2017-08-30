@@ -24,6 +24,8 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     var UserDafault:UserDefaults = UserDefaults()
     
     let placeID = "ChIJV4k8_9UodTERU5KXbkYpSYs"
+    let config = Realm.Configuration(schemaVersion: 1)
+    
     let realm = try! Realm()
     
     let underlineLayer = CALayer()
@@ -170,8 +172,11 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         cell.favoriteLabel.text = "\( Double(locations[indexPath.row].recommendnumber) / 10.0 )"
         cell.commentLabel.text = "\(locations[indexPath.row].commentnumber!)"
         self.gettimeroute()
-        cell.distanceLabel.text = "\(arc4random_uniform(10) + 7 )" + "分"
-        
+        if indexPath.row == 0{
+            cell.distanceLabel.text = "8分"
+        }else {
+            cell.distanceLabel.text = "\(arc4random_uniform(10) + 7 )" + "分"
+        }
         if locations[indexPath.row].storename.characters.count > 24 {
             cell.nameLabel.font = UIFont.systemFont(ofSize: 10)
         }else if locations[indexPath.row].storename.characters.count > 19 {
@@ -223,6 +228,11 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             let dataDecoded4 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[3])!, options: .ignoreUnknownCharacters)!
             let decodedimage4 = UIImage(data: dataDecoded4)
             cell.storeimage4.image = decodedimage4
+            
+            UserDafault.set( (locations[indexPath.row].photos?[0])!, forKey: "photo0")
+            UserDafault.set( (locations[indexPath.row].photos?[1])!, forKey: "photo1")
+            UserDafault.set( (locations[indexPath.row].photos?[2])!, forKey: "photo2")
+            UserDafault.set( (locations[indexPath.row].photos?[3])!, forKey: "photo3")
             
         }
         
@@ -312,18 +322,26 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         storedata.lng = locations[sender.tag].lng
         storedata.vicinity = locations[sender.tag].vicinity
         storedata.placeid = locations[sender.tag].placeId
+        storedata.recommendnumber = locations[sender.tag].recommendnumber
+        storedata.commentnumber = locations[sender.tag].commentnumber
+        storedata.price = locations[sender.tag].price
+        storedata.photo1 = locations[sender.tag].photos?[0]
+        storedata.photo2 = locations[sender.tag].photos?[1]
+        storedata.photo3 = locations[sender.tag].photos?[2]
+        storedata.photo4 = locations[sender.tag].photos?[3]
         storedata.id = favorite.lastId()
         
         try! realm.write {
             realm.add(storedata)
         }
         
-        SCLAlertView().showInfo("お気に入り登録完了", subTitle: locations[sender.tag].storename + "をお気に入り登録しました。")
+        SCLAlertView().showInfo("お気に入り登録完了", subTitle: "")
         
     }
     
     func photobutton(sender: UIButton) {
         print("photo")
+        
         UserDafault.set(locations[sender.tag].placeId, forKey: "place_id")
         let showImage = showImageViewController()
         self.navigationController?.pushViewController(showImage, animated: true)

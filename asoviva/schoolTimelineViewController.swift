@@ -38,6 +38,16 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
             self.view.addSubview(tableView)
             
             self.getComment()
+            
+            if self.userDefaults.bool(forKey: "signup") == false {
+                print("Signup済み")
+                let postcommentForm = postcommentFormViewController()
+                self.navigationController?.pushViewController( postcommentForm, animated: true)
+                
+            }else if self.userDefaults.bool(forKey: "signup"){
+                print("Signupまだ")
+                SCLAlertView().showInfo("ユーザー登録をしてください", subTitle: "MyPageに行きましょう")
+            }
         }
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -46,7 +56,15 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
         }
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 10//comments.count
+            
+            if self.userDefaults.bool(forKey: "signup") == false {
+                
+                return 10
+            }else if self.userDefaults.bool(forKey: "signup"){
+                return 0
+            }
+            
+            return 0
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

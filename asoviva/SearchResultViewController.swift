@@ -13,9 +13,9 @@ import CoreLocation
 import ObjectMapper
 import SwiftyJSON
 import FontAwesome
-import RealmSwift
 import Chameleon
 import Alamofire
+import RealmSwift
 
 class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
     
