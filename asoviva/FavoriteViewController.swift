@@ -33,7 +33,18 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for i in 0 ..< favorites.count {
+            let all = self.favorites[i]
+        
+            try! realm.write {
+                realm.delete(all)
+                
+            }
+        }
+        
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
         self.view.addSubview(storeTableView)
         
         
@@ -47,15 +58,9 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
         storeTableView.reloadData()
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return favorites.count
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let rowInSection = favorites[section].extended ? 2 : 1
-        
-        return rowInSection
+        return favorites.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -74,59 +79,18 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if indexPath.row == 0 {
-            return 80
-        }else {
-            return 210
-        }
+        return 270
+        
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if 0 == indexPath.row {
-            
-            try! realm.write {
-                
-                favorites[indexPath.section].extended = !favorites[indexPath.section].extended
-                
-                realm.add(favorites, update: true)
-                // タイトルはそのままで値段のプロパティだけを更新することができます。
-            }
-            
-            if !favorites[indexPath.section].extended {
-                self.toContract(tableView, indexPath: indexPath)
-            }else{
-                self.toExpand(tableView, indexPath: indexPath)
-            }
-            
-        }else{ // ADD:
-            
-        }
         
         // deselect
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    fileprivate func toContract(_ tableView: UITableView, indexPath: IndexPath) {
-        
-        var indexPaths: [IndexPath] = []
-        indexPaths.append(IndexPath(row: 1 , section:indexPath.section))
-        
-        
-        tableView.deleteRows(at: indexPaths,
-                             with: UITableViewRowAnimation.fade)
-    }
-    
-    fileprivate func toExpand(_ tableView: UITableView, indexPath: IndexPath) {
-        
-        var indexPaths: [IndexPath] = []
-        indexPaths.append(IndexPath(row: 1, section:indexPath.section))
-        
-        tableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.fade)
-        
-        tableView.scrollToRow(at: IndexPath(row:indexPath.row, section:indexPath.section),
-                              at: UITableViewScrollPosition.top, animated: true)
-    }
     func cancel(sender:UIButton) {
         sendernumber = sender.tag
         let alertView = SCLAlertView()
@@ -135,6 +99,7 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
         
         
     }
+    
     func deleterealm() {
         let item = self.favorites[sendernumber]
         

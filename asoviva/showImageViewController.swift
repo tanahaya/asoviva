@@ -21,6 +21,8 @@ class showImageViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.getimage()
+        
         params["place_id"] = userDefaults.string(forKey: "place_id")
         
         let layout = UICollectionViewFlowLayout()
@@ -49,7 +51,7 @@ class showImageViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -57,7 +59,12 @@ class showImageViewController: UIViewController, UICollectionViewDelegate, UICol
         let cell : imageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCell",for: indexPath as IndexPath) as! imageCollectionViewCell
         
         cell.backgroundColor = UIColor.orange
-        cell.ImageView.image = UIImage.fontAwesomeIcon(name: .userCircle, textColor: UIColor.black, size: CGSize(width:100,height:100))
+        
+        let dataDecoded : Data = Data(base64Encoded: images[indexPath.row], options: .ignoreUnknownCharacters)!
+        let decodedimage = UIImage(data: dataDecoded)
+        cell.ImageView.image = decodedimage
+        
+        //cell.ImageView.image = UIImage.fontAwesomeIcon(name: .userCircle, textColor: UIColor.black, size: CGSize(width:100,height:100))
         
         return cell
         
@@ -65,24 +72,24 @@ class showImageViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func getimage(){
         
-        /*
+        print("getimage")
          var photos: [String] = []
          
          Alamofire.request("https://server-tanahaya.c9users.io/api/microposts/image", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
          
          let res = JSON(response.result.value!)
          print(res)
-         res.array?.forEach({
-         
+         res["photos"].array?.forEach({_ in
+            //res.stringValue
          //let comment:Comment = Mapper<Comment>().map(JSON: $0.dictionaryObject!)!
          
-         //photos.append(comment)
+         //photos.append($0.dictionaryObject!)
          
          })
          self.images = photos
          
          }
-         */
+        
     }
     
 }

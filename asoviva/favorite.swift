@@ -22,7 +22,13 @@ class favorite: Object{
     dynamic var lng: Double = 0.0
     dynamic var vicinity:String!
     dynamic var placeid:String!
-    dynamic var extended: Bool = false
+    dynamic var price:Int = 0
+    dynamic var recommendnumber:Int = 0
+    dynamic var commentnumber:Int = 0
+    dynamic var photo1:String!
+    dynamic var photo2:String!
+    dynamic var photo3:String!
+    dynamic var photo4:String!
     
     
     override static func primaryKey() -> String {
@@ -48,7 +54,6 @@ class favorite: Object{
              model.due_date = dueDate
              model.isDone = 0
              */
-            model.extended = extended
         })
     }
     static func fetch(FetchType type: FetchType) -> [favorite] {

@@ -48,7 +48,7 @@ class MainViewController: UITabBarController{
         let schoolNavi :UIViewController = UINavigationController(rootViewController: schoolTimelineView)
         let mypageNavi :UIViewController = UINavigationController(rootViewController: MyPageView)
         
-        self.setViewControllers([ recommendNavi, searchNavi, schoolNavi, mypageNavi], animated: false)
+        self.setViewControllers([ recommendNavi, searchNavi,favorNavi, schoolNavi, mypageNavi], animated: false)
     }
     
 }
