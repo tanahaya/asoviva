@@ -169,8 +169,19 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         cell.nameLabel.text = locations[indexPath.row].storename
         cell.priceLabel.text = " \(locations[indexPath.row].price!)" + "円"
-        cell.favoriteLabel.text = "\( Double(locations[indexPath.row].recommendnumber) / 10.0 )"
-        cell.commentLabel.text = "\(locations[indexPath.row].commentnumber!)"
+        cell.favoriteLabel.text = "\( Double(locations[indexPath.row].recommendnumber) / 10.0 )" + "点"
+        
+        if indexPath.row == 1{
+            cell.commentLabel.text = "2つ"
+        }
+        if indexPath.row % 3 == 0 {
+            cell.photoLabel.text = "4枚"
+            cell.commentLabel.text = "1つ"
+        }else{
+            cell.photoLabel.text = "0枚"
+            cell.commentLabel.text = "\(locations[indexPath.row].commentnumber!)" + "つ"
+        }
+        
         self.gettimeroute()
         if indexPath.row == 0{
             cell.distanceLabel.text = "8分"

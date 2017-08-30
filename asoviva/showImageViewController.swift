@@ -22,6 +22,10 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
     var detailScrollView:UIScrollView!
     var detailPageControl:UIPageControl!
     var closeButton:UIButton!
+    var imageView1:UIImageView!
+    var imageView2:UIImageView!
+    var imageView3:UIImageView!
+    var imageView4:UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +33,6 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
         //self.getimage()
         
         params["place_id"] = userDefaults.string(forKey: "place_id")
-        
-        collectionView.backgroundColor = UIColor.clear
-        self.view.backgroundColor = UIColor.flatSand()
         
         print(params)
         
@@ -46,6 +47,9 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        collectionView.backgroundColor = UIColor.clear
+        self.view.backgroundColor = UIColor.flatSand()
+        
         self.view.addSubview(collectionView)
         
     }
@@ -55,13 +59,11 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
         print("Num: \(indexPath.row)")
         print("Value:\(collectionView)")
         
-        
         detailWindow = UIWindow()
-        detailWindow.frame = CGRect(x:0, y:0, width:340, height:540)
+        detailWindow.frame = CGRect(x:0, y:0, width: 375, height: 667)
         detailWindow.layer.position = CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2)
-        detailWindow.alpha = 1.0
-        detailWindow.layer.cornerRadius = 10
         detailWindow.makeKey()
+        detailWindow.backgroundColor = UIColor.black
         self.detailWindow.makeKeyAndVisible()
         
         let pageSize = 4
@@ -71,24 +73,49 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
         detailScrollView.showsVerticalScrollIndicator = false
         detailScrollView.isPagingEnabled = true
         detailScrollView.delegate = self
-        detailScrollView.contentSize = CGSize(width:760 ,height: 0)
+        detailScrollView.contentSize = CGSize(width: 1500,height: 0)
         
+        imageView1 = UIImageView(frame: CGRect(x: 0,y: 70,width: 375,height: 375))
+        imageView2 = UIImageView(frame: CGRect(x: 375,y: 70,width: 375,height: 375))
+        imageView3 = UIImageView(frame: CGRect(x: 750,y: 70,width: 375,height: 375))
+        imageView4 = UIImageView(frame: CGRect(x: 1125,y: 70,width: 375,height: 375))
         
-        detailPageControl = UIPageControl(frame: CGRect(x: 120,y: 310,width: 100,height: 50))
+        let dataDecoded1 : Data = Data(base64Encoded: userDefaults.string(forKey: "photo0")!, options: .ignoreUnknownCharacters)!
+        let decodedimage1 = UIImage(data: dataDecoded1)
+        imageView1.image = decodedimage1
+        
+        let dataDecoded2 : Data = Data(base64Encoded: userDefaults.string(forKey: "photo1")!, options: .ignoreUnknownCharacters)!
+        let decodedimage2 = UIImage(data: dataDecoded2)
+        imageView2.image = decodedimage2
+        
+        let dataDecoded3 : Data = Data(base64Encoded: userDefaults.string(forKey: "photo2")!, options: .ignoreUnknownCharacters)!
+        let decodedimage3 = UIImage(data: dataDecoded3)
+        imageView3.image = decodedimage3
+        
+        let dataDecoded4 : Data = Data(base64Encoded: userDefaults.string(forKey: "photo3")!, options: .ignoreUnknownCharacters)!
+        let decodedimage4 = UIImage(data: dataDecoded4)
+        imageView4.image = decodedimage4
+        
+        detailPageControl = UIPageControl(frame: CGRect(x: 120,y: 450,width: 100,height: 50))
+        detailPageControl.layer.position = CGPoint(x: self.view.frame.width/2, y: 475)
         detailPageControl.numberOfPages = pageSize
         detailPageControl.currentPage = 0
         detailPageControl.isUserInteractionEnabled = false
         
-        closeButton = UIButton(frame: CGRect(x:0, y:0, width:80, height:50))
+        closeButton = UIButton(frame: CGRect(x:0, y:0, width:70, height:50))
         closeButton.backgroundColor = UIColor.orange
         closeButton.setTitle("Close", for: .normal)
         closeButton.setTitleColor(UIColor.white, for: .normal)
         closeButton.layer.masksToBounds = true
         closeButton.layer.cornerRadius = 5.0
-        closeButton.layer.position = CGPoint(x:self.detailWindow.frame.width/2, y:self.detailWindow.frame.height - 40)
+        closeButton.layer.position = CGPoint(x:self.detailWindow.frame.width/2, y:self.detailWindow.frame.height - 60)
         closeButton.addTarget(self, action: #selector(hide), for: .touchUpInside)
         
         detailWindow.addSubview(detailScrollView)
+        detailScrollView.addSubview(imageView1)
+        detailScrollView.addSubview(imageView2)
+        detailScrollView.addSubview(imageView3)
+        detailScrollView.addSubview(imageView4)
         detailWindow.addSubview(detailPageControl)
         detailWindow.addSubview(closeButton)
     }

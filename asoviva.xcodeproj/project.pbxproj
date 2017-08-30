@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3424D628F17B3E2E69BED865 /* Pods_asovivaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185AA5DCB5E42D3EC3C8FBA9 /* Pods_asovivaUITests.framework */; };
 		5E9B755EA62C7DFD79F3333A /* Pods_asovivaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC2AEBF12D5AB2F0C47DE3A /* Pods_asovivaTests.framework */; };
+		9EFD0F8B9057CBBC81A495C3 /* Pods_asoviva.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61CF553ECAE0B2C5AF5DB596 /* Pods_asoviva.framework */; };
 		9F0BA2A11EC6EEE700B0630A /* storeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0BA29F1EC6EEE700B0630A /* storeTableViewCell.swift */; };
 		9F0BA2A21EC6EEE700B0630A /* storeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */; };
 		9F1C807E1F48A719003EED9F /* commentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1C807C1F48A719003EED9F /* commentTableViewCell.swift */; };
@@ -161,6 +162,7 @@
 				9FC4E9671EF1258F00DD039F /* Chameleon.framework in Frameworks */,
 				9F63EE9C1DDB142100D332D6 /* CoreLocation.framework in Frameworks */,
 				9F63FBD61DD1F14100150F34 /* FontAwesome.framework in Frameworks */,
+				9EFD0F8B9057CBBC81A495C3 /* Pods_asoviva.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

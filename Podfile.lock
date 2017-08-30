@@ -1,10 +1,10 @@
 PODS:
   - Alamofire (4.5.0)
-  - DKImagePickerController (3.6.0):
-    - DKImagePickerController/Camera (= 3.6.0)
-    - DKImagePickerController/ImageManager (= 3.6.0)
-  - DKImagePickerController/Camera (3.6.0)
-  - DKImagePickerController/ImageManager (3.6.0)
+  - DKImagePickerController (3.6.1):
+    - DKImagePickerController/Camera (= 3.6.1)
+    - DKImagePickerController/ImageManager (= 3.6.1)
+  - DKImagePickerController/Camera (3.6.1)
+  - DKImagePickerController/ImageManager (3.6.1)
   - GoogleMaps (2.4.0):
     - GoogleMaps/Maps (= 2.4.0)
   - GoogleMaps/Base (2.4.0)
@@ -21,7 +21,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  DKImagePickerController: fea6912931577f2ba978c4c01e56b1ab2b0456fb
+  DKImagePickerController: 4f8072aed44119a33955c9583273ea7c8739c0f4
   GoogleMaps: 8436ab5d1c25e36915b2f7416d0c8e3fa2e76c61
   GooglePlaces: aafe5990fa7951e98e078761bbdaaf236d7e0c65
 
