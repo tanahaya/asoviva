@@ -54,7 +54,7 @@ class RouteViewController: UIViewController, MKMapViewDelegate,CLLocationManager
         let center: CLLocationCoordinate2D = CLLocationCoordinate2DMake((nowlat + goallat)/2, ( nowlng + goallng)/2)
         mapView.setCenter(center, animated: true)
         
-        let mySpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+        let mySpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
         let region = MKCoordinateRegionMake(center, mySpan)
         mapView.region = region
         
@@ -108,8 +108,8 @@ class RouteViewController: UIViewController, MKMapViewDelegate,CLLocationManager
         
         let route: MKPolyline = overlay as! MKPolyline
         let routeRenderer: MKPolylineRenderer = MKPolylineRenderer(polyline: route)
-        // ルートの線の太さ.
-        routeRenderer.lineWidth = 10.0
+        // ルートの線の太さ
+        routeRenderer.lineWidth = 5.0
         // ルートの線の色.
         routeRenderer.strokeColor = UIColor.flatYellowColorDark()
         return routeRenderer

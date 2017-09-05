@@ -15,15 +15,15 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
     
     let userDefaults = UserDefaults.standard
     var tableView: UITableView!
-    var params:[String:Any] = ["school":"Tewtaewa"]
+    var params:[String:Any] = ["school":"聖光学院"]
     var comments:[Comment] = []
     
     var titlearray:[String] = ["楽しかった〜","サイコ〜","ここのカラオケよかったよ","楽し〜","たのしいよ"]
     var writerarray:[String] = ["まるもん","ぴょきち","はやて","わみ","寛太"]
     var contentarray:[String] = ["楽しかった〜。カラオケ館はやっっぱ最高","サイコ〜。今度、友達と期待な～。","ここのカラオケよかったよ。カラオケ館はやっっぱ最高","楽し〜。。今度、友達と期待な～。カラオケ館はやっっぱ最高","たのしいよ。一度行ってみるとわかる楽しさ。"]
     
-    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.navigationItem.title  = "Asoviva"
@@ -42,19 +42,27 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
         
         self.view.addSubview(tableView)
         
-        self.getComment()
-        
         if self.userDefaults.bool(forKey: "signup") == false {
             print("Signup済み")
-            let postcommentForm = postcommentFormViewController()
-            self.navigationController?.pushViewController( postcommentForm, animated: true)
             
         }else if self.userDefaults.bool(forKey: "signup"){
             print("Signupまだ")
-            SCLAlertView().showInfo("ユーザー登録をしてください", subTitle: "MyPageに行きましょう")
+            SCLAlertView().showInfo("ユーザー未登録です", subTitle: "MyPageに行きましょう")
         }
+        
+        self.getComment()
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if self.userDefaults.bool(forKey: "signup") == false {
+            print("Signup済み")
+            tableView.reloadData()
+        }else if self.userDefaults.bool(forKey: "signup"){
+            print("Signupまだ")
+            
+        }
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
@@ -63,29 +71,29 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if self.userDefaults.bool(forKey: "signup") == false {
-            return 5
+            return self.comments.count
         }else if self.userDefaults.bool(forKey: "signup"){
             return 0
         }
         
-        return 0
+        return self.comments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell:commentTableViewCell = tableView.dequeueReusableCell(withIdentifier: "commentTableViewCell", for: indexPath as IndexPath) as! commentTableViewCell
         
-        cell.titleLabel.text = titlearray[indexPath.row]
-        cell.writerLabel.text = writerarray[indexPath.row]
-        cell.storeLabel.text = "カラオケ館　銀座総本店"
-        cell.favoriteLabel.text = "\(3 + arc4random_uniform(15) / 10)" + "点"
-        cell.priceLabel.text = "\(arc4random_uniform(10) * 500)" + "円"
-        cell.timeLabel.text = "\(arc4random_uniform(5))" + "時間"
-        cell.commentcontent.text = contentarray[indexPath.row]
+        cell.titleLabel.text = self.comments[indexPath.row].title
+        cell.writerLabel.text = self.comments[indexPath.row].writer + "さん"
+        cell.storeLabel.text = self.comments[indexPath.row].storename
+        cell.favoriteLabel.text = "\( Double(comments[indexPath.row].recommendnumber!) / 10.0 )"
+        cell.priceLabel.text = "\(self.comments[indexPath.row].price!)" + "円"
+        cell.timeLabel.text = "\(self.comments[indexPath.row].time!)" + "時間"
+        cell.commentcontent.text = self.comments[indexPath.row].content
         
-        //let str = comments[indexPath.row].date
-        //let currentIndex = str.index(str.endIndex, offsetBy: -10)
-        cell.dateLabel.text = "2017-8-31."//str.substring(to: currentIndex)
+        let str = comments[indexPath.row].date
+        let currentIndex = str.index(str.endIndex, offsetBy: -10)
+        cell.dateLabel.text = str.substring(to: currentIndex)
         
         let dataDecoded1 : Data = Data(base64Encoded: userDefaults.string(forKey: "photo0")!, options: .ignoreUnknownCharacters)!
         let decodedimage1 = UIImage(data: dataDecoded1)
@@ -103,8 +111,8 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
         let decodedimage4 = UIImage(data: dataDecoded4)
         cell.image4.image = decodedimage4
         
-        
         return cell
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -123,15 +131,11 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
             
             res.array?.forEach({
                 let comment:Comment = Mapper<Comment>().map(JSON: $0.dictionaryObject!)!
-                
                 comments.append(comment)
-                
             })
             
-            print(self.comments)
             self.comments = comments
             self.tableView.reloadData()
-            
         }
     }
     

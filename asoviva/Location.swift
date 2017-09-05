@@ -19,7 +19,6 @@ struct Location: Mappable{
     var vicinity:String!
     var annotation = MKPointAnnotation()
     var placeId:String!
-    var storeimage:UIImage? = nil
     var price:Int!
     var commentnumber:Int!
     var recommendnumber:Int!

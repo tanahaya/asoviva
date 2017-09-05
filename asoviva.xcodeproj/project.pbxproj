@@ -24,6 +24,7 @@
 		9F238EB21F55728100890BAC /* imageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F238EB11F55728100890BAC /* imageCollectionViewCell.swift */; };
 		9F271BA01F56F01D003DB766 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F271B9E1F56F01D003DB766 /* Realm.framework */; };
 		9F271BA11F56F01D003DB766 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F271B9F1F56F01D003DB766 /* RealmSwift.framework */; };
+		9F3ED3C91F579647003A5434 /* nophoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F3ED3C81F579647003A5434 /* nophoto.png */; };
 		9F571F5F1F52498F00279CE4 /* selectImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F571F5D1F52498F00279CE4 /* selectImageTableViewCell.swift */; };
 		9F571F601F52498F00279CE4 /* selectImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F571F5E1F52498F00279CE4 /* selectImageTableViewCell.xib */; };
 		9F571F621F53891000279CE4 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F571F611F53891000279CE4 /* Comment.swift */; };
@@ -99,6 +100,7 @@
 		9F238EB11F55728100890BAC /* imageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageCollectionViewCell.swift; sourceTree = "<group>"; };
 		9F271B9E1F56F01D003DB766 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		9F271B9F1F56F01D003DB766 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		9F3ED3C81F579647003A5434 /* nophoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nophoto.png; sourceTree = "<group>"; };
 		9F4514F51E3751CF002CFE04 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ObjectMapper/ObjectMapper.framework"; sourceTree = "<group>"; };
 		9F571F5D1F52498F00279CE4 /* selectImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectImageTableViewCell.swift; sourceTree = "<group>"; };
 		9F571F5E1F52498F00279CE4 /* selectImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = selectImageTableViewCell.xib; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				9F8CBB101DD1E574002B3DBA /* Main.storyboard */,
 				9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */,
 				9F8CBB181DD1E574002B3DBA /* Info.plist */,
+				9F3ED3C81F579647003A5434 /* nophoto.png */,
 				9F6439341F55AE7A00C5CADD /* pin2.png */,
 				9F9B56491EE99B3400673F60 /* sampleimage.jpg */,
 				9F1C808A1F504791003EED9F /* アイコン.jpg */,
@@ -431,6 +434,7 @@
 				9F1C807F1F48A719003EED9F /* commentTableViewCell.xib in Resources */,
 				9F0BA2A21EC6EEE700B0630A /* storeTableViewCell.xib in Resources */,
 				9F571F601F52498F00279CE4 /* selectImageTableViewCell.xib in Resources */,
+				9F3ED3C91F579647003A5434 /* nophoto.png in Resources */,
 				9F1C808B1F504791003EED9F /* アイコン.jpg in Resources */,
 				9F6439351F55AE7A00C5CADD /* pin2.png in Resources */,
 			);

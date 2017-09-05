@@ -104,6 +104,11 @@ class storeTableViewCell: UITableViewCell{
         favoriteview.layer.cornerRadius = 5.0
         timeview.layer.cornerRadius = 5.0
         
+        storeimage1.image = UIImage(named: "nophoto.png")
+        storeimage2.image = UIImage(named: "nophoto.png")
+        storeimage3.image = UIImage(named: "nophoto.png")
+        storeimage4.image = UIImage(named: "nophoto.png")
+        
         super.awakeFromNib()
     }
     

@@ -142,7 +142,7 @@ class postcommentFormViewController:FormViewController {
                         // print(response.result.value!)
                         
                     }
-                    SCLAlertView().showInfo("お気に入り登録完了", subTitle: "")
+                    SCLAlertView().showInfo("投稿登録完了", subTitle: "")
                     
                     //let MyPageController = MyPageViewController()
                     self.navigationController?.presentingViewController?.dismiss(animated: true, completion: nil)

@@ -40,6 +40,10 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.getComment()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.getComment()
+    }
+    
     func gocomment(sender: UIButton){
         if self.userDefaults.bool(forKey: "signup") == false {
             print("Signup済み")
@@ -48,7 +52,7 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         }else if self.userDefaults.bool(forKey: "signup"){
             print("Signupまだ")
-            SCLAlertView().showInfo("ユーザー登録をしてください", subTitle: "MyPageに行きましょう")
+            SCLAlertView().showInfo("ユーザー未登録です", subTitle: "MyPageに行きましょう")
         }
     }
     

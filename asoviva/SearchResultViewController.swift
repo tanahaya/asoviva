@@ -44,8 +44,8 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         let mapframe: CGRect = CGRect(x: 0, y: 95, width: self.view.frame.width, height: self.view.frame.height / 2 - 95 )
         //let mapframe: CGRect = CGRect(x: 0, y: 60 , width: self.view.frame.width, height: self.view.frame.height / 2 + 15)
         mapView.frame = mapframe
-        let nowlat: Double = 35.680298
-        let nowlng: Double = 139.766247
+        let nowlat: Double = self.UserDafault.double(forKey: "searchlat")
+        let nowlng: Double = self.UserDafault.double(forKey: "searchlng")
         let myLatitude: CLLocationDegrees = nowlat
         let myLongitude: CLLocationDegrees = nowlng
         let center: CLLocationCoordinate2D = CLLocationCoordinate2DMake(myLatitude, myLongitude)
@@ -201,11 +201,7 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         cell.favoriteButton.tag = indexPath.row
         cell.timeButton.tag = indexPath.row
         
-        if locations[indexPath.row].storeimage == nil{
-            
-        }else{
-            cell.storeimage1.image = locations[indexPath.row].storeimage
-        }
+        
         
         if locations[indexPath.row].photos == nil {
             
@@ -339,11 +335,12 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
     func searchplaceRubyonRails(){
         
         if (self.UserDafault.object(forKey: "lat") != nil) {
-            self.params["lat"] = self.UserDafault.double(forKey: "lat")
-            self.params["lng"] = self.UserDafault.double(forKey: "lng")
+            self.params["lat"] = self.UserDafault.double(forKey: "searchlat")
+            self.params["lng"] = self.UserDafault.double(forKey: "searchlng")
         }
         if (self.UserDafault.object(forKey: "keyword") != nil) {
-            self.params["keyword"] = self.UserDafault.string(forKey: "keyword")
+            //self.params["keyword"] = self.UserDafault.string(forKey: "keyword")
+            self.params["keyword"] = "karaoke"
         }
         
         Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace/search", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in

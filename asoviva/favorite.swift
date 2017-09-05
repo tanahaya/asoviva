@@ -51,9 +51,6 @@ class favorite: Object{
         storedata.photo4 = photo4
         
         return storedata
-        
-        
-        
     }
     static func update(model:favorite,extended: Bool) {
         try! realm.write({

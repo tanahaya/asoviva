@@ -116,8 +116,8 @@ extension SearchFormViewController: GMSAutocompleteViewControllerDelegate {
         // 名前をoutletに設定
         // name.text = place.name
         
-        userDefaults.set(place.coordinate.latitude, forKey: "lat")
-        userDefaults.set(place.coordinate.longitude, forKey: "lng")
+        userDefaults.set(place.coordinate.latitude, forKey: "searchlat")
+        userDefaults.set(place.coordinate.longitude, forKey: "searchlng")
         //print("Place name: \(place.name)")
         //print("Place address: \(String(describing: place.formattedAddress))")
         //print("Place attributions: \(String(describing: place.attributions))")

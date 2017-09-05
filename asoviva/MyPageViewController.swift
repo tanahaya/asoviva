@@ -35,12 +35,12 @@ class MyPageViewController: FormViewController {
                 $0.cellSetup({ (cell, row) in
                     cell.customImage.frame = CGRect(x: 20, y: 20, width:80 , height: 80)
                     cell.customImage.layer.position =  CGPoint(x: 50, y: 50)
-                    let nowImage: UIImage = UIImage(named: "sampleimage.jpg")!
+                    
                     cell.customImage.layer.masksToBounds = true
                     cell.customImage.layer.cornerRadius = 40
-                    cell.customImage.image = nowImage
+                    cell.customImage.image = UIImage.fontAwesomeIcon(name: .userCircle, textColor: UIColor.black, size: CGSize(width:80,height:80))
                     if self.userDefaults.bool(forKey: "signup") == false {
-                        
+                    
                         cell.nameLabel.text = self.userDefaults.dictionary(forKey: "userinformation")?["username"] as? String
                         print("Signup済み")
                     }else if self.userDefaults.bool(forKey: "signup"){

@@ -29,27 +29,27 @@ class SignupViewController: FormViewController {
         form +++ Section("ユーザー情報")
             <<< TextRow("ユーザー名"){ row in
                 row.title = "ユーザー名"
-                row.placeholder = "ユーザー名を決めて下さい"
+                row.placeholder = "username"
                 }.onChange(){row in
                     self.params["username"] = row.value ?? String()
             }
             
             <<< TextRow("学校"){ row in
                 row.title = "学校"
-                row.placeholder = "あなたの学校を打ち込んで下さい"
+                row.placeholder = "school"
                 }.onChange(){row in
                     self.params["school"] = row.value ?? String()
             }
             <<< EmailRow("メールアドレス"){ row in
                 row.title = "メールアドレス"
-                row.placeholder = "メールアドレスを打ち込んで下さい"
+                row.placeholder = "email"
                 }.onChange(){row in
                     self.params["email"] = row.value ?? String()
             }
             
             <<< PasswordRow("パスワード"){ row in
                 row.title = "パスワード"
-                row.placeholder = "パスワードを決めて下さい"
+                row.placeholder = "password"
                 
                 }.onChange(){row in
                     self.params["password"] = row.value ?? String()
@@ -74,7 +74,7 @@ class SignupViewController: FormViewController {
                         self.userDefaults.set(false, forKey: "signup")
                         print("初回起動")
                     }
-                    SCLAlertView().showInfo("お気に入り登録完了", subTitle: "")
+                    SCLAlertView().showInfo("ユーザー登録完了", subTitle: "")
                     
                     let MyPageController = MyPageViewController()
                     self.navigationController?.pushViewController(MyPageController, animated: true)

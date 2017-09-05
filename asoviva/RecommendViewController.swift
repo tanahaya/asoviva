@@ -148,6 +148,10 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.searchplaceRubyonRails()
+    }
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .notDetermined:
@@ -171,10 +175,10 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         cell.priceLabel.text = " \(locations[indexPath.row].price!)" + "円"
         cell.favoriteLabel.text = "\( Double(locations[indexPath.row].recommendnumber) / 10.0 )" + "点"
         
-        if indexPath.row == 1{
-            cell.commentLabel.text = "2つ"
-        }
-        if indexPath.row % 3 == 0 {
+        if indexPath.row == 0{
+            cell.commentLabel.text = "4つ"
+            cell.photoLabel.text = "4枚"
+        }else if indexPath.row % 3 == 0 {
             cell.photoLabel.text = "4枚"
             cell.commentLabel.text = "1つ"
         }else{
@@ -214,11 +218,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         cell.favoriteButton.tag = indexPath.row
         cell.timeButton.tag = indexPath.row
         
-        if locations[indexPath.row].storeimage == nil{
-            
-        }else{
-            cell.storeimage1.image = locations[indexPath.row].storeimage
-        }
         
         if locations[indexPath.row].photos == nil {
             
@@ -327,6 +326,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         print("favorite")
         
         print("sender:" + String(sender.tag))
+        
         let storedata = favorite()
         storedata.storename = locations[sender.tag].storename
         storedata.lat = locations[sender.tag].lat
