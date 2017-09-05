@@ -340,12 +340,16 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         }
         if (self.UserDafault.object(forKey: "keyword") != nil) {
             //self.params["keyword"] = self.UserDafault.string(forKey: "keyword")
-            self.params["keyword"] = "karaoke"
+            self.params["keyword"] = "からおけ"
         }
         
         Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace/search", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
             
-            let res = JSON(response.result.value!)
+            guard let value = response.result.value else {
+                
+                return
+            }
+            let res = JSON(value)
             var locations: [Location] = []
             res["results"].array?.forEach({
                 var location:Location = Mapper<Location>().map(JSON: $0.dictionaryObject!)!

@@ -172,8 +172,8 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
         
         cell.nameLabel.text = locations[indexPath.row].storename
-        cell.priceLabel.text = " \(locations[indexPath.row].price!)" + "円"
-        cell.favoriteLabel.text = "\( Double(locations[indexPath.row].recommendnumber) / 10.0 )" + "点"
+        cell.priceLabel.text = " \(locations[indexPath.row].price!)円"
+        cell.favoriteLabel.text = "\( Double(locations[indexPath.row].recommendnumber) / 10.0 )点"
         
         if indexPath.row == 0{
             cell.commentLabel.text = "4つ"
@@ -186,12 +186,35 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             cell.commentLabel.text = "\(locations[indexPath.row].commentnumber!)" + "つ"
         }
         
-        self.gettimeroute()
-        if indexPath.row == 0{
-            cell.distanceLabel.text = "8分"
-        }else {
-            cell.distanceLabel.text = "\(arc4random_uniform(10) + 7 )" + "分"
+        //以下時間を割り出す方法
+        let requestCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(locations[indexPath.row].lat, locations[indexPath.row].lng)
+        let fromCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake( nowlat, nowlng)
+        
+        let fromPlace: MKPlacemark = MKPlacemark(coordinate: fromCoordinate, addressDictionary: nil)
+        let toPlace: MKPlacemark = MKPlacemark(coordinate: requestCoordinate, addressDictionary: nil)
+        
+        let fromItem: MKMapItem = MKMapItem(placemark: fromPlace)
+        let toItem: MKMapItem = MKMapItem(placemark: toPlace)
+        
+        let myRequest: MKDirectionsRequest = MKDirectionsRequest()
+        
+        myRequest.source = fromItem
+        myRequest.destination = toItem
+        myRequest.requestsAlternateRoutes = true
+        myRequest.transportType = MKDirectionsTransportType.automobile
+        
+        let myDirections: MKDirections = MKDirections(request: myRequest)
+        
+        myDirections.calculate { (response, error) in
+            
+            if error != nil || response!.routes.isEmpty {
+                return
+            }
+            
+            let route: MKRoute = response!.routes[0] as MKRoute
+            cell.distanceLabel.text = ("\(Int(route.expectedTravelTime/60))分")
         }
+        
         if locations[indexPath.row].storename.characters.count > 24 {
             cell.nameLabel.font = UIFont.systemFont(ofSize: 10)
         }else if locations[indexPath.row].storename.characters.count > 19 {

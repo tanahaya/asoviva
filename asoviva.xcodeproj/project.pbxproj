@@ -382,6 +382,7 @@
 					9F8CBB081DD1E574002B3DBA = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = J476SJFME4;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					9F8CBB1C1DD1E574002B3DBA = {
@@ -800,6 +801,7 @@
 			baseConfigurationReference = 78CF1CE33110201566327E23 /* Pods-asoviva.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = J476SJFME4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -812,6 +814,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lit.asoviva;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -821,6 +824,7 @@
 			baseConfigurationReference = 2F3AF750FA1B45E6F99EE965 /* Pods-asoviva.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = J476SJFME4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
