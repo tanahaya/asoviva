@@ -22,6 +22,7 @@ struct Location: Mappable{
     var price:Int!
     var commentnumber:Int!
     var recommendnumber:Int!
+    var photonubmer:Int!
     var photos:[String]?
     
     init?(map: Map) {
@@ -36,6 +37,7 @@ struct Location: Mappable{
         commentnumber <- map["commentnumber"]
         recommendnumber <- map["recommendnumber"]
         photos <- map["photos"]
+        photonubmer <- map["photonumber"]
     }
 
 }

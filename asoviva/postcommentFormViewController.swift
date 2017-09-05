@@ -100,24 +100,28 @@ class postcommentFormViewController:FormViewController {
                                     let encodeString1:String = data1.base64EncodedString(options: .lineLength64Characters)
                                     self.comment["photo1"] = encodeString1
                                     self.params["photo1"] = encodeString1
+                                    self.userDefaults.set( 1, forKey: "photonumber")
                                 }else if self.number == 2 {
                                     row.0.imageView2.image = image
                                     let data2: NSData = UIImageJPEGRepresentation(image!, 0.2)! as NSData
                                     let encodeString2:String = data2.base64EncodedString(options: .lineLength64Characters)
                                     self.comment["photo2"] = encodeString2
                                     self.params["photo2"] = encodeString2
+                                    self.userDefaults.set( 1, forKey: "photonumber")
                                 }else if self.number == 3 {
                                     row.0.imageView3.image = image
                                     let data3: NSData = UIImageJPEGRepresentation(image!, 0.2)! as NSData
                                     let encodeString3:String = data3.base64EncodedString(options: .lineLength64Characters)
                                     self.comment["photo3"] = encodeString3
                                     self.params["photo3"] = encodeString3
+                                    self.userDefaults.set( 1, forKey: "photonumber")
                                 }else if self.number == 4 {
                                     row.0.imageView4.image = image
                                     let data4: NSData = UIImageJPEGRepresentation(image!, 0.2)! as NSData
                                     let encodeString4:String = data4.base64EncodedString(options: .lineLength64Characters)
                                     self.comment["photo4"] = encodeString4
                                     self.params["photo4"] = encodeString4
+                                    self.userDefaults.set( 1, forKey: "photonumber")
                                 }
                             })
                         }
@@ -136,6 +140,7 @@ class postcommentFormViewController:FormViewController {
                     let time:Int = self.comment["time"] as! Int
                     self.params["price"] = money / time
                     self.params["microposts"] = self.comment
+                    self.params["photonumber"] = self.userDefaults.integer(forKey: "photonumber")
                     print(self.params)
                     
                     Alamofire.request("https://server-tanahaya.c9users.io/api/microposts" , method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
