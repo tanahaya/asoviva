@@ -24,7 +24,7 @@ class postcommentFormViewController:FormViewController {
         super.viewDidLoad()
         
         self.setup()
-        params["user_id"] = userDefaults.dictionary(forKey: "userinformation")?["user_id"]
+        params["usertoken"] = userDefaults.dictionary(forKey: "userinformation")?["user_token"]
         comment["writer"] = userDefaults.dictionary(forKey: "userinformation")?["username"]
         comment["school"] = userDefaults.dictionary(forKey: "userinformation")?["school"]
         comment["place_id"] = userDefaults.string(forKey: "place_id")

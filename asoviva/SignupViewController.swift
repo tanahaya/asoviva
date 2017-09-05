@@ -63,9 +63,9 @@ class SignupViewController: FormViewController {
                     
                     Alamofire.request("https://server-tanahaya.c9users.io/api/signup" , method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
                         
-                        //print(response.result.value as! [String : Any])
+                        print(response.result.value!)
                         self.add = response.result.value as! [String : Any]
-                        self.params["user_id"] = self.add["user_id"]
+                        self.params["usertoken"] = self.add["usertoken"]
                         print(self.params)
                         self.userDefaults.set( self.params, forKey: "userinformation")
                     }
@@ -74,6 +74,7 @@ class SignupViewController: FormViewController {
                         self.userDefaults.set(false, forKey: "signup")
                         print("初回起動")
                     }
+                    
                     SCLAlertView().showInfo("ユーザー登録完了", subTitle: "")
                     
                     let MyPageController = MyPageViewController()
