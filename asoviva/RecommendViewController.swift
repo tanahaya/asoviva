@@ -173,17 +173,15 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         cell.nameLabel.text = locations[indexPath.row].storename
         cell.priceLabel.text = " \(locations[indexPath.row].price!)円"
-        cell.favoriteLabel.text = "\( Double(locations[indexPath.row].recommendnumber) / 10.0 )点"
+        cell.favoriteLabel.text = "\( Double(locations[indexPath.row].recommendnumber!) / 10.0 )点"
+        cell.commentLabel.text = "\( locations[indexPath.row].commentnumber! )個"
         
         if indexPath.row == 0{
-            cell.commentLabel.text = "4つ"
             cell.photoLabel.text = "4枚"
         }else if indexPath.row % 3 == 0 {
             cell.photoLabel.text = "4枚"
-            cell.commentLabel.text = "1つ"
         }else{
             cell.photoLabel.text = "0枚"
-            cell.commentLabel.text = "\(locations[indexPath.row].commentnumber!)" + "つ"
         }
         
         //以下時間を割り出す方法
@@ -240,7 +238,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         cell.distanceButton.tag = indexPath.row
         cell.favoriteButton.tag = indexPath.row
         cell.timeButton.tag = indexPath.row
-        
         
         if locations[indexPath.row].photos == nil {
             
