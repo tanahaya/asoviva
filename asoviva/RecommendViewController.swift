@@ -172,8 +172,18 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
         
         cell.nameLabel.text = locations[indexPath.row].storename
-        cell.priceLabel.text = " \(locations[indexPath.row].price!)円"
-        cell.favoriteLabel.text = "\( Double(locations[indexPath.row].recommendnumber!) / 10.0 )点"
+        
+        if locations[indexPath.row].price == nil {
+            cell.priceLabel.text = "--円"
+        }else{
+            cell.priceLabel.text = "\(locations[indexPath.row].price!)円"
+        }
+        if locations[indexPath.row].recommendnumber == nil {
+            cell.favoriteLabel.text = "--点"
+        }else {
+            cell.favoriteLabel.text = "\( Double(locations[indexPath.row].recommendnumber!) / 10.0 )点"
+        }
+        
         cell.commentLabel.text = "\( locations[indexPath.row].commentnumber! )個"
         cell.photoLabel.text = "\( locations[indexPath.row].photonubmer! )枚"
         
@@ -197,11 +207,9 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         let myDirections: MKDirections = MKDirections(request: myRequest)
         
         myDirections.calculate { (response, error) in
-            
             if error != nil || response!.routes.isEmpty {
                 return
             }
-            
             let route: MKRoute = response!.routes[0] as MKRoute
             cell.distanceLabel.text = ("\(Int(route.expectedTravelTime/60))分")
         }

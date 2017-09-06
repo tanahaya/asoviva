@@ -30,11 +30,11 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*
+        
          try! realm.write {
          realm.deleteAll()
          }
-         */
+        
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         self.view.addSubview(storeTableView)
@@ -61,8 +61,19 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
         
         let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
         cell.nameLabel.text = nowfavorite.storename
-        cell.priceLabel.text = " \(nowfavorite.price)" + "円"
-        cell.favoriteLabel.text = "\( Double(nowfavorite.recommendnumber) / 10.0 )" + "点"
+        
+        if nowfavorite.price == 0 {
+            cell.priceLabel.text = "--円"
+        }else {
+            cell.priceLabel.text = " \(nowfavorite.price)" + "円"
+        }
+        if nowfavorite.recommendnumber == 0 {
+            cell.favoriteLabel.text = "--点"
+        }else {
+            cell.favoriteLabel.text = "\( Double(nowfavorite.recommendnumber) / 10.0 )" + "点"
+        }
+        
+        
         cell.commentLabel.text = "\(nowfavorite.commentnumber)" + "つ"
         if indexPath.row == 0{
             cell.photoLabel.text = "4枚"
