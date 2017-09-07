@@ -16,7 +16,7 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
     let userDefaults = UserDefaults.standard
     var collectionView : UICollectionView!
     var params:[String:Any] = [:]
-    var images:[String] = []
+    var images:[Any] = []
     
     var detailWindow:UIWindow!
     var detailScrollView:UIScrollView!
@@ -51,6 +51,8 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
         self.view.backgroundColor = UIColor.flatSand()
         
         self.view.addSubview(collectionView)
+        
+        self.getimage()
         
     }
     
@@ -121,7 +123,7 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4//images.count
+        return self.images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -130,7 +132,8 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
         
         cell.backgroundColor = UIColor.orange
         
-        let dataDecoded : Data = Data(base64Encoded: userDefaults.string(forKey: "photo\(indexPath.row)")!, options: .ignoreUnknownCharacters)!
+        let str = String(describing: self.images[indexPath.row])
+        let dataDecoded : Data = Data(base64Encoded: str, options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         cell.ImageView.image = decodedimage
         
@@ -143,17 +146,21 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
     func getimage(){
         
         print("getimage")
-        var photos: [String] = []
+        self.images = []
         
-        Alamofire.request("https://server-tanahaya.c9users.io/api/microposts/image", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
+        Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace/image", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
             
             let res = JSON(response.result.value!)
-            print(res)
-            
-            //self.images = res.rawValue as! [String]
-            
+            if res["photos"] == "nophoto"{
+                print(res["photos"])
+            }else{
+                for i in 0 ..< res["photos"].count {
+                    self.images.append(res["photos"][i])
+                }
+                print(self.images)
+            }
+            self.collectionView.reloadData()
         }
-        
     }
     
     func hide(){
