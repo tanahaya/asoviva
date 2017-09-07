@@ -22,10 +22,6 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
     var detailScrollView:UIScrollView!
     var detailPageControl:UIPageControl!
     var closeButton:UIButton!
-    var imageView1:UIImageView!
-    var imageView2:UIImageView!
-    var imageView3:UIImageView!
-    var imageView4:UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,35 +64,28 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
         detailWindow.backgroundColor = UIColor.black
         self.detailWindow.makeKeyAndVisible()
         
-        let pageSize = 4
+        let pageSize = self.images.count
         
         detailScrollView = UIScrollView(frame: self.view.frame)
         detailScrollView.showsHorizontalScrollIndicator = false
         detailScrollView.showsVerticalScrollIndicator = false
         detailScrollView.isPagingEnabled = true
         detailScrollView.delegate = self
-        detailScrollView.contentSize = CGSize(width: 1500,height: 0)
+        detailScrollView.contentSize = CGSize(width: 375 * self.images.count ,height: 0)
         
-        imageView1 = UIImageView(frame: CGRect(x: 0,y: 70,width: 375,height: 375))
-        imageView2 = UIImageView(frame: CGRect(x: 375,y: 70,width: 375,height: 375))
-        imageView3 = UIImageView(frame: CGRect(x: 750,y: 70,width: 375,height: 375))
-        imageView4 = UIImageView(frame: CGRect(x: 1125,y: 70,width: 375,height: 375))
-        
-        let dataDecoded1 : Data = Data(base64Encoded: userDefaults.string(forKey: "photo0")!, options: .ignoreUnknownCharacters)!
-        let decodedimage1 = UIImage(data: dataDecoded1)
-        imageView1.image = decodedimage1
-        
-        let dataDecoded2 : Data = Data(base64Encoded: userDefaults.string(forKey: "photo1")!, options: .ignoreUnknownCharacters)!
-        let decodedimage2 = UIImage(data: dataDecoded2)
-        imageView2.image = decodedimage2
-        
-        let dataDecoded3 : Data = Data(base64Encoded: userDefaults.string(forKey: "photo2")!, options: .ignoreUnknownCharacters)!
-        let decodedimage3 = UIImage(data: dataDecoded3)
-        imageView3.image = decodedimage3
-        
-        let dataDecoded4 : Data = Data(base64Encoded: userDefaults.string(forKey: "photo3")!, options: .ignoreUnknownCharacters)!
-        let decodedimage4 = UIImage(data: dataDecoded4)
-        imageView4.image = decodedimage4
+        for i in 0 ..< self.images.count {
+            
+            var imageView:UIImageView!
+            imageView = UIImageView(frame: CGRect(x: 0 + 375 * i,y: 70,width: 375,height: 375))
+            
+            let str = String(describing: self.images[i])
+            let dataDecoded : Data = Data(base64Encoded: str, options: .ignoreUnknownCharacters)!
+            let decodedimage = UIImage(data: dataDecoded)
+            imageView.image = decodedimage
+            
+            detailScrollView.addSubview(imageView)
+            
+        }
         
         detailPageControl = UIPageControl(frame: CGRect(x: 120,y: 450,width: 100,height: 50))
         detailPageControl.layer.position = CGPoint(x: self.view.frame.width/2, y: 475)
@@ -114,10 +103,6 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
         closeButton.addTarget(self, action: #selector(hide), for: .touchUpInside)
         
         detailWindow.addSubview(detailScrollView)
-        detailScrollView.addSubview(imageView1)
-        detailScrollView.addSubview(imageView2)
-        detailScrollView.addSubview(imageView3)
-        detailScrollView.addSubview(imageView4)
         detailWindow.addSubview(detailPageControl)
         detailWindow.addSubview(closeButton)
     }
