@@ -186,7 +186,12 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         cell.commentLabel.text = "\( locations[indexPath.row].commentnumber! )個"
         cell.photoLabel.text = "\( locations[indexPath.row].photonubmer! )枚"
-        
+        if locations[indexPath.row].opennow{
+            
+        }else{
+            let clockImage = UIImage.fontAwesomeIcon(name: .clockO, textColor: UIColor.flatNavyBlueColorDark(), size: CGSize(width:25,height:25))
+            cell.timeimage.image = clockImage
+        }
         //以下時間を割り出す方法
         let requestCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(locations[indexPath.row].lat, locations[indexPath.row].lng)
         let fromCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake( nowlat, nowlng)
@@ -290,10 +295,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         self.navigationController?.pushViewController(webviewController, animated: true)
     }
     
-    func firstButton(){
-        print("first")
-    }
-    
     func sortchange(segcon: UISegmentedControl){
         
         underlineLayer.frame.origin.x = CGFloat(segcon.selectedSegmentIndex) * segmentItemWidth + 15
@@ -381,6 +382,11 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     }
     func timebutton(sender: UIButton) {
         print("time")
+        if locations[sender.tag].opennow{
+            SCLAlertView().showInfo("現在、開店中です。", subTitle: "")
+        }else{
+            SCLAlertView().showInfo("現在、閉店中です。", subTitle: "")
+        }
     }
     
     func searchplaceRubyonRails(){
@@ -395,6 +401,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
                 var location:Location = Mapper<Location>().map(JSON: $0.dictionaryObject!)!
                 location.lat = $0["geometry"]["location"]["lat"].doubleValue
                 location.lng = $0["geometry"]["location"]["lng"].doubleValue
+                location.opennow = $0["opening_hours"]["open_now"].boolValue
                 let Pin: MKPointAnnotation = MKPointAnnotation()
                 Pin.coordinate = CLLocationCoordinate2DMake(location.lat,location.lng)
                 Pin.title = location.storename
