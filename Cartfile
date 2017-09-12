@@ -3,3 +3,4 @@ github "Hearst-DD/ObjectMapper"
 github "xmartlabs/Eureka" ~> 3.0
 github "ViccAlexander/Chameleon"
 github "realm/realm-cocoa"
+github "SwiftyJSON/SwiftyJSON"

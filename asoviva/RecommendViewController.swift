@@ -146,6 +146,9 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         self.searchplaceRubyonRails()
         self.navigationItem.title  = "Asoviva"
         
+        let rightButton = UIBarButtonItem(title: "Line", style: UIBarButtonItemStyle.plain, target: self, action: #selector ( sendMessage))
+        self.navigationItem.rightBarButtonItem = rightButton
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -417,6 +420,27 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     func gettimeroute(){
         
+    }
+    
+    func sendMessage()  {
+        print("UseLinetoSendMessage")
+        let lineSchemeMessage: String! = "line://msg/text/"
+        var scheme: String! = lineSchemeMessage + "asoviva://next"//text
+        
+        scheme = scheme.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let messageURL: URL! = URL(string: scheme)
+        
+        self.openURL(messageURL)
+        
+    }
+    
+    func openURL(_ url: URL) {
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            // 本来であれば、指定したURLで開けないときの実装を別途行う必要がある
+            print("failed to open..")
+        }
     }
     
 }

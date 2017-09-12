@@ -43,6 +43,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
     }
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        //URLの確認なので無くてもOK
+        print(url)
+        /*
+        print(url.scheme)
+        print(url.host)
+        print(url.path)
+        print(url.query)
+        */
+        //リクエストされたURLの中からhostの値を取得して変数に代入
+        let urlHost : String = url.host as String!
+        
+        //urlHostにnextが入っていた場合はmainstoryboard内のnextViewControllerのviewを表示する
+        if(urlHost == "next"){
+            let resultVC: MainViewController =  MainViewController()
+            self.window?.rootViewController = resultVC
+        }
+        self.window?.makeKeyAndVisible()
+        
+        return true
+    }
+
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
