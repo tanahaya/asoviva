@@ -113,9 +113,7 @@ extension SearchFormViewController: GMSAutocompleteViewControllerDelegate {
     // オートコンプリートで場所が選択した時に呼ばれる関数
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         
-        // 名前をoutletに設定
-        // name.text = place.name
-        
+        viewController.autocompleteFilter?.country = "Japan"
         userDefaults.set(place.coordinate.latitude, forKey: "searchlat")
         userDefaults.set(place.coordinate.longitude, forKey: "searchlng")
         //print("Place name: \(place.name)")

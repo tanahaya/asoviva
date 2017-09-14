@@ -9,6 +9,8 @@
 import UIKit
 import Eureka
 import Alamofire
+import GoogleMaps
+import GooglePlaces
 
 class SignupViewController: FormViewController {
     
@@ -16,13 +18,17 @@ class SignupViewController: FormViewController {
     
     var params: [String: Any] = ["username": "","email": "","school": "","password": ""]
     var add:[String:Any] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setup()
         
         self.navigationItem.title  = "Asoviva"
-        // Do any additional setup after loading the view.
+        
+        GMSPlacesClient.provideAPIKey("AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY")
+        GMSServices.provideAPIKey("AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY")
+        
     }
     func setup() {
         
@@ -33,13 +39,13 @@ class SignupViewController: FormViewController {
                 }.onChange(){row in
                     self.params["username"] = row.value ?? String()
             }
-            
-            <<< TextRow("学校"){ row in
-                row.title = "学校"
-                row.placeholder = "school"
-                }.onChange(){row in
-                    self.params["school"] = row.value ?? String()
+            <<< schoolButtonRow("school"){ row in
+                
+                
+                }.onCellSelection(){ row in
+                    self.place()
             }
+            
             <<< EmailRow("メールアドレス"){ row in
                 row.title = "メールアドレス"
                 row.placeholder = "email"
@@ -54,12 +60,13 @@ class SignupViewController: FormViewController {
                 }.onChange(){row in
                     self.params["password"] = row.value ?? String()
         }
-        
         form +++ Section("ユーザー情報")
             <<< ButtonRow("登録"){ row in
                 row.title = "登録"
                 
                 }.onCellSelection(){row in
+                    
+                    
                     
                     Alamofire.request("https://server-tanahaya.c9users.io/api/signup" , method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
                         
@@ -83,4 +90,38 @@ class SignupViewController: FormViewController {
         
     }
     
+    func place(){
+        let autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.delegate = self
+        present(autocompleteController, animated: true, completion: nil)
+    }
+    
+}
+
+extension SignupViewController: GMSAutocompleteViewControllerDelegate {
+    
+    // オートコンプリートで場所が選択した時に呼ばれる関数
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        
+        viewController.autocompleteFilter?.country = "Japan"
+        
+        userDefaults.set(place.name, forKey: "school")
+        let row: schoolButtonRow? = self.form.rowBy(tag: "school")
+        row?.cell.schoolLabel.text = place.name
+        self.params["school"] = place.placeID
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        // TODO: handle the error.
+        print("Error: \(error)")
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // User cancelled the operation.
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        print("Autocomplete was cancelled.")
+        dismiss(animated: true, completion: nil)
+    }
 }

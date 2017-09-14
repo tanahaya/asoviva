@@ -45,6 +45,8 @@
 		9F9B56531EECEB6D00673F60 /* EurekaButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B56511EECEB6D00673F60 /* EurekaButtonTableViewCell.swift */; };
 		9F9B56541EECEB6D00673F60 /* EurekaButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F9B56521EECEB6D00673F60 /* EurekaButtonTableViewCell.xib */; };
 		9FB64B041E3762DF00C3C430 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB64B031E3762DF00C3C430 /* Location.swift */; };
+		9FBCE8C21F6AA8A700CEE223 /* schoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBCE8C01F6AA8A700CEE223 /* schoolTableViewCell.swift */; };
+		9FBCE8C31F6AA8A700CEE223 /* schoolTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FBCE8C11F6AA8A700CEE223 /* schoolTableViewCell.xib */; };
 		9FC4E9671EF1258F00DD039F /* Chameleon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC4E9661EF1258F00DD039F /* Chameleon.framework */; };
 		9FD5BF031EDF0D3B00D1F65D /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF021EDF0D3B00D1F65D /* WebPageViewController.swift */; };
 		9FD5BF071EDF0D7A00D1F65D /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */; };
@@ -131,6 +133,8 @@
 		9F9B56511EECEB6D00673F60 /* EurekaButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurekaButtonTableViewCell.swift; sourceTree = "<group>"; };
 		9F9B56521EECEB6D00673F60 /* EurekaButtonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EurekaButtonTableViewCell.xib; sourceTree = "<group>"; };
 		9FB64B031E3762DF00C3C430 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		9FBCE8C01F6AA8A700CEE223 /* schoolTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = schoolTableViewCell.swift; sourceTree = "<group>"; };
+		9FBCE8C11F6AA8A700CEE223 /* schoolTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = schoolTableViewCell.xib; sourceTree = "<group>"; };
 		9FC4E9641EF1232B00DD039F /* ChameleonFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ChameleonFramework.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ChameleonFramework/ChameleonFramework.framework"; sourceTree = "<group>"; };
 		9FC4E9661EF1258F00DD039F /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
 		9FC4E96E1EF1354100DD039F /* FoldingCell.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = FoldingCell.framework.dSYM; path = Carthage/Build/iOS/FoldingCell.framework.dSYM; sourceTree = "<group>"; };
@@ -279,6 +283,8 @@
 				9F9B56521EECEB6D00673F60 /* EurekaButtonTableViewCell.xib */,
 				9F571F5D1F52498F00279CE4 /* selectImageTableViewCell.swift */,
 				9F571F5E1F52498F00279CE4 /* selectImageTableViewCell.xib */,
+				9FBCE8C01F6AA8A700CEE223 /* schoolTableViewCell.swift */,
+				9FBCE8C11F6AA8A700CEE223 /* schoolTableViewCell.xib */,
 				9F8CBB131DD1E574002B3DBA /* Assets.xcassets */,
 				9F8CBB101DD1E574002B3DBA /* Main.storyboard */,
 				9F8CBB151DD1E574002B3DBA /* LaunchScreen.storyboard */,
@@ -427,6 +433,7 @@
 				9FECD2B61EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib in Resources */,
 				9F9B56541EECEB6D00673F60 /* EurekaButtonTableViewCell.xib in Resources */,
 				9F1C808D1F5049E6003EED9F /* asoviva.png in Resources */,
+				9FBCE8C31F6AA8A700CEE223 /* schoolTableViewCell.xib in Resources */,
 				9F8CBB171DD1E574002B3DBA /* LaunchScreen.storyboard in Resources */,
 				9F9B564A1EE99B3400673F60 /* sampleimage.jpg in Resources */,
 				9F8CBB141DD1E574002B3DBA /* Assets.xcassets in Resources */,
@@ -644,6 +651,7 @@
 				9FD5BF071EDF0D7A00D1F65D /* RouteViewController.swift in Sources */,
 				9FECD2B51EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift in Sources */,
 				9FECD2D71EC5CBB3007E3C87 /* SCLAlertView.swift in Sources */,
+				9FBCE8C21F6AA8A700CEE223 /* schoolTableViewCell.swift in Sources */,
 				9FECD2BA1EC318BE007E3C87 /* RecommendViewController.swift in Sources */,
 				9F238EB01F55652600890BAC /* schoolTimelineViewController.swift in Sources */,
 			);
