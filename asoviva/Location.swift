@@ -25,6 +25,7 @@ struct Location: Mappable{
     var photonubmer:Int!
     var photos:[String]?
     var opennow:Bool!
+    var phonenubmer:String!
     
     init?(map: Map) {
         

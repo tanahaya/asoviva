@@ -108,6 +108,7 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return self.images.count
     }
     
@@ -121,8 +122,6 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
         let dataDecoded : Data = Data(base64Encoded: str, options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         cell.ImageView.image = decodedimage
-        
-        //cell.ImageView.image = UIImage.fontAwesomeIcon(name: .userCircle, textColor: UIColor.black, size: CGSize(width:100,height:100))
         
         return cell
         
@@ -159,7 +158,6 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
         
         if fmod(detailScrollView.contentOffset.x, detailScrollView.frame.maxX) == 0 {
             let on:Int = Int(detailScrollView.contentOffset.x / detailScrollView.frame.maxX)
-            
             detailPageControl.currentPage = on
         }
         

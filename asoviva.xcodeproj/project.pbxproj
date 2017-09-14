@@ -48,7 +48,6 @@
 		9FBCE8C21F6AA8A700CEE223 /* schoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBCE8C01F6AA8A700CEE223 /* schoolTableViewCell.swift */; };
 		9FBCE8C31F6AA8A700CEE223 /* schoolTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FBCE8C11F6AA8A700CEE223 /* schoolTableViewCell.xib */; };
 		9FC4E9671EF1258F00DD039F /* Chameleon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC4E9661EF1258F00DD039F /* Chameleon.framework */; };
-		9FD5BF031EDF0D3B00D1F65D /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF021EDF0D3B00D1F65D /* WebPageViewController.swift */; };
 		9FD5BF071EDF0D7A00D1F65D /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */; };
 		9FD5BF091EE2F4F300D1F65D /* SearchFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF081EE2F4F300D1F65D /* SearchFormViewController.swift */; };
 		9FECD2B51EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */; };
@@ -139,7 +138,6 @@
 		9FC4E9661EF1258F00DD039F /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
 		9FC4E96E1EF1354100DD039F /* FoldingCell.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = FoldingCell.framework.dSYM; path = Carthage/Build/iOS/FoldingCell.framework.dSYM; sourceTree = "<group>"; };
 		9FC4E9701EF1355000DD039F /* FoldingCell.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FoldingCell.framework; path = Carthage/Build/iOS/FoldingCell.framework; sourceTree = "<group>"; };
-		9FD5BF021EDF0D3B00D1F65D /* WebPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebPageViewController.swift; sourceTree = "<group>"; };
 		9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
 		9FD5BF081EE2F4F300D1F65D /* SearchFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFormViewController.swift; sourceTree = "<group>"; };
 		9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurekaImageCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -268,7 +266,6 @@
 				9F571F611F53891000279CE4 /* Comment.swift */,
 				9F1C80861F4CC448003EED9F /* showImageViewController.swift */,
 				9F238EB11F55728100890BAC /* imageCollectionViewCell.swift */,
-				9FD5BF021EDF0D3B00D1F65D /* WebPageViewController.swift */,
 				9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */,
 				9FD5BF081EE2F4F300D1F65D /* SearchFormViewController.swift */,
 				9F63FBD21DD1EEE100150F34 /* SearchResultViewController.swift */,
@@ -642,7 +639,6 @@
 				9FB64B041E3762DF00C3C430 /* Location.swift in Sources */,
 				9F1CBFB31EF662E2008335FE /* commentViewController.swift in Sources */,
 				9F0BA2A11EC6EEE700B0630A /* storeTableViewCell.swift in Sources */,
-				9FD5BF031EDF0D3B00D1F65D /* WebPageViewController.swift in Sources */,
 				9FECD2B81EC1D89B007E3C87 /* FavoriteViewController.swift in Sources */,
 				9FECD2CD1EC598B9007E3C87 /* MyPageViewController.swift in Sources */,
 				9F1C80841F4C44EF003EED9F /* postcommentFormViewController.swift in Sources */,

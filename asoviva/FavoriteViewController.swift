@@ -30,11 +30,11 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        /*
          try! realm.write {
          realm.deleteAll()
          }
-        
+        */
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         self.view.addSubview(storeTableView)

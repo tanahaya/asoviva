@@ -69,7 +69,6 @@ class storeTableViewCell: UITableViewCell{
         favoriteimage.image = heartImage
         timeimage.image = clockImage
         
-        //backview.backgroundColor = UIColor.flatWhite()
         nameLabel.textColor = UIColor.flatBlack()
         nameunderview.backgroundColor = UIColor.flatSkyBlue()
         
@@ -103,11 +102,6 @@ class storeTableViewCell: UITableViewCell{
         phoneview.layer.cornerRadius = 5.0
         favoriteview.layer.cornerRadius = 5.0
         timeview.layer.cornerRadius = 5.0
-        
-        storeimage1.image = UIImage(named: "nophoto.png")
-        storeimage2.image = UIImage(named: "nophoto.png")
-        storeimage3.image = UIImage(named: "nophoto.png")
-        storeimage4.image = UIImage(named: "nophoto.png")
         
         super.awakeFromNib()
     }

@@ -36,6 +36,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     var locations:[Location] = []
     
+    
     lazy var mapView: MKMapView = {
         
         let mapView: MKMapView = MKMapView()
@@ -67,7 +68,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     lazy var storeTableView: UITableView = {
         
         let tableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height / 2 - 15,  width: self.view.frame.width, height: self.view.frame.height / 2 - 35 ))
-        //let tableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height / 2 - 45 ,  width: self.view.frame.width, height: 330))
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
@@ -125,6 +125,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         label3.layer.position = CGPoint(x:self.view.frame.width * 5 / 6,y: 15)
         Segcon.addSubview(label3)
         
+        
         self.view.backgroundColor = UIColor.white
         let status = CLLocationManager.authorizationStatus()
         if status == .notDetermined {
@@ -142,13 +143,12 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         nowlng = 139.766247
         self.view.addSubview(mapView)
         self.view.addSubview(storeTableView)
-        //self.searchrecommendPlace()
         self.searchplaceRubyonRails()
         self.navigationItem.title  = "Asoviva"
         
         let rightButton = UIBarButtonItem(title: "Line", style: UIBarButtonItemStyle.plain, target: self, action: #selector ( sendMessage))
         self.navigationItem.rightBarButtonItem = rightButton
-    
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -189,12 +189,16 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         cell.commentLabel.text = "\( locations[indexPath.row].commentnumber! )個"
         cell.photoLabel.text = "\( locations[indexPath.row].photonubmer! )枚"
+        
         if locations[indexPath.row].opennow{
+            let clockImage = UIImage.fontAwesomeIcon(name: .clockO, textColor: UIColor.white, size: CGSize(width:25,height:25))
+            cell.timeimage.image = clockImage
             
         }else{
             let clockImage = UIImage.fontAwesomeIcon(name: .clockO, textColor: UIColor.flatNavyBlueColorDark(), size: CGSize(width:25,height:25))
             cell.timeimage.image = clockImage
         }
+        
         //以下時間を割り出す方法
         let requestCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(locations[indexPath.row].lat, locations[indexPath.row].lng)
         let fromCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake( nowlat, nowlng)
@@ -228,7 +232,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             cell.nameLabel.font = UIFont.systemFont(ofSize: 12)
         }else if locations[indexPath.row].storename.characters.count > 14 {
             cell.nameLabel.font = UIFont.systemFont(ofSize: 14)
-        }else  {
+        }else{
             cell.nameLabel.font = UIFont.systemFont(ofSize: 17)
         }
         
@@ -249,9 +253,12 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         cell.timeButton.tag = indexPath.row
         
         if locations[indexPath.row].photos == nil {
-            
-        }else{
-            
+            cell.storeimage1.image = UIImage(named: "nophoto.png")
+            cell.storeimage2.image = UIImage(named: "nophoto.png")
+            cell.storeimage3.image = UIImage(named: "nophoto.png")
+            cell.storeimage4.image = UIImage(named: "nophoto.png")
+        }else {
+            print(indexPath.row)
             let dataDecoded1 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[0])!, options: .ignoreUnknownCharacters)!
             let decodedimage1 = UIImage(data: dataDecoded1)
             cell.storeimage1.image = decodedimage1
@@ -267,12 +274,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             let dataDecoded4 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[3])!, options: .ignoreUnknownCharacters)!
             let decodedimage4 = UIImage(data: dataDecoded4)
             cell.storeimage4.image = decodedimage4
-            
-            UserDafault.set( (locations[indexPath.row].photos?[0])!, forKey: "photo0")
-            UserDafault.set( (locations[indexPath.row].photos?[1])!, forKey: "photo1")
-            UserDafault.set( (locations[indexPath.row].photos?[2])!, forKey: "photo2")
-            UserDafault.set( (locations[indexPath.row].photos?[3])!, forKey: "photo3")
-            
         }
         
         return cell
@@ -285,17 +286,8 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
         
         tableView.deselectRow(at: indexPath, animated: true)
-        
-    }
-    
-    func moveweb(sender: UIButton) {
-        let webviewController = WebPageViewController()
-        // webviewController.url = locations[sender.tag]
-        
-        self.navigationController?.pushViewController(webviewController, animated: true)
     }
     
     func sortchange(segcon: UISegmentedControl){
@@ -314,19 +306,22 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         }
         
     }
+    
     func pricebutton(sender: UIButton){
         print("price")
         
     }
     
     func phonebutton(sender: UIButton){
-        let url = NSURL(string: "tel://09012345678")!
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url as URL)
-        } else {
-            UIApplication.shared.openURL(url as URL)
-        }
-        print("phone")
+        /*
+         let url = NSURL(string: locations[sender.tag].photonubmer)!
+         if #available(iOS 10.0, *) {
+         UIApplication.shared.open(url as URL)
+         } else {
+         UIApplication.shared.openURL(url as URL)
+         }
+         print("phone")
+         */
     }
     
     func commentbutton(sender: UIButton) {

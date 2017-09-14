@@ -18,8 +18,10 @@ public class schoolTableViewCell: Cell<Bool>, CellType{
         super.setup()
         height = { return 44 }
         nameLabel.text = "学校"
+        
         schoolLabel.text = "school"
-        //schoolLabel.textColor = UIColor.flatGray()
+        schoolLabel.textAlignment = NSTextAlignment.right
+        schoolLabel.textColor = UIColor.lightGray
         
     }
     

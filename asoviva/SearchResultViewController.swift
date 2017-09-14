@@ -251,13 +251,6 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         
     }
     
-    func moveweb(sender: UIButton) {
-        let webviewController = WebPageViewController()
-        // webviewController.url = locations[sender.tag]
-        
-        self.navigationController?.pushViewController(webviewController, animated: true)
-    }
-    
     func firstButton(){
         print("first")
     }
