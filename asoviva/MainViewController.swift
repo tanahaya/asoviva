@@ -67,7 +67,6 @@ class MainViewController: UITabBarController{
             self.array.append(schoolNavi)
             self.array.append(mypageNavi)
         }
-        //self.setViewControllers([ recommendNavi, searchNavi,favorNavi, schoolNavi, mypageNavi], animated: false)
         self.setViewControllers( self.array as? [UIViewController], animated: false)
     }
     

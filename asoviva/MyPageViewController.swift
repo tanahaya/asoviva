@@ -17,15 +17,18 @@ class MyPageViewController: FormViewController {
         super.viewDidLoad()
         
         self.setup()
-        
+        print(self.userDefaults.dictionary(forKey: "userinformation")?["username"] ?? String())
         if self.userDefaults.bool(forKey: "signup") == false {
-            
-            print("Signup済み")
+            let row: CustomRow? = self.form.rowBy(tag: "user")
+            row?.cell.nameLabel.text = self.userDefaults.dictionary(forKey: "userinformation")?["username"] as? String
+            print(row?.cell.nameLabel.text ?? String())
+        }else if self.userDefaults.bool(forKey: "signup"){
+            print("ユーザー未登録")
         }
         
         self.navigationItem.title  = "Asoviva"
-        
         self.navigationItem.hidesBackButton = true
+        
     }
     func alert(){
         SCLAlertView().showInfo("準備中", subTitle: "")
@@ -33,12 +36,11 @@ class MyPageViewController: FormViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         if self.userDefaults.bool(forKey: "signup") == false {
-            
             let row: CustomRow? = self.form.rowBy(tag: "user")
             row?.cell.nameLabel.text = self.userDefaults.dictionary(forKey: "userinformation")?["username"] as? String
-            print("Signup済み")
+            print(row?.cell.nameLabel.text ?? String())
         }else if self.userDefaults.bool(forKey: "signup"){
-            
+            print("ユーザー未登録")
         }
     }
     func setup() {

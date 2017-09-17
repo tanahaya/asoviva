@@ -33,6 +33,8 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     var locations:[Location] = []
     
+    var params:[String: Any] = [:]
+    
     lazy var mapView: MKMapView = {
         
         let mapView: MKMapView = MKMapView()
@@ -116,7 +118,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         let label3: UILabel = UILabel(frame: CGRect(x:0 , y: 0, width: 100, height: 20))
         label3.textColor = UIColor.black
-        label3.text = "距離"
+        label3.text = "アクセス"
         label3.textAlignment = NSTextAlignment.center
         label3.layer.position = CGPoint(x:self.view.frame.width * 5 / 6,y: 15)
         Segcon.addSubview(label3)
@@ -142,9 +144,9 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         self.searchplaceRubyonRails()
         self.navigationItem.title  = "Asoviva"
         /*
-        let rightButton = UIBarButtonItem(title: "Line", style: UIBarButtonItemStyle.plain, target: self, action: #selector ( sendMessage))
-        self.navigationItem.rightBarButtonItem = rightButton
-        */
+         let rightButton = UIBarButtonItem(title: "Line", style: UIBarButtonItemStyle.plain, target: self, action: #selector ( sendMessage))
+         self.navigationItem.rightBarButtonItem = rightButton
+         */
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -293,12 +295,16 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         switch segcon.selectedSegmentIndex {
         case 0:
             print("0")
+            self.params["sort"] = "price"
         case 1:
             print("1")
+            self.params["sort"] = "recommend"
         case 2:
             print("2")
+            self.params["sort"] = "time"
         default:
             print("default")
+            self.params["sort"] = "price"
         }
         
     }
@@ -344,13 +350,13 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     func commentbutton(sender: UIButton) {
         print("comment")
         let alert = SCLAlertView()
-        alert.addButton("コメントを投稿する", action: {})
+        alert.addButton("コメントを投稿する", action: {
+            self.UserDafault.set(self.locations[sender.tag].placeId, forKey: "place_id")
+            self.UserDafault.set(self.locations[sender.tag].storename, forKey: "place_name")
+            let commentview = commentViewController()
+            self.navigationController?.pushViewController(commentview, animated: true)
+        })
         alert.showSuccess("コメントがまだありません", subTitle: "コメントを書きますか?")
-        
-        UserDafault.set(locations[sender.tag].placeId, forKey: "place_id")
-        UserDafault.set(locations[sender.tag].storename, forKey: "place_name")
-        let commentview = commentViewController()
-        self.navigationController?.pushViewController(commentview, animated: true)
     }
     
     func distancebutton(sender: UIButton){
@@ -365,28 +371,28 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     func favoritebutton(sender: UIButton) {
         print("favorite")
         
-        print("sender:" + String(sender.tag))
-        
-        let storedata = favorite()
-        storedata.storename = locations[sender.tag].storename
-        storedata.lat = locations[sender.tag].lat
-        storedata.lng = locations[sender.tag].lng
-        storedata.vicinity = locations[sender.tag].vicinity
-        storedata.placeid = locations[sender.tag].placeId
-        storedata.recommendnumber = locations[sender.tag].recommendnumber
-        storedata.commentnumber = locations[sender.tag].commentnumber
-        storedata.price = locations[sender.tag].price
-        storedata.photo1 = locations[sender.tag].photos?[0]
-        storedata.photo2 = locations[sender.tag].photos?[1]
-        storedata.photo3 = locations[sender.tag].photos?[2]
-        storedata.photo4 = locations[sender.tag].photos?[3]
-        storedata.id = favorite.lastId()
-        
-        try! realm.write {
-            realm.add(storedata)
-        }
-        
-        SCLAlertView().showInfo("お気に入り登録完了", subTitle: "")
+        let alert = SCLAlertView()
+        alert.addButton("お気に入り登録", action: {
+            let storedata = favorite()
+            storedata.storename = self.locations[sender.tag].storename
+            storedata.lat = self.locations[sender.tag].lat
+            storedata.lng = self.locations[sender.tag].lng
+            storedata.vicinity = self.locations[sender.tag].vicinity
+            storedata.placeid = self.locations[sender.tag].placeId
+            storedata.recommendnumber = self.locations[sender.tag].recommendnumber
+            storedata.commentnumber = self.locations[sender.tag].commentnumber
+            storedata.price = self.locations[sender.tag].price
+            storedata.photo1 = self.locations[sender.tag].photos?[0]
+            storedata.photo2 = self.locations[sender.tag].photos?[1]
+            storedata.photo3 = self.locations[sender.tag].photos?[2]
+            storedata.photo4 = self.locations[sender.tag].photos?[3]
+            storedata.id = favorite.lastId()
+            
+            try! self.realm.write {
+                self.realm.add(storedata)
+            }
+        })
+        alert.showSuccess("お気に入り登録しますか？", subTitle: "")
         
     }
     
@@ -409,8 +415,8 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     func searchplaceRubyonRails(){
         
-        let params:[String: Any] = ["lat": 35.680298,"lng": 139.766247]
-        
+        self.params["lat"] = 35.680298
+        self.params["lng"] = 139.766247
         Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
             
             let res = JSON(response.result.value!)
