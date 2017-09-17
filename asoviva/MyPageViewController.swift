@@ -27,7 +27,9 @@ class MyPageViewController: FormViewController {
         
         self.navigationItem.hidesBackButton = true
     }
-    
+    func alert(){
+        SCLAlertView().showInfo("準備中", subTitle: "")
+    }
     func setup() {
         self.form +++ Section("")
             
@@ -40,7 +42,7 @@ class MyPageViewController: FormViewController {
                     cell.customImage.layer.cornerRadius = 40
                     cell.customImage.image = UIImage.fontAwesomeIcon(name: .userCircle, textColor: UIColor.black, size: CGSize(width:80,height:80))
                     if self.userDefaults.bool(forKey: "signup") == false {
-                    
+                        
                         cell.nameLabel.text = self.userDefaults.dictionary(forKey: "userinformation")?["username"] as? String
                         print("Signup済み")
                     }else if self.userDefaults.bool(forKey: "signup"){
@@ -71,6 +73,8 @@ class MyPageViewController: FormViewController {
                     
                     cell.nameLabel.text = "学生登録"
                 })
+                }.onChange(){row in
+                    self.alert()
             }
             <<< CustomButtonRow() {
                 
@@ -78,6 +82,8 @@ class MyPageViewController: FormViewController {
                     
                     cell.nameLabel.text = "通知設定"
                 })
+                }.onChange(){row in
+                    self.alert()
             }
             <<< CustomButtonRow() {
                 
@@ -85,6 +91,8 @@ class MyPageViewController: FormViewController {
                     
                     cell.nameLabel.text = "アカウント設定"
                 })
+                }.onChange(){row in
+                    self.alert()
         }
         
         self.form +++ Section("")
@@ -94,6 +102,8 @@ class MyPageViewController: FormViewController {
                     
                     cell.nameLabel.text = "レビューとお問い合わせ"
                 })
+                }.onChange(){row in
+                    self.alert()
             }
             <<< CustomButtonRow() {
                 
@@ -101,6 +111,8 @@ class MyPageViewController: FormViewController {
                     
                     cell.nameLabel.text = "利用規約"
                 })
+                }.onChange(){row in
+                    self.alert()
             }
             <<< CustomButtonRow() {
                 
@@ -108,6 +120,8 @@ class MyPageViewController: FormViewController {
                     
                     cell.nameLabel.text = "Third Party Software"
                 })
+                }.onChange(){row in
+                    self.alert()
         }
     }
 }

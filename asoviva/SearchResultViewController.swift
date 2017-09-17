@@ -196,7 +196,7 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         }
         
         cell.photoButton.addTarget(self, action: #selector(photobutton), for: .touchUpInside)
-        cell.phoneButton.addTarget(self, action: #selector(phonebutton), for: .touchUpInside)
+        cell.shareButton.addTarget(self, action: #selector(phonebutton), for: .touchUpInside)
         cell.priceButton.addTarget(self, action: #selector(pricebutton), for: .touchUpInside)
         cell.commentButton.addTarget(self, action: #selector(commentbutton), for: .touchUpInside)
         cell.distanceButton.addTarget(self, action: #selector(distancebutton), for: .touchUpInside)
@@ -204,7 +204,7 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         cell.timeButton.addTarget(self, action: #selector(timebutton), for: .touchUpInside)
         
         cell.photoButton.tag = indexPath.row
-        cell.phoneButton.tag = indexPath.row
+        cell.shareButton.tag = indexPath.row
         cell.priceButton.tag = indexPath.row
         cell.commentButton.tag = indexPath.row
         cell.distanceButton.tag = indexPath.row

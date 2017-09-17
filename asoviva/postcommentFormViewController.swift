@@ -13,7 +13,6 @@ import SwiftyJSON
 import DKImagePickerController
 
 
-
 class postcommentFormViewController:FormViewController {
     
     let userDefaults = UserDefaults.standard
@@ -150,9 +149,8 @@ class postcommentFormViewController:FormViewController {
                     }
                     SCLAlertView().showInfo("投稿登録完了", subTitle: "")
                     
-                    //let MyPageController = MyPageViewController()
-                    self.navigationController?.presentingViewController?.dismiss(animated: true, completion: nil)
-                    //self.navigationController?.pushViewController(MyPageController, animated: true)
+                    let MyPageController = MyPageViewController()
+                    self.navigationController?.pushViewController(MyPageController, animated: true)
                     
         }
     }

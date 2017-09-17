@@ -75,6 +75,7 @@ class SignupViewController: FormViewController {
                         self.params["usertoken"] = self.add["usertoken"]
                         print(self.params)
                         self.userDefaults.set( self.params, forKey: "userinformation")
+                        
                     }
                     
                     if self.userDefaults.bool(forKey: "signup") {
@@ -108,7 +109,16 @@ extension SignupViewController: GMSAutocompleteViewControllerDelegate {
         userDefaults.set(place.name, forKey: "school")
         let row: schoolButtonRow? = self.form.rowBy(tag: "school")
         row?.cell.schoolLabel.text = place.name
+        if place.name.characters.count > 19 {
+            row?.cell.schoolLabel.font = UIFont.systemFont(ofSize: 13)
+        }else if place.name.characters.count > 14 {
+            row?.cell.schoolLabel.font = UIFont.systemFont(ofSize: 15)
+        }else{
+            row?.cell.schoolLabel.font = UIFont.systemFont(ofSize: 17)
+        }
+        
         self.params["school"] = place.placeID
+        self.userDefaults.set( place.placeID, forKey: "school")
         dismiss(animated: true, completion: nil)
         
     }

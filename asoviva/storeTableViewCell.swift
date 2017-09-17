@@ -26,7 +26,7 @@ class storeTableViewCell: UITableViewCell{
     @IBOutlet var priceview:UIView!
     @IBOutlet var commentview:UIView!
     @IBOutlet var distanceview:UIView!
-    @IBOutlet var phoneview:UIView!
+    @IBOutlet var shareview:UIView!
     @IBOutlet var favoriteview:UIView!
     @IBOutlet var timeview:UIView!
     
@@ -34,7 +34,7 @@ class storeTableViewCell: UITableViewCell{
     @IBOutlet var priceimage:UIImageView!
     @IBOutlet var commentimage:UIImageView!
     @IBOutlet var distanceimage:UIImageView!
-    @IBOutlet var phoneimage:UIImageView!
+    @IBOutlet var shareimage:UIImageView!
     @IBOutlet var favoriteimage:UIImageView!
     @IBOutlet var timeimage:UIImageView!
     
@@ -47,7 +47,7 @@ class storeTableViewCell: UITableViewCell{
     @IBOutlet var priceButton:UIButton!
     @IBOutlet var commentButton:UIButton!
     @IBOutlet var distanceButton:UIButton!
-    @IBOutlet var phoneButton:UIButton!
+    @IBOutlet var shareButton:UIButton!
     @IBOutlet var favoriteButton:UIButton!
     @IBOutlet var timeButton:UIButton!
     
@@ -58,14 +58,14 @@ class storeTableViewCell: UITableViewCell{
         let commentImage = UIImage.fontAwesomeIcon(name: .commentingO, textColor: UIColor.white, size: CGSize(width:25,height:25))
         let mapImage = UIImage.fontAwesomeIcon(name: .mapMarker, textColor: UIColor.white, size: CGSize(width:25,height:25))
         let cameraImage = UIImage.fontAwesomeIcon(name: .camera, textColor: UIColor.white, size: CGSize(width:25,height:25))
-        let phoneImage = UIImage.fontAwesomeIcon(name: .phone, textColor: UIColor.white, size: CGSize(width:25,height:25))
+        let shareImage = UIImage.fontAwesomeIcon(name: .shareAlt, textColor: UIColor.white, size: CGSize(width:25,height:25))
         let clockImage = UIImage.fontAwesomeIcon(name: .clockO, textColor: UIColor.white, size: CGSize(width:25,height:25))
         
         photoimage.image = cameraImage
         priceimage.image = yenImage
         commentimage.image = commentImage
         distanceimage.image = mapImage
-        phoneimage.image = phoneImage
+        shareimage.image = shareImage
         favoriteimage.image = heartImage
         timeimage.image = clockImage
         
@@ -79,11 +79,10 @@ class storeTableViewCell: UITableViewCell{
         
         upperview.backgroundColor = UIColor.flatWhiteColorDark()
         
-        phoneview.backgroundColor = UIColor.flatNavyBlue()
         priceview.backgroundColor = UIColor.flatYellow()
         commentview.backgroundColor = UIColor.flatWatermelon()
         distanceview.backgroundColor = UIColor.flatGreen()
-        phoneview.backgroundColor = UIColor.flatSkyBlue()
+        shareview.backgroundColor = UIColor.flatSkyBlue()
         favoriteview.backgroundColor = UIColor.flatPink()
         timeview.backgroundColor = UIColor.flatMint()
         
@@ -91,7 +90,7 @@ class storeTableViewCell: UITableViewCell{
         priceview.layer.masksToBounds = true
         commentview.layer.masksToBounds = true
         distanceview.layer.masksToBounds = true
-        phoneview.layer.masksToBounds = true
+        shareview.layer.masksToBounds = true
         favoriteview.layer.masksToBounds = true
         timeview.layer.masksToBounds = true
         
@@ -99,7 +98,7 @@ class storeTableViewCell: UITableViewCell{
         priceview.layer.cornerRadius = 5.0
         commentview.layer.cornerRadius = 5.0
         distanceview.layer.cornerRadius = 5.0
-        phoneview.layer.cornerRadius = 5.0
+        shareview.layer.cornerRadius = 5.0
         favoriteview.layer.cornerRadius = 5.0
         timeview.layer.cornerRadius = 5.0
         

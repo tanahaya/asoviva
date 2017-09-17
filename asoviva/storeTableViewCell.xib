@@ -145,26 +145,6 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7yJ-mP-ukw" userLabel="phoneVoew">
-                                <rect key="frame" x="302" y="9" width="31" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Br-sa-y9e">
-                                        <rect key="frame" x="0.0" y="0.0" width="31" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZNV-eg-EbR">
-                                        <rect key="frame" x="3" y="3" width="25" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3LH-TQ-32r">
-                                        <rect key="frame" x="0.0" y="0.0" width="31" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o0P-rz-N0C" userLabel="timeVoew">
                                 <rect key="frame" x="336" y="9" width="31" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -235,6 +215,26 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v4U-pd-K8r" userLabel="shareVoew">
+                                <rect key="frame" x="301" y="9" width="31" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Trg-ij-oDx">
+                                        <rect key="frame" x="0.0" y="0.0" width="31" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VZB-Bl-w0V">
+                                        <rect key="frame" x="3" y="3" width="25" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peE-Oq-pmm">
+                                        <rect key="frame" x="0.0" y="0.0" width="31" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -256,9 +256,6 @@
                 <outlet property="favoriteview" destination="I8W-GX-yKk" id="nDz-KH-WcD"/>
                 <outlet property="nameLabel" destination="Uc2-nN-MWd" id="463-GO-bAX"/>
                 <outlet property="nameunderview" destination="e4M-Ss-CKx" id="TJa-Hs-fER"/>
-                <outlet property="phoneButton" destination="3LH-TQ-32r" id="OVh-jM-2R2"/>
-                <outlet property="phoneimage" destination="ZNV-eg-EbR" id="wxG-bS-8xJ"/>
-                <outlet property="phoneview" destination="5Br-sa-y9e" id="h26-Qz-GTg"/>
                 <outlet property="photoButton" destination="Mdn-yH-kqZ" id="ebg-7Z-HwF"/>
                 <outlet property="photoLabel" destination="7Za-Wl-BFX" id="R68-wo-hTD"/>
                 <outlet property="photoimage" destination="n1y-zQ-qac" id="sqb-ly-ipf"/>
@@ -267,6 +264,9 @@
                 <outlet property="priceLabel" destination="d5f-7u-Sgt" id="k7q-yo-X9r"/>
                 <outlet property="priceimage" destination="Kaw-Dj-yKR" id="kHN-eg-aFA"/>
                 <outlet property="priceview" destination="XXI-SO-gof" id="48u-Kc-fKe"/>
+                <outlet property="shareButton" destination="peE-Oq-pmm" id="eve-O1-mtd"/>
+                <outlet property="shareimage" destination="VZB-Bl-w0V" id="Ty0-9x-09u"/>
+                <outlet property="shareview" destination="Trg-ij-oDx" id="fM2-Ii-6vz"/>
                 <outlet property="storeimage1" destination="WeC-si-zys" id="MYe-eB-ElM"/>
                 <outlet property="storeimage2" destination="rga-Ts-7du" id="udK-7w-Fws"/>
                 <outlet property="storeimage3" destination="ITz-To-xAx" id="qOk-U9-KSV"/>

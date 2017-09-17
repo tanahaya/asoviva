@@ -15,12 +15,8 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
     
     let userDefaults = UserDefaults.standard
     var tableView: UITableView!
-    var params:[String:Any] = ["school":"聖光学院"]
+    var params:[String:Any] = [:]
     var comments:[Comment] = []
-    
-    var titlearray:[String] = ["楽しかった〜","サイコ〜","ここのカラオケよかったよ","楽し〜","たのしいよ"]
-    var writerarray:[String] = ["まるもん","ぴょきち","はやて","わみ","寛太"]
-    var contentarray:[String] = ["楽しかった〜。カラオケ館はやっっぱ最高","サイコ〜。今度、友達と期待な～。","ここのカラオケよかったよ。カラオケ館はやっっぱ最高","楽し〜。。今度、友達と期待な～。カラオケ館はやっっぱ最高","たのしいよ。一度行ってみるとわかる楽しさ。"]
     
     override func viewDidLoad() {
         
@@ -28,7 +24,7 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
         
         self.navigationItem.title  = "Asoviva"
         
-        //params["school"] = userDefaults.string(forKey: "school")
+        params["school"] = userDefaults.string(forKey: "school")
         
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
@@ -42,14 +38,6 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
         
         self.view.addSubview(tableView)
         
-        if self.userDefaults.bool(forKey: "signup") == false {
-            print("Signup済み")
-            
-        }else if self.userDefaults.bool(forKey: "signup"){
-            print("Signupまだ")
-            SCLAlertView().showInfo("ユーザー未登録です", subTitle: "MyPageに行きましょう")
-        }
-        
         self.getComment()
         
     }
@@ -60,7 +48,7 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
             tableView.reloadData()
         }else if self.userDefaults.bool(forKey: "signup"){
             print("Signupまだ")
-            
+            SCLAlertView().showInfo("ユーザー未登録です", subTitle: "MyPageに行きましょう")
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

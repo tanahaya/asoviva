@@ -47,6 +47,7 @@
 		9FB64B041E3762DF00C3C430 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB64B031E3762DF00C3C430 /* Location.swift */; };
 		9FBCE8C21F6AA8A700CEE223 /* schoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBCE8C01F6AA8A700CEE223 /* schoolTableViewCell.swift */; };
 		9FBCE8C31F6AA8A700CEE223 /* schoolTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FBCE8C11F6AA8A700CEE223 /* schoolTableViewCell.xib */; };
+		9FBCE8C51F6BB84C00CEE223 /* sharedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBCE8C41F6BB84C00CEE223 /* sharedViewController.swift */; };
 		9FC4E9671EF1258F00DD039F /* Chameleon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC4E9661EF1258F00DD039F /* Chameleon.framework */; };
 		9FD5BF071EDF0D7A00D1F65D /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */; };
 		9FD5BF091EE2F4F300D1F65D /* SearchFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF081EE2F4F300D1F65D /* SearchFormViewController.swift */; };
@@ -134,6 +135,7 @@
 		9FB64B031E3762DF00C3C430 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		9FBCE8C01F6AA8A700CEE223 /* schoolTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = schoolTableViewCell.swift; sourceTree = "<group>"; };
 		9FBCE8C11F6AA8A700CEE223 /* schoolTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = schoolTableViewCell.xib; sourceTree = "<group>"; };
+		9FBCE8C41F6BB84C00CEE223 /* sharedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sharedViewController.swift; sourceTree = "<group>"; };
 		9FC4E9641EF1232B00DD039F /* ChameleonFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ChameleonFramework.framework; path = "../../Library/Developer/Xcode/DerivedData/asoviva-fdgalpmzmcckcpbjtxkcbdbsxjjj/Build/Products/Debug-iphonesimulator/ChameleonFramework/ChameleonFramework.framework"; sourceTree = "<group>"; };
 		9FC4E9661EF1258F00DD039F /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
 		9FC4E96E1EF1354100DD039F /* FoldingCell.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = FoldingCell.framework.dSYM; path = Carthage/Build/iOS/FoldingCell.framework.dSYM; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				9FECD2B91EC318BE007E3C87 /* RecommendViewController.swift */,
 				9F0BA29F1EC6EEE700B0630A /* storeTableViewCell.swift */,
 				9F0BA2A01EC6EEE700B0630A /* storeTableViewCell.xib */,
+				9FBCE8C41F6BB84C00CEE223 /* sharedViewController.swift */,
 				9F1CBFB21EF662E2008335FE /* commentViewController.swift */,
 				9F1C807C1F48A719003EED9F /* commentTableViewCell.swift */,
 				9F1C807D1F48A719003EED9F /* commentTableViewCell.xib */,
@@ -634,6 +637,7 @@
 				9F1C807E1F48A719003EED9F /* commentTableViewCell.swift in Sources */,
 				9F63FBD31DD1EEE100150F34 /* SearchResultViewController.swift in Sources */,
 				9FD5BF091EE2F4F300D1F65D /* SearchFormViewController.swift in Sources */,
+				9FBCE8C51F6BB84C00CEE223 /* sharedViewController.swift in Sources */,
 				9F8B20681ECC5865001B7543 /* favorite.swift in Sources */,
 				9F9B56531EECEB6D00673F60 /* EurekaButtonTableViewCell.swift in Sources */,
 				9FB64B041E3762DF00C3C430 /* Location.swift in Sources */,

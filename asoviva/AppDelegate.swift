@@ -16,10 +16,12 @@ import Realm
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    let userDefaults = UserDefaults.standard
+    let userDefault = UserDefaults.standard
     let dict = ["signup": true]
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        userDefault.set(true, forKey: "nomalopen")
         
         let config = Realm.Configuration(
             schemaVersion: 1,
@@ -32,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         GMSServices.provideAPIKey("AIzaSyCwcR3jfPvo1SNdLFTTOe0dZ1_PX_AZ2xU")
         
-        self.userDefaults.register(defaults: dict)
+        self.userDefault.register(defaults: dict)
         
         let first: MainViewController = MainViewController()
         self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -45,26 +47,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         //URLの確認なので無くてもOK
-        print(url)
+        userDefault.set(false, forKey: "nomalopen")
         /*
-        print(url.scheme)
-        print(url.host)
-        print(url.path)
-        print(url.query)
-        */
+         print(url.scheme)
+         print(url.host)
+         print(url.path)
+         print(url.query)
+         */
         //リクエストされたURLの中からhostの値を取得して変数に代入
         let urlHost : String = url.host as String!
         
-        //urlHostにnextが入っていた場合はmainstoryboard内のnextViewControllerのviewを表示する
-        if(urlHost == "next"){
-            let resultVC: MainViewController =  MainViewController()
-            self.window?.rootViewController = resultVC
-        }
+        userDefault.set(urlHost, forKey: "sharedplaceid")
+        let resultVC: MainViewController =  MainViewController()
+        self.window?.rootViewController = resultVC
+        
         self.window?.makeKeyAndVisible()
         
         return true
     }
-
+    
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

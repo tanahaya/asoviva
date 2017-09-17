@@ -1,9 +1,9 @@
 //
-//  RecommendViewController.swift
+//  sharedViewController.swift
 //  asoviva
 //
-//  Created by 田中千洋 on 2016/11/15.
-//  Copyright © 2016年 田中 颯. All rights reserved.
+//  Created by 田中千洋 on 2017/09/15.
+//  Copyright © 2017年 田中 颯. All rights reserved.
 //
 
 import UIKit
@@ -16,7 +16,7 @@ import RealmSwift
 import Chameleon
 import Alamofire
 
-class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate{
+class sharedViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate {
     
     var Region: MKCoordinateRegion!
     var nowlat: CLLocationDegrees!
@@ -31,14 +31,16 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     let underlineLayer = CALayer()
     var segmentItemWidth:CGFloat = 0
     
+    let detailcolor = UIColor(red: 0, green: 108, blue: 241, alpha: 1.0)
+    let guidecolor = UIColor(red: 243 , green: 152, blue: 29, alpha: 1.0)
+    
     var locations:[Location] = []
     
     lazy var mapView: MKMapView = {
         
         let mapView: MKMapView = MKMapView()
         mapView.delegate = self
-        let mapframe: CGRect = CGRect(x: 0, y: 95, width: self.view.frame.width, height: self.view.frame.height / 2 - 95 )
-        //let mapframe: CGRect = CGRect(x: 0, y: 60 , width: self.view.frame.width, height: self.view.frame.height / 2 + 15)
+        let mapframe: CGRect = CGRect(x: 0, y: 65, width: self.view.frame.width, height: self.view.frame.height / 2 + 30)
         mapView.frame = mapframe
         let nowlat: Double = 35.680298
         let nowlng: Double = 139.766247
@@ -63,7 +65,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     lazy var storeTableView: UITableView = {
         
-        let tableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height / 2 - 15,  width: self.view.frame.width, height: self.view.frame.height / 2 - 35 ))
+        let tableView = UITableView(frame: CGRect(x: 0, y: self.view.frame.height / 2 + 95,  width: self.view.frame.width, height: self.view.frame.height / 2 - 100 ))
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
@@ -77,50 +79,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let sortArray: [String] = ["","",""]
-        
-        let orange = UIColor(red:255/255, green: 165/255, blue: 0/255, alpha: 0.6)
-        
-        var Segcon: UISegmentedControl!
-        Segcon = UISegmentedControl(items: sortArray as [AnyObject])
-        let attribute = [NSForegroundColorAttributeName:UIColor.black]
-        Segcon.setTitleTextAttributes(attribute, for: .normal)
-        Segcon.frame = CGRect(x:0,y: 0 ,width: self.view.frame.width, height:30)
-        Segcon.center = CGPoint(x: self.view.frame.width/2, y: 80)
-        Segcon.backgroundColor = UIColor.white
-        Segcon.tintColor = UIColor.clear
-        Segcon.addTarget(self, action: #selector(sortchange(segcon:)), for: UIControlEvents.valueChanged)
-        self.view.addSubview(Segcon)
-        
-        segmentItemWidth = self.view.frame.width / 3
-        underlineLayer.backgroundColor = orange.cgColor
-        underlineLayer.frame = CGRect(x:15,y: 5, width:self.view.frame.width / 3 - 30,height: 20)
-        underlineLayer.masksToBounds = true
-        underlineLayer.cornerRadius = 5.0
-        Segcon.layer.addSublayer(underlineLayer)
-        
-        let label1: UILabel = UILabel(frame: CGRect(x:0 , y: 0, width: 100, height: 20))
-        label1.textColor = UIColor.black
-        label1.text = "値段"
-        label1.textAlignment = NSTextAlignment.center
-        label1.layer.position = CGPoint(x:self.view.frame.width / 6,y: 15)
-        Segcon.addSubview(label1)
-        
-        let label2: UILabel = UILabel(frame: CGRect(x:0 , y: 0, width: 100, height: 20))
-        label2.textColor = UIColor.black
-        label2.text = "評価"
-        label2.textAlignment = NSTextAlignment.center
-        label2.layer.position = CGPoint(x:self.view.frame.width / 2,y: 15)
-        Segcon.addSubview(label2)
-        
-        let label3: UILabel = UILabel(frame: CGRect(x:0 , y: 0, width: 100, height: 20))
-        label3.textColor = UIColor.black
-        label3.text = "距離"
-        label3.textAlignment = NSTextAlignment.center
-        label3.layer.position = CGPoint(x:self.view.frame.width * 5 / 6,y: 15)
-        Segcon.addSubview(label3)
-        
         
         self.view.backgroundColor = UIColor.white
         let status = CLLocationManager.authorizationStatus()
@@ -139,12 +97,11 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         nowlng = 139.766247
         self.view.addSubview(mapView)
         self.view.addSubview(storeTableView)
-        self.searchplaceRubyonRails()
         self.navigationItem.title  = "Asoviva"
-        /*
-        let rightButton = UIBarButtonItem(title: "Line", style: UIBarButtonItemStyle.plain, target: self, action: #selector ( sendMessage))
-        self.navigationItem.rightBarButtonItem = rightButton
-        */
+        
+        let leftButton = UIBarButtonItem(title: "おすすめへ", style: UIBarButtonItemStyle.plain, target: self, action: #selector ( gorecommend))
+        self.navigationItem.leftBarButtonItem = leftButton
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -170,21 +127,31 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
         
-        cell.nameLabel.text = locations[indexPath.row].storename
+        cell.nameLabel.text = locations[0].storename
         
-        if locations[indexPath.row].price == nil {
+        if locations[0].price == nil {
             cell.priceLabel.text = "--円"
         }else{
-            cell.priceLabel.text = "\(locations[indexPath.row].price!)円"
-        }
-        if locations[indexPath.row].recommendnumber == nil {
-            cell.favoriteLabel.text = "--点"
-        }else {
-            cell.favoriteLabel.text = "\( Double(locations[indexPath.row].recommendnumber!) / 10.0 )点"
+            cell.priceLabel.text = "\(locations[0].price!)円"
         }
         
-        cell.commentLabel.text = "\( locations[indexPath.row].commentnumber! )個"
-        cell.photoLabel.text = "\( locations[indexPath.row].photonubmer! )枚"
+        if locations[0].recommendnumber == nil {
+            cell.favoriteLabel.text = "--点"
+        }else {
+            cell.favoriteLabel.text = "\( Double(locations[0].recommendnumber!) / 10.0 )点"
+        }
+        
+        if locations[0].commentnumber == nil {
+            cell.commentLabel.text = "0個"
+        }else {
+            cell.commentLabel.text = "\( locations[0].commentnumber! )個"
+        }
+        
+        if locations[0].photonubmer == nil {
+            cell.photoLabel.text = "0枚"
+        }else {
+            cell.photoLabel.text = "\( locations[0].photonubmer! )枚"
+        }
         
         if locations[indexPath.row].opennow{
             let clockImage = UIImage.fontAwesomeIcon(name: .clockO, textColor: UIColor.white, size: CGSize(width:25,height:25))
@@ -196,7 +163,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         }
         
         //以下時間を割り出す方法
-        let requestCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(locations[indexPath.row].lat, locations[indexPath.row].lng)
+        let requestCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(locations[0].lat, locations[0].lng)
         let fromCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake( nowlat, nowlng)
         
         let fromPlace: MKPlacemark = MKPlacemark(coordinate: fromCoordinate, addressDictionary: nil)
@@ -222,11 +189,11 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             cell.distanceLabel.text = ("\(Int(route.expectedTravelTime/60))分")
         }
         
-        if locations[indexPath.row].storename.characters.count > 24 {
+        if locations[0].storename.characters.count > 24 {
             cell.nameLabel.font = UIFont.systemFont(ofSize: 10)
-        }else if locations[indexPath.row].storename.characters.count > 19 {
+        }else if locations[0].storename.characters.count > 19 {
             cell.nameLabel.font = UIFont.systemFont(ofSize: 12)
-        }else if locations[indexPath.row].storename.characters.count > 14 {
+        }else if locations[0].storename.characters.count > 14 {
             cell.nameLabel.font = UIFont.systemFont(ofSize: 14)
         }else{
             cell.nameLabel.font = UIFont.systemFont(ofSize: 17)
@@ -240,34 +207,34 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         cell.favoriteButton.addTarget(self, action: #selector(favoritebutton), for: .touchUpInside)
         cell.timeButton.addTarget(self, action: #selector(timebutton), for: .touchUpInside)
         
-        cell.photoButton.tag = indexPath.row
-        cell.shareButton.tag = indexPath.row
-        cell.priceButton.tag = indexPath.row
-        cell.commentButton.tag = indexPath.row
-        cell.distanceButton.tag = indexPath.row
-        cell.favoriteButton.tag = indexPath.row
-        cell.timeButton.tag = indexPath.row
+        cell.photoButton.tag = 0
+        cell.shareButton.tag = 0
+        cell.priceButton.tag = 0
+        cell.commentButton.tag = 0
+        cell.distanceButton.tag = 0
+        cell.favoriteButton.tag = 0
+        cell.timeButton.tag = 0
         
-        if locations[indexPath.row].photos == nil {
+        if locations[0].photos == nil {
             cell.storeimage1.image = UIImage(named: "nophoto.png")
             cell.storeimage2.image = UIImage(named: "nophoto.png")
             cell.storeimage3.image = UIImage(named: "nophoto.png")
             cell.storeimage4.image = UIImage(named: "nophoto.png")
         }else {
             
-            let dataDecoded1 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[0])!, options: .ignoreUnknownCharacters)!
+            let dataDecoded1 : Data = Data(base64Encoded: (locations[0].photos?[0])!, options: .ignoreUnknownCharacters)!
             let decodedimage1 = UIImage(data: dataDecoded1)
             cell.storeimage1.image = decodedimage1
             
-            let dataDecoded2 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[1])!, options: .ignoreUnknownCharacters)!
+            let dataDecoded2 : Data = Data(base64Encoded: (locations[0].photos?[1])!, options: .ignoreUnknownCharacters)!
             let decodedimage2 = UIImage(data: dataDecoded2)
             cell.storeimage2.image = decodedimage2
             
-            let dataDecoded3 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[2])!, options: .ignoreUnknownCharacters)!
+            let dataDecoded3 : Data = Data(base64Encoded: (locations[0].photos?[2])!, options: .ignoreUnknownCharacters)!
             let decodedimage3 = UIImage(data: dataDecoded3)
             cell.storeimage3.image = decodedimage3
             
-            let dataDecoded4 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[3])!, options: .ignoreUnknownCharacters)!
+            let dataDecoded4 : Data = Data(base64Encoded: (locations[0].photos?[3])!, options: .ignoreUnknownCharacters)!
             let decodedimage4 = UIImage(data: dataDecoded4)
             cell.storeimage4.image = decodedimage4
         }
@@ -286,22 +253,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func sortchange(segcon: UISegmentedControl){
-        
-        underlineLayer.frame.origin.x = CGFloat(segcon.selectedSegmentIndex) * segmentItemWidth + 15
-        
-        switch segcon.selectedSegmentIndex {
-        case 0:
-            print("0")
-        case 1:
-            print("1")
-        case 2:
-            print("2")
-        default:
-            print("default")
-        }
-        
-    }
     
     func pricebutton(sender: UIButton){
         print("price")
@@ -311,7 +262,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     func sharebutton(sender: UIButton){
         let alertSheet = UIAlertController(title: "Share", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
         let lineSchemeMessage: String! = "line://msg/text/"
-        var scheme: String! = lineSchemeMessage + "asoviva://" + self.locations[sender.tag].placeId
+        var scheme: String! = lineSchemeMessage + "asoviva://" + self.locations[0].placeId
         
         let action1 = UIAlertAction(title: "Lineでシェア", style: UIAlertActionStyle.default, handler: {
             (action: UIAlertAction!) in
@@ -399,35 +350,39 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         print("time")
         if locations[sender.tag].opennow{
             SCLAlertView().showInfo("現在、開店中です。", subTitle: "")
-        }else {
+        }else{
             SCLAlertView().showInfo("現在、閉店中です。", subTitle: "")
         }
     }
     
     func searchplaceRubyonRails(){
-        
-        let params:[String: Any] = ["lat": 35.680298,"lng": 139.766247]
-        
-        Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+        self.locations = []
+        var params:[String: Any] = [:]
+        params["place_id"] = "ChIJhUl5xbOOGGARm0_QXUoAMIE"//UserDafault.string(forKey: "sharedplaceid")
+        //print(params)
+        Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace/shared", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
             
             let res = JSON(response.result.value!)
-            var locations: [Location] = []
-            res["results"].array?.forEach({
-                var location:Location = Mapper<Location>().map(JSON: $0.dictionaryObject!)!
-                location.lat = $0["geometry"]["location"]["lat"].doubleValue
-                location.lng = $0["geometry"]["location"]["lng"].doubleValue
-                location.opennow = $0["opening_hours"]["open_now"].boolValue
-                let Pin: MKPointAnnotation = MKPointAnnotation()
-                Pin.coordinate = CLLocationCoordinate2DMake(location.lat,location.lng)
-                Pin.title = location.storename
-                self.mapView.addAnnotation(Pin)
-                location.annotation = Pin
-                locations.append(location)
-            })
-            self.locations = locations
-            //print(self.locations)
+            
+            var location:Location = Mapper<Location>().map(JSON: res["result"].dictionaryObject!)!
+            location.lat = res["result"]["geometry"]["location"]["lat"].doubleValue
+            location.lng = res["result"]["geometry"]["location"]["lng"].doubleValue
+            location.opennow = res["result"]["opening_hours"]["open_now"].boolValue
+            let Pin: MKPointAnnotation = MKPointAnnotation()
+            Pin.coordinate = CLLocationCoordinate2DMake(location.lat,location.lng)
+            Pin.title = location.storename
+            self.mapView.addAnnotation(Pin)
+            location.annotation = Pin
+            let now: CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.lat, location.lng)
+            self.mapView.setCenter(now, animated: true)
+            self.locations.append(location)
             self.storeTableView.reloadData()
         }
+    }
+    
+    func gorecommend(){
+        let Recommend = RecommendViewController()
+        self.navigationController?.pushViewController( Recommend, animated: true)
     }
     
     
@@ -438,6 +393,17 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             // 本来であれば、指定したURLで開けないときの実装を別途行う必要がある
             print("failed to open..")
         }
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let testPinView = MKAnnotationView()
+        
+        testPinView.annotation = annotation
+        testPinView.image = UIImage(named:"pin2.png")
+        testPinView.canShowCallout = true
+        
+        return testPinView
     }
     
 }
