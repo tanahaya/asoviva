@@ -372,6 +372,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         print("favorite")
         
         let alert = SCLAlertView()
+        alert.labelTitle.font =  UIFont.systemFont(ofSize: 15)
         alert.addButton("お気に入り登録", action: {
             let storedata = favorite()
             storedata.storename = self.locations[sender.tag].storename
@@ -379,9 +380,22 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             storedata.lng = self.locations[sender.tag].lng
             storedata.vicinity = self.locations[sender.tag].vicinity
             storedata.placeid = self.locations[sender.tag].placeId
-            storedata.recommendnumber = self.locations[sender.tag].recommendnumber
-            storedata.commentnumber = self.locations[sender.tag].commentnumber
-            storedata.price = self.locations[sender.tag].price
+            if self.locations[sender.tag].recommendnumber == nil{
+                storedata.recommendnumber = 30
+            }else{
+                storedata.recommendnumber = self.locations[sender.tag].recommendnumber
+            }
+            if self.locations[sender.tag].commentnumber == nil {
+                storedata.commentnumber = 0
+            }else{
+                storedata.commentnumber = self.locations[sender.tag].commentnumber
+            }
+            if self.locations[sender.tag].price == nil{
+                storedata.price = 1000
+            }else{
+                 storedata.price == self.locations[sender.tag].price
+            }
+            
             storedata.photo1 = self.locations[sender.tag].photos?[0]
             storedata.photo2 = self.locations[sender.tag].photos?[1]
             storedata.photo3 = self.locations[sender.tag].photos?[2]

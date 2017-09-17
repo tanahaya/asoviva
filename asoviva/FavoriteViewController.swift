@@ -101,19 +101,19 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
             cell.storeimage4.image = UIImage(named:"nophoto.png")
             
         }else {
-            let dataDecoded1 : Data = Data(base64Encoded: nowfavorite.photo1, options: .ignoreUnknownCharacters)!
+            let dataDecoded1 : Data = Data(base64Encoded: nowfavorite.photo1!, options: .ignoreUnknownCharacters)!
             let decodedimage1 = UIImage(data: dataDecoded1)
             cell.storeimage1.image = decodedimage1
             
-            let dataDecoded2 : Data = Data(base64Encoded: nowfavorite.photo2, options: .ignoreUnknownCharacters)!
+            let dataDecoded2 : Data = Data(base64Encoded: nowfavorite.photo2!, options: .ignoreUnknownCharacters)!
             let decodedimage2 = UIImage(data: dataDecoded2)
             cell.storeimage2.image = decodedimage2
             
-            let dataDecoded3 : Data = Data(base64Encoded: nowfavorite.photo3, options: .ignoreUnknownCharacters)!
+            let dataDecoded3 : Data = Data(base64Encoded: nowfavorite.photo3!, options: .ignoreUnknownCharacters)!
             let decodedimage3 = UIImage(data: dataDecoded3)
             cell.storeimage3.image = decodedimage3
             
-            let dataDecoded4 : Data = Data(base64Encoded: nowfavorite.photo4, options: .ignoreUnknownCharacters)!
+            let dataDecoded4 : Data = Data(base64Encoded: nowfavorite.photo4!, options: .ignoreUnknownCharacters)!
             let decodedimage4 = UIImage(data: dataDecoded4)
             cell.storeimage4.image = decodedimage4
         }

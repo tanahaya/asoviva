@@ -25,10 +25,10 @@ class favorite: Object{
     dynamic var price:Int = 0
     dynamic var recommendnumber:Int = 0
     dynamic var commentnumber:Int = 0
-    dynamic var photo1:String!
-    dynamic var photo2:String!
-    dynamic var photo3:String!
-    dynamic var photo4:String!
+    dynamic var photo1:String?
+    dynamic var photo2:String?
+    dynamic var photo3:String?
+    dynamic var photo4:String?
     
     
     override static func primaryKey() -> String {
