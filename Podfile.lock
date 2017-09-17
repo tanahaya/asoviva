@@ -12,19 +12,22 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (2.4.0):
     - GoogleMaps/Base (= 2.4.0)
+  - SCLAlertView (0.7.0)
 
 DEPENDENCIES:
   - Alamofire
   - DKImagePickerController
   - GoogleMaps
   - GooglePlaces
+  - SCLAlertView
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   DKImagePickerController: 4f8072aed44119a33955c9583273ea7c8739c0f4
   GoogleMaps: 8436ab5d1c25e36915b2f7416d0c8e3fa2e76c61
   GooglePlaces: aafe5990fa7951e98e078761bbdaaf236d7e0c65
+  SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
 
-PODFILE CHECKSUM: 238b0f69390f60c5851cc9aae08c39eb731f7605
+PODFILE CHECKSUM: c1c96969dc0cae90619a029c7229d5477125358d
 
 COCOAPODS: 1.2.1

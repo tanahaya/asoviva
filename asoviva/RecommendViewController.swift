@@ -343,6 +343,9 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     func commentbutton(sender: UIButton) {
         print("comment")
+        let alert = SCLAlertView()
+        alert.addButton("コメントを投稿する", action: {})
+        alert.showSuccess("コメントがまだありません", subTitle: "コメントを書きますか?")
         
         UserDafault.set(locations[sender.tag].placeId, forKey: "place_id")
         UserDafault.set(locations[sender.tag].storename, forKey: "place_name")
@@ -425,7 +428,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
                 locations.append(location)
             })
             self.locations = locations
-            //print(self.locations)
             self.storeTableView.reloadData()
         }
     }

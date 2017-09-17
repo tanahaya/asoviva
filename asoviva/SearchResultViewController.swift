@@ -143,7 +143,6 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         nowlng = 139.766247
         self.view.addSubview(mapView)
         self.view.addSubview(storeTableView)
-        //self.searchrecommendPlace()
         self.searchplaceRubyonRails()
         self.navigationItem.title  = "Asoviva"
         
@@ -182,7 +181,6 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         }
         
         cell.commentLabel.text = "\(locations[indexPath.row].commentnumber!)"
-        self.gettimeroute()
         cell.distanceLabel.text = "\(arc4random_uniform(10) + 7 )" + "分"
         
         if locations[indexPath.row].storename.characters.count > 24 {
@@ -372,9 +370,6 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         }
     }
     
-    func gettimeroute(){
-        
-    }
     
 }
 

@@ -30,6 +30,8 @@ class SignupViewController: FormViewController {
         GMSServices.provideAPIKey("AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY")
         
     }
+    
+    
     func setup() {
         
         form +++ Section("ユーザー情報")
@@ -65,8 +67,6 @@ class SignupViewController: FormViewController {
                 row.title = "登録"
                 
                 }.onCellSelection(){row in
-                    
-                    
                     
                     Alamofire.request("https://server-tanahaya.c9users.io/api/signup" , method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
                         
@@ -116,7 +116,7 @@ extension SignupViewController: GMSAutocompleteViewControllerDelegate {
         }else{
             row?.cell.schoolLabel.font = UIFont.systemFont(ofSize: 17)
         }
-        
+        row?.cell.schoolLabel.textColor = UIColor.black
         self.params["school"] = place.placeID
         self.userDefaults.set( place.placeID, forKey: "school")
         dismiss(animated: true, completion: nil)

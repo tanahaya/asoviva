@@ -8,6 +8,7 @@ target 'asoviva' do
   pod 'GooglePlaces' 
   pod 'Alamofire'
   pod 'DKImagePickerController'
+  pod 'SCLAlertView'
   # Pods for asoviva
   
 
