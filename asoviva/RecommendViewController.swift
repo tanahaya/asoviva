@@ -371,7 +371,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             if self.locations[sender.tag].price == nil{
                 storedata.price = 1000
             }else{
-                 storedata.price = self.locations[sender.tag].price
+                storedata.price = self.locations[sender.tag].price
             }
             
             storedata.photo1 = self.locations[sender.tag].photos?[0]
@@ -384,16 +384,22 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
                 self.realm.add(storedata)
             }
         })
-        alert.showSuccess("お気に入り登録しますか？", subTitle: "")
+        
         
     }
     
     func photobutton(sender: UIButton) {
         print("photo")
-        
-        UserDafault.set(locations[sender.tag].placeId, forKey: "place_id")
-        let showImage = showImageViewController()
-        self.navigationController?.pushViewController(showImage, animated: true)
+        if locations[sender.tag].photonubmer == 0{
+            let alert = SCLAlertView()
+            alert.labelTitle.font =  UIFont.systemFont(ofSize: 15)
+            alert.showSuccess("写真がありません", subTitle: "")
+        }else{
+            
+            UserDafault.set(locations[sender.tag].placeId, forKey: "place_id")
+            let showImage = showImageViewController()
+            self.navigationController?.pushViewController(showImage, animated: true)
+        }
         
     }
     func timebutton(sender: UIButton) {

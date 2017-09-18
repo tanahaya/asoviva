@@ -106,6 +106,7 @@ extension SearchFormViewController: GMSAutocompleteViewControllerDelegate {
         viewController.autocompleteFilter?.country = "Japan"
         UserDefault.set(place.coordinate.latitude, forKey: "searchlat")
         UserDefault.set(place.coordinate.longitude, forKey: "searchlng")
+        print("lat:::" + "\(place.coordinate.latitude)")
         //print("Place name: \(place.name)")
         //print("Place address: \(String(describing: place.formattedAddress))")
         //print("Place attributions: \(String(describing: place.attributions))")

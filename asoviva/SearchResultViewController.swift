@@ -334,7 +334,7 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
     
     func searchplaceRubyonRails(){
         
-        if (self.UserDafault.object(forKey: "lat") != nil) {
+        if (self.UserDafault.object(forKey: "searchlat") != nil) {
             self.params["lat"] = self.UserDafault.double(forKey: "searchlat")
             self.params["lng"] = self.UserDafault.double(forKey: "searchlng")
         }
@@ -348,11 +348,10 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         if (self.UserDafault.object(forKey: "minrate") != nil) {
             self.params["minrate"] = self.UserDafault.float(forKey: "minrate")
         }
-        
+        print(self.params)
         Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace/search", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
-            
+            print(response.result.value!)
             guard let value = response.result.value else {
-                
                 return
             }
             let res = JSON(value)
