@@ -45,7 +45,13 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
     override func viewWillAppear(_ animated: Bool) {
         
         favorites = favorite.loadAll()
-        
+        if favorites.count == 0 {
+            
+            let alert = SCLAlertView()
+            alert.labelTitle.font =  UIFont.systemFont(ofSize: 13)
+            
+            alert.showSuccess("お気に入り登録がまだです。", subTitle: "遊び場をお気に入り登録しましょう")
+        }
         storeTableView.reloadData()
     }
     

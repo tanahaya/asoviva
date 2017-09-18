@@ -68,10 +68,11 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
         detailScrollView.delegate = self
         detailScrollView.contentSize = CGSize(width: 375 * self.images.count ,height: 0)
         
+        
         for i in 0 ..< self.images.count {
             
             var imageView:UIImageView!
-            imageView = UIImageView(frame: CGRect(x: 0 + 375 * i,y: 70,width: 375,height: 375))
+            imageView = UIImageView(frame: CGRect(x: 0 + 375 * i,y: 0,width: 375,height: 667))
             
             let str = String(describing: self.images[i])
             let dataDecoded : Data = Data(base64Encoded: str, options: .ignoreUnknownCharacters)!
@@ -87,6 +88,7 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
         detailPageControl.numberOfPages = pageSize
         detailPageControl.currentPage = 0
         detailPageControl.isUserInteractionEnabled = false
+        detailPageControl.currentPage = indexPath.row
         
         closeButton = UIButton(frame: CGRect(x:0, y:0, width:70, height:50))
         closeButton.backgroundColor = UIColor.orange
@@ -141,7 +143,6 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
     }
     
     func hide(){
-        
         detailWindow.isHidden = true
         detailScrollView.isHidden = true
         detailPageControl.isHidden = true

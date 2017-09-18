@@ -329,7 +329,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
                 let postcommentview = postcommentFormViewController()
                 self.navigationController?.pushViewController(postcommentview, animated: true)
             })
-            alert.showSuccess("コメントがまだありません", subTitle: "コメントを書きますか?")
+            alert.showNotice("コメントがまだありません", subTitle: "コメントを書きますか?")
         }
         self.UserDafault.set(self.locations[sender.tag].placeId, forKey: "place_id")
         self.UserDafault.set(self.locations[sender.tag].storename, forKey: "place_name")
@@ -409,7 +409,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         self.params["lat"] = 35.680298
         self.params["lng"] = 139.766247
-        print(self.params)
         Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
             
             let res = JSON(response.result.value!)
