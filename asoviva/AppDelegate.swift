@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        userDefault.set(true, forKey: "nomalopen")
+        UserDefault.set(true, forKey: "nomalopen")
         
         let config = Realm.Configuration(
             schemaVersion: 1,
@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         GMSServices.provideAPIKey("AIzaSyCwcR3jfPvo1SNdLFTTOe0dZ1_PX_AZ2xU")
         
-        self.userDefault.register(defaults: dict)
+        self.UserDefault.register(defaults: dict)
         
         let first: MainViewController = MainViewController()
         self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         //URLの確認なので無くてもOK
-        userDefault.set(false, forKey: "nomalopen")
+        UserDefault.set(false, forKey: "nomalopen")
         /*
          print(url.scheme)
          print(url.host)
