@@ -26,6 +26,7 @@ struct Location: Mappable{
     var photos:[String]?
     var opennow:Bool!
     var phonenubmer:String!
+    var time:Int!
     
     init?(map: Map) {
         
@@ -40,6 +41,7 @@ struct Location: Mappable{
         recommendnumber <- map["recommendnumber"]
         photos <- map["photos"]
         photonubmer <- map["photonumber"]
+        time <- map["time"]
     }
 
 }

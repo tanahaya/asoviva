@@ -33,7 +33,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     var locations:[Location] = []
     
-    var params:[String: Any] = [:]
+    var params:[String: Any] = ["sort":"price"]
     
     lazy var mapView: MKMapView = {
         
@@ -174,12 +174,12 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         cell.nameLabel.text = locations[indexPath.row].storename
         
-        if locations[indexPath.row].price == nil {
+        if locations[indexPath.row].price == 0{
             cell.priceLabel.text = "--円"
         }else{
             cell.priceLabel.text = "\(locations[indexPath.row].price!)円"
         }
-        if locations[indexPath.row].recommendnumber == nil {
+        if locations[indexPath.row].recommendnumber == 0{
             cell.favoriteLabel.text = "--点"
         }else {
             cell.favoriteLabel.text = "\( Double(locations[indexPath.row].recommendnumber!) / 10.0 )点"
@@ -188,41 +188,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         cell.commentLabel.text = "\( locations[indexPath.row].commentnumber! )個"
         cell.photoLabel.text = "\( locations[indexPath.row].photonubmer! )枚"
         
-        if locations[indexPath.row].opennow{
-            let clockImage = UIImage.fontAwesomeIcon(name: .clockO, textColor: UIColor.white, size: CGSize(width:25,height:25))
-            cell.timeimage.image = clockImage
-            
-        }else{
-            let clockImage = UIImage.fontAwesomeIcon(name: .clockO, textColor: UIColor.flatNavyBlueColorDark(), size: CGSize(width:25,height:25))
-            cell.timeimage.image = clockImage
-        }
-        
-        //以下時間を割り出す方法
-        let requestCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(locations[indexPath.row].lat, locations[indexPath.row].lng)
-        let fromCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake( nowlat, nowlng)
-        
-        let fromPlace: MKPlacemark = MKPlacemark(coordinate: fromCoordinate, addressDictionary: nil)
-        let toPlace: MKPlacemark = MKPlacemark(coordinate: requestCoordinate, addressDictionary: nil)
-        
-        let fromItem: MKMapItem = MKMapItem(placemark: fromPlace)
-        let toItem: MKMapItem = MKMapItem(placemark: toPlace)
-        
-        let myRequest: MKDirectionsRequest = MKDirectionsRequest()
-        
-        myRequest.source = fromItem
-        myRequest.destination = toItem
-        myRequest.requestsAlternateRoutes = true
-        myRequest.transportType = MKDirectionsTransportType.automobile
-        
-        let myDirections: MKDirections = MKDirections(request: myRequest)
-        
-        myDirections.calculate { (response, error) in
-            if error != nil || response!.routes.isEmpty {
-                return
-            }
-            let route: MKRoute = response!.routes[0] as MKRoute
-            cell.distanceLabel.text = ("\(Int(route.expectedTravelTime/60))分")
-        }
+        cell.distanceLabel.text = "\(locations[indexPath.row].time!)" + "分"
         
         if locations[indexPath.row].storename.characters.count > 24 {
             cell.nameLabel.font = UIFont.systemFont(ofSize: 10)
@@ -232,6 +198,15 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             cell.nameLabel.font = UIFont.systemFont(ofSize: 14)
         }else{
             cell.nameLabel.font = UIFont.systemFont(ofSize: 17)
+        }
+        
+        if locations[indexPath.row].opennow{
+            let clockImage = UIImage.fontAwesomeIcon(name: .clockO, textColor: UIColor.white, size: CGSize(width:25,height:25))
+            cell.timeimage.image = clockImage
+            
+        }else{
+            let clockImage = UIImage.fontAwesomeIcon(name: .clockO, textColor: UIColor.flatNavyBlueColorDark(), size: CGSize(width:25,height:25))
+            cell.timeimage.image = clockImage
         }
         
         cell.photoButton.addTarget(self, action: #selector(photobutton), for: .touchUpInside)
@@ -296,15 +271,17 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         case 0:
             print("0")
             self.params["sort"] = "price"
+            self.searchplaceRubyonRails()
         case 1:
             print("1")
             self.params["sort"] = "recommend"
+            self.searchplaceRubyonRails()
         case 2:
             print("2")
             self.params["sort"] = "time"
+            self.searchplaceRubyonRails()
         default:
             print("default")
-            self.params["sort"] = "price"
         }
         
     }
@@ -393,7 +370,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             if self.locations[sender.tag].price == nil{
                 storedata.price = 1000
             }else{
-                 storedata.price == self.locations[sender.tag].price
+                 storedata.price = self.locations[sender.tag].price
             }
             
             storedata.photo1 = self.locations[sender.tag].photos?[0]
@@ -431,6 +408,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         self.params["lat"] = 35.680298
         self.params["lng"] = 139.766247
+        print(self.params)
         Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
             
             let res = JSON(response.result.value!)
