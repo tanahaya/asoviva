@@ -29,7 +29,7 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
     
     lazy var storeTableView: UITableView = {
         
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0,  width: self.view.frame.width, height: 667))
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0,  width: self.view.frame.width, height: self.view.frame.height))
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()

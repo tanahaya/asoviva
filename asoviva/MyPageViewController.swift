@@ -35,7 +35,6 @@ class MyPageViewController: FormViewController {
             row?.cell.nameLabel.text = self.UserDefault.string(forKey: "username") ?? String()
         }else if self.UserDefault.bool(forKey: "signup"){
             print("ユーザー未登録")
-            row?.cell.nameLabel.text = self.UserDefault.string(forKey: "username") ?? String()
         }
     }
     func setup() {
