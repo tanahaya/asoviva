@@ -290,13 +290,13 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     func sharebutton(sender: UIButton){
         let alertSheet = UIAlertController(title: "Share", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
         let lineSchemeMessage: String! = "line://msg/text/"
-        var scheme: String! = lineSchemeMessage + "asoviva://" + self.locations[sender.tag].placeId
+        var scheme: String! =  self.locations[sender.tag].storename + "\n" + "asoviva://" + self.locations[sender.tag].placeId
         
         let action1 = UIAlertAction(title: "Lineでシェア", style: UIAlertActionStyle.default, handler: {
             (action: UIAlertAction!) in
             
             scheme = scheme.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-            let messageURL: URL! = URL(string: scheme)
+            let messageURL: URL! = URL(string: lineSchemeMessage + scheme)
             
             self.openURL(messageURL)
             
@@ -304,8 +304,10 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         let action2 = UIAlertAction(title: "クリップボードにコピー", style: UIAlertActionStyle.default, handler: {
             (action: UIAlertAction!) in
             
+            
             let board = UIPasteboard.general
-            board.setValue( scheme, forPasteboardType: "public.text")
+            board.setValue(scheme, forPasteboardType: "public.text")
+            
         })
         let action3 = UIAlertAction(title: "cancel", style: UIAlertActionStyle.cancel, handler: {
             (action: UIAlertAction!) in
@@ -371,7 +373,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             if self.locations[sender.tag].price == nil{
                 storedata.price = 1000
             }else{
-                storedata.price = self.locations[sender.tag].price
+                 storedata.price = self.locations[sender.tag].price
             }
             
             storedata.photo1 = self.locations[sender.tag].photos?[0]
