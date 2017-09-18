@@ -14,7 +14,7 @@ import GooglePlaces
 
 class SignupViewController: FormViewController {
     
-    let userDefaults = UserDefaults.standard
+    let UserDefault = UserDefaults.standard
     
     var params: [String: Any] = ["username": "","email": "","school": "","password": ""]
     var add:[String:Any] = [:]
@@ -74,12 +74,12 @@ class SignupViewController: FormViewController {
                         self.add = response.result.value as! [String : Any]
                         self.params["usertoken"] = self.add["usertoken"]
                         print(self.params)
-                        self.userDefaults.set( self.params, forKey: "userinformation")
+                        self.UserDefault.set( self.params, forKey: "userinformation")
                         
                     }
                     
-                    if self.userDefaults.bool(forKey: "signup") {
-                        self.userDefaults.set(false, forKey: "signup")
+                    if self.UserDefault.bool(forKey: "signup") {
+                        self.UserDefault.set(false, forKey: "signup")
                         print("初回起動")
                     }
                     
@@ -106,7 +106,7 @@ extension SignupViewController: GMSAutocompleteViewControllerDelegate {
         
         viewController.autocompleteFilter?.country = "Japan"
         
-        userDefaults.set(place.name, forKey: "school")
+        UserDefault.set(place.name, forKey: "school")
         let row: schoolButtonRow? = self.form.rowBy(tag: "school")
         row?.cell.schoolLabel.text = place.name
         if place.name.characters.count > 19 {
@@ -118,7 +118,7 @@ extension SignupViewController: GMSAutocompleteViewControllerDelegate {
         }
         row?.cell.schoolLabel.textColor = UIColor.black
         self.params["school"] = place.placeID
-        self.userDefaults.set( place.placeID, forKey: "school")
+        self.UserDefault.set( place.placeID, forKey: "school")
         dismiss(animated: true, completion: nil)
         
     }

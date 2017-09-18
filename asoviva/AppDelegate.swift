@@ -16,7 +16,7 @@ import Realm
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    let userDefault = UserDefaults.standard
+    let UserDefault = UserDefaults.standard
     let dict = ["signup": true]
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //リクエストされたURLの中からhostの値を取得して変数に代入
         let urlHost : String = url.host as String!
         
-        userDefault.set(urlHost, forKey: "sharedplaceid")
+        UserDefault.set(urlHost, forKey: "sharedplaceid")
         let resultVC: MainViewController =  MainViewController()
         self.window?.rootViewController = resultVC
         

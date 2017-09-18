@@ -13,15 +13,15 @@ import GooglePlaces
 
 class SearchFormViewController: FormViewController {
     
-    let userDefaults = UserDefaults.standard
+    let UserDefault = UserDefaults.standard
     
     let key = "AIzaSyDJlAPjHOf0UirK-NomfpAlwY6U71soaNY"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.userDefaults.set("", forKey: "keyword")
-        self.userDefaults.set(false, forKey: "opennow")
+        self.UserDefault.set("", forKey: "keyword")
+        self.UserDefault.set(false, forKey: "opennow")
         
         self.view.backgroundColor = UIColor.white
         
@@ -64,7 +64,7 @@ class SearchFormViewController: FormViewController {
                 
                 }.onChange(){row in
                     print(row.value ?? String())
-                    self.userDefaults.set(row.value ?? String(), forKey: "keyword")
+                    self.UserDefault.set(row.value ?? String(), forKey: "keyword")
             }
             
             <<< CheckRow("opennow"){
@@ -73,31 +73,25 @@ class SearchFormViewController: FormViewController {
                 }.onChange(){row in
                     print(row.value ?? Bool())
                     
-                    self.userDefaults.set(row.value ?? Bool(), forKey: "opennow")
-        }
+                    self.UserDefault.set(row.value ?? Bool(), forKey: "opennow")
+            }
+            
             <<< SliderRow() {
                 $0.title = "値段の上限"
                 $0.minimumValue = 0
                 $0.maximumValue = 10000
                 $0.value = 1000
                 }.onChange(){row in
-                    
-        }
-            <<< SliderRow() {
-                $0.title = "値段の下限"
-                $0.minimumValue = 0
-                $0.maximumValue = 10000
-                $0.value = 1000
-                }.onChange(){row in
-                    
-        }
+                    self.UserDefault.set(row.value ?? Float(), forKey: "maxprice")
+            }
+            
             <<< SliderRow() {
                 $0.title = "評価の下限"
                 $0.minimumValue = 1
                 $0.maximumValue = 5
                 $0.value = 1
                 }.onChange(){row in
-                    
+                    self.UserDefault.set(row.value ?? Float(), forKey: "minrate")
         }
     }
     func place(){
@@ -114,8 +108,8 @@ extension SearchFormViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         
         viewController.autocompleteFilter?.country = "Japan"
-        userDefaults.set(place.coordinate.latitude, forKey: "searchlat")
-        userDefaults.set(place.coordinate.longitude, forKey: "searchlng")
+        UserDefault.set(place.coordinate.latitude, forKey: "searchlat")
+        UserDefault.set(place.coordinate.longitude, forKey: "searchlng")
         //print("Place name: \(place.name)")
         //print("Place address: \(String(describing: place.formattedAddress))")
         //print("Place attributions: \(String(describing: place.attributions))")

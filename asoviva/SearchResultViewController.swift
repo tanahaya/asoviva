@@ -24,7 +24,7 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
     var nowlng: CLLocationDegrees!
     var UserDafault:UserDefaults = UserDefaults()
     
-    var params:[String: Any] = ["lat": 35.680298,"lng": 139.766247]
+    var params:[String: Any] = ["sort":"price"]
     
     let placeID = "ChIJV4k8_9UodTERU5KXbkYpSYs"
     let realm = try! Realm()
@@ -342,6 +342,12 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         if (self.UserDafault.object(forKey: "keyword") != nil) {
             //self.params["keyword"] = self.UserDafault.string(forKey: "keyword")
             self.params["keyword"] = "からおけ"
+        }
+        if (self.UserDafault.object(forKey: "maxprice") != nil) {
+            
+        }
+        if (self.UserDafault.object(forKey: "minrate") != nil) {
+            
         }
         
         Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace/search", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in

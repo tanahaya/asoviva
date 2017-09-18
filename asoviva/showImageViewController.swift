@@ -13,7 +13,7 @@ import SwiftyJSON
 
 class showImageViewController: UIViewController,UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    let userDefaults = UserDefaults.standard
+    let UserDefault = UserDefaults.standard
     var collectionView : UICollectionView!
     var params:[String:Any] = [:]
     var images:[Any] = []
@@ -28,7 +28,7 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
         
         //self.getimage()
         
-        params["place_id"] = userDefaults.string(forKey: "place_id")
+        params["place_id"] = UserDefault.string(forKey: "place_id")
         
         print(params)
         

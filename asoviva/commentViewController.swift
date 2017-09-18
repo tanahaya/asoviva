@@ -13,7 +13,7 @@ import SwiftyJSON
 
 class commentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let userDefaults = UserDefaults.standard
+    let UserDefault = UserDefaults.standard
     var tableView: UITableView!
     var params:[String:Any] = [:]
     var comments:[Comment] = []
@@ -21,7 +21,7 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        params["place_id"] = userDefaults.string(forKey: "place_id")
+        params["place_id"] = UserDefault.string(forKey: "place_id")
         
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
@@ -45,12 +45,12 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func gocomment(sender: UIButton){
-        if self.userDefaults.bool(forKey: "signup") == false {
+        if self.UserDefault.bool(forKey: "signup") == false {
             print("Signup済み")
             let postcommentForm = postcommentFormViewController()
             self.navigationController?.pushViewController( postcommentForm, animated: true)
             
-        }else if self.userDefaults.bool(forKey: "signup"){
+        }else if self.UserDefault.bool(forKey: "signup"){
             print("Signupまだ")
             SCLAlertView().showInfo("ユーザー未登録です", subTitle: "MyPageに行きましょう")
         }

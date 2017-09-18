@@ -11,18 +11,18 @@ import Eureka
 
 class MyPageViewController: FormViewController {
     
-    let userDefaults = UserDefaults.standard
+    let UserDefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setup()
-        print(self.userDefaults.dictionary(forKey: "userinformation")?["username"] ?? String())
-        if self.userDefaults.bool(forKey: "signup") == false {
+        print(self.UserDefault.dictionary(forKey: "userinformation")?["username"] ?? String())
+        if self.UserDefault.bool(forKey: "signup") == false {
             let row: CustomRow? = self.form.rowBy(tag: "user")
-            row?.cell.nameLabel.text = self.userDefaults.dictionary(forKey: "userinformation")?["username"] as? String
+            row?.cell.nameLabel.text = self.UserDefault.dictionary(forKey: "userinformation")?["username"] as? String
             print(row?.cell.nameLabel.text ?? String())
-        }else if self.userDefaults.bool(forKey: "signup"){
+        }else if self.UserDefault.bool(forKey: "signup"){
             print("ユーザー未登録")
         }
         
@@ -35,11 +35,11 @@ class MyPageViewController: FormViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         
-        if self.userDefaults.bool(forKey: "signup") == false {
+        if self.UserDefault.bool(forKey: "signup") == false {
             let row: CustomRow? = self.form.rowBy(tag: "user")
-            row?.cell.nameLabel.text = self.userDefaults.dictionary(forKey: "userinformation")?["username"] as? String
+            row?.cell.nameLabel.text = self.UserDefault.dictionary(forKey: "userinformation")?["username"] as? String
             print(row?.cell.nameLabel.text ?? String())
-        }else if self.userDefaults.bool(forKey: "signup"){
+        }else if self.UserDefault.bool(forKey: "signup"){
             print("ユーザー未登録")
         }
     }
@@ -59,11 +59,11 @@ class MyPageViewController: FormViewController {
                 
                 }.onCellSelection(){row in
                     
-                    if self.userDefaults.bool(forKey: "signup") == false {
+                    if self.UserDefault.bool(forKey: "signup") == false {
                         
-                        self.userDefaults.set(true, forKey: "signup")
+                        self.UserDefault.set(true, forKey: "signup")
                         print("Signup済み")
-                    }else if self.userDefaults.bool(forKey: "signup"){
+                    }else if self.UserDefault.bool(forKey: "signup"){
                         
                         let SignupController = SignupViewController()
                         self.navigationController?.pushViewController(SignupController, animated: true)

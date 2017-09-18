@@ -14,7 +14,7 @@ import Chameleon
 
 class MainViewController: UITabBarController{
     
-    let userDefault = UserDefaults.standard
+    let UserDefault = UserDefaults.standard
     var array:Array! = []
     
     override func viewDidLoad() {
@@ -54,7 +54,7 @@ class MainViewController: UITabBarController{
         let schoolNavi :UIViewController = UINavigationController(rootViewController: SchoolTimelineView)
         let mypageNavi :UIViewController = UINavigationController(rootViewController: MyPageView)
         
-        if userDefault.bool(forKey: "nomalopen"){
+        if UserDefault.bool(forKey: "nomalopen"){
             self.array.append(recommendNavi)
             self.array.append(searchNavi)
             self.array.append(favorNavi)

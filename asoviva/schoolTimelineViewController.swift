@@ -13,7 +13,7 @@ import SwiftyJSON
 
 class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
     
-    let userDefaults = UserDefaults.standard
+    let UserDefault = UserDefaults.standard
     var tableView: UITableView!
     var params:[String:Any] = [:]
     var comments:[Comment] = []
@@ -24,7 +24,7 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
         
         self.navigationItem.title  = "Asoviva"
         
-        params["school"] = userDefaults.string(forKey: "school")
+        params["school"] = UserDefault.string(forKey: "school")
         
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
@@ -43,10 +43,10 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if self.userDefaults.bool(forKey: "signup") == false {
+        if self.UserDefault.bool(forKey: "signup") == false {
             print("Signup済み")
             tableView.reloadData()
-        }else if self.userDefaults.bool(forKey: "signup"){
+        }else if self.UserDefault.bool(forKey: "signup"){
             print("Signupまだ")
             SCLAlertView().showInfo("ユーザー未登録です", subTitle: "MyPageに行きましょう")
         }
@@ -58,9 +58,9 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if self.userDefaults.bool(forKey: "signup") == false {
+        if self.UserDefault.bool(forKey: "signup") == false {
             return self.comments.count
-        }else if self.userDefaults.bool(forKey: "signup"){
+        }else if self.UserDefault.bool(forKey: "signup"){
             return 0
         }
         
@@ -83,19 +83,19 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
         let currentIndex = str.index(str.endIndex, offsetBy: -10)
         cell.dateLabel.text = str.substring(to: currentIndex)
         
-        let dataDecoded1 : Data = Data(base64Encoded: userDefaults.string(forKey: "photo0")!, options: .ignoreUnknownCharacters)!
+        let dataDecoded1 : Data = Data(base64Encoded: UserDefault.string(forKey: "photo0")!, options: .ignoreUnknownCharacters)!
         let decodedimage1 = UIImage(data: dataDecoded1)
         cell.image1.image = decodedimage1
         
-        let dataDecoded2 : Data = Data(base64Encoded: userDefaults.string(forKey: "photo1")!, options: .ignoreUnknownCharacters)!
+        let dataDecoded2 : Data = Data(base64Encoded: UserDefault.string(forKey: "photo1")!, options: .ignoreUnknownCharacters)!
         let decodedimage2 = UIImage(data: dataDecoded2)
         cell.image2.image = decodedimage2
         
-        let dataDecoded3 : Data = Data(base64Encoded: userDefaults.string(forKey: "photo2")!, options: .ignoreUnknownCharacters)!
+        let dataDecoded3 : Data = Data(base64Encoded: UserDefault.string(forKey: "photo2")!, options: .ignoreUnknownCharacters)!
         let decodedimage3 = UIImage(data: dataDecoded3)
         cell.image3.image = decodedimage3
         
-        let dataDecoded4 : Data = Data(base64Encoded: userDefaults.string(forKey: "photo3")!, options: .ignoreUnknownCharacters)!
+        let dataDecoded4 : Data = Data(base64Encoded: UserDefault.string(forKey: "photo3")!, options: .ignoreUnknownCharacters)!
         let decodedimage4 = UIImage(data: dataDecoded4)
         cell.image4.image = decodedimage4
         
