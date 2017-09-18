@@ -269,19 +269,15 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         switch segcon.selectedSegmentIndex {
         case 0:
-            print("0")
             self.params["sort"] = "price"
             self.searchplaceRubyonRails()
         case 1:
-            print("1")
             self.params["sort"] = "recommend"
             self.searchplaceRubyonRails()
         case 2:
-            print("2")
             self.params["sort"] = "time"
             self.searchplaceRubyonRails()
-        default:
-            print("default")
+        default: break
         }
         
     }
@@ -298,7 +294,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         let action1 = UIAlertAction(title: "Lineでシェア", style: UIAlertActionStyle.default, handler: {
             (action: UIAlertAction!) in
-            print("Lineでシェア")
             
             scheme = scheme.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
             let messageURL: URL! = URL(string: scheme)
@@ -308,13 +303,12 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         })
         let action2 = UIAlertAction(title: "クリップボードにコピー", style: UIAlertActionStyle.default, handler: {
             (action: UIAlertAction!) in
-            print("クリップボードにコピー")
+            
             let board = UIPasteboard.general
             board.setValue( scheme, forPasteboardType: "public.text")
         })
         let action3 = UIAlertAction(title: "cancel", style: UIAlertActionStyle.cancel, handler: {
             (action: UIAlertAction!) in
-            print("cancel")
         })
         
         alertSheet.addAction(action1)
@@ -327,13 +321,20 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     func commentbutton(sender: UIButton) {
         print("comment")
         let alert = SCLAlertView()
-        alert.addButton("コメントを投稿する", action: {
-            self.UserDafault.set(self.locations[sender.tag].placeId, forKey: "place_id")
-            self.UserDafault.set(self.locations[sender.tag].storename, forKey: "place_name")
-            let commentview = commentViewController()
-            self.navigationController?.pushViewController(commentview, animated: true)
-        })
-        alert.showSuccess("コメントがまだありません", subTitle: "コメントを書きますか?")
+        alert.labelTitle.font =  UIFont.systemFont(ofSize: 15)
+        if locations[sender.tag].commentnumber == 0{
+            alert.addButton("コメントを投稿する", action: {
+                self.UserDafault.set(self.locations[sender.tag].placeId, forKey: "place_id")
+                self.UserDafault.set(self.locations[sender.tag].storename, forKey: "place_name")
+                let postcommentview = postcommentFormViewController()
+                self.navigationController?.pushViewController(postcommentview, animated: true)
+            })
+            alert.showSuccess("コメントがまだありません", subTitle: "コメントを書きますか?")
+        }
+        self.UserDafault.set(self.locations[sender.tag].placeId, forKey: "place_id")
+        self.UserDafault.set(self.locations[sender.tag].storename, forKey: "place_name")
+        let commentview = commentViewController()
+        self.navigationController?.pushViewController(commentview, animated: true)
     }
     
     func distancebutton(sender: UIButton){
@@ -412,6 +413,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
             
             let res = JSON(response.result.value!)
+            
             var locations: [Location] = []
             res["results"].array?.forEach({
                 var location:Location = Mapper<Location>().map(JSON: $0.dictionaryObject!)!

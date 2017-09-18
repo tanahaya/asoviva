@@ -243,7 +243,7 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        
         
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -305,7 +305,6 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
     func favoritebutton(sender: UIButton) {
         print("favorite")
         
-        print("sender:" + String(sender.tag))
         let storedata = favorite()
         storedata.storename = locations[sender.tag].storename
         storedata.lat = locations[sender.tag].lat
@@ -344,10 +343,10 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
             self.params["keyword"] = "からおけ"
         }
         if (self.UserDafault.object(forKey: "maxprice") != nil) {
-            
+            self.params["maxprice"] = self.UserDafault.float(forKey: "maxprice")
         }
         if (self.UserDafault.object(forKey: "minrate") != nil) {
-            
+            self.params["minrate"] = self.UserDafault.float(forKey: "minrate")
         }
         
         Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace/search", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
@@ -370,7 +369,6 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
                 locations.append(location)
             })
             self.locations = locations
-            //print(self.locations)
             self.storeTableView.reloadData()
             
         }

@@ -48,13 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         //URLの確認なので無くてもOK
         UserDefault.set(false, forKey: "nomalopen")
-        /*
-         print(url.scheme)
-         print(url.host)
-         print(url.path)
-         print(url.query)
-         */
-        //リクエストされたURLの中からhostの値を取得して変数に代入
+        
         let urlHost : String = url.host as String!
         
         UserDefault.set(urlHost, forKey: "sharedplaceid")

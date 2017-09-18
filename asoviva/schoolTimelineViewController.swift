@@ -111,7 +111,6 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
     
     func getComment(){
         
-        print(self.params)
         var comments: [Comment] = []
         Alamofire.request("https://server-tanahaya.c9users.io/api/showcomment/school", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
             

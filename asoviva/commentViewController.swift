@@ -110,7 +110,7 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
         Alamofire.request("https://server-tanahaya.c9users.io/api/showcomment", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
             
             let res = JSON(response.result.value!)
-            print(res)
+            
             res.array?.forEach({
                 let comment:Comment = Mapper<Comment>().map(JSON: $0.dictionaryObject!)!
                 

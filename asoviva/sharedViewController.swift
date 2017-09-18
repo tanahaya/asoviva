@@ -266,7 +266,7 @@ class sharedViewController: UIViewController, MKMapViewDelegate, UITableViewDele
         
         let action1 = UIAlertAction(title: "Lineでシェア", style: UIAlertActionStyle.default, handler: {
             (action: UIAlertAction!) in
-            print("Lineでシェア")
+            
             
             scheme = scheme.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
             let messageURL: URL! = URL(string: scheme)
@@ -276,13 +276,13 @@ class sharedViewController: UIViewController, MKMapViewDelegate, UITableViewDele
         })
         let action2 = UIAlertAction(title: "クリップボードにコピー", style: UIAlertActionStyle.default, handler: {
             (action: UIAlertAction!) in
-            print("クリップボードにコピー")
+            
             let board = UIPasteboard.general
             board.setValue( scheme, forPasteboardType: "public.text")
         })
         let action3 = UIAlertAction(title: "cancel", style: UIAlertActionStyle.cancel, handler: {
             (action: UIAlertAction!) in
-            print("cancel")
+            
         })
         
         alertSheet.addAction(action1)

@@ -40,7 +40,6 @@ class SearchFormViewController: FormViewController {
     }
     
     func search(sender: UIButton){
-        print("search")
         
         let searchResultView = SearchResultViewController()
         self.navigationController?.pushViewController(searchResultView, animated: true)
@@ -63,7 +62,6 @@ class SearchFormViewController: FormViewController {
                 $0.placeholder = "キーワードで検索"
                 
                 }.onChange(){row in
-                    print(row.value ?? String())
                     self.UserDefault.set(row.value ?? String(), forKey: "keyword")
             }
             
@@ -71,8 +69,6 @@ class SearchFormViewController: FormViewController {
                 $0.title = "開店中"
                 
                 }.onChange(){row in
-                    print(row.value ?? Bool())
-                    
                     self.UserDefault.set(row.value ?? Bool(), forKey: "opennow")
             }
             

@@ -30,8 +30,6 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
         
         params["place_id"] = UserDefault.string(forKey: "place_id")
         
-        print(params)
-        
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width:100, height:100)
         layout.sectionInset = UIEdgeInsetsMake(16, 16, 32, 16)
@@ -53,9 +51,6 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        print("Num: \(indexPath.row)")
-        print("Value:\(collectionView)")
         
         detailWindow = UIWindow()
         detailWindow.frame = CGRect(x:0, y:0, width: 375, height: 667)
@@ -129,7 +124,6 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
     
     func getimage(){
         
-        print("getimage")
         self.images = []
         
         Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace/image", method: .post, parameters: self.params, encoding: URLEncoding.default, headers: nil).responseJSON{ response in
@@ -141,7 +135,6 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
                 for i in 0 ..< res["photos"].count {
                     self.images.append(res["photos"][i])
                 }
-                print(self.images)
             }
             self.collectionView.reloadData()
         }

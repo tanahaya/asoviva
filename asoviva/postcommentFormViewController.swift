@@ -30,7 +30,7 @@ class postcommentFormViewController:FormViewController {
         params["place_id"] = UserDefault.string(forKey: "place_id")
         params["name"] = UserDefault.string(forKey: "place_name")
         comment["name"] = UserDefault.string(forKey: "place_name")
-        print(params)
+        
         
         self.navigationItem.title  = "Asoviva"
     }
@@ -149,8 +149,8 @@ class postcommentFormViewController:FormViewController {
                     }
                     SCLAlertView().showInfo("投稿登録完了", subTitle: "")
                     
-                    let MyPageController = MyPageViewController()
-                    self.navigationController?.pushViewController(MyPageController, animated: true)
+                    //let Recommed = RecommendViewController()
+                    //self.navigationController?.pushViewController(Recommed, animated: true)
                     
         }
     }

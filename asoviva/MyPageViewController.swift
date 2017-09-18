@@ -17,7 +17,6 @@ class MyPageViewController: FormViewController {
         super.viewDidLoad()
         
         self.setup()
-        print(self.UserDefault.dictionary(forKey: "userinformation")?["username"] ?? String())
         if self.UserDefault.bool(forKey: "signup") == false {
             let row: CustomRow? = self.form.rowBy(tag: "user")
             row?.cell.nameLabel.text = self.UserDefault.dictionary(forKey: "userinformation")?["username"] as? String

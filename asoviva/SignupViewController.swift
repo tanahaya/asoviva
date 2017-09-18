@@ -73,7 +73,7 @@ class SignupViewController: FormViewController {
                         print(response.result.value!)
                         self.add = response.result.value as! [String : Any]
                         self.params["usertoken"] = self.add["usertoken"]
-                        print(self.params)
+                        
                         self.UserDefault.set( self.params, forKey: "userinformation")
                         
                     }
