@@ -152,7 +152,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             break
         }
     }
-    // 位置情報が更新されるたびに呼ばれる
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let newLocation = locations.last else {
             return
@@ -190,7 +190,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         }
         
         cell.commentLabel.text = "\( locations[indexPath.row].commentnumber! )個"
-        cell.photoLabel.text = "\( locations[indexPath.row].photonubmer! )枚"
+        cell.photoLabel.text = "\( locations[indexPath.row].photonumber! )枚"
         
         cell.distanceLabel.text = "\(locations[indexPath.row].time!)" + "分"
         
@@ -334,13 +334,15 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
                 self.UserDafault.set(self.locations[sender.tag].storename, forKey: "place_name")
                 let postcommentview = postcommentFormViewController()
                 self.navigationController?.pushViewController(postcommentview, animated: true)
+                
             })
             alert.showNotice("コメントがまだありません", subTitle: "コメントを書きますか?")
+        }else{
+            self.UserDafault.set(self.locations[sender.tag].placeId, forKey: "place_id")
+            self.UserDafault.set(self.locations[sender.tag].storename, forKey: "place_name")
+            let commentview = commentViewController()
+            self.navigationController?.pushViewController(commentview, animated: true)
         }
-        self.UserDafault.set(self.locations[sender.tag].placeId, forKey: "place_id")
-        self.UserDafault.set(self.locations[sender.tag].storename, forKey: "place_name")
-        let commentview = commentViewController()
-        self.navigationController?.pushViewController(commentview, animated: true)
     }
     
     func distancebutton(sender: UIButton){
@@ -364,6 +366,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             storedata.lng = self.locations[sender.tag].lng
             storedata.vicinity = self.locations[sender.tag].vicinity
             storedata.placeid = self.locations[sender.tag].placeId
+            storedata.photonumber = self.locations[sender.tag].photonumber
             if self.locations[sender.tag].recommendnumber == nil{
                 storedata.recommendnumber = 30
             }else{
@@ -377,7 +380,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
             if self.locations[sender.tag].price == nil{
                 storedata.price = 1000
             }else{
-                 storedata.price = self.locations[sender.tag].price
+                storedata.price = self.locations[sender.tag].price
             }
             
             storedata.photo1 = self.locations[sender.tag].photos?[0]
@@ -390,13 +393,13 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
                 self.realm.add(storedata)
             }
         })
-        
+        alert.showSuccess("お気に入り登録しますか？", subTitle: "お気に入りは\nいつでも見ることが出来ます")
         
     }
     
     func photobutton(sender: UIButton) {
         print("photo")
-        if locations[sender.tag].photonubmer == 0{
+        if locations[sender.tag].photonumber == 0{
             let alert = SCLAlertView()
             alert.labelTitle.font =  UIFont.systemFont(ofSize: 15)
             alert.showSuccess("写真がありません", subTitle: "")
@@ -425,7 +428,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         let nowLatitude: CLLocationDegrees = nowlat!
         let nowLongitude: CLLocationDegrees = nowlng!
- 
+        
         let center: CLLocationCoordinate2D = CLLocationCoordinate2DMake(nowLatitude, nowLongitude)
         self.mapView.setCenter(center, animated: true)
         

@@ -24,10 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefault.set(true, forKey: "nomalopen")
         
         let config = Realm.Configuration(
-            schemaVersion: 1,
+            schemaVersion: 2,
             
             migrationBlock: { migration, oldSchemaVersion in
-                if (oldSchemaVersion < 1) {
+                if (oldSchemaVersion < 2) {
                 }})
         
         Realm.Configuration.defaultConfiguration = config
@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        //URLの確認なので無くてもOK
+        
         UserDefault.set(false, forKey: "nomalopen")
         
         let urlHost : String = url.host as String!

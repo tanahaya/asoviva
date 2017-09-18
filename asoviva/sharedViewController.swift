@@ -81,20 +81,7 @@ class sharedViewController: UIViewController, MKMapViewDelegate, UITableViewDele
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.white
-        let status = CLLocationManager.authorizationStatus()
-        if status == .notDetermined {
-            self.locationManager.requestWhenInUseAuthorization()
-        }
         
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager = CLLocationManager()
-            locationManager.startUpdatingLocation()
-        }
-        
-        //nowlat = locationManager.location!.coordinate.latitude
-        nowlat  = 35.680298
-        // nowlng = locationManager.location!.coordinate.longitude
-        nowlng = 139.766247
         self.view.addSubview(mapView)
         self.view.addSubview(storeTableView)
         self.navigationItem.title  = "Asoviva"
@@ -102,10 +89,17 @@ class sharedViewController: UIViewController, MKMapViewDelegate, UITableViewDele
         let leftButton = UIBarButtonItem(title: "おすすめへ", style: UIBarButtonItemStyle.plain, target: self, action: #selector ( gorecommend))
         self.navigationItem.leftBarButtonItem = leftButton
         
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.startUpdatingLocation()
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.searchplaceRubyonRails()
+        locationManager.startUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -119,6 +113,20 @@ class sharedViewController: UIViewController, MKMapViewDelegate, UITableViewDele
         }
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let newLocation = locations.last else {
+            return
+        }
+        
+        nowlat = newLocation.coordinate.latitude
+        nowlng = newLocation.coordinate.longitude
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.stopUpdatingLocation()
+        }
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
     }
@@ -129,28 +137,28 @@ class sharedViewController: UIViewController, MKMapViewDelegate, UITableViewDele
         
         cell.nameLabel.text = locations[0].storename
         
-        if locations[0].price == nil {
+        if locations[0].price == 0 {
             cell.priceLabel.text = "--円"
         }else{
             cell.priceLabel.text = "\(locations[0].price!)円"
         }
         
-        if locations[0].recommendnumber == nil {
+        if locations[0].recommendnumber == 0 {
             cell.favoriteLabel.text = "--点"
         }else {
             cell.favoriteLabel.text = "\( Double(locations[0].recommendnumber!) / 10.0 )点"
         }
         
-        if locations[0].commentnumber == nil {
+        if locations[0].commentnumber == 0 {
             cell.commentLabel.text = "0個"
         }else {
             cell.commentLabel.text = "\( locations[0].commentnumber! )個"
         }
         
-        if locations[0].photonubmer == nil {
+        if locations[0].photonumber == nil {
             cell.photoLabel.text = "0枚"
         }else {
-            cell.photoLabel.text = "\( locations[0].photonubmer! )枚"
+            cell.photoLabel.text = "\( locations[0].photonumber! )枚"
         }
         
         if locations[indexPath.row].opennow{
@@ -162,32 +170,7 @@ class sharedViewController: UIViewController, MKMapViewDelegate, UITableViewDele
             cell.timeimage.image = clockImage
         }
         
-        //以下時間を割り出す方法
-        let requestCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(locations[0].lat, locations[0].lng)
-        let fromCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake( nowlat, nowlng)
-        
-        let fromPlace: MKPlacemark = MKPlacemark(coordinate: fromCoordinate, addressDictionary: nil)
-        let toPlace: MKPlacemark = MKPlacemark(coordinate: requestCoordinate, addressDictionary: nil)
-        
-        let fromItem: MKMapItem = MKMapItem(placemark: fromPlace)
-        let toItem: MKMapItem = MKMapItem(placemark: toPlace)
-        
-        let myRequest: MKDirectionsRequest = MKDirectionsRequest()
-        
-        myRequest.source = fromItem
-        myRequest.destination = toItem
-        myRequest.requestsAlternateRoutes = true
-        myRequest.transportType = MKDirectionsTransportType.automobile
-        
-        let myDirections: MKDirections = MKDirections(request: myRequest)
-        
-        myDirections.calculate { (response, error) in
-            if error != nil || response!.routes.isEmpty {
-                return
-            }
-            let route: MKRoute = response!.routes[0] as MKRoute
-            cell.distanceLabel.text = ("\(Int(route.expectedTravelTime/60))分")
-        }
+        cell.distanceLabel.text = "\(locations[0].time!)" + "分"
         
         if locations[0].storename.characters.count > 24 {
             cell.nameLabel.font = UIFont.systemFont(ofSize: 10)
@@ -262,14 +245,13 @@ class sharedViewController: UIViewController, MKMapViewDelegate, UITableViewDele
     func sharebutton(sender: UIButton){
         let alertSheet = UIAlertController(title: "Share", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
         let lineSchemeMessage: String! = "line://msg/text/"
-        var scheme: String! = lineSchemeMessage + "asoviva://" + self.locations[0].placeId
+        var scheme: String! =  self.locations[sender.tag].storename + "\n" + "asoviva://" + self.locations[sender.tag].placeId
         
         let action1 = UIAlertAction(title: "Lineでシェア", style: UIAlertActionStyle.default, handler: {
             (action: UIAlertAction!) in
             
-            
             scheme = scheme.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-            let messageURL: URL! = URL(string: scheme)
+            let messageURL: URL! = URL(string: lineSchemeMessage + scheme)
             
             self.openURL(messageURL)
             
@@ -277,12 +259,13 @@ class sharedViewController: UIViewController, MKMapViewDelegate, UITableViewDele
         let action2 = UIAlertAction(title: "クリップボードにコピー", style: UIAlertActionStyle.default, handler: {
             (action: UIAlertAction!) in
             
+            
             let board = UIPasteboard.general
-            board.setValue( scheme, forPasteboardType: "public.text")
+            board.setValue(scheme, forPasteboardType: "public.text")
+            
         })
         let action3 = UIAlertAction(title: "cancel", style: UIAlertActionStyle.cancel, handler: {
             (action: UIAlertAction!) in
-            
         })
         
         alertSheet.addAction(action1)
@@ -294,11 +277,22 @@ class sharedViewController: UIViewController, MKMapViewDelegate, UITableViewDele
     
     func commentbutton(sender: UIButton) {
         print("comment")
-        
-        UserDafault.set(locations[sender.tag].placeId, forKey: "place_id")
-        UserDafault.set(locations[sender.tag].storename, forKey: "place_name")
-        let commentview = commentViewController()
-        self.navigationController?.pushViewController(commentview, animated: true)
+        let alert = SCLAlertView()
+        alert.labelTitle.font =  UIFont.systemFont(ofSize: 15)
+        if locations[sender.tag].commentnumber == 0{
+            alert.addButton("コメントを投稿する", action: {
+                self.UserDafault.set(self.locations[sender.tag].placeId, forKey: "place_id")
+                self.UserDafault.set(self.locations[sender.tag].storename, forKey: "place_name")
+                let postcommentview = postcommentFormViewController()
+                self.navigationController?.pushViewController(postcommentview, animated: true)
+            })
+            alert.showNotice("コメントがまだありません", subTitle: "コメントを書きますか?")
+        }else{
+            self.UserDafault.set(self.locations[sender.tag].placeId, forKey: "place_id")
+            self.UserDafault.set(self.locations[sender.tag].storename, forKey: "place_name")
+            let commentview = commentViewController()
+            self.navigationController?.pushViewController(commentview, animated: true)
+        }
     }
     
     func distancebutton(sender: UIButton){
@@ -313,44 +307,64 @@ class sharedViewController: UIViewController, MKMapViewDelegate, UITableViewDele
     func favoritebutton(sender: UIButton) {
         print("favorite")
         
-        print("sender:" + String(sender.tag))
-        
-        let storedata = favorite()
-        storedata.storename = locations[sender.tag].storename
-        storedata.lat = locations[sender.tag].lat
-        storedata.lng = locations[sender.tag].lng
-        storedata.vicinity = locations[sender.tag].vicinity
-        storedata.placeid = locations[sender.tag].placeId
-        storedata.recommendnumber = locations[sender.tag].recommendnumber
-        storedata.commentnumber = locations[sender.tag].commentnumber
-        storedata.price = locations[sender.tag].price
-        storedata.photo1 = locations[sender.tag].photos?[0]
-        storedata.photo2 = locations[sender.tag].photos?[1]
-        storedata.photo3 = locations[sender.tag].photos?[2]
-        storedata.photo4 = locations[sender.tag].photos?[3]
-        storedata.id = favorite.lastId()
-        
-        try! realm.write {
-            realm.add(storedata)
-        }
-        
-        SCLAlertView().showInfo("お気に入り登録完了", subTitle: "")
-        
+        let alert = SCLAlertView()
+        alert.labelTitle.font =  UIFont.systemFont(ofSize: 15)
+        alert.addButton("お気に入り登録", action: {
+            let storedata = favorite()
+            storedata.storename = self.locations[sender.tag].storename
+            storedata.lat = self.locations[sender.tag].lat
+            storedata.lng = self.locations[sender.tag].lng
+            storedata.vicinity = self.locations[sender.tag].vicinity
+            storedata.placeid = self.locations[sender.tag].placeId
+            storedata.photonumber = self.locations[sender.tag].photonumber
+            if self.locations[sender.tag].recommendnumber == nil{
+                storedata.recommendnumber = 30
+            }else{
+                storedata.recommendnumber = self.locations[sender.tag].recommendnumber
+            }
+            if self.locations[sender.tag].commentnumber == nil {
+                storedata.commentnumber = 0
+            }else{
+                storedata.commentnumber = self.locations[sender.tag].commentnumber
+            }
+            if self.locations[sender.tag].price == nil{
+                storedata.price = 1000
+            }else{
+                storedata.price = self.locations[sender.tag].price
+            }
+            
+            storedata.photo1 = self.locations[sender.tag].photos?[0]
+            storedata.photo2 = self.locations[sender.tag].photos?[1]
+            storedata.photo3 = self.locations[sender.tag].photos?[2]
+            storedata.photo4 = self.locations[sender.tag].photos?[3]
+            storedata.id = favorite.lastId()
+            
+            try! self.realm.write {
+                self.realm.add(storedata)
+            }
+        })
+        alert.showSuccess("お気に入り登録しますか？", subTitle: "お気に入りは\nいつでも見ることが出来ます")
     }
     
     func photobutton(sender: UIButton) {
         print("photo")
-        
-        UserDafault.set(locations[sender.tag].placeId, forKey: "place_id")
-        let showImage = showImageViewController()
-        self.navigationController?.pushViewController(showImage, animated: true)
+        if locations[sender.tag].photonumber == 0{
+            let alert = SCLAlertView()
+            alert.labelTitle.font =  UIFont.systemFont(ofSize: 15)
+            alert.showSuccess("写真がありません", subTitle: "")
+        }else{
+            
+            UserDafault.set(locations[sender.tag].placeId, forKey: "place_id")
+            let showImage = showImageViewController()
+            self.navigationController?.pushViewController(showImage, animated: true)
+        }
         
     }
     func timebutton(sender: UIButton) {
         print("time")
         if locations[sender.tag].opennow{
             SCLAlertView().showInfo("現在、開店中です。", subTitle: "")
-        }else{
+        }else {
             SCLAlertView().showInfo("現在、閉店中です。", subTitle: "")
         }
     }
@@ -384,7 +398,6 @@ class sharedViewController: UIViewController, MKMapViewDelegate, UITableViewDele
         let Recommend = RecommendViewController()
         self.navigationController?.pushViewController( Recommend, animated: true)
     }
-    
     
     func openURL(_ url: URL) {
         if UIApplication.shared.canOpenURL(url) {

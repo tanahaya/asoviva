@@ -29,12 +29,13 @@ class favorite: Object{
     dynamic var photo2:String?
     dynamic var photo3:String?
     dynamic var photo4:String?
+    dynamic var photonumber:Int = 0
     
     
     override static func primaryKey() -> String {
         return "id"
     }
-    static func create(storename:String,lat:Double,lng:Double,vicinity:String,placeid:String,price:Int,recommendnumber:Int,commentnumber:Int,photo1:String,photo2:String,photo3:String,photo4:String) -> favorite {
+    static func create(storename:String,lat:Double,lng:Double,vicinity:String,placeid:String,price:Int,recommendnumber:Int,commentnumber:Int,photo1:String,photo2:String,photo3:String,photo4:String,photonumber:Int) -> favorite {
         
         let storedata = favorite()
         storedata.storename = storename
@@ -49,6 +50,7 @@ class favorite: Object{
         storedata.photo2 = photo2
         storedata.photo3 = photo3
         storedata.photo4 = photo4
+        storedata.photonumber = photonumber
         
         return storedata
     }

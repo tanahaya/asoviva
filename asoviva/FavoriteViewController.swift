@@ -7,15 +7,25 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
+import ObjectMapper
+import SwiftyJSON
+import FontAwesome
 import RealmSwift
+import Chameleon
+import Alamofire
 
-class FavoriteViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
+class FavoriteViewController: UIViewController , UITableViewDelegate, UITableViewDataSource ,CLLocationManagerDelegate {
     
-    let userDefaults = UserDefaults.standard
+    let UserDefault = UserDefaults.standard
     var favorites:[favorite] = []
     
     let realm = try! Realm()
     var sendernumber:Int = 0
+    
+    var nowlat: CLLocationDegrees!
+    var nowlng: CLLocationDegrees!
     
     lazy var storeTableView: UITableView = {
         
@@ -28,18 +38,34 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
         return tableView
     }()
     
+    lazy var locationManager:CLLocationManager = {
+        
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 300
+        return locationManager
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         /*
          try! realm.write {
          realm.deleteAll()
          }
-        */
+         */
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         self.view.addSubview(storeTableView)
         
         self.navigationItem.title  = "Asoviva"
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.startUpdatingLocation()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +80,32 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
         }
         storeTableView.reloadData()
     }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            break
+        case .authorizedAlways, .authorizedWhenInUse:
+            break
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let newLocation = locations.last else {
+            return
+        }
+        
+        nowlat = newLocation.coordinate.latitude
+        nowlng = newLocation.coordinate.longitude
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.stopUpdatingLocation()
+        }
+        
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -134,22 +186,122 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    func cancel(sender:UIButton) {
-        sendernumber = sender.tag
-        let alertView = SCLAlertView()
-        alertView.addButton("お気に入りを解除する", target:self, selector:#selector(deleterealm))
-        alertView.showSuccess("Button View", subTitle: "This alert view has buttons")
+    func pricebutton(sender: UIButton){
+        print("price")
+        
     }
     
-    func deleterealm() {
-        let item = self.favorites[sendernumber]
+    func sharebutton(sender: UIButton){
+        let alertSheet = UIAlertController(title: "Share", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let lineSchemeMessage: String! = "line://msg/text/"
+        var scheme: String! =  self.favorites[sender.tag].storename + "\n" + "asoviva://" + self.favorites[sender.tag].placeid
         
-        try! realm.write {
-            realm.delete(item)
+        let action1 = UIAlertAction(title: "Lineでシェア", style: UIAlertActionStyle.default, handler: {
+            (action: UIAlertAction!) in
+            
+            scheme = scheme.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            let messageURL: URL! = URL(string: lineSchemeMessage + scheme)
+            
+            self.openURL(messageURL)
+            
+        })
+        let action2 = UIAlertAction(title: "クリップボードにコピー", style: UIAlertActionStyle.default, handler: {
+            (action: UIAlertAction!) in
+            
+            
+            let board = UIPasteboard.general
+            board.setValue(scheme, forPasteboardType: "public.text")
+            
+        })
+        let action3 = UIAlertAction(title: "cancel", style: UIAlertActionStyle.cancel, handler: {
+            (action: UIAlertAction!) in
+        })
+        
+        alertSheet.addAction(action1)
+        alertSheet.addAction(action2)
+        alertSheet.addAction(action3)
+        
+        self.present(alertSheet, animated: true, completion: nil)
+    }
+    
+    func commentbutton(sender: UIButton) {
+        print("comment")
+        let alert = SCLAlertView()
+        alert.labelTitle.font =  UIFont.systemFont(ofSize: 15)
+        if favorites[sender.tag].commentnumber == 0{
+            alert.addButton("コメントを投稿する", action: {
+                self.UserDefault.set(self.favorites[sender.tag].placeid, forKey: "place_id")
+                self.UserDefault.set(self.favorites[sender.tag].storename, forKey: "place_name")
+                let postcommentview = postcommentFormViewController()
+                self.navigationController?.pushViewController(postcommentview, animated: true)
+            })
+            alert.showNotice("コメントがまだありません", subTitle: "コメントを書きますか?")
+        }else{
+            self.UserDefault.set(self.favorites[sender.tag].placeid, forKey: "place_id")
+            self.UserDefault.set(self.favorites[sender.tag].storename, forKey: "place_name")
+            let commentview = commentViewController()
+            self.navigationController?.pushViewController(commentview, animated: true)
         }
-        self.favorites.remove(at: sendernumber)
-        //storeTableView.deleteRowsAtIndexPaths([sender.tag], withRowAnimation: .Fade)
-        self.storeTableView.reloadData()
+    }
+    
+    func distancebutton(sender: UIButton){
+        print("distance")
+        UserDefault.set(nowlat, forKey: "nowlat")
+        UserDefault.set(nowlng, forKey: "nowlng")
+        UserDefault.set(favorites[sender.tag].lat, forKey: "goallat")
+        UserDefault.set(favorites[sender.tag].lng, forKey: "goallng")
+        let routeview = RouteViewController()
+        self.navigationController?.pushViewController( routeview, animated: true)
+    }
+    func favoritebutton(sender: UIButton) {
+        print("favorite")
+        
+        let alert = SCLAlertView()
+        alert.labelTitle.font =  UIFont.systemFont(ofSize: 15)
+        alert.addButton("お気に入り解除", action: {
+            
+            let item = self.favorites[sender.tag]
+            
+            try! self.realm.write {
+                self.realm.delete(item)
+            }
+            self.favorites.remove(at: sender.tag)
+            self.storeTableView.reloadData()
+            
+        })
+        alert.showNotice("お気に入り解除しますか", subTitle: "")
+    }
+    
+    func photobutton(sender: UIButton) {
+        print("photo")
+        if favorites[sender.tag].photonumber == 0{
+            let alert = SCLAlertView()
+            alert.labelTitle.font =  UIFont.systemFont(ofSize: 15)
+            alert.showSuccess("写真がありません", subTitle: "")
+        }else{
+            UserDefault.set(favorites[sender.tag].placeid, forKey: "place_id")
+            let showImage = showImageViewController()
+            self.navigationController?.pushViewController(showImage, animated: true)
+        }
+        
+    }
+    func timebutton(sender: UIButton) {
+        
+        print("time")
+        /*
+         if favorites[sender.tag].opennow{
+         SCLAlertView().showInfo("現在、開店中です。", subTitle: "")
+         }else {
+         SCLAlertView().showInfo("現在、閉店中です。", subTitle: "")
+         }
+         */
+    }
+    
+    func openURL(_ url: URL) {
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            print("failed to open..")
+        }
     }
 }

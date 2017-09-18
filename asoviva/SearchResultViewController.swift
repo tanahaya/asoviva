@@ -167,21 +167,25 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         
         let cell:storeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "storeTableViewCell", for: indexPath as IndexPath) as! storeTableViewCell
         
+        print("indexPath:" + "\(indexPath.row)")
+        
         cell.nameLabel.text = locations[indexPath.row].storename
         
-        if locations[indexPath.row].price == nil {
+        if locations[indexPath.row].price == 0{
             cell.priceLabel.text = "--円"
         }else{
             cell.priceLabel.text = "\(locations[indexPath.row].price!)円"
         }
-        if locations[indexPath.row].recommendnumber == nil {
+        if locations[indexPath.row].recommendnumber == 0{
             cell.favoriteLabel.text = "--点"
         }else {
             cell.favoriteLabel.text = "\( Double(locations[indexPath.row].recommendnumber!) / 10.0 )点"
         }
         
-        cell.commentLabel.text = "\(locations[indexPath.row].commentnumber!)"
-        cell.distanceLabel.text = "\(arc4random_uniform(10) + 7 )" + "分"
+        cell.commentLabel.text = "\( locations[indexPath.row].commentnumber! )個"
+        cell.photoLabel.text = "\( locations[indexPath.row].photonumber! )枚"
+        
+        cell.distanceLabel.text = "\(locations[indexPath.row].time!)" + "分"
         
         if locations[indexPath.row].storename.characters.count > 24 {
             cell.nameLabel.font = UIFont.systemFont(ofSize: 10)
@@ -189,12 +193,21 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
             cell.nameLabel.font = UIFont.systemFont(ofSize: 12)
         }else if locations[indexPath.row].storename.characters.count > 14 {
             cell.nameLabel.font = UIFont.systemFont(ofSize: 14)
-        }else  {
+        }else{
             cell.nameLabel.font = UIFont.systemFont(ofSize: 17)
+        }
+        print("beforeopennow")
+        if locations[indexPath.row].opennow {
+            let clockImage = UIImage.fontAwesomeIcon(name: .clockO, textColor: UIColor.white, size: CGSize(width:25,height:25))
+            cell.timeimage.image = clockImage
+            
+        }else{
+            let clockImage = UIImage.fontAwesomeIcon(name: .clockO, textColor: UIColor.flatNavyBlueColorDark(), size: CGSize(width:25,height:25))
+            cell.timeimage.image = clockImage
         }
         
         cell.photoButton.addTarget(self, action: #selector(photobutton), for: .touchUpInside)
-        cell.shareButton.addTarget(self, action: #selector(phonebutton), for: .touchUpInside)
+        cell.shareButton.addTarget(self, action: #selector(sharebutton), for: .touchUpInside)
         cell.priceButton.addTarget(self, action: #selector(pricebutton), for: .touchUpInside)
         cell.commentButton.addTarget(self, action: #selector(commentbutton), for: .touchUpInside)
         cell.distanceButton.addTarget(self, action: #selector(distancebutton), for: .touchUpInside)
@@ -209,11 +222,12 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         cell.favoriteButton.tag = indexPath.row
         cell.timeButton.tag = indexPath.row
         
-        
-        
         if locations[indexPath.row].photos == nil {
-            
-        }else{
+            cell.storeimage1.image = UIImage(named: "nophoto.png")
+            cell.storeimage2.image = UIImage(named: "nophoto.png")
+            cell.storeimage3.image = UIImage(named: "nophoto.png")
+            cell.storeimage4.image = UIImage(named: "nophoto.png")
+        }else {
             
             let dataDecoded1 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[0])!, options: .ignoreUnknownCharacters)!
             let decodedimage1 = UIImage(data: dataDecoded1)
@@ -230,7 +244,6 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
             let dataDecoded4 : Data = Data(base64Encoded: (locations[indexPath.row].photos?[3])!, options: .ignoreUnknownCharacters)!
             let decodedimage4 = UIImage(data: dataDecoded4)
             cell.storeimage4.image = decodedimage4
-            
         }
         
         return cell
@@ -249,48 +262,81 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         
     }
     
-    func firstButton(){
-        print("first")
-    }
-    
     func sortchange(segcon: UISegmentedControl){
         
         underlineLayer.frame.origin.x = CGFloat(segcon.selectedSegmentIndex) * segmentItemWidth + 15
         
         switch segcon.selectedSegmentIndex {
         case 0:
-            print("0")
+            self.params["sort"] = "price"
+            self.searchplaceRubyonRails()
         case 1:
-            print("1")
+            self.params["sort"] = "recommend"
+            self.searchplaceRubyonRails()
         case 2:
-            print("2")
-        default:
-            print("default")
+            self.params["sort"] = "time"
+            self.searchplaceRubyonRails()
+        default: break
         }
         
     }
+    
     func pricebutton(sender: UIButton){
         print("price")
         
     }
     
-    func phonebutton(sender: UIButton){
-        let url = NSURL(string: "tel://09012345678")!
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url as URL)
-        } else {
-            UIApplication.shared.openURL(url as URL)
-        }
-        print("phone")
+    func sharebutton(sender: UIButton){
+        let alertSheet = UIAlertController(title: "Share", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let lineSchemeMessage: String! = "line://msg/text/"
+        var scheme: String! =  self.locations[sender.tag].storename + "\n" + "asoviva://" + self.locations[sender.tag].placeId
+        
+        let action1 = UIAlertAction(title: "Lineでシェア", style: UIAlertActionStyle.default, handler: {
+            (action: UIAlertAction!) in
+            
+            scheme = scheme.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            let messageURL: URL! = URL(string: lineSchemeMessage + scheme)
+            
+            self.openURL(messageURL)
+            
+        })
+        let action2 = UIAlertAction(title: "クリップボードにコピー", style: UIAlertActionStyle.default, handler: {
+            (action: UIAlertAction!) in
+            
+            
+            let board = UIPasteboard.general
+            board.setValue(scheme, forPasteboardType: "public.text")
+            
+        })
+        let action3 = UIAlertAction(title: "cancel", style: UIAlertActionStyle.cancel, handler: {
+            (action: UIAlertAction!) in
+        })
+        
+        alertSheet.addAction(action1)
+        alertSheet.addAction(action2)
+        alertSheet.addAction(action3)
+        
+        self.present(alertSheet, animated: true, completion: nil)
     }
     
     func commentbutton(sender: UIButton) {
         print("comment")
-        
-        UserDafault.set(locations[sender.tag].placeId, forKey: "place_id")
-        UserDafault.set(locations[sender.tag].storename, forKey: "place_name")
-        let commentview = commentViewController()
-        self.navigationController?.pushViewController(commentview, animated: true)
+        let alert = SCLAlertView()
+        alert.labelTitle.font =  UIFont.systemFont(ofSize: 15)
+        if locations[sender.tag].commentnumber == 0{
+            alert.addButton("コメントを投稿する", action: {
+                self.UserDafault.set(self.locations[sender.tag].placeId, forKey: "place_id")
+                self.UserDafault.set(self.locations[sender.tag].storename, forKey: "place_name")
+                let postcommentview = postcommentFormViewController()
+                self.navigationController?.pushViewController(postcommentview, animated: true)
+            })
+            alert.showNotice("コメントがまだありません", subTitle: "コメントを書きますか?")
+        }else{
+            self.UserDafault.set(self.locations[sender.tag].placeId, forKey: "place_id")
+            self.UserDafault.set(self.locations[sender.tag].storename, forKey: "place_name")
+            let commentview = commentViewController()
+            self.navigationController?.pushViewController(commentview, animated: true)
+        }
     }
     
     func distancebutton(sender: UIButton){
@@ -305,31 +351,66 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
     func favoritebutton(sender: UIButton) {
         print("favorite")
         
-        let storedata = favorite()
-        storedata.storename = locations[sender.tag].storename
-        storedata.lat = locations[sender.tag].lat
-        storedata.lng = locations[sender.tag].lng
-        storedata.vicinity = locations[sender.tag].vicinity
-        storedata.placeid = locations[sender.tag].placeId
-        storedata.id = favorite.lastId()
-        
-        try! realm.write {
-            realm.add(storedata)
-        }
-        
-        SCLAlertView().showInfo("お気に入り登録完了", subTitle: locations[sender.tag].storename + "をお気に入り登録しました。")
-        
+        let alert = SCLAlertView()
+        alert.labelTitle.font =  UIFont.systemFont(ofSize: 15)
+        alert.addButton("お気に入り登録", action: {
+            let storedata = favorite()
+            storedata.storename = self.locations[sender.tag].storename
+            storedata.lat = self.locations[sender.tag].lat
+            storedata.lng = self.locations[sender.tag].lng
+            storedata.vicinity = self.locations[sender.tag].vicinity
+            storedata.placeid = self.locations[sender.tag].placeId
+            storedata.photonumber = self.locations[sender.tag].photonumber
+            if self.locations[sender.tag].recommendnumber == nil{
+                storedata.recommendnumber = 30
+            }else{
+                storedata.recommendnumber = self.locations[sender.tag].recommendnumber
+            }
+            if self.locations[sender.tag].commentnumber == nil {
+                storedata.commentnumber = 0
+            }else{
+                storedata.commentnumber = self.locations[sender.tag].commentnumber
+            }
+            if self.locations[sender.tag].price == nil{
+                storedata.price = 1000
+            }else{
+                storedata.price = self.locations[sender.tag].price
+            }
+            
+            storedata.photo1 = self.locations[sender.tag].photos?[0]
+            storedata.photo2 = self.locations[sender.tag].photos?[1]
+            storedata.photo3 = self.locations[sender.tag].photos?[2]
+            storedata.photo4 = self.locations[sender.tag].photos?[3]
+            storedata.id = favorite.lastId()
+            
+            try! self.realm.write {
+                self.realm.add(storedata)
+            }
+        })
+        alert.showSuccess("お気に入り登録しますか？", subTitle: "お気に入りはいつでも\n見ることが出来ます")
     }
     
     func photobutton(sender: UIButton) {
         print("photo")
-        UserDafault.set(locations[sender.tag].placeId, forKey: "place_id")
-        let showImage = showImageViewController()
-        self.navigationController?.pushViewController(showImage, animated: true)
+        if locations[sender.tag].photonumber == 0{
+            let alert = SCLAlertView()
+            alert.labelTitle.font =  UIFont.systemFont(ofSize: 15)
+            alert.showSuccess("写真がありません", subTitle: "")
+        }else{
+            
+            UserDafault.set(locations[sender.tag].placeId, forKey: "place_id")
+            let showImage = showImageViewController()
+            self.navigationController?.pushViewController(showImage, animated: true)
+        }
         
     }
     func timebutton(sender: UIButton) {
         print("time")
+        if locations[sender.tag].opennow{
+            SCLAlertView().showInfo("現在、開店中です。", subTitle: "")
+        }else {
+            SCLAlertView().showInfo("現在、閉店中です。", subTitle: "")
+        }
     }
     
     func searchplaceRubyonRails(){
@@ -350,16 +431,19 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
         }
         print(self.params)
         Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace/search", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
-            print(response.result.value!)
+            
             guard let value = response.result.value else {
                 return
             }
             let res = JSON(value)
             var locations: [Location] = []
+            
             res["results"].array?.forEach({
+                
                 var location:Location = Mapper<Location>().map(JSON: $0.dictionaryObject!)!
                 location.lat = $0["geometry"]["location"]["lat"].doubleValue
                 location.lng = $0["geometry"]["location"]["lng"].doubleValue
+                location.opennow = $0["opening_hours"]["open_now"].boolValue
                 let Pin: MKPointAnnotation = MKPointAnnotation()
                 Pin.coordinate = CLLocationCoordinate2DMake(location.lat,location.lng)
                 Pin.title = location.storename
@@ -367,11 +451,21 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
                 location.annotation = Pin
                 locations.append(location)
             })
+            
             self.locations = locations
             self.storeTableView.reloadData()
             
         }
     }
+    
+    func openURL(_ url: URL) {
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            print("failed to open..")
+        }
+    }
+    
     
     
 }
