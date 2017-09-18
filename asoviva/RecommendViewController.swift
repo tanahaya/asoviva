@@ -40,7 +40,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         let mapView: MKMapView = MKMapView()
         mapView.delegate = self
         let mapframe: CGRect = CGRect(x: 0, y: 95, width: self.view.frame.width, height: self.view.frame.height / 2 - 95 )
-        //let mapframe: CGRect = CGRect(x: 0, y: 60 , width: self.view.frame.width, height: self.view.frame.height / 2 + 15)
         mapView.frame = mapframe
         let nowlat: Double = 35.680298
         let nowlng: Double = 139.766247
@@ -125,32 +124,22 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         
         
         self.view.backgroundColor = UIColor.white
-        let status = CLLocationManager.authorizationStatus()
-        if status == .notDetermined {
-            self.locationManager.requestWhenInUseAuthorization()
-        }
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager = CLLocationManager()
+            locationManager.delegate = self
             locationManager.startUpdatingLocation()
         }
         
-        //nowlat = locationManager.location!.coordinate.latitude
-        nowlat  = 35.680298
-        // nowlng = locationManager.location!.coordinate.longitude
-        nowlng = 139.766247
         self.view.addSubview(mapView)
         self.view.addSubview(storeTableView)
-        self.searchplaceRubyonRails()
         self.navigationItem.title  = "Asoviva"
-        /*
-         let rightButton = UIBarButtonItem(title: "Line", style: UIBarButtonItemStyle.plain, target: self, action: #selector ( sendMessage))
-         self.navigationItem.rightBarButtonItem = rightButton
-         */
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.searchplaceRubyonRails()
+        
+        locationManager.startUpdatingLocation()
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -162,6 +151,21 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         case .authorizedAlways, .authorizedWhenInUse:
             break
         }
+    }
+    // 位置情報が更新されるたびに呼ばれる
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let newLocation = locations.last else {
+            return
+        }
+        
+        nowlat = newLocation.coordinate.latitude
+        nowlng = newLocation.coordinate.longitude
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.stopUpdatingLocation()
+            self.searchplaceRubyonRails()
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -415,8 +419,17 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
     
     func searchplaceRubyonRails(){
         
-        self.params["lat"] = 35.680298
-        self.params["lng"] = 139.766247
+        
+        self.params["lat"] = nowlat
+        self.params["lng"] = nowlng
+        
+        let nowLatitude: CLLocationDegrees = nowlat!
+        let nowLongitude: CLLocationDegrees = nowlng!
+ 
+        let center: CLLocationCoordinate2D = CLLocationCoordinate2DMake(nowLatitude, nowLongitude)
+        self.mapView.setCenter(center, animated: true)
+        
+        print(self.params)
         Alamofire.request("https://server-tanahaya.c9users.io/api/searchplace", method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { response in
             
             let res = JSON(response.result.value!)
@@ -444,7 +457,6 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
-            // 本来であれば、指定したURLで開けないときの実装を別途行う必要がある
             print("failed to open..")
         }
     }
