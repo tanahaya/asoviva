@@ -102,6 +102,8 @@ class RouteViewController: UIViewController, MKMapViewDelegate,CLLocationManager
         mapView.addAnnotation(toPin)
         
         self.view.addSubview(mapView)
+        
+        self.navigationItem.title  = "Asoviva"
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -114,7 +116,7 @@ class RouteViewController: UIViewController, MKMapViewDelegate,CLLocationManager
         routeRenderer.strokeColor = UIColor.flatYellowColorDark()
         return routeRenderer
     }
-    
+    /*
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         let testPinView = MKAnnotationView()
@@ -125,5 +127,6 @@ class RouteViewController: UIViewController, MKMapViewDelegate,CLLocationManager
         
         return testPinView
     }
+ */
     
 }

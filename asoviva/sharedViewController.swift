@@ -95,6 +95,8 @@ class sharedViewController: UIViewController, MKMapViewDelegate, UITableViewDele
             locationManager.startUpdatingLocation()
         }
         
+        self.navigationItem.title  = "Asoviva"
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -161,14 +163,6 @@ class sharedViewController: UIViewController, MKMapViewDelegate, UITableViewDele
             cell.photoLabel.text = "\( locations[0].photonumber! )枚"
         }
         
-        if locations[indexPath.row].opennow{
-            let clockImage = UIImage.fontAwesomeIcon(name: .clockO, textColor: UIColor.white, size: CGSize(width:25,height:25))
-            cell.timeimage.image = clockImage
-            
-        }else{
-            let clockImage = UIImage.fontAwesomeIcon(name: .clockO, textColor: UIColor.flatNavyBlueColorDark(), size: CGSize(width:25,height:25))
-            cell.timeimage.image = clockImage
-        }
         
         cell.distanceLabel.text = "\(locations[0].time!)" + "分"
         
@@ -362,11 +356,13 @@ class sharedViewController: UIViewController, MKMapViewDelegate, UITableViewDele
     }
     func timebutton(sender: UIButton) {
         print("time")
+        /*
         if locations[sender.tag].opennow{
             SCLAlertView().showInfo("現在、開店中です。", subTitle: "")
         }else {
             SCLAlertView().showInfo("現在、閉店中です。", subTitle: "")
         }
+ */
     }
     
     func searchplaceRubyonRails(){
@@ -390,6 +386,7 @@ class sharedViewController: UIViewController, MKMapViewDelegate, UITableViewDele
             let now: CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.lat, location.lng)
             self.mapView.setCenter(now, animated: true)
             self.locations.append(location)
+            print(self.locations)
             self.storeTableView.reloadData()
         }
     }

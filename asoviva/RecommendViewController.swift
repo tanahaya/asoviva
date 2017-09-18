@@ -134,6 +134,7 @@ class RecommendViewController: UIViewController, MKMapViewDelegate, UITableViewD
         self.view.addSubview(mapView)
         self.view.addSubview(storeTableView)
         self.navigationItem.title  = "Asoviva"
+        self.navigationItem.hidesBackButton = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

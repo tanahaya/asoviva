@@ -31,7 +31,6 @@ class SignupViewController: FormViewController {
         
     }
     
-    
     func setup() {
         
         form +++ Section("ユーザー情報")
@@ -82,6 +81,7 @@ class SignupViewController: FormViewController {
                         self.UserDefault.set(false, forKey: "signup")
                         print("初回起動")
                     }
+                    self.UserDefault.set(self.params["username"], forKey: "username")
                     
                     SCLAlertView().showInfo("ユーザー登録完了", subTitle: "")
                     

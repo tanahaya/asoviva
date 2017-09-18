@@ -48,6 +48,8 @@ class showImageViewController: UIViewController,UIScrollViewDelegate, UICollecti
         
         self.getimage()
         
+        self.navigationItem.title  = "Asoviva"
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -151,6 +151,22 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
             cell.nameLabel.font = UIFont.systemFont(ofSize: 17)
         }
         
+        cell.photoButton.addTarget(self, action: #selector(photobutton), for: .touchUpInside)
+        cell.shareButton.addTarget(self, action: #selector(sharebutton), for: .touchUpInside)
+        cell.priceButton.addTarget(self, action: #selector(pricebutton), for: .touchUpInside)
+        cell.commentButton.addTarget(self, action: #selector(commentbutton), for: .touchUpInside)
+        cell.distanceButton.addTarget(self, action: #selector(distancebutton), for: .touchUpInside)
+        cell.favoriteButton.addTarget(self, action: #selector(favoritebutton), for: .touchUpInside)
+        cell.timeButton.addTarget(self, action: #selector(timebutton), for: .touchUpInside)
+        
+        cell.photoButton.tag = indexPath.row
+        cell.shareButton.tag = indexPath.row
+        cell.priceButton.tag = indexPath.row
+        cell.commentButton.tag = indexPath.row
+        cell.distanceButton.tag = indexPath.row
+        cell.favoriteButton.tag = indexPath.row
+        cell.timeButton.tag = indexPath.row
+        
         if nowfavorite.photo1 == nil{
             
             cell.storeimage1.image = UIImage(named:"nophoto.png")
@@ -270,6 +286,7 @@ class FavoriteViewController: UIViewController , UITableViewDelegate, UITableVie
             
         })
         alert.showNotice("お気に入り解除しますか", subTitle: "")
+        
     }
     
     func photobutton(sender: UIButton) {

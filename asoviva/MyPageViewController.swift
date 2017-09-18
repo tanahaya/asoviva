@@ -17,13 +17,6 @@ class MyPageViewController: FormViewController {
         super.viewDidLoad()
         
         self.setup()
-        if self.UserDefault.bool(forKey: "signup") == false {
-            let row: CustomRow? = self.form.rowBy(tag: "user")
-            row?.cell.nameLabel.text = self.UserDefault.dictionary(forKey: "userinformation")?["username"] as? String
-            print(row?.cell.nameLabel.text ?? String())
-        }else if self.UserDefault.bool(forKey: "signup"){
-            print("ユーザー未登録")
-        }
         
         self.navigationItem.title  = "Asoviva"
         self.navigationItem.hidesBackButton = true
@@ -34,33 +27,30 @@ class MyPageViewController: FormViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         
+        print(self.UserDefault.string(forKey: "username") ?? String())
+        
+        let row: CustomButtonRow? = self.form.rowBy(tag: "user")
+        
         if self.UserDefault.bool(forKey: "signup") == false {
-            let row: CustomRow? = self.form.rowBy(tag: "user")
-            row?.cell.nameLabel.text = self.UserDefault.dictionary(forKey: "userinformation")?["username"] as? String
-            print(row?.cell.nameLabel.text ?? String())
+            row?.cell.nameLabel.text = self.UserDefault.string(forKey: "username") ?? String()
         }else if self.UserDefault.bool(forKey: "signup"){
             print("ユーザー未登録")
+            row?.cell.nameLabel.text = self.UserDefault.string(forKey: "username") ?? String()
         }
     }
     func setup() {
         self.form +++ Section("user")
             
-            <<< CustomRow() {
-                $0.cellSetup({ (cell, row) in
-                    cell.customImage.frame = CGRect(x: 20, y: 20, width:80 , height: 80)
-                    cell.customImage.layer.position =  CGPoint(x: 50, y: 50)
-                    
-                    cell.customImage.layer.masksToBounds = true
-                    cell.customImage.layer.cornerRadius = 40
-                    cell.customImage.image = UIImage.fontAwesomeIcon(name: .userCircle, textColor: UIColor.black, size: CGSize(width:80,height:80))
-                    
-                })
+            <<< CustomButtonRow("user") {
                 
+                $0.cellSetup({ (cell, row) in
+                    
+                    cell.nameLabel.text = "ユーザー未登録"
+                })
                 }.onCellSelection(){row in
                     
                     if self.UserDefault.bool(forKey: "signup") == false {
                         
-                        self.UserDefault.set(true, forKey: "signup")
                         print("Signup済み")
                     }else if self.UserDefault.bool(forKey: "signup"){
                         
@@ -81,7 +71,7 @@ class MyPageViewController: FormViewController {
                 }.onCellSelection(){row in
                     self.alert()
             }
-
+            
             <<< CustomButtonRow() {
                 
                 $0.cellSetup({ (cell, row) in

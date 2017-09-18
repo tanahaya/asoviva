@@ -40,6 +40,8 @@ class schoolTimelineViewController: UIViewController , UITableViewDelegate, UITa
         
         self.getComment()
         
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

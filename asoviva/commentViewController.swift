@@ -38,6 +38,8 @@ class commentViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationItem.rightBarButtonItem = rightButton
         
         self.getComment()
+        
+        self.navigationItem.title  = "Asoviva"
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -51,8 +51,6 @@
 		9FC4E9671EF1258F00DD039F /* Chameleon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC4E9661EF1258F00DD039F /* Chameleon.framework */; };
 		9FD5BF071EDF0D7A00D1F65D /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */; };
 		9FD5BF091EE2F4F300D1F65D /* SearchFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5BF081EE2F4F300D1F65D /* SearchFormViewController.swift */; };
-		9FECD2B51EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */; };
-		9FECD2B61EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FECD2B41EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib */; };
 		9FECD2B81EC1D89B007E3C87 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */; };
 		9FECD2BA1EC318BE007E3C87 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2B91EC318BE007E3C87 /* RecommendViewController.swift */; };
 		9FECD2CD1EC598B9007E3C87 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FECD2CC1EC598B9007E3C87 /* MyPageViewController.swift */; };
@@ -142,8 +140,6 @@
 		9FC4E9701EF1355000DD039F /* FoldingCell.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FoldingCell.framework; path = Carthage/Build/iOS/FoldingCell.framework; sourceTree = "<group>"; };
 		9FD5BF061EDF0D7A00D1F65D /* RouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
 		9FD5BF081EE2F4F300D1F65D /* SearchFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFormViewController.swift; sourceTree = "<group>"; };
-		9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurekaImageCellTableViewCell.swift; sourceTree = "<group>"; };
-		9FECD2B41EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EurekaImageCellTableViewCell.xib; sourceTree = "<group>"; };
 		9FECD2B71EC1D89B007E3C87 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		9FECD2B91EC318BE007E3C87 /* RecommendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		9FECD2CC1EC598B9007E3C87 /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
@@ -277,8 +273,6 @@
 				9F8B20671ECC5865001B7543 /* favorite.swift */,
 				9FECD2CC1EC598B9007E3C87 /* MyPageViewController.swift */,
 				9F1C80801F49B11A003EED9F /* SignupViewController.swift */,
-				9FECD2B31EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift */,
-				9FECD2B41EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib */,
 				9F9B56511EECEB6D00673F60 /* EurekaButtonTableViewCell.swift */,
 				9F9B56521EECEB6D00673F60 /* EurekaButtonTableViewCell.xib */,
 				9F571F5D1F52498F00279CE4 /* selectImageTableViewCell.swift */,
@@ -430,7 +424,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FECD2B61EC1D142007E3C87 /* EurekaImageCellTableViewCell.xib in Resources */,
 				9F9B56541EECEB6D00673F60 /* EurekaButtonTableViewCell.xib in Resources */,
 				9F1C808D1F5049E6003EED9F /* asoviva.png in Resources */,
 				9FBCE8C31F6AA8A700CEE223 /* schoolTableViewCell.xib in Resources */,
@@ -649,7 +642,6 @@
 				9F571F5F1F52498F00279CE4 /* selectImageTableViewCell.swift in Sources */,
 				9F8CBB0D1DD1E574002B3DBA /* AppDelegate.swift in Sources */,
 				9FD5BF071EDF0D7A00D1F65D /* RouteViewController.swift in Sources */,
-				9FECD2B51EC1D142007E3C87 /* EurekaImageCellTableViewCell.swift in Sources */,
 				9FECD2D71EC5CBB3007E3C87 /* SCLAlertView.swift in Sources */,
 				9FBCE8C21F6AA8A700CEE223 /* schoolTableViewCell.swift in Sources */,
 				9FECD2BA1EC318BE007E3C87 /* RecommendViewController.swift in Sources */,

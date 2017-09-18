@@ -137,27 +137,21 @@ class SearchResultViewController: UIViewController, MKMapViewDelegate, UITableVi
             locationManager.startUpdatingLocation()
         }
         
-        //nowlat = locationManager.location!.coordinate.latitude
-        nowlat  = 35.680298
-        // nowlng = locationManager.location!.coordinate.longitude
-        nowlng = 139.766247
+        nowlat  = self.UserDafault.double(forKey: "searchlat")
+        nowlng = self.UserDafault.double(forKey: "searchlng")
+        
         self.view.addSubview(mapView)
         self.view.addSubview(storeTableView)
         self.searchplaceRubyonRails()
         self.navigationItem.title  = "Asoviva"
         
     }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        case .restricted, .denied:
-            break
-        case .authorizedAlways, .authorizedWhenInUse:
-            break
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        locationManager.startUpdatingLocation()
+        
     }
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
